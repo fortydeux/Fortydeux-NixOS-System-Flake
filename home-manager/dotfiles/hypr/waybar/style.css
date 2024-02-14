@@ -1,0 +1,153 @@
+@define-color bar-light-text-color #f4b3b3;
+@define-color bar-feature-background-color #1f1f2f;
+@define-color bar-darkest-color #11111b;
+@define-color bar-button-active-color #f4b3b3;
+@define-color bar-button-focused-background-color #da5656;
+@define-color bar-button-urgent-color #a6e3a1;
+@define-color bar-feature-border-color #3e1e2e;
+@define-color bar-button-color #555876;
+@define-color bar-button-hover-color #7c5e5e;
+@define-color bar-button-focused-color #eba0ac;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(21, 18, 27, 0);
+    color: @bar-light-text-color;
+}
+
+tooltip {
+    background: @bar-feature-background-color;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @bar-darkest-color;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: @bar-button-color;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: @bar-button-active-color;
+}
+
+#workspaces button.focused {
+    color: @bar-button-active-color;
+    background: @bar-button-focused-color;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: @bar-darkest-color;
+    background: @bar-button-urgent-color;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: @bar-darkest-color;
+    color: @bar-button-hover-color;
+    border-radius: 10px;
+}
+
+#custom-language,
+#custom-updates,
+#custom-caffeine,
+#custom-weather,
+#custom-media,
+#custom-spotify,
+#custom-trayer,
+#custom-power,
+#custom-launcher,
+#idle_inhibitor,
+#cpu,
+#memory,
+#temperature,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#backlight {
+    background: @bar-feature-background-color;
+    padding: 1px 10px;
+    margin: 2px;
+    border: 1px solid @bar-feature-border-color;
+    border-radius: 10px;
+}
+
+#tray {
+}
+
+#backlight {
+    color: #fff2f2
+}
+
+#workspaces {
+    background: @bar-feature-background-color;
+}
+
+#idle_inhibitor {
+    color: #89dceb;
+}
+
+#custom-language {
+    color: #f38ba8;
+}
+
+#custom-updates {
+    color: #f5c2e7;
+}
+#custom-media {
+    color: #1ED760;
+    padding-right: 14px;
+}
+#window {
+}
+
+#clock {
+    color: #ac5449;
+}
+
+#network {
+    color: #884788;
+}
+
+#pulseaudio {
+    color: #0f70cb;
+}
+
+#pulseaudio.microphone {
+    color: #cba6f7;
+}
+
+#battery {
+    color: @bar-button-urgent-color;
+}
+
+#custom-weather {
+}
+
+#custom-launcher {
+    color: #DA0C81;
+    font-size: 22;
+    padding: 0px 12px;
+}
+
+#custom-power {
+    color: #6a9eff;
+    font-size: 18;
+    padding-right: 14px;
+/*     margin-right: 4px; */
+}
