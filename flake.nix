@@ -12,7 +12,7 @@
     {
     
       nixosConfigurations = {
-      	archerfish-nixos = lib.nixosSystem {
+      	fortydeux-nixos = lib.nixosSystem {
     	  	system = "x86_64-linux";
     	  	modules = [
     	  	  ./nixos-config/configuration.nix
