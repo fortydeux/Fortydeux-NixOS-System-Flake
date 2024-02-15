@@ -20,9 +20,8 @@
   
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/microsoft/surface/common>
+    #  <nixos-hardware/microsoft/surface/common>
       ./hardware-configuration.nix
-    #  ./pcloud.nix
     ];
 
   # Bootloader.
@@ -159,8 +158,8 @@
     
   # Enable MS Surface Hardware 
   ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
-  microsoft-surface.ipts.enable = true;
-  microsoft-surface.surface-control.enable = true;
+#  microsoft-surface.ipts.enable = true;
+#  microsoft-surface.surface-control.enable = true;
   systemd.extraConfig = "DefaultTimeoutStopSec=10s";
 
   # Configure keymap in X11
