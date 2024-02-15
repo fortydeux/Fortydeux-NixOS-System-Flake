@@ -218,6 +218,7 @@
     description = "Fortydeux";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "surface-control"];
     packages = with pkgs; [
+        gh #Github CLI tool 
         discord #Discord social client
     #    pcloud 
     #    googleearth-pro #Google Earth Pro - requires insecure packages enabled - install with flatpak instead thus containered
@@ -225,7 +226,7 @@
         reaper #Reaper DAW
         signal-desktop #Signal electron desktop client
         telegram-desktop #Telegram desktop client
-    #    unstable.simplex-chat-desktop #SimpleX Chat Desktop Client
+        simplex-chat-desktop #SimpleX Chat Desktop Client
     #    todoist-electron #Todoist electron desktop client
         media-downloader #Media-downloader desktop client
         libsForQt5.kdenlive #KdenLive Video Editor 
@@ -248,8 +249,10 @@
   environment.systemPackages = with pkgs; [
     ### Nix-specific
     home-manager
+
     ## Photo / Slideshow tools
     feh
+
     ###CLI Tools
     appimage-run #Utility for running AppImage format
     clamav #Virus scanner
@@ -269,9 +272,11 @@
     vim #The most popular clone of the VI editor
     wcalc #A command line calculator
     wget #Tool for retrieving files using HTTP, HTTPS, and FTP
+
     ###Build tools
     cargo #Downloads your Rust project's dependencies and builds your project
     (python311.withPackages(ps: with ps; [ pycairo pygobject3])) #Python3.11 with packages
+
     ###Candy - not necessary
     cava #Console-based Audio Visualizer for Alsa
     cbonsai #Grow bonsai trees in your terminal
@@ -283,6 +288,7 @@
     pipes #Animated pipes terminal screensaver
     tty-clock #Digital clock in ncurses
     vitetris #Terminal-based Tetris clone by Victor Nilsson
+
     ###GUI Applications
     alacritty #A cross-platform, GPU-accelerated terminal emulator
     baobab #Disk Usage Analyzer
@@ -316,9 +322,8 @@
     tor-browser-bundle-bin #Tor Browser Bundle built by torproject.org
     vscodium #Open source source code editor developed by Microsoft for Windows, Linux and macOS (VS Code without MS branding/telemetry/licensing)
     wezterm #GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
- #   unstable.pcloud #Pcloud electron desktop client
-    #pcloud must be called with appimage-run
-    #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
+    pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
+
     ###Window Managers
   #  hyprland-protocols #Wayland protocol extensions for Hyprland
   #  hyprland-share-picker 
@@ -327,6 +332,7 @@
     wayfirePlugins.wcm #Wayfire Config Manager
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks
   #  wf-config #Library for managing configuration files, written for Wayfire
+
     ###WM Dependencies & Support packages
   #  blueberry #Bluetooth configuration tool
   #  bluetuith #TUI-based bluetooth connection manager
@@ -357,8 +363,6 @@
     #trayer #A lightweight GTK2-based systray for UNIX desktop
     pyprland
     waybar
-    #(unstable.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true "]; }))
- #   unstable.waybar #Highly customizable Wayland bar for Sway and Wlroots based compositors
     wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
     wl-clipboard #Command-line copy/paste utilities for Wayland
     wlogout #A wayland based logout menu
@@ -367,110 +371,64 @@
     wlr-randr #An xrandr clone for wlroots compositors
     wofi #A launcher/menu program for wlroots based wayland compositors such as sway
     xfce.xfce4-terminal #Xfce Terminal Emulator
-    ##Disabled
- #   alsa-lib #ALSA, the Advanced Linux Sound Architecture libraries
- #   alsa-utils #ALSA, the Advanced Linux Sound Architecture utils
- #   blueman #GTK-based Bluetooth Manager
- #   bluez #Bluetooth support for Linux
- #   bluez-tools #Command line bluetooth manager for Bluez5
- #   eww-wayland #ElKowars wacky widgets for Wayland
- #   flameshot #Powerful yet simple to use screenshot software
- #   iwd #Wireless daemon for Linux
- #   iwgtk #Lightweight, graphical wifi management utility for Linux
- #   light #GNU/Linux application to control backlights
- #   macchina #A fast, minimal and customizable system information fetcher
- #   mpd #A flexible, powerful daemon for playing music
- #   mpc-cli #A minimalist command line interface to MPD
- #   networkmanager #Network configuration and management tool
- #   networkmanager_dmenu #Small script to manage NetworkManager connections with dmenu instead of nm-applet
- #   nitch #Incredibly fast system fetch written in nim
- #   nwg-panel #GTK3-based panel for Sway window manager
- #   pavucontrol #PulseAudio Volume Control
- #   pipewire #Server and user space API to deal with multimedia pipelines
- #   pulseaudio #Sound server for POSIX and Win32 systems
- #   scrot #A command-line screen capture utility
- #   simplescreenrecorder #A screen recorder for Linux
- #   socat #Utility for bidirectional data transfer between two independent data channels
- #   wireplumber #A modular session / policy manager for PipeWire
- #   yambar #Modular status panel for X11 and Wayland
- #   yambar-hyprland-wses #Enable Yambar to show Hyprland workspaces
-    ###Icons, Fonts, Themes, and Theme tools
-    adapta-gtk-theme #Adapta GTK Theme
-    at-spi2-atk #Assistive Technology Service Provider Interface protocol definitions and daemon for D-Bus
-    arc-theme #Flat theme with transparent elements for GTK 3, GTK 2 and Gnome Shell
-    ayu-theme-gtk #Ayu GTK Theme
-    breath-theme #Breath Theme - Plasma
-    catppuccin-gtk #Catppuccin GTK Theme
-    catppuccin-kvantum #Catppuccin Kvantum Theme
-    dconf #dconf is a low-level configuration system. Its main purpose is to provide a backend to GSettings on platforms that don't already have configuration storage systems.
- #   gnome.dconf-editor #GSettings editor for GNOME
-    glib #C library of programming buildings blocks
- #   gnome.gnome-settings-daemon #Background process that manages various settings and configurations in the GNOME desktop environment. It ensures that changes made to settings are applied correctly and consistently across the system.
-    gsettings-desktop-schemas #Collection of GSettings schemas for settings shared by various components of a desktop
- #   gsettings-qt #Library to access GSettings from Qt
-    gnome.gucharmap #GNOME Character Map, based on the Unicode Character Database
- #   unstable.nwg-look #Nwg-look is a GTK3 settings editor, designed to work properly in wlroots-based Wayland environment
-    pop-gtk-theme #Pop GTK Theme
- #   libsForQt5.qt5ct #Qt5 Configuration Tool
- #   unstable.qt6Packages.qt6ct #Qt6 Configuration Tool
- #   libsForQt5.qt5.qtwayland #A cross-platform application framework for C++
- #   libsForQt5.qtstyleplugin-kvantum #SVG-based Qt5 theme engine plus a config tool and extra themes
-    libsForQt5.qt5.qtquickcontrols2 #A cross-platform application framework for C++
-    libsForQt5.qt5.qtgraphicaleffects #A cross-platform application framework for C++
- #   unstable.qt6Packages.qtstyleplugin-kvantum #SVG-based Qt6 theme engine plus a config tool and extra themes
- #   themechanger #A theme changing utility for Linux
-    theme-obsidian2 #Gnome theme based upon Adwaita-Maia dark skin
-    arc-icon-theme #Arc Icon Theme
- #   qt6.qtwayland #Qt6 cross-platform application framework for C++
-    papirus-icon-theme #Papirus Icon Theme
- #   papirus-maia-icon-theme #Manjaro version of Papirus Icon Theme
-    luna-icons #Icon pack based on marwaita and papirus icons
- #   qtstyleplugin-kvantum-qt4 #Qt4 version of Kvantum Qtstyleplugin
- #   icon-library #Symbolic icons for your apps
-    material-design-icons #Material Design Icons
- #   emojione #Open source emoji set
-    gnome.adwaita-icon-theme #Adwaita Icon Theme
 
+    ###Icons, Themes, and Theme tools
+#    adapta-gtk-theme #Adapta GTK Theme
+#    at-spi2-atk #Assistive Technology Service Provider Interface protocol definitions and daemon for D-Bus
+#    arc-theme #Flat theme with transparent elements for GTK 3, GTK 2 and Gnome Shell
+#    ayu-theme-gtk #Ayu GTK Theme
+#    breath-theme #Breath Theme - Plasma
+#    catppuccin-gtk #Catppuccin GTK Theme
+#    catppuccin-kvantum #Catppuccin Kvantum Theme
+#    dconf #dconf is a low-level configuration system. Its main purpose is to provide a backend to GSettings on platforms that don't already have configuration storage systems.
+#    glib #C library of programming buildings blocks
+#    gsettings-desktop-schemas #Collection of GSettings schemas for settings shared by various components of a desktop
+#    gnome.gucharmap #GNOME Character Map, based on the Unicode Character Database
+#    pop-gtk-theme #Pop GTK Theme
+#    libsForQt5.qt5.qtquickcontrols2 #A cross-platform application framework for C++
+#    libsForQt5.qt5.qtgraphicaleffects #A cross-platform application framework for C++
+#    theme-obsidian2 #Gnome theme based upon Adwaita-Maia dark skin
+#    arc-icon-theme #Arc Icon Theme
+#    papirus-icon-theme #Papirus Icon Theme
+#    luna-icons #Icon pack based on marwaita and papirus icons
+#    material-design-icons #Material Design Icons
+#    gnome.adwaita-icon-theme #Adwaita Icon Theme
+#
     ### AGS dependencies
     swww
-    sassc
-    
+    sassc  
 
     ###Surface Laptop Support
     libwacom-surface #Libraries, configuration, and diagnostic tools for Wacom tablets running under Linux
     glm #OpenGL Mathematics library for C++ - needed for hyprgrass plugin and touchscreen gesture support for hyprland
     jq #A lightweight and flexible command-line JSON processor - dependency for installing hyprload
+
+    ## Misc that I'm too lazy to categorize
     wireguard-tools
     openvpn
     caffeine-ng
     libsForQt5.plasma-applet-caffeine-plus
-    ###Gnome support
-  #   gnomeExtensions.appindicator #System tray app indicator
- #   gnome.gnome-keyring #Keyring tool for Gnome
- #   gnome.gnome-tweaks #Gnome Tweaks tool
- #   gnomeExtensions.pop-shell #Pop shell tiling extension for Gnome
    ]; 
-
+   
+  ### Fonts
   fonts.fontconfig.enable = true;
   fonts.enableDefaultPackages = true;
-  ### Fonts
   fonts.packages = with pkgs; [
- 	 dejavu_fonts
- 	 font-awesome
- 	 inter
-  	 jetbrains-mono
+# 	 dejavu_fonts
+# 	 font-awesome
+# 	 inter
+#  	 jetbrains-mono
  	 nerdfonts
-  	 borg-sans-mono
- 	 cantarell-fonts
- 	 hack-font
- 	 inconsolata-nerdfont
- 	 iosevka
- 	 liberation_ttf
- 	 noto-fonts
- 	 roboto
- 	 tamsyn
- 	 ttf_bitstream_vera
-  #	ubuntu_font_family
+#  	 borg-sans-mono
+# 	 cantarell-fonts
+# 	 hack-font
+# 	 inconsolata-nerdfont
+# 	 iosevka
+# 	 liberation_ttf
+# 	 noto-fonts
+# 	 roboto
+# 	 tamsyn
+# 	 ttf_bitstream_vera
     ];
 
   # Some programs need SUID wrappers, can be configured further or are
