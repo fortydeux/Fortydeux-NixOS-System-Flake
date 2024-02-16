@@ -23,6 +23,11 @@ window#waybar {
     color: @bar-light-text-color;
 }
 
+window#waybar.empty #window {
+	background: none;
+	color: none;
+}
+
 tooltip {
     background: @bar-feature-background-color;
     border-radius: 10px;
