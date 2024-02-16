@@ -15,8 +15,8 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  ## AGS import and settings
   imports = [ inputs.ags.homeManagerModules.default ];
-
   programs.ags = {
   	enable = true;
   	#configDir = ./dotfiles/ags;
@@ -26,6 +26,25 @@
   		accountsservice
   	];
   };
+
+  ## GTK theming settings
+  gtk.enable = true;
+  gtk.font.name = "Noto Sans";
+  gtk.font.package = pkgs.noto-fonts;
+  gtk.font.size = 10;
+  gtk.theme.name = "Dracula";
+  gtk.theme.package = pkgs.dracula-theme;
+  gtk.iconTheme.name = "Papirus-Dark-Maia";  # Candy and Tela also look good
+  gtk.iconTheme.package = pkgs.papirus-maia-icon-theme;
+  gtk.cursorTheme.package = pkgs.phinger-cursors;
+  gtk.cursorTheme.name = "phinger-cursors";
+  gtk.cursorTheme.size = 32;
+  gtk.gtk3.extraConfig = {
+    gtk-application-prefer-dark-theme = true;
+    gtk-key-theme-name    = "Emacs";
+    gtk-icon-theme-name   = "Papirus-Dark-Maia";
+  };
+
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

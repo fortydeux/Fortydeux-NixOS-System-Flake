@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 35,
     "spacing": 4,
     "margin-top": 4,
     "margin-right": 4,
@@ -22,7 +22,7 @@
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         //"format": "{icon}",
-        "persistent_workspaces": {
+        "persistent-workspaces": {
             "1": [],
             "2": []
         }
