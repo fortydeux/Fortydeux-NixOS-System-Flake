@@ -22,8 +22,8 @@
     	  	modules = [ ./nixos-config/configuration.nix ];
     	};
       };
-      homeConfigurations.fortydeux = {
-          home-manager.lib.homeManagerConfiguration = {
+      homeConfigurations = {
+        fortydeux = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
             # Pass inputs as extraSpecialArgs
