@@ -248,7 +248,7 @@
   # $ nix search wget  
   environment.systemPackages = with pkgs; [
     ### Nix-specific
-    home-manager
+    # home-manager
 
     ## Photo / Slideshow tools
     feh
