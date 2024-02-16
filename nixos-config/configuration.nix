@@ -20,10 +20,16 @@
   
   imports =
     [ # Include the results of the hardware scan.
-    #  <nixos-hardware/microsoft/surface/common>
+     # <nixos-hardware/microsoft/surface/common>
       ./hardware-configuration.nix
     ];
 
+  # Enable MS Surface Hardware 
+  ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
+  microsoft-surface.ipts.enable = true;
+  microsoft-surface.surface-control.enable = true;
+  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
+    
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -79,11 +85,6 @@
     };
     desktopManager.plasma5.enable = true;
   };
-    
-    #Gnome
- # services.xserver.enable = true;
- # services.xserver.displayManager.gdm.enable = true;
- # services.xserver.desktopManager.gnome.enable = true;
     
   #Services - Syncthing
   services.syncthing = {
@@ -156,12 +157,6 @@
 #    };
 #  };
     
-  # Enable MS Surface Hardware 
-  ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
-#  microsoft-surface.ipts.enable = true;
-#  microsoft-surface.surface-control.enable = true;
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
-
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";

@@ -5,6 +5,7 @@
   	nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   	home-manager.url = "github:nix-community/home-manager/master";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Add ags
     ags.url = "github:Aylur/ags"; 	
@@ -19,7 +20,9 @@
       nixosConfigurations = {
       	fortydeux-nixos = lib.nixosSystem {
     	  	inherit system;
-    	  	modules = [ ./nixos-config/configuration.nix ];
+    	  	modules = [ 
+    	  	  ./nixos-config/configuration.nix 
+    	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ];
     	};
       };
       homeConfigurations = {
