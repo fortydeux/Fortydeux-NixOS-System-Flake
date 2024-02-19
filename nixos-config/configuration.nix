@@ -26,15 +26,15 @@
 
   # Enable MS Surface Hardware 
   ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
-  microsoft-surface.ipts.enable = true;
-  microsoft-surface.surface-control.enable = true;
+#  microsoft-surface.ipts.enable = true;
+#  microsoft-surface.surface-control.enable = true;
   systemd.extraConfig = "DefaultTimeoutStopSec=10s";
     
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "archerfish-nixos"; # Define your hostname.
+  networking.hostName = "pufferfish-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -214,6 +214,8 @@
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "surface-control"];
     packages = with pkgs; [
         gh #Github CLI tool 
+        git-credential-manager #Git credential manager
+        dotnet-runtime_7 # .NET runtime - required for git-credential-manager
         discord #Discord social client
     #    pcloud 
     #    googleearth-pro #Google Earth Pro - requires insecure packages enabled - install with flatpak instead thus containered

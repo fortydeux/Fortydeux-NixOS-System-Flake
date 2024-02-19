@@ -5,7 +5,7 @@
   	nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   	home-manager.url = "github:nix-community/home-manager/master";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  #     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Add ags
     ags.url = "github:Aylur/ags"; 	
@@ -22,7 +22,8 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/configuration.nix 
-    	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ];
+  #  	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common 
+                ];
     	};
       };
       homeConfigurations = {
