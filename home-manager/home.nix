@@ -76,6 +76,10 @@
     # ".screenrc".source = dotfiles/screenrc;
     ".config/hypr".source = dotfiles/hypr;
     ".config/wayfire".source = dotfiles/wayfire;
+    ".config/kitty".source = dotfiles/kitty;
+    ".config/ranger".source = dotfiles/ranger;
+    ".config/micro".source = dotfiles/micro;
+    ".config/mako".source = dotfiles/mako;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
