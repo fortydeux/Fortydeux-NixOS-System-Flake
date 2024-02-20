@@ -34,8 +34,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Sudo
+  # Security
   security.sudo.enable = true;
+  security.sudo.wheelNeedsPassword = true;
+  security.doas.enable = false;
 
   networking.hostName = "blackfin-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
