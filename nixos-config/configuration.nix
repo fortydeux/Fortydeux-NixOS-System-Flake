@@ -259,6 +259,7 @@
     mpv #General-purpose media player, fork of MPlayer and mplayer2
     nnn #Small ncurses-based file browser forked from noice
     nix-prefetch-github #Prefetch sources from github
+    pavucontrol #PulseAudio Volume Control
     qemu #Virtual machine client CLI
     ranger #File manager with minimalistic curses interface
     ripgrep #Utility that combines the usability of The Silver Searcher with the raw speed of grep
