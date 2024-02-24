@@ -28,23 +28,24 @@
   };
 
   ## GTK theming settings
-  gtk.enable = true;
-  gtk.font.name = "Noto Sans";
-  gtk.font.package = pkgs.noto-fonts;
-  gtk.font.size = 10;
-  gtk.theme.name = "Dracula";
-  gtk.theme.package = pkgs.dracula-theme;
-  gtk.iconTheme.name = "Papirus-Dark-Maia";  # Candy and Tela also look good
-  gtk.iconTheme.package = pkgs.papirus-maia-icon-theme;
-  gtk.cursorTheme.package = pkgs.phinger-cursors;
-  gtk.cursorTheme.name = "phinger-cursors";
-  gtk.cursorTheme.size = 32;
-  gtk.gtk3.extraConfig = {
-    gtk-application-prefer-dark-theme = true;
-    gtk-key-theme-name    = "Emacs";
-    gtk-icon-theme-name   = "Papirus-Dark-Maia";
+  gtk = {
+    enable = true;
+    font.name = "Noto Sans";
+    font.package = pkgs.noto-fonts;
+    font.size = 10;
+    theme.name = "Dracula";
+    theme.package = pkgs.dracula-theme;
+    iconTheme.name = "Papirus-Dark-Maia";  # Candy and Tela also look good
+    iconTheme.package = pkgs.papirus-maia-icon-theme;
+    cursorTheme.package = pkgs.phinger-cursors;
+    cursorTheme.name = "phinger-cursors";
+    cursorTheme.size = 32;
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+      gtk-key-theme-name    = "Emacs";
+      gtk-icon-theme-name   = "Papirus-Dark-Maia";
+    };
   };
-
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -109,10 +110,25 @@
   #
   #  /etc/profiles/per-user/fortydeux/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
+  home = {
+    sessionVariables = {
+      # EDITOR = "emacs";
+      VISUAL = "micro";
+      EDITOR = "micro";
+    };
+    sessionPath = [ "$HOME/.emacs.d/bin:$PATH" ];
+    shellAliases = {
+      emacs = "emacsclient -c -a 'emacs'";
+    };
   };
 
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      neofetch
+    '';
+  };
+  
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

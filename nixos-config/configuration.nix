@@ -136,14 +136,6 @@
     # Hint electron apps to use wayland
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
-
-  programs.bash = {
-    shellInit = "neofetch";
-  };
-  environment.variables = {
-    VISUAL = "micro";
-    EDITOR = "micro";
-  };
     
    # Greetd - enable if disabling other login managers 
 #  services.greetd = {
