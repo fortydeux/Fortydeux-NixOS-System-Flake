@@ -274,7 +274,10 @@
     vim #The most popular clone of the VI editor
     wcalc #A command line calculator
     wget #Tool for retrieving files using HTTP, HTTPS, and FTP
-
+    # optional emacs dependencies
+    coreutils # basic GNU utilities
+    fd #a simple, fast and user-friendly alternative to find
+    clang
     ###Build tools
     cargo #Downloads your Rust project's dependencies and builds your project
     (python311.withPackages(ps: with ps; [ pycairo pygobject3])) #Python3.11 with packages
