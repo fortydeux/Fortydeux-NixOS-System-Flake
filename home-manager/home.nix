@@ -1,10 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "fortydeux";
   home.homeDirectory = "/home/fortydeux";
+
+  imports = [
+    ./home-modules/ags.nix
+    ./home-modules/theming.nix  	
+  ];
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -15,45 +20,49 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  ## AGS import and settings
-  imports = [ inputs.ags.homeManagerModules.default ];
-  programs.ags = {
-  	enable = true;
-  	#configDir = ./dotfiles/ags;
-  	extraPackages = with pkgs; [
-  		gtksourceview
-  		webkitgtk
-  		accountsservice
-  	];
-  };
-
-  ## GTK theming settings
-  gtk = {
-    enable = true;
-    font.name = "Noto Sans";
-    font.package = pkgs.noto-fonts;
-    font.size = 10;
-    theme.name = "Dracula";
-    theme.package = pkgs.dracula-theme;
-    iconTheme.name = "Papirus-Dark-Maia";  # Candy and Tela also look good
-    iconTheme.package = pkgs.papirus-maia-icon-theme;
-    cursorTheme.package = pkgs.phinger-cursors;
-    cursorTheme.name = "phinger-cursors";
-    cursorTheme.size = 32;
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-key-theme-name    = "Emacs";
-      gtk-icon-theme-name   = "Papirus-Dark-Maia";
-    };
-  };
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-     pkgs.hello
-
+    nil
+    nixfmt
+    file
+    wmctrl
+    jshon
+    aria
+    hledger
+    hunspell hunspellDicts.en_US-large
+    pandoc
+    emacsPackages.mu4e
+    isync
+    msmtp
+    gnumake
+    libxml2
+    stylelint
+    html-tidy
+    shellcheck
+    shfmt
+    nodePackages.js-beautify
+    php83Packages.composer
+    php83
+    pipenv
+    (python3.withPackages (p: with p; [
+      pandas
+      requests
+      epc lxml
+      pysocks
+      pymupdf
+      markdown
+      cmake
+      black
+      pyflakes
+      isort
+      nose
+      pytest
+      setuptools
+    ]))
+  ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -66,7 +75,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ];
+  
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

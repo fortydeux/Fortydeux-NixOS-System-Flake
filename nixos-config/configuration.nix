@@ -34,6 +34,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Kernel 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Security
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = true;
