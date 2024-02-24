@@ -1,4 +1,4 @@
-{ config, pkgs, ... }
+{ config, pkgs, ... }:
 
 {
   home = {
@@ -17,7 +17,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutoSuggestions = true;
+    enableAutosuggestions = true;
     enableCompletion = true;
     initExtra = ''
       neofetch
