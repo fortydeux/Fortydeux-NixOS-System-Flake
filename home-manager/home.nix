@@ -9,7 +9,8 @@
   imports = [
     ./home-modules/ags.nix
     ./home-modules/theming.nix 
-    ./home-modules/emacs-support.nix 	
+    ./home-modules/emacs-support.nix 
+    ./home-modules/sh.nix	
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -26,7 +27,7 @@
   home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-
+    # hello
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -84,24 +85,7 @@
   #
   #  /etc/profiles/per-user/fortydeux/etc/profile.d/hm-session-vars.sh
   #
-  home = {
-    sessionVariables = {
-      # EDITOR = "emacs";
-      VISUAL = "micro";
-      EDITOR = "micro";
-    };
-    sessionPath = [ "$HOME/.emacs.d/bin:$PATH" ];
-    shellAliases = {
-      emacs = "emacsclient -c -a 'emacs'";
-    };
-  };
 
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      neofetch
-    '';
-  };
   
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
