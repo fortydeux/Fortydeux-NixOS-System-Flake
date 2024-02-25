@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
-{
+{ # Device-specific.nix
+
+  imports = [
+    # Remember to also comment out Surface lines in flake.nix if disabling
+  	./ms-surface.nix
+  ];
+
   # Hostname
   networking.hostName = "archerfish-nixos"; # Define your hostname.
 

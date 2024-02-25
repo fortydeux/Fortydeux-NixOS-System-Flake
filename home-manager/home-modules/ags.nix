@@ -1,7 +1,8 @@
 { config, pkgs, inputs, ... }:
 
-{
-## AGS import and settings
+{ # Ags.nix
+
+  ## AGS import and settings
   imports = [ inputs.ags.homeManagerModules.default ];
   programs.ags = {
   	enable = true;
@@ -12,4 +13,10 @@
   		accountsservice
   	];
   };
+
+  home.packages = (with pkgs; [
+    ## AGS dependencies
+    swww
+    sassc  
+  ]);
 }

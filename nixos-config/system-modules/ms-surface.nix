@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
-{
+{ # MS-Surface.nix
+
   # Enable MS Surface Hardware
   ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
   microsoft-surface.ipts.enable = true;

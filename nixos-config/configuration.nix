@@ -4,7 +4,7 @@
 
 { config, pkgs, inputs,... }:
 
-{
+{ # Configuration.nix
 
   # Allow unfree/insecure packages  
   nixpkgs.config.allowUnfree = true;
@@ -13,29 +13,18 @@
     [
       ./hardware-configuration.nix
       ./system-modules/device-specific.nix
-      ./system-modules/ms-surface.nix
+      ./system-modules/networking.nix
+      ./system-modules/fun-and-games.nix
+      ./system-modules/security.nix
+      ./system-modules/hyprland-wm.nix
+      ./system-modules/display-manager.nix                       
     ];
 
   # Shell
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Security
-  security.sudo.enable = true;
-  security.sudo.wheelNeedsPassword = true;
-  security.doas.enable = false;
-
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
+   # Set your time zone.
   time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
@@ -56,7 +45,7 @@
   # Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Optimize, Clean, & Upgrade
+  # Housekeeping
   nix.optimise.automatic = true;
   nix.gc = {
     automatic = true;
@@ -73,29 +62,11 @@
   services.xserver = {
     enable = true;
     # Enable KDE, Plasma
-    displayManager = {
-      sddm.enable = true;
-      #sddm.theme = "${import /home/fortydeux/.config/home-manager/sddm-theme.nix { inherit pkgs; }}";
-    };
     desktopManager.plasma5.enable = true;
   };
     
-  # Services - Syncthing
-  services.syncthing = {
-        enable = true;
-        user = "fortydeux";
-        dataDir = "/home/fortydeux";    # Default folder for new synced folders
-        configDir = "/home/fortydeux/.config/syncthing";   # Folder for Syncthing's settings and keys
-  };
-
   # Services Emacs
   services.emacs.enable = true;
-
-  # Services - Mullvad VPN
-  services.mullvad-vpn.enable = true;
-
-  #Services - clamav updater: freshclam
-  services.clamav.updater.enable = true;
 
   #Services - Virtualization
   #virtualisation.virtualbox.host.enable = true;
@@ -106,42 +77,12 @@
   services.locate.package = pkgs.plocate;
   services.locate.localuser = null;
   
-  # Services - swaylock (pam).
-  security.pam.services.swaylock = {};
-
   xdg.portal = {
     enable = true;
     # xdg-desktop-portal backend for Hyprland
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
   };
   
-  # Enable Hyprland window manager.
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  environment = {
-    # Hint electron apps to use wayland
-    sessionVariables.NIXOS_OZONE_WL = "1";
-  };
-    
-   # Greetd - enable if disabling other login managers 
-#  services.greetd = {
-#    enable = true;
-#  #  settings = {
-#  #    default_session = {
-#  #      command = "${pkgs.hyprland}/bin/Hyprland --config ${hyprConfig}";
-#  #    };
-#  #  };
-#    settings = rec {
-#      initial_session = {
-#        command = "${pkgs.hyprland}/bin/Hyprland";
-#        user = "fortydeux";
-#      };
-#      default_session = initial_session;
-#    };
-#  };
-    
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
@@ -164,8 +105,7 @@
   };
 
   services.blueman.enable = true;
-  services.tailscale.enable = true; 
-
+  
   # Enable sound with pipewire.
   sound.enable = true;
   security.rtkit.enable = true;
@@ -185,13 +125,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Enable Steam - Steam games distribution
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fortydeux = {
     shell = pkgs.zsh;
@@ -199,34 +132,13 @@
     description = "Fortydeux";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "surface-control"];
     packages = with pkgs; [
-        gh #Github CLI tool 
-        discord #Discord social client
-        logseq #Logseq electron desktop client
-        reaper #Reaper DAW
-        signal-desktop #Signal electron desktop client
-        telegram-desktop #Telegram desktop client
-        simplex-chat-desktop #SimpleX Chat Desktop Client
-        media-downloader #Media-downloader desktop client
-        libsForQt5.kdenlive #KdenLive Video Editor 
-        anytype #P2P note-taking tool
-        appflowy #An open-source alternative to Notion
-        mediawriter
-        mullvad-vpn
-        ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
-        obs-studio #Screen recorder
-        spotify #Spotify music client - Requires non-free packages enabled
-        yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-        joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
-        ffmpeg #FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
-        
+      # User packages may also go into Home.nix if using home-manager        
     ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget  
   environment.systemPackages = with pkgs; [
-    ### Nix-specific
-    # home-manager
 
     ## Photo / Slideshow tools
     feh
@@ -253,23 +165,13 @@
     wget #Tool for retrieving files using HTTP, HTTPS, and FTP
     # optional emacs dependencies
     coreutils # basic GNU utilities
-    fd #a simple, fast and user-friendly alternative to find
-    clang
+    fd #a simple, fast and user-friendly alternative to find          
+    ffmpeg #FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
+
     ###Build tools
     cargo #Downloads your Rust project's dependencies and builds your project
+    clang
     (python311.withPackages(ps: with ps; [ pycairo pygobject3])) #Python3.11 with packages
-
-    ###Candy - not necessary
-    cava #Console-based Audio Visualizer for Alsa
-    cbonsai #Grow bonsai trees in your terminal
-    cmatrix #Simulates the falling characters theme from The Matrix movie
-    cool-retro-term #erminal emulator which mimics the old cathode display
-    distrobox
-    hollywood #Fill your console with Hollywood melodrama technobabble
-    nms #A command line tool that recreates the famous data decryption effect seen in the 1992 movie Sneakers.
-    pipes #Animated pipes terminal screensaver
-    tty-clock #Digital clock in ncurses
-    vitetris #Terminal-based Tetris clone by Victor Nilsson
 
     ###GUI Applications
     alacritty #A cross-platform, GPU-accelerated terminal emulator
@@ -296,7 +198,6 @@
     lapce #Lightning-fast and Powerful Code Editor written in Rust
     libreoffice-qt #Comprehensive, professional-quality productivity suite, a variant of openoffice.org
     librewolf #A fork of Firefox, focused on privacy, security and freedom
-    lutris #Open Source gaming platform for GNU/Linux
     monitor #Manage processes and monitor system resources
     gnome.nautilus #Gnome File Manager
     onlyoffice-bin #Office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
@@ -306,56 +207,10 @@
     wezterm #GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
     pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
 
-    ###Window Managers
-    wayfire #Compiz-based 3D Wayland compositor
-    wdisplays #A graphical application for configuring displays in Wayland compositors
-    wayfirePlugins.wcm #Wayfire Config Manager
-    xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks
-
-    ###WM Dependencies & Support packages
-    brightnessctl #This program allows you read and control device brightness
-    dunst #Lightweight and customizable notification daemon
-    fuzzel #Wayland-native application launcher, similar to rofi’s drun mode
-    grim #Grab images from a Wayland compositor
-    mako #A lightweight Wayland notification daemon
-    mpvpaper #A video wallpaper program for wlroots based wayland compositors
-    playerctl #Command-line utility and library for controlling media players that implement MPRIS
-    libappindicator #A library to allow applications to export a menu into the Unity Menu bar
-    libdbusmenu #Library for passing menu structures across DBus
-    libnotify #A library that sends desktop notifications to a notification daemon
-    meld #Visual diff and merge tool
-    neofetch #A fast, highly customizable system info script
-    networkmanagerapplet #NetworkManager control applet for GNOME
-    nwg-displays #Output management utility for Sway and Hyprland
-    nwg-dock-hyprland #GTK3-based dock for Hyprland
-    rofi-wayland #Window switcher, run dialog and dmenu replacement for Wayland
-    slurp #Select a region in a Wayland compositor
-    swaybg #Wallpaper tool for Wayland compositors
-    swayidle #Idle management daemon for Wayland
-    swaylock-effects #Screen locker for Wayland
-    xfce.thunar #Xfce file manager
-    xfce.thunar-archive-plugin #Thunar plugin providing file context menus for archives
-    xfce.thunar-volman #Thunar extension for automatic management of removable drives and media
-    pyprland
-    waybar
-    wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
-    wl-clipboard #Command-line copy/paste utilities for Wayland
-    wlogout #A wayland based logout menu
-    wlroots #A modular Wayland compositor library
-    wlsunset #Day/night gamma adjustments for Wayland
-    wlr-randr #An xrandr clone for wlroots compositors
-    wofi #A launcher/menu program for wlroots based wayland compositors such as sway
-    xfce.xfce4-terminal #Xfce Terminal Emulator
-
-    ### AGS dependencies
-    swww
-    sassc  
-
-    ## Misc that I'm too lazy to categorize
-    wireguard-tools
-    openvpn
+    ## Caffeine
     caffeine-ng
     libsForQt5.plasma-applet-caffeine-plus
+
    ]; 
    
   ### Fonts
@@ -374,16 +229,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  programs.kdeconnect.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
