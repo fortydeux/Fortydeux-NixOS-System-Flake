@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       491ca5cc-b8ff-4d89-b4d1-6a07523e8c61
+:END:
 #+title: README
 #+author: Fortydeux
 
@@ -12,6 +15,9 @@ I'm still very much learning Nix along with many other things, so please leave f
 ...that being said, please don't expect speedy updates or support, as this is just a personal/hobby endeavor.
 
 It is also possible that I may leave this flake in a broken state while I'm working on things, so use at your own risk.
+
+[[attachment:fortyflake-hyprland-screenshot.png]]
+
 
 * Install
 With disclaimers and descriptors out of the way, the build instructions would go something like this:
