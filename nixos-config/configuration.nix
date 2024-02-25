@@ -4,38 +4,17 @@
 
 { config, pkgs, inputs,... }:
 
-# Allow packages from unstable with "unstable." as prefix
-#let
-#  unstable = import <nixos-unstable> {
-#    config = config.nixpkgs.config;
-#  };
-#
-#in 
-{ 
+{
 
   # Allow unfree/insecure packages  
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = true;
   
   imports =
-    [ # Include the results of the hardware scan.
-     # <nixos-hardware/microsoft/surface/common>
+    [
       ./hardware-configuration.nix
+      ./system-modules/device-specific.nix
+      ./system-modules/ms-surface.nix
     ];
-
-  # Enable MS Surface Hardware 
-  ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
-#  microsoft-surface.ipts.enable = true;
-#  microsoft-surface.surface-control.enable = true;
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
-    
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Kernel 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Shell
   programs.zsh.enable = true;
@@ -46,7 +25,7 @@
   security.sudo.wheelNeedsPassword = true;
   security.doas.enable = false;
 
-  networking.hostName = "blackfin-nixos"; # Define your hostname.
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -76,18 +55,21 @@
 
   # Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Optimize, Clean, & Upgrade
   nix.optimise.automatic = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 20d";
   };
+  system.autoUpgrade.enable  = true;
   
-  #Flatpaks
+  # Flatpaks
   services.flatpak.enable = true;
   
   # Enable the X11 windowing system...and... 
-  #KDE/Plasma
+  # KDE/Plasma
   services.xserver = {
     enable = true;
     # Enable KDE, Plasma
@@ -98,7 +80,7 @@
     desktopManager.plasma5.enable = true;
   };
     
-  #Services - Syncthing
+  # Services - Syncthing
   services.syncthing = {
         enable = true;
         user = "fortydeux";
@@ -136,7 +118,6 @@
   # Enable Hyprland window manager.
   programs.hyprland = {
     enable = true;
-  #  xwayland.hidpi = true; #deprecated
     xwayland.enable = true;
   };
   environment = {
@@ -219,17 +200,12 @@
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "surface-control"];
     packages = with pkgs; [
         gh #Github CLI tool 
-        git-credential-manager #Git credential manager
-        dotnet-runtime_7 # .NET runtime - required for git-credential-manager
         discord #Discord social client
-    #    pcloud 
-    #    googleearth-pro #Google Earth Pro - requires insecure packages enabled - install with flatpak instead thus containered
         logseq #Logseq electron desktop client
         reaper #Reaper DAW
         signal-desktop #Signal electron desktop client
         telegram-desktop #Telegram desktop client
         simplex-chat-desktop #SimpleX Chat Desktop Client
-    #    todoist-electron #Todoist electron desktop client
         media-downloader #Media-downloader desktop client
         libsForQt5.kdenlive #KdenLive Video Editor 
         anytype #P2P note-taking tool
@@ -331,18 +307,12 @@
     pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
 
     ###Window Managers
-  #  hyprland-protocols #Wayland protocol extensions for Hyprland
-  #  hyprland-share-picker 
     wayfire #Compiz-based 3D Wayland compositor
     wdisplays #A graphical application for configuring displays in Wayland compositors
     wayfirePlugins.wcm #Wayfire Config Manager
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks
-  #  wf-config #Library for managing configuration files, written for Wayfire
 
     ###WM Dependencies & Support packages
-  #  blueberry #Bluetooth configuration tool
-  #  bluetuith #TUI-based bluetooth connection manager
-  #  blueman #GTK-based Bluetooth configuration tool
     brightnessctl #This program allows you read and control device brightness
     dunst #Lightweight and customizable notification daemon
     fuzzel #Wayland-native application launcher, similar to rofi’s drun mode
@@ -366,7 +336,6 @@
     xfce.thunar #Xfce file manager
     xfce.thunar-archive-plugin #Thunar plugin providing file context menus for archives
     xfce.thunar-volman #Thunar extension for automatic management of removable drives and media
-    #trayer #A lightweight GTK2-based systray for UNIX desktop
     pyprland
     waybar
     wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
@@ -378,36 +347,9 @@
     wofi #A launcher/menu program for wlroots based wayland compositors such as sway
     xfce.xfce4-terminal #Xfce Terminal Emulator
 
-    ###Icons, Themes, and Theme tools
-#    adapta-gtk-theme #Adapta GTK Theme
-#    at-spi2-atk #Assistive Technology Service Provider Interface protocol definitions and daemon for D-Bus
-#    arc-theme #Flat theme with transparent elements for GTK 3, GTK 2 and Gnome Shell
-#    ayu-theme-gtk #Ayu GTK Theme
-#    breath-theme #Breath Theme - Plasma
-#    catppuccin-gtk #Catppuccin GTK Theme
-#    catppuccin-kvantum #Catppuccin Kvantum Theme
-#    dconf #dconf is a low-level configuration system. Its main purpose is to provide a backend to GSettings on platforms that don't already have configuration storage systems.
-#    glib #C library of programming buildings blocks
-#    gsettings-desktop-schemas #Collection of GSettings schemas for settings shared by various components of a desktop
-#    gnome.gucharmap #GNOME Character Map, based on the Unicode Character Database
-#    pop-gtk-theme #Pop GTK Theme
-#    libsForQt5.qt5.qtquickcontrols2 #A cross-platform application framework for C++
-#    libsForQt5.qt5.qtgraphicaleffects #A cross-platform application framework for C++
-#    theme-obsidian2 #Gnome theme based upon Adwaita-Maia dark skin
-#    arc-icon-theme #Arc Icon Theme
-#    papirus-icon-theme #Papirus Icon Theme
-#    luna-icons #Icon pack based on marwaita and papirus icons
-#    material-design-icons #Material Design Icons
-#    gnome.adwaita-icon-theme #Adwaita Icon Theme
-#
     ### AGS dependencies
     swww
     sassc  
-
-    ###Surface Laptop Support
-    libwacom-surface #Libraries, configuration, and diagnostic tools for Wacom tablets running under Linux
-    glm #OpenGL Mathematics library for C++ - needed for hyprgrass plugin and touchscreen gesture support for hyprland
-    jq #A lightweight and flexible command-line JSON processor - dependency for installing hyprload
 
     ## Misc that I'm too lazy to categorize
     wireguard-tools
@@ -420,22 +362,8 @@
   fonts.fontconfig.enable = true;
   fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
-# 	 dejavu_fonts
-# 	 font-awesome
-# 	 inter
-#  	 jetbrains-mono
  	 nerdfonts
-#  	 borg-sans-mono
-# 	 cantarell-fonts
-# 	 hack-font
-# 	 inconsolata-nerdfont
-# 	 iosevka
-# 	 liberation_ttf
-# 	 noto-fonts
-# 	 roboto
-# 	 tamsyn
-# 	 ttf_bitstream_vera
-    ];
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

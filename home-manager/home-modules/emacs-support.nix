@@ -21,11 +21,14 @@
     html-tidy
     shellcheck
     shfmt
+    emacsPackages.nix-mode
+    emacsPackages.editorconfig
     nodePackages.js-beautify
     php83Packages.composer
     php83
     pipenv
     (python3.withPackages (p: with p; [
+      editorconfig
       pandas
       requests
       epc lxml

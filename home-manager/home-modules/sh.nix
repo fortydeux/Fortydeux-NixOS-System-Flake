@@ -18,7 +18,7 @@
       VISUAL = "micro";
       EDITOR = "micro";
     };
-    sessionPath = [ "$HOME/.emacs.d/bin:$PATH" ];
+    sessionPath = [ "$HOME/.config/emacs/bin:$PATH" ];
     shellAliases = {
       emacs = "emacsclient -c -a 'emacs'";
       ls = "lsd -lh --group-directories-first --color always --icon always";
