@@ -176,7 +176,7 @@
     ###GUI Applications
     alacritty #A cross-platform, GPU-accelerated terminal emulator
     baobab #Disk Usage Analyzer
-    blender #3D Creation/Animation/Publishing System
+ #   blender #3D Creation/Animation/Publishing System
     gnome.gnome-boxes #Virtual machine gui client
     brave #Brave Browser
     betterbird #Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will - leaving TBird installed bc BT uses same profile, but runs better on Wayland with HIDPI scaling

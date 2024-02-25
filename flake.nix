@@ -22,7 +22,7 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/configuration.nix 
-    	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ##Comment for other hardware
+  #  	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ##Comment for other hardware
             ];
     	};
       };

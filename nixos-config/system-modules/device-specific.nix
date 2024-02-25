@@ -4,16 +4,16 @@
 
   imports = [
     # Remember to also comment out Surface lines in flake.nix if disabling
-  	./ms-surface.nix
+#  	./ms-surface.nix
   ];
 
   # Hostname
-  networking.hostName = "archerfish-nixos"; # Define your hostname.
+  networking.hostName = "blackfin-nixos"; # Define your hostname.
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel - Turn off when MS-Surface Kernel is enabled
- # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
