@@ -1,4 +1,4 @@
-#+title: Install
+#+title: README
 #+author: Fortydeux
 
 This is a work-in-progress personal NixOS Flake using Plasma and Hyprland for desktop/wm environments. 
