@@ -16,7 +16,7 @@ I'm still very much learning Nix along with many other things, so please leave f
 
 It is also possible that I may leave this flake in a broken state while I'm working on things, so use at your own risk.
 
-[[attachment:fortyflake-hyprland-screenshot.png]]
+[[https://github.com/fortydeux/Fortydeux-NixOS-System-Flake/blob/main/media/fortyflake-hyprland-screenshot.png]]
 
 
 * Install
