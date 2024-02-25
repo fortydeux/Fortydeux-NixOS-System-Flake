@@ -14,7 +14,7 @@ I'm still very much learning Nix along with many other things, so please leave f
 
 ...that being said, please don't expect speedy updates or support, as this is just a personal/hobby endeavor.
 
-It is also possible that I may leave this flake in a broken state while I'm working on things, so use at your own risk.
+It is also possible that I may leave this flake in a broken state while I'm working on things, so try it at your own risk.
 
 [[https://github.com/fortydeux/Fortydeux-NixOS-System-Flake/blob/main/media/fortyflake-hyprland-screenshot.png]]
 
@@ -34,7 +34,7 @@ git clone https://github.com/fortydeux/Fortydeux-NixOS-System-Flake.git ~/fortyf
 then cd into Flake directory and generate your hardware-configuration into <flake-dir>/nixos-config/ /note: you could also copy this from your '/etc/nixos/hardwareconfiguration.nix'/
 *^^ This step is very important! A wrong hardware config can break your system, although with the beauty of NixOS you should still be fine to roll back by booting into your previous build*
 #+begin_src
-cd ~/.dotfiles
+cd ~/fortyflake
 
 sudo nixos-generate-config --show-hardware-config > system/hardware-configuration.nix
 #+end_src
@@ -77,6 +77,7 @@ For Hyprland, you will likely want to customize the startup launch programs and 
 
 - Check through hyprland.conf to see a full list of my keybindings... I've kept many of them close to the original hyprland bindings, so I won't be totally lost on a fresh install
 
+*** Hyprland navigation commands:
 + SUPER+M = quit hyprland
 + SUPER+ESC = restart waybar (this is the default bar in my hyprland setup, although I may be adding Aylur's ags eventually)
 + CTRL+SPACE = fuzzel app launcher - quickly search and open any app on the system (see configuration.nix and home.nix for available apps)
@@ -93,7 +94,7 @@ For Hyprland, you will likely want to customize the startup launch programs and 
 + SUPER+J = vertical / horizontal split
 + SUPER+SHIFT+Z/C = Animated wallpapers with credit to taylor8534
 + SUPER+SHIFT+X = back to default static wallpaper
-...there are plenty more, but that's enough to get started - again, see hyprland.conf for the full list and tp customize your setup. 
+...there are plenty more, but that's enough to get started - again, see hyprland.conf for the full list and to customize your setup. Remember, this needs to be done within the flake and written with home-manager unless you change that behavior (which is recommended for lots of editing)
 
 *** Another important note about dotfiles within this Flake:
 - I have home-manager managing the dotfiles for Hyprland, and a few other key applications where I have custom setups that I want to reproduce between different machines...
@@ -105,9 +106,9 @@ For Hyprland, you will likely want to customize the startup launch programs and 
 
 Please contact me with any questions/comments. Thanks! 
 
-Also many thanks to all those I've learned from and whose projects I am using as full packages, or just bits of code that I've learned or borrowed.
+Also many *thanks* to all those I've learned from and whose projects I am using as full packages, or just bits of code that I've learned or borrowed.
 
-You all have contributed to my learning journey, and building the most productive desktop/wm evironment (for my own needs and preferences) in which I've ever had the pleasure to work.
+You all have contributed to my learning journey, and building the most fun and productive desktop/wm evironment (for my own needs and preferences) in which I've ever had the pleasure to work.
 
 A totally non-comprehensive list:
 - The NixOS team
