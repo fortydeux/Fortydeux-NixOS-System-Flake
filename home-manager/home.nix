@@ -7,10 +7,10 @@
   home.homeDirectory = "/home/fortydeux";
 
   imports = [
+    ./home-modules/sh.nix	
     ./home-modules/ags.nix
     ./home-modules/theming.nix 
     ./home-modules/emacs-support.nix 
-    ./home-modules/sh.nix	
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -85,7 +85,6 @@
   #
   #  /etc/profiles/per-user/fortydeux/etc/profile.d/hm-session-vars.sh
   #
-
   
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -37,6 +37,10 @@
   # Kernel 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Shell
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Security
   security.sudo.enable = true;
   security.sudo.wheelNeedsPassword = true;
@@ -209,6 +213,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fortydeux = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Fortydeux";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "surface-control"];

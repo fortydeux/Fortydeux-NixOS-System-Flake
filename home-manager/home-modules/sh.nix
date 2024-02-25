@@ -1,6 +1,17 @@
 { config, pkgs, ... }:
 
 {
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    initExtra = ''
+      neofetch
+      eval "$(zoxide init zsh)"
+      eval "$(starship init zsh)"
+    '';
+  };
+
   home = {
     sessionVariables = {
       # EDITOR = "emacs";
@@ -10,19 +21,9 @@
     sessionPath = [ "$HOME/.emacs.d/bin:$PATH" ];
     shellAliases = {
       emacs = "emacsclient -c -a 'emacs'";
-      ls = "lsd -lh --group-directories-first --color-always --icon-always";
+      ls = "lsd -lh --group-directories-first --color always --icon always";
       cat = "bat -f";
     };
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    initExtra = ''
-      neofetch
-      eval "$(zoxide init zsh)"
-    '';
   };
 
   home.packages = (with pkgs; [
