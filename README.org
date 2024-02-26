@@ -36,7 +36,7 @@ then cd into Flake directory and generate your hardware-configuration into <flak
 #+begin_src
 cd ~/fortyflake
 
-sudo nixos-generate-config --show-hardware-config > system/hardware-configuration.nix
+sudo nixos-generate-config --show-hardware-config > nixos-config/hardware-configuration.nix
 #+end_src
 
 Change any names and config settings you need to in flake.nix and nixos-config/configuration.nix:
