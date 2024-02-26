@@ -1,6 +1,10 @@
 {
   description = "Fortydeux NixOS System and Home-manager Flake";
 
+# Flake.nix
+
+# For most machines, comment out the microsoft-surface hardware line/s 
+
   inputs = {
   	nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   	home-manager.url = "github:nix-community/home-manager/master";
@@ -22,6 +26,7 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/configuration.nix 
+ # MS-Surface device-specific hardware package - comment out for most host machines
     	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ##Comment for other hardware
             ];
     	};
