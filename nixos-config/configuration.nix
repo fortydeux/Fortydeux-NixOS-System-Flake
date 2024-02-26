@@ -205,7 +205,7 @@
     tor-browser-bundle-bin #Tor Browser Bundle built by torproject.org
     vscodium #Open source source code editor developed by Microsoft for Windows, Linux and macOS (VS Code without MS branding/telemetry/licensing)
     wezterm #GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
-    pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
+ #   pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
 
     ## Caffeine
     caffeine-ng
