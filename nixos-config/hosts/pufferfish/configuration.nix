@@ -3,6 +3,10 @@
 { # Configuration.nix - Pufferfish
   imports = [
     ../../system-modules/common-config.nix
+    ../../system-modules/plasma.nix
+    ../../system-modules/hyprland-wm.nix
+    ../../system-modules/fun-and-games.nix
+    # Device-specific
     ./hardware-configuration.nix
   ];
 

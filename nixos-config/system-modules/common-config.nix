@@ -11,11 +11,8 @@
 
   imports = [
     ./networking.nix
-    ./fun-and-games.nix
     ./security.nix
-    ./hyprland-wm.nix
-    ./plasma.nix
-  ];
+   ];
 
   ### Shell
   programs.zsh.enable = true;

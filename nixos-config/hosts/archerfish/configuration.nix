@@ -3,6 +3,10 @@
 { # Configuration.nix - Archerfish
   imports = [
     ../../system-modules/common-config.nix
+    ../../system-modules/plasma.nix
+    ../../system-modules/hyprland-wm.nix
+    ../../system-modules/fun-and-games.nix
+    # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
     ../../system-modules/ms-surface.nix

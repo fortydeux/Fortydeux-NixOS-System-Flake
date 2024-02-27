@@ -2,13 +2,13 @@
 
 { # Hyprland-wm.nix
   
-  # Enable Hyprland window manager.
+  # Enable Hyprland wm/compositor
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
-  # Oh look, Wayfire-wm snuck in here, too...
+  # Oh look, Wayfire wm/compositor snuck in here too - very basic config
   programs.wayfire = {
     enable = true;
     plugins = with pkgs.wayfirePlugins; [
@@ -18,10 +18,12 @@
     ];
   };
 
+  # ...and River wm/compositor - no config
   programs.river = {
   	enable = true;
   };
 
+  # ...and Sway wm/compositor - no config
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
