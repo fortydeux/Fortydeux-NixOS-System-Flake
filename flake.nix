@@ -22,15 +22,29 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {    
       nixosConfigurations = {
-      	fortydeux-nixos = lib.nixosSystem {
+      	archerfish-nixos = lib.nixosSystem {
     	  	inherit system;
     	  	modules = [ 
-    	  	  ./nixos-config/configuration.nix 
- # MS-Surface device-specific hardware package - comment out for most host machines
-    	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ##Comment for other hardware
+    	  	  ./nixos-config/hosts/archerfish/configuration.nix 
+     	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ##Comment for other hardware
             ];
     	};
+      
+      	pufferfish-nixos = lib.nixosSystem {
+    	  	inherit system;
+    	  	modules = [ 
+    	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
+             ];
+    	};
+      
+      	blackfin-nixos = lib.nixosSystem {
+    	  	inherit system;
+    	  	modules = [ 
+    	  	  ./nixos-config/hosts/blackfin/configuration.nix 
+             ];
+    	};
       };
+
       homeConfigurations = {
         fortydeux = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
