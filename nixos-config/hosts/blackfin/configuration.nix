@@ -2,7 +2,7 @@
 
 { # Configuration.nix - Blackfin
   imports = [
-    ../system-modules/common-config.nix
+    ../../system-modules/common-config.nix
     ./hardware-configuration.nix
   ];
 

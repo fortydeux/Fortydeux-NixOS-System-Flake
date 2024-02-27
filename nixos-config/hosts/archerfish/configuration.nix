@@ -2,7 +2,7 @@
 
 { # Configuration.nix - Archerfish
   imports = [
-    ../system-modules/common-config.nix
+    ../../system-modules/common-config.nix
     ./hardware-configuration.nix
   ];
     # The most common options you'll want to change for a new host machine reside here
