@@ -4,6 +4,8 @@
   imports = [
     ../../system-modules/common-config.nix
     ./hardware-configuration.nix
+    # Remember to also comment out MS-Surface lines in flake.nix if disabling
+    ../../system-modules/ms-surface.nix
   ];
     # The most common options you'll want to change for a new host machine reside here
     # For most machines, you'll want to comment out ./ms-surface.nix
@@ -15,12 +17,7 @@
     
     # Be sure to generate your own hardware-configuration.nix before building 
     # sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/archerfish/hardware-configuration.nix
-    
-    imports = [
-      # Remember to also comment out Surface lines in flake.nix if disabling
-      ../../system-modules/ms-surface.nix
-    ];
-  
+      
     # Hostname
     networking.hostName = "archerfish-nixos"; # Define your hostname.
   
