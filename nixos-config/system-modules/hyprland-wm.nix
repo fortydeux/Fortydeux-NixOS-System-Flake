@@ -18,6 +18,22 @@
     ];
   };
 
+  programs.river = {
+  	enable = true;
+  };
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true; # so that gtk works properly
+    extraSessionCommands = ''
+      export SDL_VIDEODRIVER=wayland
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export MOZ_ENABLE_WAYLAND=1
+    '';
+  };
+
   # Hint electron apps to use wayland
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -30,6 +46,7 @@
     dunst #Lightweight and customizable notification daemon
     fuzzel #Wayland-native application launcher, similar to rofi’s drun mode
     grim #Grab images from a Wayland compositor
+    kanshi #Dynamic display configuration tool
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
     playerctl #Command-line utility and library for controlling media players that implement MPRIS
@@ -52,6 +69,7 @@
     pyprland #Python plugins for Hyprland
     waybar #Wayland bar
     wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
+    wf-recorder # Wayland screen recorder
     wl-clipboard #Command-line copy/paste utilities for Wayland
     wlogout #A wayland based logout menu
     wlroots #A modular Wayland compositor library
@@ -61,7 +79,7 @@
     xfce.xfce4-terminal #Xfce Terminal Emulator
     wdisplays #A graphical application for configuring displays in Wayland compositors
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks    
-
+    yambar #Another bar option
   ];  
      
 }

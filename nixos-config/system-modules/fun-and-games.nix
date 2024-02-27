@@ -20,6 +20,7 @@
     cool-retro-term #erminal emulator which mimics the old cathode display
     distrobox
     hollywood #Fill your console with Hollywood melodrama technobabble
+    lolcat # A rainbow for your text output
     nms #A command line tool that recreates the famous data decryption effect seen in the 1992 movie Sneakers.
     pipes #Animated pipes terminal screensaver
     tty-clock #Digital clock in ncurses

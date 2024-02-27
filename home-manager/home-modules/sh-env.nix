@@ -6,7 +6,7 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     initExtra = ''
-      neofetch
+      neofetch|lolcat
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
     '';

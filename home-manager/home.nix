@@ -72,8 +72,8 @@
     # ".screenrc".source = dotfiles/screenrc;
     ".config/hypr".source = dotfiles/hypr;
     ".config/hypr".recursive = true;
-    ".config/wayfire".source = dotfiles/wayfire;
-    ".config/wayfire".recursive = true;
+    ".config/wayfire.ini".source = dotfiles/wayfire/wayfire.ini;
+    ".config/wf-shell.ini".source = dotfiles/wayfire/wf-shell.ini;
     ".config/kitty".source = dotfiles/kitty;
     ".config/kitty".recursive = true;
     ".config/ranger".source = dotfiles/ranger;
