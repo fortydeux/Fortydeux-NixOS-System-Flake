@@ -10,11 +10,11 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./system-modules/networking.nix
-    ./system-modules/fun-and-games.nix
-    ./system-modules/security.nix
-    ./system-modules/hyprland-wm.nix
-    ./system-modules/display-manager.nix
+    ./networking.nix
+    ./fun-and-games.nix
+    ./security.nix
+    ./hyprland-wm.nix
+    ./display-manager.nix
   ];
 
   # Shell

@@ -18,7 +18,7 @@
     
     imports = [
       # Remember to also comment out Surface lines in flake.nix if disabling
-    	./ms-surface.nix
+      ../../system-modules/ms-surface.nix
     ];
   
     # Hostname
