@@ -70,18 +70,36 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".config/hypr".source = dotfiles/hypr;
-    ".config/hypr".recursive = true;
-    ".config/wayfire.ini".source = dotfiles/wayfire/wayfire.ini;
-    ".config/wf-shell.ini".source = dotfiles/wayfire/wf-shell.ini;
-    ".config/kitty".source = dotfiles/kitty;
-    ".config/kitty".recursive = true;
-    ".config/ranger".source = dotfiles/ranger;
-    ".config/ranger".recursive = true;
-    ".config/micro".source = dotfiles/micro;
-    ".config/micro".recursive = true;
-    ".config/mako".source = dotfiles/mako;
-    ".config/mako".recursive = true;
+    ".config/hypr" = {
+    	source = dotfiles/hypr;
+        recursive = true;
+    };
+    ".config/wayfire.ini" = {
+    	source = dotfiles/wayfire/wayfire.ini;
+    };
+    ".config/wf-shell.ini" = {
+    	source = dotfiles/wayfire/wf-shell.ini;
+    };
+    ".config/kitty" = {
+    	source = dotfiles/kitty;
+    	recursive = true;
+    };
+    ".config/ranger" = {
+    	source = dotfiles/ranger;
+    	recursive = true;
+    }; 
+    ".config/micro" = {
+    	source = dotfiles/micro;
+    	recursive = true;
+    }; 
+    ".config/mako" = {
+    	source = dotfiles/mako;
+    	recursive = true;
+    };
+    ".config/foot" = {
+    	source = dotfiles/foot;
+    	recursive = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

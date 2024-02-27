@@ -6,7 +6,7 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     initExtra = ''
-      neofetch|lolcat
+      # neofetch|lolc
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
     '';
@@ -23,6 +23,7 @@
       emacs = "emacsclient -c -a 'emacs'";
       ls = "lsd -lh --group-directories-first --color always --icon always";
       cat = "bat -f";
+      rrr = "ranger";
     };
   };
 
