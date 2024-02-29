@@ -3,16 +3,20 @@
 {
   home.sessionPath = [ 
       "$HOME/.config/emacs/bin:$PATH" 
-      "$HOME/emacs.d/bin:$PATH"
+      "$HOME/.emacs.d/bin:$PATH"
       ];
   home.shellAliases = {      
     emacs = "emacsclient -c -a 'emacs'";
     };
   home.packages = (with pkgs; [
     # Packages added as dependencies for doom emacs config. Not otherwise necessary on system.
+    nixd
+    rnix-lsp
     nil
     nixfmt
     file
+    lemminx
+    marksman
     wmctrl
     jshon
     aria
@@ -28,6 +32,7 @@
     html-tidy
     shellcheck
     shfmt
+    yaml-language-server
     emacsPackages.nix-mode
     emacsPackages.editorconfig
     nodePackages.js-beautify
