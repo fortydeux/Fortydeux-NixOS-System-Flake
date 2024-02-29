@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  home.sessionPath = [ 
+      "$HOME/.config/emacs/bin:$PATH" 
+      "$HOME/emacs.d/bin:$PATH"
+      ];
+  home.shellAliases = {      
+    emacs = "emacsclient -c -a 'emacs'";
+    };
   home.packages = (with pkgs; [
     # Packages added as dependencies for doom emacs config. Not otherwise necessary on system.
     nil
