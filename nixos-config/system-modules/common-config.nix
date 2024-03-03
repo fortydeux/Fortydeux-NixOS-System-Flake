@@ -81,6 +81,7 @@
     htop # Human readable CLI top utility
     kitty # A modern, hackable, featureful, OpenGL based terminal emulator - Default Terminal for Hyprland
     micro # Modern and intuitive terminal-based text editor
+    neovim # Vim text editor fork focused on extensibility and agility
     nnn # Small ncurses-based file browser forked from noice
     ranger # File manager with minimalistic curses interface
     ripgrep # Utility that combines the usability of The Silver Searcher with the raw speed of grep
@@ -91,6 +92,7 @@
     clamav # Virus scanner
     feh # Very handy CLI photo/slideshow tool
     ffmpeg # FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
+    jq # A lightweight and flexible command-line JSON processor
     mpv # General-purpose media player, fork of MPlayer and mplayer2
     nix-prefetch-github # Prefetch sources from github
     pavucontrol # PulseAudio Volume Control

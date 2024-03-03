@@ -14,8 +14,8 @@
   home = {
     sessionVariables = {
       # EDITOR = "emacs";
-      VISUAL = "micro";
-      EDITOR = "micro";
+      VISUAL = "nvim";
+      EDITOR = "nvim";
     };
     shellAliases = {
       ls = "lsd -lh --group-directories-first --color always --icon always";

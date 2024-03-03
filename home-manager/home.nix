@@ -47,7 +47,7 @@
     spotify #Spotify music client - Requires non-free packages enabled
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
-       
+#Not yet available on Linux through nixpkgs    warp-terminal # Modern rust-based terminal       
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -74,31 +74,35 @@
     	source = dotfiles/hypr;
         recursive = true;
     };
-    ".config/wayfire.ini" = {
-    	source = dotfiles/wayfire/wayfire.ini;
-    };
-    ".config/wf-shell.ini" = {
-    	source = dotfiles/wayfire/wf-shell.ini;
-    };
     ".config/kitty" = {
     	source = dotfiles/kitty;
+    	recursive = true;
+    };
+    ".config/mako" = {
+    	source = dotfiles/mako;
+    	recursive = true;
+    };
+    ".config/micro" = {
+    	source = dotfiles/micro;
+    	recursive = true;
+    }; 
+    ".config/nvim" = {
+    	source = dotfiles/nvim;
+    	recursive = true;
+    }; 
+    ".config/foot" = {
+    	source = dotfiles/foot;
     	recursive = true;
     };
     ".config/ranger" = {
     	source = dotfiles/ranger;
     	recursive = true;
     }; 
-    ".config/micro" = {
-    	source = dotfiles/micro;
-    	recursive = true;
-    }; 
-    ".config/mako" = {
-    	source = dotfiles/mako;
-    	recursive = true;
+    ".config/wayfire.ini" = {
+    	source = dotfiles/wayfire/wayfire.ini;
     };
-    ".config/foot" = {
-    	source = dotfiles/foot;
-    	recursive = true;
+    ".config/wf-shell.ini" = {
+    	source = dotfiles/wayfire/wf-shell.ini;
     };
 
     # # You can also set the file content immediately.
