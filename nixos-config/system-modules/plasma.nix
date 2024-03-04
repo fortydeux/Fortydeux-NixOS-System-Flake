@@ -9,7 +9,7 @@
   services.xserver = {
     enable = true;
     # Enable KDE, Plasma
-    desktopManager.plasma5.enable = true;
+    desktopManager.plasma6.enable = true;
   };
 
 }
