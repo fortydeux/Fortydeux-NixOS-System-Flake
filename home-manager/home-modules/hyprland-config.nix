@@ -2,7 +2,6 @@
 
 {
   imports = [
-  	./highdpi-hyprland.nix
   ];
 
 	wayland.windowManager.hyprland = {

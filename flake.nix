@@ -3,14 +3,12 @@
 
 # Flake.nix
 
-# For most machines, comment out the microsoft-surface hardware line/s 
-
   inputs = {
   	nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   	home-manager.url = "github:nix-community/home-manager/master";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ##Comment for other hardware
-
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; 
+    
     # Add ags
     ags.url = "github:Aylur/ags"; 	
   };
@@ -22,21 +20,23 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {    
       nixosConfigurations = {
+        #--Archerfish host--#
       	archerfish-nixos = lib.nixosSystem {
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
-     	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common ##Comment for other hardware
+    	  	  #MS-Surface-specific module:
+     	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common 
             ];
     	};
-      
+        #--Pufferfish host--#
       	pufferfish-nixos = lib.nixosSystem {
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
              ];
     	};
-      
+        #--Blackfin host--#
       	blackfin-nixos = lib.nixosSystem {
     	  	inherit system;
     	  	modules = [ 
@@ -45,8 +45,10 @@
     	};
       };
 
+     ##--Home-Manager Configuration--##
+      
       homeConfigurations = {
-        fortydeux = home-manager.lib.homeManagerConfiguration {
+        "fortydeux@archerfish-nixos" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 
             # Pass inputs as extraSpecialArgs
@@ -54,9 +56,31 @@
 
             # Import home.nix
     	    modules = [
-              ./home-manager/home.nix
+              ./home-manager/hosts/archerfish-home.nix
             ];
-        };
-      };
-   };   
-}
+        }; 
+        "fortydeux@pufferfish-nixos" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+
+            # Pass inputs as extraSpecialArgs
+            extraSpecialArgs = { inherit inputs; };
+
+            # Import home.nix
+    	    modules = [
+              ./home-manager/hosts/pufferfish-home.nix
+            ];
+        }; 
+        "fortydeux@blackfin-nixos" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+
+            # Pass inputs as extraSpecialArgs
+            extraSpecialArgs = { inherit inputs; };
+
+            # Import home.nix
+    	    modules = [
+              ./home-manager/hosts/blackfin-home.nix
+            ];
+        }; 
+      }; #End homeConfigurations
+   }; #End outputs...in 
+} #End flake
