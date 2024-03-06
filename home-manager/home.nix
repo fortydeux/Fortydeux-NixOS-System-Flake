@@ -11,6 +11,7 @@
     ./home-modules/ags.nix
     ./home-modules/theming.nix 
     ./home-modules/emacs-support.nix 
+    ./home-modules/hyprland-config.nix
   ];
 
   # This value determines the Home Manager release that your configuration is
