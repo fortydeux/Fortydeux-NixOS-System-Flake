@@ -21,6 +21,8 @@
       ls = "lsd -lh --group-directories-first --color always --icon always";
       cat = "bat -f";
       rrr = "ranger";
+      ff = "cd ~/fortyflake";
+      ffr = "cd ~/fortyflake && ranger";
     };
   };
   home.packages = (with pkgs; [

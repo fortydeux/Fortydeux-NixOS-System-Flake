@@ -48,6 +48,9 @@
     dunst #Lightweight and customizable notification daemon
     fuzzel #Wayland-native application launcher, similar to rofi’s drun mode
     grim #Grab images from a Wayland compositor
+    hypridle #Hyprland's idle daemon
+    hyprlang #The official implementation library for the hypr config language
+    hyprlock #Hyprland's simple, yet multi-threaded and GPU-accelerated screen locking utility
     kanshi #Dynamic display configuration tool
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
@@ -60,6 +63,7 @@
     networkmanagerapplet #NetworkManager control applet for GNOME
     nwg-displays #Output management utility for Sway and Hyprland
     nwg-dock-hyprland #GTK3-based dock for Hyprland
+    nwg-look # GTK theme tool
     rofi-wayland #Window switcher, run dialog and dmenu replacement for Wayland
     slurp #Select a region in a Wayland compositor
     swaybg #Wallpaper tool for Wayland compositors
