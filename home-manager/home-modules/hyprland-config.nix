@@ -47,6 +47,7 @@
           
           ### Startup:
           ### -------
+            exec-once = hyprctl setcursor phinger-cursors 32
             exec-once = emacs --daemon
             exec-once = foot -s
             exec-once = $waybar
@@ -59,8 +60,7 @@
             exec-once = $swaybg-x
           #  exec-once = sleep 5 && gsettings set org.gnome.desktop.interface gtk-theme dracula
           #  exec-once = swayidle -w timeout 900 '$swaylock' before-sleep '$swaylock'
-          #  exec-once = sleep 2 & $swaylock #Consider enabling this line if using greetd instead of more robust login mgr 
-          #  exec-once = nwg-dock-hyprland -d
+          #  exec-once = sleep 2 & $swaylock #Consider enabling this line if using greetd or autologin, so user is prompted for pw. 
           
           
           ### Hyprland preferences:
