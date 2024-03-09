@@ -18,8 +18,8 @@
     	source = ../dotfiles/hypr;
         recursive = true;
     };
-    ".config/i3status-river" = {
-    	source = ../dotfiles/i3status-river;
+    ".config/i3bar-river" = {
+    	source = ../dotfiles/i3bar-river;
     	recursive = true;
     };
     ".config/i3status-rust" = {
