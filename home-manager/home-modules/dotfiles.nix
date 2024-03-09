@@ -18,34 +18,48 @@
     	source = ../dotfiles/hypr;
         recursive = true;
     };
+    ".config/i3status-river" = {
+    	source = ../dotfiles/i3status-river;
+    	recursive = true;
+    };
     ".config/i3status-rust" = {
     	source = ../dotfiles/i3status-rust;
     	recursive = true;
     };
+
     ".config/kitty" = {
     	source = ../dotfiles/kitty;
     	recursive = true;
     };
+
     ".config/mako" = {
     	source = ../dotfiles/mako;
     	recursive = true;
     };
+
     ".config/micro" = {
     	source = ../dotfiles/micro;
     	recursive = true;
     }; 
+
     ".config/nvim" = {
     	source = ../dotfiles/nvim;
     	recursive = true;
     }; 
+
     ".config/foot" = {
     	source = ../dotfiles/foot;
     	recursive = true;
     };
+
     ".config/ranger" = {
     	source = ../dotfiles/ranger;
     	recursive = true;
     }; 
+    ".config/river" = {
+    	source = ../dotfiles/river;
+    	recursive = true;
+    };
     ".config/sway" = {
     	source = ../dotfiles/sway;
     	recursive = true;

@@ -14,17 +14,17 @@ bat = ["|E|", "|_|", "|=|", "|F|"]
 bat_charging = "|^| "
 
 [[block]]
+block = "cpu"
+info_cpu = 20
+warning_cpu = 50
+critical_cpu = 90
+
+[[block]]
 block = "battery"
 format = " $percentage {$time |}"
 device = "DisplayDevice"
 driver = "upower"
 missing_format = ""
-
-[[block]]
-block = "cpu"
-info_cpu = 20
-warning_cpu = 50
-critical_cpu = 90
 
 [[block]]
 block = "memory"
@@ -34,6 +34,9 @@ format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
 [[block]]
 block = "net"
 format = " $icon {$signal_strength $ssid } "
+[[block.click]]
+button = "left"
+cmd = "kitty nmtui"
 
 [[block]]
 block = "disk_space"

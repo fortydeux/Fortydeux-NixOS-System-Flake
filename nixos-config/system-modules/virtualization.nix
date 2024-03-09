@@ -5,7 +5,7 @@
   #Services - Virtualization
   #virtualisation.virtualbox.host.enable = true;
   virtualisation.libvirtd.enable = true;
-  virtualisation.waydroid.enable = true;
+#  virtualisation.waydroid.enable = true;
 
   # Packages
   environment.systemPackages = with pkgs; [
