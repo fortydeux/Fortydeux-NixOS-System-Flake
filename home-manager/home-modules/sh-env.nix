@@ -23,6 +23,8 @@
       rrr = "ranger";
       ff = "cd ~/fortyflake";
       ffr = "cd ~/fortyflake && ranger";
+      stat = "git status";
+      st = "git status -s";
     };
   };
   home.packages = (with pkgs; [

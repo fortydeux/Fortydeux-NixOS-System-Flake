@@ -51,6 +51,7 @@
     hypridle #Hyprland's idle daemon
     hyprlang #The official implementation library for the hypr config language
     hyprlock #Hyprland's simple, yet multi-threaded and GPU-accelerated screen locking utility
+    i3status-rust #Very resource-friendly and feature-rich replacement for i3status
     kanshi #Dynamic display configuration tool
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors

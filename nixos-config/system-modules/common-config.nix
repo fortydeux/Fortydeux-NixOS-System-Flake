@@ -13,6 +13,7 @@
     ./networking.nix
     ./security.nix
     ./pcloud.nix
+    ./virtualization.nix
    ];
 
   ### Shell
@@ -100,7 +101,6 @@
     mpv # General-purpose media player, fork of MPlayer and mplayer2
     nix-prefetch-github # Prefetch sources from github
     pavucontrol # PulseAudio Volume Control
-    qemu # Virtual machine client CLI
     tlp # Advanced Power Management for Linux
     vim # The most popular clone of the VI editor
     wcalc # A command line calculator
@@ -128,7 +128,6 @@
     foot # A fast, lightweight and minimalistic Wayland terminal emulator
     fish # Smart and user-friendly command line shell
     geany # Small and lightweight IDE
-    gnome.gnome-boxes # Virtual machine gui client
     gnome.gnome-calculator # Gnome GUI calculator
     gnome.gnome-calendar # Gnome GUI calendar
     kitty-themes # Themes for the kitty terminal emulator
@@ -171,10 +170,6 @@
 
   # Services Emacs
   services.emacs.enable = true;
-
-  #Services - Virtualization
-  #virtualisation.virtualbox.host.enable = true;
-  virtualisation.libvirtd.enable = true;
 
   #Services - locate:
   services.locate.enable = true;

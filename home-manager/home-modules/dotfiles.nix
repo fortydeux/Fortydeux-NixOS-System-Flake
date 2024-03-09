@@ -18,6 +18,10 @@
     	source = ../dotfiles/hypr;
         recursive = true;
     };
+    ".config/i3status-rust" = {
+    	source = ../dotfiles/i3status-rust;
+    	recursive = true;
+    };
     ".config/kitty" = {
     	source = ../dotfiles/kitty;
     	recursive = true;
@@ -42,6 +46,10 @@
     	source = ../dotfiles/ranger;
     	recursive = true;
     }; 
+    ".config/sway" = {
+    	source = ../dotfiles/sway;
+    	recursive = true;
+    };
     ".config/wayfire.ini" = {
     	source = ../dotfiles/wayfire/wayfire.ini;
     };
