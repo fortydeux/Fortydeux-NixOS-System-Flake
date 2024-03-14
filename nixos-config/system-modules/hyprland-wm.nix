@@ -18,12 +18,12 @@
     ];
   };
 
-  # ...and River wm/compositor - no config
+  # ...and River wm/compositor - basic config
   programs.river = {
   	enable = true;
   };
 
-  # ...and Sway wm/compositor - no config
+  # ...and Sway wm/compositor - basic config
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -35,6 +35,14 @@
       export MOZ_ENABLE_WAYLAND=1
     '';
   };
+
+  services.xserver.windowManager.qtile = {
+  	enable = true;
+  	extraPackages = python3Packages: with python3Packages; [
+  	  qtile-extras
+  	];
+  };
+  
 
   # Hint electron apps to use wayland
   environment = {
@@ -56,6 +64,7 @@
     kanshi #Dynamic display configuration tool
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
+    niri #A scrollable-tiling Wayland compositor
     playerctl #Command-line utility and library for controlling media players that implement MPRIS
     libappindicator #A library to allow applications to export a menu into the Unity Menu bar
     libdbusmenu #Library for passing menu structures across DBus

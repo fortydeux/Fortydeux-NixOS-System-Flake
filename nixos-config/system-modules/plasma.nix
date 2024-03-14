@@ -2,14 +2,13 @@
 
 { # Plasma.nix
 
-  services.xserver.displayManager.sddm.enable = true;
-
-  # Enable the X11 windowing system...and...
-  # KDE/Plasma
+  #Enable SDDM Display manager
   services.xserver = {
     enable = true;
-    # Enable KDE, Plasma
-    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
   };
+  # Enable KDE Plasma
+  services.desktopManager.plasma6.enable = true;
+ 
 
 }

@@ -9,8 +9,7 @@
   home.shellAliases = { emacs = "emacsclient -c -a 'emacs'"; };
   home.packages = (with pkgs; [
     # Packages added as dependencies for doom emacs config. Not otherwise necessary on system.
-    nixd
-    rnix-lsp
+ #   nixd #Marked as insecure 3/12/24, removed to allow build without enabling insecure build
     nil
     nixfmt
     file
