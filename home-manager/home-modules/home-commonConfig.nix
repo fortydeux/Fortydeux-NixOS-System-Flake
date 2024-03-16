@@ -34,7 +34,8 @@
     libsForQt5.kdenlive #KdenLive Video Editor 
     anytype #P2P note-taking tool
     appflowy #An open-source alternative to Notion
-    mediawriter
+    lan-mouse #Wayland software KVM switch
+    mediawriter #USB imaage writer
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     obs-studio #Screen recorder
     spotify #Spotify music client - Requires non-free packages enabled
