@@ -39,6 +39,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Enable NumLock at login:
+  services.xserver.displayManager.sddm.autoNumlock = true;
+
   # Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
