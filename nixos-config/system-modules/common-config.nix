@@ -55,7 +55,7 @@
   # system.autoUpgrade.enable = false; 
 
   # Increase inotify watch limit:
-  boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288;
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
 
   # Enable Flatpaks
   services.flatpak.enable = true;
@@ -119,6 +119,7 @@
     clang
     (python311.withPackages
       (ps: with ps; [ pycairo pygobject3 ])) # Python3.11 with packages
+    wireplumber
 
     ## GUI Applications
     baobab # Disk Usage Analyzer

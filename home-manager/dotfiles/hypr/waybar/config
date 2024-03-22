@@ -65,9 +65,9 @@
     
     "clock": {
         // "timezone": "America/New_York",
-        "format": "{: %R   %m/%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}
-        </small></tt>",
+        // "format": "{: %R   %m/%d}",
+        "format": "{:%R   %m/%d  }",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "on-click":"exec gnome-calendar"
     },
 
