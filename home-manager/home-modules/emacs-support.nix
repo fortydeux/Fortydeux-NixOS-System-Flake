@@ -46,7 +46,7 @@
         epc
         lxml
         pysocks
-        pymupdf
+    #    pymupdf
         markdown
         cmake
         black
