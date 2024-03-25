@@ -29,7 +29,7 @@ gaps outer 1
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg ~/.config/sway/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.config/sway/wallpapers/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #

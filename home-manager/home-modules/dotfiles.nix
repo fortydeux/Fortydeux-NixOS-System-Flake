@@ -70,6 +70,10 @@
     ".config/wf-shell.ini" = {
     	source = ../dotfiles/wayfire/wf-shell.ini;
     };
+    ".config/wayfire/wallpapers" = {
+    	source = ../dotfiles/wayfire/wallpapers;
+    	recursive = true;
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
