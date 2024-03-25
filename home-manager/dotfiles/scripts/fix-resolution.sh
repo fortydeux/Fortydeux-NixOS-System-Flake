@@ -5,15 +5,17 @@ resolution=$(wlr-randr --json | jq -r '.[] | select(.name=="eDP-1") | .modes[] |
 
 # Replace PRIMARY_DISPLAY_NAME with your actual primary display name, e.g., eDP-1. You can find it by just running `wlr-randr --json` and checking the names.
 
-if [ "$resolution" -gt 1920 ]; then
-    scale=2
+if [ "$resolution_width" -gt 1920 && -lt 2940 ]; then
+    scale=1.5
+elif [ "$resolution_width" -gt 3000 ]; then
+    scale=2.0
 else
-    scale=1
+    scale=1.0
 fi
 
 # Apply the scale factor
 # This command will vary based on your window manager and how it accepts dynamic configuration changes.
 # For Wayfire, you might use wf-config or wcm. For others, you might directly use their command interface, e.g., `riverctl output * scale $scale` for River.
 
-echo "Detected resolution width: $resolution, setting scale to $scale"
+echo "Detected resolution width: $resolution_width, setting scale to $scale"
 wlr-randr --output eDP-1 --scale $scale

@@ -20,8 +20,11 @@ blueman-applet &
 pkill -f wlsunset
 wlsunset -l 57.4 -L -1.9 &
 
-pkill -f waybar
-waybar -c ~/.config/river/waybar/config -s ~/.config/river/waybar/style.css &
+#pkill -f waybar
+#waybar -c ~/.config/river/waybar/config -s ~/.config/river/waybar/style.css &
+
+pkill -f i3bar-river
+i3bar-river &
 
 pkill -f pcloud
 pcloud & 
