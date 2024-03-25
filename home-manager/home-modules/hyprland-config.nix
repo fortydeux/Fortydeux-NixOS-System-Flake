@@ -8,8 +8,8 @@
         enable = true;
         plugins = [];
         settings = {};
-#		extraConfig = ''
-#          source = $HOME/.config/hypr/hyprland-config.conf
-#		'';
+		extraConfig = ''
+          
+		'';
 	};
 }
