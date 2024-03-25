@@ -128,6 +128,11 @@
     	source = ../dotfiles/river;
     	recursive = true;
     };
+    ".config/scripts" = {
+    	source = ../dotfiles/scripts;
+    	recursive = true;
+    };
+
     ".config/sway" = {
     	source = ../dotfiles/sway;
     	recursive = true;
