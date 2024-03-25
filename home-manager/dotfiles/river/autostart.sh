@@ -1,18 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Authentication dialog
-
-wlr-randr --output eDP-1 --scale 2.0
-
-# Start Kanshi which also starts Yambar
 pkill -f kanshi
 kanshi &
 
 pkill -f swaybg
 swaybg -m fill -i ~/.config/river/wallpapers/balloon-wp.jpg &
 
-pkill -f waybar
-waybar -c ~/.config/river/waybar/config -s ~/.config/river/waybar/style.css &
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
 
 pkill -f mako
 mako &
@@ -25,6 +19,9 @@ blueman-applet &
 
 pkill -f wlsunset
 wlsunset -l 57.4 -L -1.9 &
+
+pkill -f waybar
+waybar -c ~/.config/river/waybar/config -s ~/.config/river/waybar/style.css &
 
 pkill -f pcloud
 pcloud & 

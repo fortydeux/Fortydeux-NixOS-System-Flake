@@ -6,6 +6,9 @@
 # auto starting apps
 bash $HOME/.config/river/autostart.sh
 
+# Set resolution based on eDP-1 display resolution
+bash $HOME/.config/river/fix-resolution.sh
+
 # Kill / respawn River (reload config - USE WITH CAUTION)
 riverctl map normal Super+Shift C spawn "kill -SIGUSR1 $(pidof river)"
 

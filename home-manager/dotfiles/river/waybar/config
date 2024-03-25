@@ -178,7 +178,7 @@
             "default": ""
         },
         "return-type": "json",
-        "on-click": "playerctl play-pause && spotify",
+        "on-click": "spotify && playerctl play-pause",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
     },
