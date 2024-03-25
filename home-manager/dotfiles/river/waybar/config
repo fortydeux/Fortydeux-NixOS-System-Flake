@@ -1,0 +1,219 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 4,
+    "margin-top": 4,
+    "margin-right": 4,
+    "margin-left": 4,
+    "margin-bottom": 0,
+
+    // Choose the order of the modules
+    "modules-left": ["custom/launcher", "clock", "custom/weather", "river/tags", "river/window"],
+    "modules-center": [ "custom/media" ],
+    "modules-right": [ "idle_inhibitor", "pulseaudio", "backlight", "network", "cpu", "memory", "temperature", "battery", "battery#bat2", "tray", "custom/trayer", "custom/power"],
+
+    // Modules configuration
+
+
+    "river/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    
+    "river/window": {
+        "max-length": 30, // Characters count
+    },
+
+    "river/tags": {
+    //    "num-tags": 5,
+    },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": " {name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    "tray": {
+        "exec": "trayer",
+        "exec-if": "pgrep -x trayer",
+        "return-type": "json",
+        "interval": 1,
+        "icon-size": 20,
+        "spacing": 10
+    },
+
+    "custom/trayer": {
+        "exec": "trayer",
+        "exec-if": "pgrep -x trayer",
+        "return-type": "json",
+        "interval": 1,
+        "icon-size": 20,
+        "spacing": 10
+    },
+    
+    "clock": {
+        // "timezone": "America/New_York",
+        "format": "{:%R   %m/%d  }",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}
+        </small></tt>",
+        "on-click":"exec gnome-calendar"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "on-click": "exec com.github.stsdc.monitor"
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "on-click": "exec com.github.stsdc.monitor"
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["🌡", "", "🌡"],
+        "on-click": "exec com.github.stsdc.monitor"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["☀", ""]
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 🗲",
+        "format-plugged": "{capacity}% 🔌",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "battery#bat2": {
+        "bat": "BAT2",
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 🗲",
+        "format-plugged": "{capacity}% 🔌",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{signalStrength}%  ",
+        "format-ethernet": "Connected  ",
+        "tooltip-format": "{essid} {ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "exec nm-connection-editor"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "{icon} {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+
+    "custom/media": {
+        //"exec": "python3 $HOME/.config/hypr/scripts/mediaplayer.py --player spotify",
+        "format": "{} {icon} ",
+        "format-icons": {
+            "spotify": "",
+            "default": ""
+        },
+        "return-type": "json",
+        "on-click": "playerctl play-pause && spotify",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+
+    "custom/spotify": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 25,
+        "format-icons": {
+            "spotify": "  ",
+            "default": " 🎜 🎙"
+        },
+        "escape": true,
+        //"exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
+
+    "custom/launcher":{
+        "format": "",
+        "on-click": "wofi -S drun -GIm -w 3 -W 100% -H 96%",
+        "on-click-right": "pkill wofi"
+    },
+
+    "custom/power":{
+        "format": "⏻",
+        //"format": "",
+        "on-click": "exec wlogout",
+        "on-click-right": "pkill wofi"
+    },
+
+    "custom/updater":{
+        "format": "  {} Updates",
+        "exec": "dnf update | wc -l",
+        "exec-if": "[[ $(dnf update | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "kitty -e dnf update"
+    }
+}

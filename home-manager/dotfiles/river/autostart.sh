@@ -9,21 +9,30 @@ pkill -f kanshi
 kanshi &
 
 pkill -f swaybg
-swaybg -m fill -i ~/.config/hypr/Wallpapers/Professional/balloon-wp.jpg &
+swaybg -m fill -i ~/.config/river/wallpapers/balloon-wp.jpg &
 
-pkill -f i3bar-river
-i3bar-river &
+pkill -f waybar
+waybar -c ~/.config/river/waybar/config -s ~/.config/river/waybar/style.css &
 
-pkill -f dunst
-dunst &
+pkill -f mako
+mako &
+
+pkill -f nm-applet
+nm-applet &
+
+pkill -f blueman-applet
+blueman-applet &
 
 pkill -f wlsunset
 wlsunset -l 57.4 -L -1.9 &
 
-export wallpaper='~/.config/hypr/Wallpapers/Professional/balloon-wp.jpg'
+pkill -f pcloud
+pcloud & 
+
+export wallpaper='~/.config/river/wallpapers/balloon-wp.jpg'
 
 pkill -f swayidle
 swayidle -w \
-	timeout 300 'swaylock -f -i $wallpaper' \
-	timeout 600 'wlopm --off \*;swaylock -F -i ~/~/.config/hypr/Wallpapers/Professional/balloon-wp.jpg' resume 'wlopm --on \*' \
+	timeout 900 'swaylock -f -i $wallpaper' \
+	timeout 1200 'wlopm --off \*;swaylock -F -i ~/.config/river/wallpapers/balloon-wp.jpg' resume 'wlopm --on \*' \
 	before-sleep 'swaylock -f -i $wallpaper' &

@@ -180,13 +180,6 @@
   services.locate.package = pkgs.plocate;
   services.locate.localuser = null;
 
-  xdg.portal = {
-    enable = true;
-    # xdg-desktop-portal backend for Hyprland
-    extraPortals =
-      [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
-  };
-
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";

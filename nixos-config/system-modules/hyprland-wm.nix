@@ -36,14 +36,21 @@
     '';
   };
 
-  services.xserver.windowManager.qtile = {
-  	enable = true;
-  	extraPackages = python3Packages: with python3Packages; [
-  	  qtile-extras
-  	];
-  };
+#  services.xserver.windowManager.qtile = {
+#  	enable = true;
+#  	extraPackages = python3Packages: with python3Packages; [
+#  	  qtile-extras
+#  	];
+#  };
   
-
+  # Desktop portal
+  xdg.portal = {
+      enable = true;
+      # xdg-desktop-portal backend for Hyprland
+      extraPortals =
+        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    };
+  
   # Hint electron apps to use wayland
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
