@@ -38,7 +38,7 @@ riverctl map normal Super C close
 riverctl map normal Super M exit
 
 # Launcher
-riverctl map normal Control Space  spawn "fuzzel"
+riverctl map normal Control Space  spawn "fuzzel -w 80 -b 181818ef -t ccccccff"
 riverctl map normal Super W  spawn "rofi -show drun -show-icons"
 
 # Toggle waybar

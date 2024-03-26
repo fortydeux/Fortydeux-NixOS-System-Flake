@@ -4,9 +4,9 @@
 resolution_width=$(wlr-randr --json | jq -r '.[] | select(.name=="eDP-1") | .modes[] | select(.current==true) | .width')
 
 # Set conditions
-if [ "$resolution_width" -gt 1920 && -le 3000 ]; then
+if [ "$resolution_width" -gt 1920 ] && [ "$resolution_width" -le 2880 ]; then
     scale=1.5
-elif [ "$resolution_width" -gt 3000 ]; then
+elif [ "$resolution_width" -gt 2880 ]; then
     scale=2.0
 else
     scale=1.0
