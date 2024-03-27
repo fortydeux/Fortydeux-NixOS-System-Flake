@@ -81,7 +81,10 @@
     	source = ../dotfiles/dunst;
         recursive = true;
     };
-
+    ".config/helix" = {
+    	source = ../dotfiles/helix;
+        recursive = true;
+    };
     ".config/hypr" = {
     	source = ../dotfiles/hypr;
         recursive = true;
@@ -124,10 +127,12 @@
     	source = ../dotfiles/ranger;
     	recursive = true;
     }; 
+
     ".config/river" = {
     	source = ../dotfiles/river;
     	recursive = true;
     };
+
     ".config/scripts" = {
     	source = ../dotfiles/scripts;
     	recursive = true;
@@ -137,12 +142,15 @@
     	source = ../dotfiles/sway;
     	recursive = true;
     };
+
     ".config/wayfire.ini" = {
     	source = ../dotfiles/wayfire/wayfire.ini;
     };
+
     ".config/wf-shell.ini" = {
     	source = ../dotfiles/wayfire/wf-shell.ini;
     };
+
     ".config/wayfire/wallpapers" = {
     	source = ../dotfiles/wayfire/wallpapers;
     	recursive = true;

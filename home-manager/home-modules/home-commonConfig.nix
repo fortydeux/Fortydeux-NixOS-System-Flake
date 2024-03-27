@@ -25,8 +25,10 @@
     # hello
     anytype #P2P note-taking tool
     appflowy #An open-source alternative to Notion
+    decent-sampler #An audio sample player
     discord #Discord social client
     gh #Github CLI tool 
+    helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     logseq #Logseq electron desktop client
     libsForQt5.kdenlive #KdenLive Video Editor 
