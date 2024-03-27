@@ -86,7 +86,7 @@ For Hyprland, you will likely want to customize the startup launch programs and 
 + CTRL+W = Launches Drun application launcher - shows list of all apps, ESC to close
 + Switch virtual workspaces with 3-finger touchpad swipe, also SUPER+1,2,3,...), also CTRL+SUPER+<right and left arrow keys>
 + SUPER+F = toggle fullscreen (works very nicely with SUPER+<arrow-keys> to switch apps within current workspace while staying in fullscreen view)
-+ SUPER+G = toggle maximize (also works very nicely with SUPER+<arrow-keys> to switch apps within current workspace while staying in maximized view)
++ SUPER+H = toggle maximize (also works very nicely with SUPER+<arrow-keys> to switch apps within current workspace while staying in maximized view)
 + SUPER+<arrow-keys> = switch active apps within current workspace
 + SUPER+SHIFT+Left-click+drag = resize window
 + SUPER+Left-click+drag = move window
@@ -102,7 +102,7 @@ For Hyprland, you will likely want to customize the startup launch programs and 
 - I have home-manager managing the dotfiles for Hyprland, and a few other key applications where I have custom setups that I want to reproduce between different machines...
 - This means that to make a change, you need to edit the config file within the flake (home-manager/dotfiles) then do a "home-manager switch" to write the updated file to $HOME
 - ...and you may even need to reboot or CTRL+M to quit Hyprland and log back in to see your changes...
-- This is a much more cumbersome workflow, especially for Hyprland where normally saving hyprland.conf would trigger an automatic reload of the config file, giving immediate feedback of changes.
+- This is a MUCH more cumbersome workflow, especially for Hyprland where normally saving hyprland.conf would trigger an automatic reload of the config file, giving immediate feedback of changes.
 - Therefore, if you are making a lot of changes, you may want to stop Home-manager from managing these files (comment out and run switch command), and go back to editing them directly within your $HOME directory until most of your edits are done, at which time you may choose to copy them back into home-manager/dotfiles and resume home-manager's management of them.
 
 Please contact me with any questions/comments. Thanks! 
