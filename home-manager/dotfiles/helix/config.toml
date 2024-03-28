@@ -1,1 +1,13 @@
 theme = "tokyonight"
+
+[editor]
+line-number = "relative"
+mouse = "true"
+
+[editor.lsp]
+display-messages = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
