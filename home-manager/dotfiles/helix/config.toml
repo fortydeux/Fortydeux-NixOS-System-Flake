@@ -2,7 +2,7 @@ theme = "tokyonight"
 
 [editor]
 line-number = "relative"
-mouse = "true"
+mouse = true
 
 [editor.lsp]
 display-messages = true
