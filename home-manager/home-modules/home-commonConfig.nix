@@ -29,6 +29,7 @@
     discord #Discord social client
     gh #Github CLI tool 
     helix #Post modern modal text editor
+    helix-gpt
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     logseq #Logseq electron desktop client
     libsForQt5.kdenlive #KdenLive Video Editor 
@@ -43,8 +44,10 @@
     spotify #Spotify music client - Requires non-free packages enabled
     telegram-desktop #Telegram desktop client
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
+    vscode 
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-#Not yet available on Linux through nixpkgs    warp-terminal # Modern rust-based terminal       
+    zoom-us #zoom.us video conferencing application
+    warp-terminal # Modern rust-based terminal       
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
