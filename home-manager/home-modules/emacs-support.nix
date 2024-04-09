@@ -11,7 +11,7 @@
     # Packages added as dependencies for doom emacs config. Not otherwise necessary on system.
  #   nixd #Marked as insecure 3/12/24, removed to allow build without enabling insecure build
     nil
-    nixfmt
+    nixfmt-classic
     file
     lemminx
     marksman

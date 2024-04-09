@@ -102,9 +102,11 @@ riverctl map-pointer normal Super+Shift BTN_LEFT resize-view
 # Super + Middle Mouse Button to toggle float
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
+# Use riverctl list-inputs to discover input devices
 riverctl input pointer-1118-2338-Microsoft_Surface_Keyboard_Touchpad natural-scroll enabled
 riverctl input pointer-1118-2338-Microsoft_Surface_Keyboard_Touchpad click-method clickfinger
 riverctl input pointer-1118-2338-Microsoft_Surface_Keyboard_Touchpad tap enabled
+riverctl input pointer-9354-33639-Telink_Wireless_Receiver_Mouse natural-scroll enabled
 
 for i in $(seq 1 9)
 do
