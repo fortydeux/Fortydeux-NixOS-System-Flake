@@ -47,6 +47,7 @@
         lxml
         pysocks
     #    pymupdf
+        pytube
         markdown
         cmake
         black

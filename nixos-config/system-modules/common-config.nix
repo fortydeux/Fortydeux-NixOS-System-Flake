@@ -40,7 +40,7 @@
   };
 
   # Enable NumLock at login:
-  services.xserver.displayManager.sddm.autoNumlock = true;
+  services.displayManager.sddm.autoNumlock = true;
 
   # Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

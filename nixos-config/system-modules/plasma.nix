@@ -3,9 +3,9 @@
 { # Plasma.nix
 
   #Enable SDDM Display manager
-  services.xserver = {
+  services.displayManager = {
     enable = true;
-    displayManager.sddm.enable = true;
+    sddm.wayland.enable = true;
   };
   # Enable KDE Plasma
   services.desktopManager.plasma6.enable = true;

@@ -11,9 +11,11 @@
     
     # Add ags
     ags.url = "github:Aylur/ags"; 	
-  };
+    # Add helix-gpt
+    helix-gpt.url = "github:SilverCoder/helix-gpt/main";
+    };
   
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, helix-gpt, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -43,6 +45,11 @@
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
              ];
     	};
+      };
+
+     ##--Helix-GPT devShell--##
+      devShells.default = pkgs.mkShell {
+        packages = [ helix-gpt.packages.default ];
       };
 
      ##--Home-Manager Configuration--##

@@ -2,7 +2,7 @@
 
 { # Display-manager.nix
 
-	services.xserver.displayManager.sddm.enable = true;
+	services.displayManager.sddm.enable = true;
 
    # Greetd - enable if disabling other login managers 
  #  services.greetd = {

@@ -19,6 +19,10 @@
   # environment.
   nixpkgs.config.allowUnfree = true;
 
+imports = [
+    ./hx-gpt.nix
+    ];
+  
   home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -29,7 +33,7 @@
     discord #Discord social client
     gh #Github CLI tool 
     helix #Post modern modal text editor
-    helix-gpt
+ #   helix-gpt
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     logseq #Logseq electron desktop client
     libsForQt5.kdenlive #KdenLive Video Editor 
