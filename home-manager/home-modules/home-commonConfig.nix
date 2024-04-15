@@ -22,7 +22,7 @@
 imports = [
     ./hx-gpt.nix
     ];
-  
+    
   home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -31,6 +31,7 @@ imports = [
     appflowy #An open-source alternative to Notion
     decent-sampler #An audio sample player
     discord #Discord social client
+    fish #Fish terminal
     gh #Github CLI tool 
     helix #Post modern modal text editor
  #   helix-gpt

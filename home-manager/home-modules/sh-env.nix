@@ -12,6 +12,13 @@
       eval "$(gh copilot alias -- zsh)"
     '';
   };
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+  programs.fish = {
+    enable = true;
+  };
   home = {
     sessionVariables = {
       # EDITOR = "emacs";
