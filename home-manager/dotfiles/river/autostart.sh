@@ -34,5 +34,5 @@ export wallpaper='~/.config/river/wallpapers/balloon-wp.jpg'
 pkill -f swayidle
 swayidle -w \
 	timeout 900 'swaylock -f -i $wallpaper' \
-	timeout 1200 'wlopm --off \*;swaylock -F -i ~/.config/river/wallpapers/balloon-wp.jpg' resume 'wlopm --on \*' \
+	timeout 1200 'wlopm --off \*;swaylock -F -i $wallpaper' resume 'wlopm --on \*' \
 	before-sleep 'swaylock -f -i $wallpaper' &

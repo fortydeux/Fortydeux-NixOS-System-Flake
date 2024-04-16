@@ -96,6 +96,7 @@
     wf-recorder # Wayland screen recorder
     wl-clipboard #Command-line copy/paste utilities for Wayland
     wlogout #A wayland based logout menu
+    wlopm #Simple client implementing zwlr-output-power-management-v1    
     wlroots #A modular Wayland compositor library
     wlsunset #Day/night gamma adjustments for Wayland
     wlr-randr #An xrandr clone for wlroots compositors
