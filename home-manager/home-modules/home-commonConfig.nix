@@ -56,6 +56,7 @@ imports = [
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       
+    waynergy #A synergy client for Wayland compositors
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
