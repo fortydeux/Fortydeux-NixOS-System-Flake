@@ -29,6 +29,7 @@ imports = [
     # hello
     anytype #P2P note-taking tool
     appflowy #An open-source alternative to Notion
+    barrier #Open-source KVM software
     decent-sampler #An audio sample player
     discord #Discord social client
     fish #Fish terminal
