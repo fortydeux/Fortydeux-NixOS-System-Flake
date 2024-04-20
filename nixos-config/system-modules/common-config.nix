@@ -18,7 +18,7 @@
 
   ### Shell
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.bash;
 
   ### System settings
   # Set your time zone.
@@ -63,7 +63,7 @@
   ### Users
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fortydeux = {
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     isNormalUser = true;
     description = "Fortydeux";
     extraGroups =

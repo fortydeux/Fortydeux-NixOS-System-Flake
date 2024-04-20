@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -12,12 +16,12 @@
       eval "$(gh copilot alias -- zsh)"
     '';
   };
+  programs.fish = {
+    enable = true;
+  };
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
-  };
-  programs.fish = {
-    enable = true;
   };
   home = {
     sessionVariables = {
