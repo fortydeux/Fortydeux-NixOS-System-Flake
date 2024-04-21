@@ -36,13 +36,6 @@
     '';
   };
 
-#  services.xserver.windowManager.qtile = {
-#  	enable = true;
-#  	extraPackages = python3Packages: with python3Packages; [
-#  	  qtile-extras
-#  	];
-#  };
-  
   # Desktop portal
   xdg.portal = {
       enable = true;
@@ -55,6 +48,10 @@
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
+
+  # Environment 
+  environment.variables.XCURSOR_SIZE = "32";
+  # environment.variables.Xcursor.theme = "phinger-cursors-light";
 
   # Wayland apps 
   environment.systemPackages = with pkgs; [
@@ -69,9 +66,11 @@
     i3bar-river #A port of i3bar for River WM
     i3status-rust #Very resource-friendly and feature-rich replacement for i3status
     kanshi #Dynamic display configuration tool
+    kdePackages.qt6ct #Qt6 configuration tool
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
     niri #A scrollable-tiling Wayland compositor
+    phinger-cursors # Over-engineered cursor theme
     playerctl #Command-line utility and library for controlling media players that implement MPRIS
     libappindicator #A library to allow applications to export a menu into the Unity Menu bar
     libdbusmenu #Library for passing menu structures across DBus
