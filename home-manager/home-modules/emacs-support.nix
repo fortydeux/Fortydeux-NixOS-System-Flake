@@ -40,6 +40,8 @@
     pipenv
     (python3.withPackages (p:
       with p; [
+        pip
+        exchangelib
         editorconfig
         pandas
         requests
