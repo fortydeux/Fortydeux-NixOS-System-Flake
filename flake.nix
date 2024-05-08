@@ -11,11 +11,9 @@
     
     # Add ags
     ags.url = "github:Aylur/ags"; 	
-    # Add helix-gpt
-    helix-gpt.url = "github:SilverCoder/helix-gpt/main";
     };
   
-  outputs = { self, nixpkgs, home-manager, helix-gpt, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -47,21 +45,15 @@
     	};
         #--Blacktetra host--#
         blacktetra-nixos = lib.nixosSystem {
-                inherit system;
-                modules = [ 
-                  ./nixos-config/hosts/blacktetra/configuration.nix 
-             ];
+          inherit system;
+          modules = [ 
+            ./nixos-config/hosts/blacktetra/configuration.nix 
+          ];
         }; 
 
       };
 
-     ##--Helix-GPT devShell--##
-      devShells.default = pkgs.mkShell {
-        packages = [ helix-gpt.packages.default ];
-      };
-
-     ##--Home-Manager Configuration--##
-      
+      ##--Home-Manager Configuration--##     
       homeConfigurations = {
         "fortydeux@archerfish-nixos" = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

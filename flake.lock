@@ -36,26 +36,6 @@
         "type": "github"
       }
     },
-    "helix-gpt": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1710492845,
-        "narHash": "sha256-ZEV65oE0AYW0AgCwdbTVRdeCeUlJ/3uMHgc+wJjmI5E=",
-        "owner": "SilverCoder",
-        "repo": "helix-gpt",
-        "rev": "abf1286514516e25e7697b57187268622ea166b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "SilverCoder",
-        "ref": "main",
-        "repo": "helix-gpt",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -143,7 +123,6 @@
     "root": {
       "inputs": {
         "ags": "ags",
-        "helix-gpt": "helix-gpt",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3"
