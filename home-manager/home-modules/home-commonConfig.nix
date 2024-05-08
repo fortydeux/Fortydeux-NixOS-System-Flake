@@ -38,7 +38,7 @@ imports = [
  #   helix-gpt
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     logseq #Logseq electron desktop client
-    libsForQt5.kdenlive #KdenLive Video Editor 
+ #   libsForQt5.kdenlive #KdenLive Video Editor 
     lan-mouse #Wayland software KVM switch
     media-downloader #Media-downloader desktop client
     mediawriter #USB imaage writer

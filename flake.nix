@@ -45,6 +45,14 @@
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
              ];
     	};
+        #--Blacktetra host--#
+        blacktetra-nixos = lib.nixosSystem {
+                inherit system;
+                modules = [ 
+                  ./nixos-config/hosts/blacktetra/configuration.nix 
+             ];
+        }; 
+
       };
 
      ##--Helix-GPT devShell--##
@@ -86,6 +94,17 @@
             # Import home.nix
     	    modules = [
               ./home-manager/hosts/blackfin-home.nix
+            ];
+        };
+        "fortydeux@blacktetra-nixos" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+
+            # Pass inputs as extraSpecialArgs
+            extraSpecialArgs = { inherit inputs; };
+
+            # Import home.nix
+            modules = [
+              ./home-manager/hosts/blacktetra-home.nix
             ];
         }; 
       }; #End homeConfigurations
