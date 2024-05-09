@@ -29,6 +29,7 @@
     decent-sampler #An audio sample player
     discord #Discord social client
     fish #Fish terminal
+    freetube #An Open Source YouTube app for privacy
     gh #Github CLI tool 
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
