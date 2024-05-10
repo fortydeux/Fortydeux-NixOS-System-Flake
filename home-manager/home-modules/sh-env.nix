@@ -10,7 +10,7 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     initExtra = ''
-      # neofetch|lolc
+      # fastfetch|lolc
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
       eval "$(gh copilot alias -- zsh)"

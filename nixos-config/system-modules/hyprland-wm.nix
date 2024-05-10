@@ -60,6 +60,7 @@
     dunst #Lightweight and customizable notification daemon
     fuzzel #Wayland-native application launcher, similar to rofi’s drun mode
     grim #Grab images from a Wayland compositor
+    fastfetch #A fast system info script
     hypridle #Hyprland's idle daemon
     hyprlang #The official implementation library for the hypr config language
     hyprlock #Hyprland's simple, yet multi-threaded and GPU-accelerated screen locking utility
@@ -76,7 +77,6 @@
     libdbusmenu #Library for passing menu structures across DBus
     libnotify #A library that sends desktop notifications to a notification daemon
     meld #Visual diff and merge tool
-    neofetch #A fast, highly customizable system info script
     networkmanagerapplet #NetworkManager control applet for GNOME
     nwg-displays #Output management utility for Sway and Hyprland
     nwg-dock-hyprland #GTK3-based dock for Hyprland
