@@ -42,6 +42,7 @@
     obs-studio #Screen recorder       
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
+    rustscan #Nmap scanner written in Rust
     signal-desktop #Signal electron desktop client
     simplex-chat-desktop #SimpleX Chat Desktop Client
     spotify #Spotify music client - Requires non-free packages enabled
@@ -53,6 +54,7 @@
     zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       
     waynergy #A synergy client for Wayland compositors
+    zed-editor #Modern text editor with AI built in - still in development for Linux
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

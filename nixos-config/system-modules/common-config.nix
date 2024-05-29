@@ -103,6 +103,7 @@
     jq # A lightweight and flexible command-line JSON processor
     mpv # General-purpose media player, fork of MPlayer and mplayer2
     nix-prefetch-github # Prefetch sources from github
+    nmap # Network mapping utility
     pavucontrol # PulseAudio Volume Control
     tlp # Advanced Power Management for Linux
     vim # The most popular clone of the VI editor
