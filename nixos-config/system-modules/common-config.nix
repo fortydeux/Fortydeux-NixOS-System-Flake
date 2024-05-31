@@ -128,6 +128,7 @@
     brave # Brave Browser
     betterbird # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will - leaving TBird installed bc BT uses same profile, but runs better on Wayland with HIDPI scaling
     chromium # Chromium browser
+    kdePackages.discover # KDE and Plasma resources management GUI
     element-desktop # A feature-rich client for Matrix.org
     emote # Modern emoji picker for Linux
     foot # A fast, lightweight and minimalistic Wayland terminal emulator
