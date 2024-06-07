@@ -27,6 +27,10 @@
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
     	  	  #MS-Surface-specific module:
      	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common 
+            home-manager.nixosModules.home-manager
+          {
+            xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
+          }
             ];
     	};
         #--Pufferfish host--#
@@ -34,6 +38,10 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
+            home-manager.nixosModules.home-manager
+          {
+            xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
+          }
              ];
     	};
         #--Blackfin host--#
@@ -41,6 +49,10 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
+            home-manager.nixosModules.home-manager
+          {
+            xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
+          }
              ];
     	};
         #--Blacktetra host--#
@@ -48,6 +60,10 @@
           inherit system;
           modules = [ 
             ./nixos-config/hosts/blacktetra/configuration.nix 
+            home-manager.nixosModules.home-manager
+          {
+            xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
+          }
           ];
         }; 
 

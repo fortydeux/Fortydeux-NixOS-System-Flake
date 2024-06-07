@@ -41,7 +41,7 @@
       enable = true;
       # xdg-desktop-portal backend for Hyprland
       extraPortals =
-        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
     };
   
   # Hint electron apps to use wayland
