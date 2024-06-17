@@ -8,7 +8,7 @@
 
   # Allow unfree/insecure packages
   nixpkgs.config.allowUnfree = true;
-
+               
   imports = [
     ./networking.nix
     ./security.nix

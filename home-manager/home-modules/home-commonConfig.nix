@@ -18,7 +18,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   nixpkgs.config.allowUnfree = true;
-  
+ 
   home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -33,7 +33,7 @@
     gh #Github CLI tool 
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
-    logseq #Logseq electron desktop client
+ #   logseq #Logseq electron desktop client
  #   libsForQt5.kdenlive #KdenLive Video Editor 
     lan-mouse #Wayland software KVM switch
     media-downloader #Media-downloader desktop client
