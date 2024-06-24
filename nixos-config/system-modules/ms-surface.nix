@@ -20,6 +20,6 @@
     # "videobuf2_v4l2"
     # "videobuf2_memops"
     # "videobuf2_vmalloc"
-    "ipu3_imgu"  # Specifically for Intel IPU3 cameras
+    # "ipu3_imgu"  # Specifically for Intel IPU3 cameras
   ]; 
 }
