@@ -97,7 +97,7 @@
 
     ## CLI Tools
     appimage-run # Utility for running AppImage format
-    clamav # Virus scanner
+    # clamav # Virus scanner
     feh # Very handy CLI photo/slideshow tool
     ffmpeg # FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
     jq # A lightweight and flexible command-line JSON processor
@@ -134,8 +134,8 @@
     foot # A fast, lightweight and minimalistic Wayland terminal emulator
     fish # Smart and user-friendly command line shell
     geany # Small and lightweight IDE
-    gnome.gnome-calculator # Gnome GUI calculator
-    gnome.gnome-calendar # Gnome GUI calendar
+    gnome-calculator # Gnome GUI calculator
+    gnome-calendar # Gnome GUI calendar
     kitty-themes # Themes for the kitty terminal emulator
     krita # A free and open source painting application
     lapce # Lightning-fast and Powerful Code Editor written in Rust
@@ -145,7 +145,7 @@
     #   libsForQt5.kdeconnect-kde #KDE Connect provides several features to integrate your phone and your computer
     monitor # Manage processes and monitor system resources
  #   pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
-    gnome.nautilus # Gnome File Manager
+    nautilus # Gnome File Manager
     onlyoffice-bin # Office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
     #   thunderbird #Mozilla Thunderbird, a full-featured email client
     tor-browser-bundle-bin # Tor Browser Bundle built by torproject.org

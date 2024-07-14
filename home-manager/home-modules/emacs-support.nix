@@ -41,7 +41,7 @@
     (python3.withPackages (p:
       with p; [
         pip
-        exchangelib
+        # exchangelib
         editorconfig
         pandas
         requests
@@ -55,7 +55,7 @@
         black
         pyflakes
         isort
-        nose
+        # nose
         pytest
         setuptools
       ]))
