@@ -97,7 +97,7 @@
 
     ## CLI Tools
     appimage-run # Utility for running AppImage format
-    # clamav # Virus scanner
+    clamav # Virus scanner
     feh # Very handy CLI photo/slideshow tool
     ffmpeg # FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
     jq # A lightweight and flexible command-line JSON processor
@@ -144,7 +144,7 @@
     libsForQt5.kate # Plasma text editor
     #   libsForQt5.kdeconnect-kde #KDE Connect provides several features to integrate your phone and your computer
     monitor # Manage processes and monitor system resources
- #   pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
+    # pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
     nautilus # Gnome File Manager
     onlyoffice-bin # Office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
     #   thunderbird #Mozilla Thunderbird, a full-featured email client
