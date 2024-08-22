@@ -27,34 +27,34 @@
     appflowy #An open-source alternative to Notion
     barrier #Open-source KVM software
     decent-sampler #An audio sample player
-    discord #Discord social client
+    # discord #Discord social client
     fish #Fish terminal
-    freetube #An Open Source YouTube app for privacy
+    # freetube #An Open Source YouTube app for privacy
     gh #Github CLI tool 
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
  #   logseq #Logseq electron desktop client
  #   libsForQt5.kdenlive #KdenLive Video Editor 
-    lan-mouse #Wayland software KVM switch
-    media-downloader #Media-downloader desktop client
-    mediawriter #USB imaage writer
-    musescore #Music notation and composition software
-    obs-studio #Screen recorder       
+    # lan-mouse #Wayland software KVM switch
+    # media-downloader #Media-downloader desktop client
+    # mediawriter #USB imaage writer
+    # musescore #Music notation and composition software
+    # obs-studio #Screen recorder       
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
     signal-desktop #Signal electron desktop client
-    simplex-chat-desktop #SimpleX Chat Desktop Client
-    spotify #Spotify music client - Requires non-free packages enabled
+    # simplex-chat-desktop #SimpleX Chat Desktop Client
+    # spotify #Spotify music client - Requires non-free packages enabled
     super-productivity # To Do List / Time Tracker with Jira Integration
  #   teams #Microsoft Teams application - not yet available for Linux
-    telegram-desktop #Telegram desktop client
+    # telegram-desktop #Telegram desktop client
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-    zoom-us #zoom.us video conferencing application
+    # zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       
-    waynergy #A synergy client for Wayland compositors
+    # waynergy #A synergy client for Wayland compositors
     zed-editor #Modern text editor with AI built in - still in development for Linux
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying

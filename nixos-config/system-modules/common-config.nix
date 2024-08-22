@@ -97,7 +97,6 @@
 
     ## CLI Tools
     appimage-run # Utility for running AppImage format
-    clamav # Virus scanner
     feh # Very handy CLI photo/slideshow tool
     ffmpeg # FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation.
     jq # A lightweight and flexible command-line JSON processor
@@ -109,53 +108,42 @@
     vim # The most popular clone of the VI editor
     wcalc # A command line calculator
 
-    ## Emacs and dependencies
-    emacs # GNU extensible text editor
-    # optional emacs dependencies
-    findutils # Basic directory searching utilities
-    coreutils # basic GNU utilities
-
     ## Build tools
     cargo # Downloads your Rust project's dependencies and builds your project
     clang
-    (python311.withPackages
-      (ps: with ps; [ pycairo pygobject3 ])) # Python3.11 with packages
+    # (python311.withPackages
+    #   (ps: with ps; [ pycairo pygobject3 ])) # Python3.11 with packages
     wireplumber
 
     ## GUI Applications
     baobab # Disk Usage Analyzer
     #   blender #3D Creation/Animation/Publishing System
     brave # Brave Browser
-    betterbird # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will - leaving TBird installed bc BT uses same profile, but runs better on Wayland with HIDPI scaling
+    # betterbird # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will - leaving TBird installed bc BT uses same profile, but runs better on Wayland with HIDPI scaling
     chromium # Chromium browser
     kdePackages.discover # KDE and Plasma resources management GUI
-    element-desktop # A feature-rich client for Matrix.org
-    emote # Modern emoji picker for Linux
     foot # A fast, lightweight and minimalistic Wayland terminal emulator
     fish # Smart and user-friendly command line shell
-    geany # Small and lightweight IDE
     gnome-calculator # Gnome GUI calculator
     gnome-calendar # Gnome GUI calendar
     kitty-themes # Themes for the kitty terminal emulator
     krita # A free and open source painting application
     lapce # Lightning-fast and Powerful Code Editor written in Rust
     libreoffice-qt # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
-    librewolf # A fork of Firefox, focused on privacy, security and freedom
-    libsForQt5.kate # Plasma text editor
+    # librewolf # A fork of Firefox, focused on privacy, security and freedom
+    kdePackages.kate # Plasma text editor
     #   libsForQt5.kdeconnect-kde #KDE Connect provides several features to integrate your phone and your computer
     monitor # Manage processes and monitor system resources
     # pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
     nautilus # Gnome File Manager
     onlyoffice-bin # Office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
-    #   thunderbird #Mozilla Thunderbird, a full-featured email client
     tor-browser-bundle-bin # Tor Browser Bundle built by torproject.org
     vscodium # Open source source code editor developed by Microsoft for Windows, Linux and macOS (VS Code without MS branding/telemetry/licensing)
-    wezterm # GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
+    wezterm # GPU-accelerated cross-platform terminal emulator and multiplexer written by wez and implemented in Rust
 
     ## Caffeine
     caffeine-ng
-    libsForQt5.plasma-applet-caffeine-plus
-
+    # libsForQt5.plasma-applet-caffeine-plus
   ];
 
   ### Fonts
@@ -173,9 +161,6 @@
 
   ### Services
   # List services that you want to enable:
-
-  # Services Emacs
-  services.emacs.enable = true;
 
   #Services - locate:
   services.locate.enable = true;
