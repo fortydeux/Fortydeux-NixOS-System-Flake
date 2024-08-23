@@ -40,7 +40,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
-            nixos-hardware.nixosModules.apple-imac
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc-laptop
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
             home-manager.nixosModules.home-manager
           {
             xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
