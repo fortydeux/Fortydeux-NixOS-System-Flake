@@ -1,25 +1,31 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{ # MS-Surface.nix
+{
+  # MS-Surface.nix
 
-  # Enable MS Surface Hardware
-  ##Requires nix hardware channel: nixos-hardware https://github.com/NixOS/nixos-hardware/archive/master.tar.gz
-  microsoft-surface.ipts.enable = true;
-  microsoft-surface.surface-control.enable = true;
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
-
-  ###Surface Laptop Support
+  # Surface Laptop Support
   environment.systemPackages = [
-    pkgs.libwacom-surface #Libraries, configuration, and diagnostic tools for Wacom tablets running under Linux
+    pkgs.libwacom-surface
+    # Both below are enabled in surface-pro-intel module
+    # pkgs.iptsd
+    # pkgs.surface-control
   ];
 
-  # Blacklist webcam and camera-related kernel modules
-  boot.blacklistedKernelModules = [ 
-    # "uvcvideo"  # Common USB webcam driver
-    # "videobuf2_common"
-    # "videobuf2_v4l2"
-    # "videobuf2_memops"
-    # "videobuf2_vmalloc"
-    # "ipu3_imgu"  # Specifically for Intel IPU3 cameras
-  ]; 
+  # Enable better power management
+  # services.tlp.enable = true;
+
+  # Enable touchscreen and pen support
+  hardware.sensor.iio.enable = true;
+
+
+  # Uncomment if you need to blacklist webcam and camera-related kernel modules
+  # boot.blacklistedKernelModules = [ 
+  #   "uvcvideo"
+  #   "videobuf2_common"
+  #   "videobuf2_v4l2"
+  #   "videobuf2_memops"
+  #   "videobuf2_vmalloc"
+  #   "ipu3_imgu"
+  # ]; 
+
 }

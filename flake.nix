@@ -8,12 +8,9 @@
   	home-manager.url = "github:nix-community/home-manager/master";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master"; 
-    
-    # Add ags
-    ags.url = "github:Aylur/ags"; 	
     };
   
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -25,11 +22,16 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
-    	  	  #MS-Surface-specific module:
-     	  	  inputs.nixos-hardware.nixosModules.microsoft-surface-common 
+    	  	  #MS-Surface-specific modules:
+     	  	  # nixos-hardware.nixosModules.microsoft-surface-pro-intel
             home-manager.nixosModules.home-manager
           {
             xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
+            # Surface-specific options
+              # microsoft-surface = {
+              #   surface-control.enable = true;
+              #   ipts.enable = true;
+              # };
           }
             ];
     	};
@@ -38,6 +40,7 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
+            nixos-hardware.nixosModules.apple-imac
             home-manager.nixosModules.home-manager
           {
             xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
