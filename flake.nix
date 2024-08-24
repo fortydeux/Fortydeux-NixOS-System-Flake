@@ -23,15 +23,10 @@
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
     	  	  #MS-Surface-specific modules:
-     	  	  # nixos-hardware.nixosModules.microsoft-surface-pro-intel
+     	  	  nixos-hardware.nixosModules.microsoft-surface-pro-intel
             home-manager.nixosModules.home-manager
           {
             xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
-            # Surface-specific options
-              # microsoft-surface = {
-              #   surface-control.enable = true;
-              #   ipts.enable = true;
-              # };
           }
             ];
     	};

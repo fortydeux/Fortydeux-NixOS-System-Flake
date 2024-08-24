@@ -19,13 +19,13 @@
 
 
   # Uncomment if you need to blacklist webcam and camera-related kernel modules
-  # boot.blacklistedKernelModules = [ 
+  boot.blacklistedKernelModules = [ 
   #   "uvcvideo"
   #   "videobuf2_common"
   #   "videobuf2_v4l2"
   #   "videobuf2_memops"
   #   "videobuf2_vmalloc"
-  #   "ipu3_imgu"
-  # ]; 
+    "ipu3_imgu"
+  ]; 
 
 }
