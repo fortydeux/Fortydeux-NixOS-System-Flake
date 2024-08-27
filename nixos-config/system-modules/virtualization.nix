@@ -10,6 +10,6 @@
   # Packages
   environment.systemPackages = with pkgs; [
     qemu # Virtual machine client CLI
-    gnome.gnome-boxes # Virtual machine gui client
+    gnome-boxes # Virtual machine gui client
   ];
 }
