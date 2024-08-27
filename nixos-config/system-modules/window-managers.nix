@@ -35,6 +35,9 @@
       export MOZ_ENABLE_WAYLAND=1
     '';
   };
+ 
+  #Enables Miracle-WM
+  programs.wayland.miracle-wm.enable = true;
 
   # Desktop portal
   xdg.portal = {
