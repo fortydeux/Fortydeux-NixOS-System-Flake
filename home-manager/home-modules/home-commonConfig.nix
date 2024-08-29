@@ -46,7 +46,7 @@
     signal-desktop #Signal electron desktop client
     # simplex-chat-desktop #SimpleX Chat Desktop Client
     # spotify #Spotify music client - Requires non-free packages enabled
-    super-productivity # To Do List / Time Tracker with Jira Integration
+    # super-productivity # To Do List / Time Tracker with Jira Integration
  #   teams #Microsoft Teams application - not yet available for Linux
     # telegram-desktop #Telegram desktop client
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
