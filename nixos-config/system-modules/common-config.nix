@@ -126,6 +126,7 @@
     fish # Smart and user-friendly command line shell
     gnome-calculator # Gnome GUI calculator
     gnome-calendar # Gnome GUI calendar
+    kdePackages.partitionmanager # Manage the disk devices, partitions and file systems on your computer
     kitty-themes # Themes for the kitty terminal emulator
     krita # A free and open source painting application
     lapce # Lightning-fast and Powerful Code Editor written in Rust

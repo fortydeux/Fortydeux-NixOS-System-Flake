@@ -5,7 +5,7 @@
     ../../system-modules/common-config.nix
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
-    ../../system-modules/window-managersm.nix
+    ../../system-modules/window-managers.nix
     ../../system-modules/fun-and-games.nix
     # Device-specific
     ./hardware-configuration.nix
