@@ -14,10 +14,10 @@
   services.mullvad-vpn.enable = true;
 
   #Services - clamav updater: freshclam
-  # services.clamav.updater.enable = true;
+  services.clamav.updater.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # clamav
+    clamav
     wireguard-tools
   	mullvad-vpn
   ];

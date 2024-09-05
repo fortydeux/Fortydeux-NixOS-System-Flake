@@ -3,10 +3,10 @@
 { # Hyprland-wm.nix
   
   # Enable Hyprland wm/compositor
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config
   programs.wayfire = {
@@ -43,8 +43,8 @@
   xdg.portal = {
       enable = true;
       # xdg-desktop-portal backend for Hyprland
-      # extraPortals =
-      #   [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+      extraPortals =
+        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
     };
   
   # Hint electron apps to use wayland
@@ -88,7 +88,7 @@
     slurp #Select a region in a Wayland compositor
     swaybg #Wallpaper tool for Wayland compositors
     swayidle #Idle management daemon for Wayland
-    swaylock #Screen locker for Wayland
+    swaylock-effects #Screen locker for Wayland
     xfce.thunar #Xfce file manager
     xfce.thunar-archive-plugin #Thunar plugin providing file context menus for archives
     xfce.thunar-volman #Thunar extension for automatic management of removable drives and media
