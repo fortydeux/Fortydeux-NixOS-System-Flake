@@ -13,7 +13,7 @@
     ./networking.nix
     ./security.nix
     ./pcloud.nix
-    ./virtualization.nix
+    ./virtualisation.nix
    ];
 
   ### Shell
