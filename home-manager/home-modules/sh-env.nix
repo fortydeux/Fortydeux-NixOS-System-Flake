@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  # Bash Shell
   programs.bash = {
     enable = true;
     enableCompletion = true;
   };
+  # Zsh shell
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -16,13 +18,16 @@
       eval "$(gh copilot alias -- zsh)"
     '';
   };
+  # Fish Shell
   programs.fish = {
     enable = true;
   };
+  # Atuin shell history
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
   };
+  # Session variables and shell aliases
   home = {
     sessionVariables = {
       # EDITOR = "emacs";
@@ -39,13 +44,22 @@
       st = "git status -s";
     };
   };
+  # Nix-direnv
+  programs.direnv = {
+      enable = true;
+      # enableBashIntegration = true;
+      # enableFishIntegration = true;
+      # enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+  #Shell-related packages
   home.packages = (with pkgs; [
     starship
     lsd
     eza
     bat
-    direnv
-    nix-direnv
+    # direnv
+    # nix-direnv
     fd
     gnused
     gnugrep
