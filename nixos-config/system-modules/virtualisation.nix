@@ -27,6 +27,7 @@
   };
   # Packages
   environment.systemPackages = with pkgs; [
+    boxbuddy # Unofficial GUI for managing your Distroboxes, written with GTK4 + Libadwaita
     dive # look into docker image layers
     podman-tui # status of containers in the terminal
     docker-compose # start group of containers for dev
