@@ -6,7 +6,7 @@
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
-    ../../system-modules/fun-and-games.nix
+    # ../../system-modules/fun-and-games.nix
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
