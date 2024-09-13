@@ -11,10 +11,26 @@
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
+    };  
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
+    hyprgrass = {
+       url = "github:horriblename/hyprgrass";
+       inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };  
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
+      inputs.hyprland.follows = "hyprland";
     };
+
+  };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, nixos-cosmic, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, nixos-cosmic, hyprland, hyprgrass, Hyprspace, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -26,9 +42,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
+          #   (import ./nixos-config/system-modules/cosmic-desktop.nix {
+          #     inherit inputs;
+          #   })
     	  	  #MS-Surface-specific modules:
      	  	  nixos-hardware.nixosModules.microsoft-surface-pro-intel
             home-manager.nixosModules.home-manager
@@ -42,9 +58,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
+          #   (import ./nixos-config/system-modules/cosmic-desktop.nix {
+          #     inherit inputs;
+          #   })
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-pc-laptop
             nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -59,9 +75,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
+          #   (import ./nixos-config/system-modules/cosmic-desktop.nix {
+          #     inherit inputs;
+          #   })
             home-manager.nixosModules.home-manager
             {
               xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
@@ -73,9 +89,9 @@
           inherit system;
           modules = [ 
             ./nixos-config/hosts/blacktetra/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
+            # (import ./nixos-config/system-modules/cosmic-desktop.nix {
+            #   inherit inputs;
+            # })
             home-manager.nixosModules.home-manager
             {
               xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference

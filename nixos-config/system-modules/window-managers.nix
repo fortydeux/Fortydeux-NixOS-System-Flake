@@ -1,12 +1,12 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, inputs, ... }: 
 
 { # Hyprland-wm.nix
   
-  # Enable Hyprland wm/compositor
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # # Enable Hyprland wm/compositor
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
 
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config
   programs.wayfire = {
