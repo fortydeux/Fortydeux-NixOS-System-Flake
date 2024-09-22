@@ -42,9 +42,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
-          #   (import ./nixos-config/system-modules/cosmic-desktop.nix {
-          #     inherit inputs;
-          #   })
+            (import ./nixos-config/system-modules/cosmic-desktop.nix {
+              inherit inputs;
+            })
     	  	  #MS-Surface-specific modules:
      	  	  nixos-hardware.nixosModules.microsoft-surface-pro-intel
             home-manager.nixosModules.home-manager
@@ -58,9 +58,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
-          #   (import ./nixos-config/system-modules/cosmic-desktop.nix {
-          #     inherit inputs;
-          #   })
+            (import ./nixos-config/system-modules/cosmic-desktop.nix {
+              inherit inputs;
+            })
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-pc-laptop
             nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -75,9 +75,9 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
-          #   (import ./nixos-config/system-modules/cosmic-desktop.nix {
-          #     inherit inputs;
-          #   })
+            (import ./nixos-config/system-modules/cosmic-desktop.nix {
+              inherit inputs;
+            })
             home-manager.nixosModules.home-manager
             {
               xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
@@ -89,9 +89,9 @@
           inherit system;
           modules = [ 
             ./nixos-config/hosts/blacktetra/configuration.nix 
-            # (import ./nixos-config/system-modules/cosmic-desktop.nix {
-            #   inherit inputs;
-            # })
+            (import ./nixos-config/system-modules/cosmic-desktop.nix {
+              inherit inputs;
+            })
             home-manager.nixosModules.home-manager
             {
               xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
