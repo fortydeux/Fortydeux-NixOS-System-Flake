@@ -1,28 +1,29 @@
 {config, pkgs, inputs, ... }:
 
-let
-  system = pkgs.hostPlatform.system;
-in
+# let
+#   system = pkgs.hostPlatform.system;
+# in
 {
   imports = [
   ];
 
 	wayland.windowManager.hyprland = {
         enable = true;
-        package = inputs.hyprland.packages.${system}.hyprland;
+        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
         systemd.variables = ["--all"];
         plugins = [
           # Hyprexpo plugin
-          inputs.hyprland-plugins.packages.${system}.hyprexpo   
+          inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
+          # pkgs.hyprlandPlugins.hyprexpo
           # "${pkgs.hyprexpo}/lib/libhyprexpo.so"       
           # Hyprgrass plugin
-          inputs.hyprgrass.packages.${system}.hyprgrass
+          inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
           # "${hyprgrass}/lib/hyprgrass.so"       
           # Hyprscroller plugin
           pkgs.hyprlandPlugins.hyprscroller       
           # "${hyprscroller}/lib/hyprscroller.so"       
           # Hyprscpace plugin
-          inputs.Hyprspace.packages.${system}.Hyprspace
+          inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
           # "${hyprspace}/lib/hyprspace.so"       
         ];
         settings = {
@@ -39,7 +40,12 @@ in
                 };         
         };
 		extraConfig = ''
-          
-		'';
+      bind = SUPER, grave, hyprexpo:expo, toggle
+    '';
 	};
+  xdg.portal = {
+    enable = true;
+    extraPortals = [config.wayland.windowManager.hyprland.package];
+    configPackages = [config.wayland.windowManager.hyprland.package];
+  };
 }

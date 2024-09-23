@@ -3,10 +3,10 @@
 { # Hyprland-wm.nix
   
   # # Enable Hyprland wm/compositor
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config
   programs.wayfire = {
@@ -44,8 +44,8 @@
   xdg.portal = {
       enable = true;
       # xdg-desktop-portal backend for Hyprland
-      extraPortals =
-        [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+      # extraPortals =
+      #   [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
     };
   
   # Hint electron apps to use wayland
