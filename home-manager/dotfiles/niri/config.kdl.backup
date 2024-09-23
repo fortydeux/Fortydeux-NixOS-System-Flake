@@ -1,0 +1,666 @@
+debug {
+    // preview-render "screencast"
+    // preview-render "screen-capture"
+    // dbus-interfaces-in-non-session-instances
+    // wait-for-frame-completion-before-queueing
+    // enable-overlay-planes
+    disable-cursor-plane
+    // disable-direct-scanout
+    // render-drm-device "/dev/dri/renderD129"
+    // render-drm-device "/dev/dri/card1"
+    // enable-color-transformations-capability
+    // emulate-zero-presentation-time
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            variant "colemak_dh_ortho,"
+            options "compose:ralt,ctrl:nocaps"
+        }
+
+        repeat-delay 500
+        repeat-rate 30
+
+        // track-layout "window"
+    }
+
+    touchpad {
+        tap
+        // dwt
+        // dwtp
+        natural-scroll
+        accel-speed 0.4
+        // click-method "clickfinger"
+        // accel-profile "flat"
+        // tap-button-map "left-middle-right"
+    }
+
+    mouse {
+        // natural-scroll
+        // accel-speed -1.0
+        // accel-profile "flat"
+    }
+
+    tablet {
+        // map-to-output "eDP-1"
+        // map-to-output "HDMI-A-1"
+    }
+
+    // disable-power-key-handling
+    // warp-mouse-to-focus
+    // focus-follows-mouse
+    // workspace-auto-back-and-forth
+}
+
+output "winit" {
+    // scale 2.0
+    // scale 3.0
+    // transform "flipped-90"
+    position x=100 y=200
+}
+
+output "eDP-1" {
+    // off
+
+    scale 2.0
+    // transform "90"
+    position x=0 y=0
+    // mode "1920x1200"
+    // mode "2560x1600@60.002"
+    // mode "1280x1024"
+    // mode "1280x720"
+    // mode "640x480"
+
+    // variable-refresh-rate
+}
+
+output "HDMI-A-1" {
+    // off
+    // scale 2.0
+    // transform "90"
+
+    // position x=-1920 y=520
+    // position x=2560 y=0
+    position x=-1920 y=0
+
+    // position x=1280 y=-640
+    // mode "2560x1440@143.912"
+    // mode "2560x1440@119.998"
+    // mode "2560x1440@48.002"
+    // mode "1280x720@60.000"
+    // mode "2560x1440"
+    // mode "3840x2160"
+    // mode "1920x1080@23.976"
+
+    // variable-refresh-rate
+}
+
+output "DP-1" {
+    // off
+    // position x=-1920 y=0
+    // mode "1920x1080@60.000"
+    // mode "800x600@72.188"
+    // mode "100x100"
+    // mode "1280x720"
+
+    // variable-refresh-rate
+}
+output "DP-3" {
+    position x=-1920 y=0
+    // mode "1920x1080@60.000"
+
+    // transform "90"
+}
+
+output "DP-2" {
+    // off
+
+    position x=1280 y=-640
+    // mode "3440x1440@99.982"
+    // mode "2560x1440@119.998"
+
+    variable-refresh-rate
+}
+
+layout {
+    focus-ring {
+        off
+        width 2
+        // catppuccin-mocha Sapphire
+        active-color "#74c7ec"
+        // catppuccin-mocha Surface2
+        inactive-color "#585b70"
+
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+    }
+
+    border {
+        // off
+        width 2
+        // width 128
+
+        // active-color "#f38ba8"
+        // inactive-color "#585b70"
+
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+
+        // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f00" to="#0f0" angle=90
+
+        // active-gradient from="yellow" to="red" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="yellow" to="red" angle=45
+    }
+
+    preset-column-widths {
+        proportion 0.3333333333333333
+        proportion 0.5
+        proportion 0.66667
+        // proportion 0.25
+        // fixed 1000
+    }
+
+    default-column-width { proportion 0.3333333333333333; }
+    // default-column-width { }
+
+    gaps 4
+
+    struts {
+        // left 64
+        // right 64
+        // top 44
+        // bottom 64
+        // top 64
+    }
+
+    // center-focused-column "on-overflow"
+    // center-focused-column "always"
+}
+
+cursor {
+    // xcursor-theme "breeze_cursors"
+    // xcursor-theme "arstieonart"
+    // xcursor-size 48
+}
+
+prefer-no-csd
+
+// spawn-at-startup "alacritty" "-e" "fish"
+
+environment {
+    // GSK_RENDERER "cairo"
+    // WAYLAND_DISPLAY null
+}
+
+// screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+hotkey-overlay {
+    // skip-at-startup
+}
+
+animations {
+    // off
+    // slowdown 10.0
+    // slowdown 4.0
+    // slowdown 2.0
+    // slowdown 1.5
+
+    workspace-switch {
+        // off
+        // duration-ms 2500
+        // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-open {
+        // off
+        // duration-ms 2500
+        // curve "ease-out-expo"
+        // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+    }
+
+    window-close {
+        // off
+        // duration-ms 2500
+        // curve "ease-out-cubic"
+        // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+    }
+
+    horizontal-view-movement {
+        // off
+        // duration-ms 500
+        // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=20 epsilon=0.00001
+        // spring damping-ratio=10.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        // off
+        // duration-ms 750
+        // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=20 epsilon=0.00001
+        // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        // off
+        // duration-ms 500
+        // duration-ms 2500
+        // curve "ease-out-cubic"
+        // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
+
+        custom-shader r"
+            vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
+                vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
+                vec3 coords_prev_geo = niri_curr_geo_to_prev_geo * coords_curr_geo;
+
+                vec3 coords_crop = niri_geo_to_tex_next * coords_next_geo;
+                vec3 coords_stretch = niri_geo_to_tex_next * coords_curr_geo;
+                vec3 coords_stretch_prev = niri_geo_to_tex_prev * coords_curr_geo;
+
+                // We can crop if the current window size is smaller than the next window
+                // size. One way to tell is by comparing to 1.0 the X and Y scaling
+                // coefficients in the current-to-next transformation matrix.
+                bool can_crop_by_x = niri_curr_geo_to_next_geo[0][0] <= 1.0;
+                bool can_crop_by_y = niri_curr_geo_to_next_geo[1][1] <= 1.0;
+                bool crop = can_crop_by_x && can_crop_by_y;
+
+                vec4 color;
+
+                if (crop) {
+                    // However, when we crop, we also want to crop out anything outside the
+                    // current geometry. This is because the area of the shader is unspecified
+                    // and usually bigger than the current geometry, so if we don't fill pixels
+                    // outside with transparency, the texture will leak out.
+                    //
+                    // When stretching, this is not an issue because the area outside will
+                    // correspond to client-side decoration shadows, which are already supposed
+                    // to be outside.
+                    if (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x ||
+                            coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y) {
+                        color = vec4(0.0);
+                    } else {
+                        color = texture2D(niri_tex_next, coords_crop.st);
+                    }
+                } else {
+                    // If we can't crop, then crossfade.
+                    color = texture2D(niri_tex_next, coords_stretch.st);
+                    vec4 color_prev = texture2D(niri_tex_prev, coords_stretch_prev.st);
+                    color = mix(color_prev, color, niri_clamped_progress);
+                }
+
+                return color;
+            }
+        "
+    }
+
+    config-notification-open-close {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+        // spring damping-ratio=0.1 stiffness=1000 epsilon=0.001
+    }
+}
+
+window-rule {
+    // match app-id="Alacritty"
+    // match app-id="Adwaita"
+    // opacity 0.9
+    // opacity 0.5
+    // opacity 0.98
+
+    // open-on-output "eDP-1"
+    // default-column-width { proportion 0.5; }
+    // default-column-width { fixed 400; }
+    // default-column-width {}
+    // open-maximized true
+    // open-fullscreen true
+    // block-out-from "screencast"
+
+    // min-width 400
+    // max-width 400
+    // min-height 400
+    // max-height 400
+
+    focus-ring {
+        // on
+        // active-gradient from="red" to="green"
+        // active-color "lightgreen"
+        // width 1
+    }
+
+    border {
+        // off
+        // on
+        // width 12
+        // width 0
+        // active-color "#ff808080"
+        // active-color "red"
+    }
+
+    // draw-border-with-background true
+    // draw-border-with-background false
+
+    // geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    // geometry-corner-radius 1
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+/-window-rule {
+    match app-id="Adwaita"
+    // opacity 0.5
+    block-out-from "screencast"
+    geometry-corner-radius 12
+    clip-to-geometry false
+    border {
+        // off
+        width 12
+    }
+}
+
+/-window-rule {
+    match app-id="terminal"
+    clip-to-geometry false
+    geometry-corner-radius 8 8 0 0
+    border {
+        // width 4
+    }
+}
+
+/-window-rule {
+    match app-id="code"
+    // opacity 0.98
+    border {
+        // off
+    }
+}
+
+/-window-rule {
+    match app-id="weston."
+    // block-out-from "screencast"
+    geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    clip-to-geometry true
+}
+
+// window-rule {
+//     match app-id="Alacritty"
+//     geometry-corner-radius 12 12 0 0
+//     border {
+//         width 2
+//     }
+// }
+
+window-rule {
+    match title="simple-egl"
+    // min-width 128
+    // max-width 128
+    // min-height 128
+    // max-height 128
+    // match is-focused=true
+    // match is-active=false
+    // opacity 0.9
+    // block-out-from "screencast"
+    // block-out-from "screen-capture"
+    // min-width 1000
+    draw-border-with-background false
+    // match app-id="mpv"
+    // open-on-output "HDMI-A-1"
+    // open-maximized true
+    // default-column-width { proportion 0.5; }
+    // open-fullscreen false
+}
+
+window-rule {
+    match is-active=false
+    // opacity 0.95
+}
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+    open-fullscreen false
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="^mpv$"
+    default-column-width {}
+}
+
+// Qt used by OBS doesn't signal min size yet, so do it manually.
+window-rule {
+    match app-id=r#"^com\.obsproject\.Studio$"#
+    min-width 876
+}
+
+window-rule {
+    match app-id="^blender$"
+    match app-id="^gimp"
+    default-column-width { fixed 1200; }
+}
+
+window-rule {
+    match app-id="^obsidian$"
+    default-column-width { fixed 1000; }
+}
+
+window-rule {
+    match app-id=r#"^org\.mozilla\.firefox$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+    exclude app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+
+    open-on-output "DP-2"
+}
+
+window-rule {
+    match app-id=r#"^org\.mozilla\.firefox$"#
+
+    default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+
+    // Doesn't quite work: Firefox changes the title one frame early.
+    match app-id=r#"^org\.mozilla\.firefox$"# title="- Gmail "
+    match app-id=r#"^org\.mozilla\.firefox$"# title="^Google Calendar "
+    match app-id=r#"^org\.mozilla\.firefox$"# title="Todoist "
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME( \*)? \| "#
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^Element "#
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"Discord \| "#
+
+    block-out-from "screencast"
+    // block-out-from "screen-capture"
+
+    border {
+        // active-color "red"
+    }
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
+    Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
+
+    // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
+    Mod+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
+    Mod+Shift+T { spawn "alacritty"; }
+    // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
+    // Mod+Return { spawn "~/arst"; }
+    // Mod+T { spawn "flatpak" "run" "org.gnome.Ptyxis.Devel" "-s"; }
+    // Mod+T { spawn "~/.local/bin/spawn-ptyxis.sh"; }
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+    // Mod+T { spawn "kgx" "-e" "fish -C t"; }
+    Mod+D { spawn "fuzzel"; }
+    Mod+H { spawn "nautilus"; }
+    Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
+
+    Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
+    Super+Alt+H     { spawn "refresh.sh" "144"; }
+    Super+Alt+Comma { spawn "refresh.sh" "120"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    Mod+Q { close-window; }
+    Mod+BackSpace { close-window; }
+
+    Mod+M     { focus-column-left; }
+    Mod+N     { focus-window-down; }
+    Mod+E     { focus-window-up; }
+    Mod+I     { focus-column-right; }
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+
+    Mod+Ctrl+M     { move-column-left; }
+    Mod+Ctrl+N     { move-window-down; }
+    Mod+Ctrl+E     { move-window-up; }
+    Mod+Ctrl+I     { move-column-right; }
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Shift+M     { focus-monitor-left; }
+    Mod+Shift+N     { focus-monitor-down; }
+    Mod+Shift+E     { focus-monitor-up; }
+    Mod+Shift+I     { focus-monitor-right; }
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+M     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+N     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+E     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+I     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+
+    Mod+Shift+Alt+M     { move-workspace-to-monitor-left; }
+    Mod+Shift+Alt+N     { move-workspace-to-monitor-down; }
+    Mod+Shift+Alt+E     { move-workspace-to-monitor-up; }
+    Mod+Shift+Alt+I     { move-workspace-to-monitor-right; }
+    Mod+Shift+Alt+Left  { move-workspace-to-monitor-left; }
+    Mod+Shift+Alt+Down  { move-workspace-to-monitor-down; }
+    Mod+Shift+Alt+Up    { move-workspace-to-monitor-up; }
+    Mod+Shift+Alt+Right { move-workspace-to-monitor-right; }
+
+    Mod+L              { focus-workspace-down; }
+    Mod+U              { focus-workspace-up; }
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+Ctrl+L         { move-column-to-workspace-down; }
+    Mod+Ctrl+U         { move-column-to-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+
+    Mod+WheelScrollDown            cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp              cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown       cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp         cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight           { focus-column-right; }
+    Mod+WheelScrollLeft            { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight      { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft       { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+TouchpadScrollUp   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    Mod+TouchpadScrollDown allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Mod+TouchpadScrollLeft  { focus-column-left; }
+    // Mod+TouchpadScrollRight { focus-column-right; }
+
+    Mod+Shift+L         { move-workspace-down; }
+    Mod+Shift+U         { move-workspace-up; }
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // Mod+Tab { focus-workspace-previous; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-column; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Ctrl+Minus { set-column-width "-1"; }
+    Mod+Ctrl+Equal { set-column-width "+1"; }
+
+    Mod+Shift+Minus      { set-window-height "-10%"; }
+    Mod+Shift+Equal      { set-window-height "+10%"; }
+    Mod+Shift+Ctrl+Minus { set-window-height "-1"; }
+    Mod+Shift+Ctrl+Equal { set-window-height "+1"; }
+
+    Mod+0            { set-column-width "960"; }
+    Mod+Shift+0      { set-window-height "540"; }
+    Mod+Alt+0        { set-column-width "1280"; }
+    Mod+Shift+Alt+0  { set-window-height "720"; }
+    Mod+Ctrl+0       { set-column-width "1920"; }
+    Mod+Shift+Ctrl+0 { set-window-height "1080"; }
+
+    Mod+Space       { switch-layout "next"; }
+    Mod+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+P { screenshot; }
+
+    Mod+Shift+Y { quit; }
+    Mod+Shift+P { power-off-monitors; }
+
+    Mod+Shift+Ctrl+T { toggle-debug-tint; }
+    Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+    Mod+Shift+Ctrl+D { debug-toggle-damage; }
+}

@@ -1,0 +1,106 @@
+* {
+    border: none;
+    font-family: Fairiesevka Nerd Font, Font Awesome;
+    border-radius: 8px;
+    font-size: 12pt;
+    font-weight: bold;
+    min-height: 0;
+    color: #b3b3b3;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/*-----module groups----*/
+/* Using a Tempus Dusk theme for colours */
+
+.modules-left {
+    /*background-color: rgba(0, 0, 0, 0.0);
+    border: 3px solid rgba(0, 0, 0, 0.0);
+    margin: 0px 0px 0px 15px; */
+    
+}
+
+.modules-center {
+    background-color: rgba(49, 46, 48, 0.7);
+    border: 3px solid rgba(35, 35, 35, 0.85);
+    margin: 0px 15px 10px 0px;
+}
+
+.modules-right {
+    /*background-color: rgba(0, 0, 0, 0.0);
+     border: 3px solid rgba(162, 152, 153, 0.5); 
+     border: 3px solid rgba(162, 168, 186, 0.5); 
+     border: 3px solid rgba(140, 154, 190, 0.5); 
+     border: 3px solid rgba(44, 49, 80, 0.5); 
+     margin: 0px 15px 10px 0px; */
+}
+
+#clock.1 {
+    margin: 15px 10px 5px 5px;
+    border-radius: 0px;
+    color: rgba(210, 129, 61, 1);/*#d2813d;*/
+}
+
+#clock.2 {
+	margin: 0px 10px 2.5px 10px;
+    border-radius: 0px;
+    color: rgba(210, 129, 61, 1);
+}
+
+#clock.3 {
+	margin: 0px 10px 5px 10px;
+    border-radius: 0px;
+    color: rgba(210, 129, 61, 1);
+}
+
+#pulseaudio {
+    margin: 0px 0px 5px 0px;
+    border-radius: 0px;
+    color: rgba(210, 129, 61, 1);
+}
+
+#network {
+    margin: 0px 10px 5px 10px;
+    border-radius: 0px;
+    color: rgba(210, 129, 61, 1);
+}
+
+#custom-updates {
+    margin: 0px 10px 5px 10px;
+    border-radius: 0px;
+    color: rgba(210, 129, 61, 1);
+}
+
+#custom-exit {
+    margin: 0px 10px 5px 10px;
+    border-radius: 0px;
+    font-size: 12pt;
+    font-weight: bold;
+    color: rgba(210, 129, 61, 1);
+}
+
+#custom-lock {
+    margin: 0px 10px 5px 10px;
+    border-radius: 0px;
+    font-size: 12pt;
+    font-weight: bold;
+    color: rgba(210, 129, 61, 1);
+}
+
+#custom-reboot {
+    margin: 0px 10px 15px 10px;
+    border-radius: 0px;
+    font-size: 12pt;
+    font-weight: bold;
+    color: rgba(210, 129, 61, 1);
+}
+
+#custom-power {
+    margin: 0px 10px 15px 10px;
+    border-radius: 0px;
+    font-size: 12pt;
+    font-weight: bold;
+    color: rgba(210, 129, 61, 1);
+}

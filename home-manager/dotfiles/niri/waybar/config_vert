@@ -1,0 +1,132 @@
+{
+  "layer": "top",
+  "reload_style_on_change": true,
+  "position": "right",
+  "output": ["DP-1"],
+  "margin-top": 5,
+  "height": 35,
+  "spacing": 8,
+  "modules-center": ["group/time", "group/volume", "group/net", "group/group-power", "custom/updates" ],
+  "modules-left": [],
+  "modules-right": [],
+  
+  "group/net": {
+      "orientation": "vertical",
+      "modules":
+      [
+          "network"
+      ]
+    			
+  },
+
+  "group/volume": {
+  	"orientation": "vertical",
+    "drawer": {
+    	"transition-duration": 500,
+        "children-class": "not-pulseaudio#1",
+        "transition-left-to-right": true,
+    },
+    "modules": [
+    	"pulseaudio#1",
+        "pulseaudio#2"
+    ]
+    			
+  },
+
+  "group/time": {
+  	"orientation": "vertical",
+    "modules": [
+		"clock#1",
+        "clock#2",
+        "clock#3"
+    ]
+    			
+  },
+
+  "network": {
+  	"tooltip": true,
+    "format-wifi": " ",
+    "format-ethernet": "󰈀",
+    "tooltip-format": "Network: \nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+    "format-linked": "󰈀 {ifname} (No IP)",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format-disconnected": "Disconnected",
+    "format-alt": "<span foreground='#b3b3b3'>    {bandwidthDownBytes}</span> <span foreground='#b3b3b3'>   {bandwidthUpBytes}</span>",
+    "interval": 2,
+  },
+
+  "pulseaudio#1": {
+  	"tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon}",
+    "format-icons": {
+    	"default": ["","","",""]
+    },
+    "on-click":"pavucontrol"
+  },
+    
+  "pulseaudio#2": {
+  	"tooltip": false,
+    "scroll-step": 5,
+    "format": "{volume}",
+    "on-click":"pavucontrol"
+  },
+        
+  "clock#1": {
+  	"interval": 1,
+    "format": "",
+    "tooltip": false
+  },
+
+  "clock#2": {
+  	  "interval": 1,
+  	  "format": "{:%H}",
+  	  "tooltip": false
+  },
+
+  "clock#3": {
+  	"interval": 1,
+    "format": "{:%M}",
+    "tooltip": false
+  },	
+
+  "group/group-power": {
+     "orientation": "inherit",
+     "drawer": {
+ 	    "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": true,
+     },
+     "modules": [
+    	 "custom/power",
+         "custom/lock",
+         "custom/exit",
+         "custom/reboot",
+     ]
+  },
+   
+  "custom/exit": {
+  	"format": "󰗼",
+  	"tooltip": false,
+    "on-click": "niri msg action quit -s"
+  },
+   
+  "custom/lock": {
+  	"format": "󰍁",
+    "tooltip": false,
+    "on-click": "swaylock -C /home/murray/.config/swaylock/niri.conf"
+  },
+   
+  "custom/reboot": {
+  	"format": "󰜉",
+    "tooltip": false,
+    "on-click": "systemctl -i reboot"
+  },
+   
+  "custom/power": {
+  	"format": "",
+    "tooltip": false,
+    "on-click": "systemctl -i poweroff"
+  },
+
+}

@@ -113,6 +113,11 @@
     	recursive = true;
     }; 
 
+    ".config/niri" = {
+    	source = ../dotfiles/niri;
+    	recursive = true;
+    };
+
     ".config/nvim" = {
     	source = ../dotfiles/nvim;
     	recursive = true;
