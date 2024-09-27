@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 { # Configuration.nix - Archerfish
   imports = [
@@ -8,6 +8,8 @@
     ../../system-modules/window-managers.nix
     ../../system-modules/cosmic-desktop.nix
     # ../../system-modules/fun-and-games.nix
+    # Home-manager
+    inputs.home-manager.nixosModules.home-manager
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling

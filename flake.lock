@@ -249,6 +249,27 @@
         "type": "github"
       }
     },
+    "hyprland-virtual-desktops": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1723369099,
+        "narHash": "sha256-bJ6fDQiMH4ro0TuZp35FnV5kNdOXNNTi8d44GcEZYVs=",
+        "owner": "levnikmyskin",
+        "repo": "hyprland-virtual-desktops",
+        "rev": "8eea25c8bc162f9259f2b249cd864c3c8a540fd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "levnikmyskin",
+        "repo": "hyprland-virtual-desktops",
+        "type": "github"
+      }
+    },
     "hyprlang": {
       "inputs": {
         "hyprutils": [
@@ -401,6 +422,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1714635257,
+        "narHash": "sha256-4cPymbty65RvF1DWQfc+Bc8B233A1BWxJnNULJKQ1EY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "63c3a29ca82437c87573e4c6919b09a24ea61b0f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1727122398,
         "narHash": "sha256-o8VBeCWHBxGd4kVMceIayf5GApqTavJbTa44Xcg5Rrk=",
         "owner": "NixOS",
@@ -422,9 +459,10 @@
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
+        "hyprland-virtual-desktops": "hyprland-virtual-desktops",
         "nixos-cosmic": "nixos-cosmic",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "rust-overlay": {

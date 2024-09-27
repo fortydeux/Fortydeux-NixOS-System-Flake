@@ -8,6 +8,8 @@
     ../../system-modules/window-managers.nix
     ../../system-modules/cosmic-desktop.nix
     # ../../system-modules/fun-and-games.nix
+    # Home-manager
+    inputs.home-manager.nixosModules.home-manager
     # Device-specific
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-cpu-intel
