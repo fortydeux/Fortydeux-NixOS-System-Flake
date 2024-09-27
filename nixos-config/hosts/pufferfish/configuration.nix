@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 { # Configuration.nix - Pufferfish
   imports = [
@@ -6,9 +6,14 @@
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
+    ../../system-modules/cosmic-desktop.nix
     # ../../system-modules/fun-and-games.nix
     # Device-specific
     ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    inputs.home-manager.nixosModules.home-manager
   ];
 
 # Be sure to generate your own hardware-configuration.nix before building 

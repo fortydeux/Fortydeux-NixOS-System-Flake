@@ -30,7 +30,7 @@
 
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, nixos-cosmic, hyprland, hyprgrass, Hyprspace, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -42,61 +42,34 @@
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
-    	  	  #MS-Surface-specific modules:
-     	  	  nixos-hardware.nixosModules.microsoft-surface-pro-intel
-            home-manager.nixosModules.home-manager
-            {
-              xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
-            }
-            ];
+          ];
+          specialArgs = { inherit inputs; };
     	};
         #--Pufferfish host--#
       	pufferfish-nixos = lib.nixosSystem {
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-pc-laptop
-            nixos-hardware.nixosModules.common-pc-laptop-ssd
-            home-manager.nixosModules.home-manager
-            {
-              xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
-            }
-             ];
+          ];
+          specialArgs = { inherit inputs; };
     	};
         #--Blackfin host--#
       	blackfin-nixos = lib.nixosSystem {
     	  	inherit system;
     	  	modules = [ 
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
             home-manager.nixosModules.home-manager
-            {
-              xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
-            }
-             ];
+          ];
+          specialArgs = { inherit inputs; };
     	};
         #--Blacktetra host--#
         blacktetra-nixos = lib.nixosSystem {
           inherit system;
           modules = [ 
             ./nixos-config/hosts/blacktetra/configuration.nix 
-            (import ./nixos-config/system-modules/cosmic-desktop.nix {
-              inherit inputs;
-            })
             home-manager.nixosModules.home-manager
-            {
-              xdg.portal.wlr.enable = lib.mkForce true; # Adjust based on your preference
-            }
           ];
+          specialArgs = { inherit inputs; };
         }; 
 
       };
@@ -104,48 +77,40 @@
       ##--Home-Manager Configuration--##     
       homeConfigurations = {
         "fortydeux@archerfish-nixos" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+          inherit pkgs;
 
-            # Pass inputs as extraSpecialArgs
-            extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs; };
 
-            # Import home.nix
     	    modules = [
-              ./home-manager/hosts/archerfish-home.nix
-            ];
+            ./home-manager/hosts/archerfish-home.nix
+          ];
         }; 
         "fortydeux@pufferfish-nixos" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+          inherit pkgs;
 
-            # Pass inputs as extraSpecialArgs
-            extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs; };
 
-            # Import home.nix
     	    modules = [
-              ./home-manager/hosts/pufferfish-home.nix
-            ];
+            ./home-manager/hosts/pufferfish-home.nix
+          ];
         }; 
         "fortydeux@blackfin-nixos" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+          inherit pkgs;
 
-            # Pass inputs as extraSpecialArgs
-            extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs; };
 
-            # Import home.nix
     	    modules = [
-              ./home-manager/hosts/blackfin-home.nix
-            ];
+            ./home-manager/hosts/blackfin-home.nix
+          ];
         };
         "fortydeux@blacktetra-nixos" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+          inherit pkgs;
 
-            # Pass inputs as extraSpecialArgs
-            extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs; };
 
-            # Import home.nix
-            modules = [
-              ./home-manager/hosts/blacktetra-home.nix
-            ];
+          modules = [
+            ./home-manager/hosts/blacktetra-home.nix
+          ];
         }; 
       }; #End homeConfigurations
    }; #End outputs...in 
