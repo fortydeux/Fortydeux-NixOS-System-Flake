@@ -15,16 +15,13 @@
       # Hyprexpo plugin
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
       # pkgs.hyprlandPlugins.hyprexpo
-      # "${pkgs.hyprexpo}/lib/libhyprexpo.so"       
       # Hyprgrass plugin
       inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
-      # "${hyprgrass}/lib/hyprgrass.so"       
       # Hyprscroller plugin
-      pkgs.hyprlandPlugins.hyprscroller       
-      # "${hyprscroller}/lib/hyprscroller.so"       
+      inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
+      # pkgs.hyprlandPlugins.hyprscroller       
       # Hyprscpace plugin
       inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      # "${hyprspace}/lib/hyprspace.so"       
       # Hyprland Virtual Desktops Plugin
       inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
     ];
