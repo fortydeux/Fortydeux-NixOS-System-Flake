@@ -17,19 +17,31 @@
       # pkgs.hyprlandPlugins.hyprexpo
       # "${pkgs.hyprexpo}/lib/libhyprexpo.so"       
       # Hyprgrass plugin
-      # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
+      inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # "${hyprgrass}/lib/hyprgrass.so"       
       # Hyprscroller plugin
-      # pkgs.hyprlandPlugins.hyprscroller       
+      pkgs.hyprlandPlugins.hyprscroller       
       # "${hyprscroller}/lib/hyprscroller.so"       
       # Hyprscpace plugin
-      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       # "${hyprspace}/lib/hyprspace.so"       
       # Hyprland Virtual Desktops Plugin
-      # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
+      inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
     ];
     settings = { 
       "$mainMod" = "SUPER";
+      "$activeBorderColor1" = "rgba(da0c81cc)";
+      "$activeBorderColor2" = "rgba(940b92cc)"; 
+      "$inactiveBorderColor" = "rgba(00000099)"; 
+      "$swaylock" = "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2";
+      "$swaybg-x" = "pkill mpvpaper & swaybg -m fill -i $HOME/.config/hypr/Wallpapers/Professional/balloon-wp.jpg";
+      "$mpvpaper-z" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/Garden/";
+      "$mpvpaper-c" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/CyberNeon/";
+      "$waybar" = "waybar -c $HOME/.config/hypr/waybar/config -s $HOME/.config/hypr/waybar/style.css";
+      "$fuzzel" = "fuzzel -w 80 -b 181818ef -t ccccccff";
+      "$hypridle" = "hypridle";
+      "$hyprlock" = "hyprlock";
+      "source" = "$HOME/.config/hypr/device-specific.conf";
       exec-once = [
         "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY"
         "hyprctl setcursor phinger-cursors 32"
@@ -68,7 +80,8 @@
           "col.active_border" =  "$activeBorderColor1 $activeBorderColor2 8deg";
           "col.inactive_border" = "$inactiveBorderColor";
           #allow_session_lock_restore = true
-          layout = "dwindle";
+          # layout = "dwindle";
+          layout = "scroller";
       };
 
       decoration = {
@@ -147,7 +160,7 @@
         "$mainMod, RETURN, exec, footclient"
         "$mainMod SHIFT, T, exec, alacritty"
         "$mainMod, Q, killactive,"
-        "$mainMod, M, exit,"
+        "$mainModSHIFT, E, exit,"
         "$mainMod, E, exec, nautilus"
         "$mainMod, V, togglefloating,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
@@ -177,10 +190,10 @@
         "SUPER, Escape, exec, notify-send 'Config Reloaded'"
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        # "$mainMod, left, movefocus, l"
+        # "$mainMod, right, movefocus, r"
+        # "$mainMod, up, movefocus, u"
+        # "$mainMod, down, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -209,12 +222,16 @@
         "$mainMod SHIFT CTRL, left, movetoworkspace, -1"
 
         # Scroll through existing workspaces with mainMod + CTRL + right/left
-        "$mainMod + CTRL, right, workspace, e+1"
-        "$mainMod + CTRL, left, workspace, e-1"
+        # "$mainMod + CTRL, right, workspace, e+1"
+        # "$mainMod + CTRL, left, workspace, e-1"
         ", mouse_right, workspace, e+1"
         ", mouse_left, workspace, e-1"
         "$mainModCTRL, mouse:273, workspace, m+1"
         "$mainModCTRL, mouse:272, workspace, m-1"      
+
+        # Virtual-desktop Keybinds
+        "$mainModCTRL, right, nextdesk"
+        "$mainModCTRL, left, prevdesk"
 
         # Touchscreen Gestures
         # swipe left from right edge
@@ -234,8 +251,11 @@
         ", swipe:3:ld, exec, foot"
 
 
-        # New and experimental - Hyprexpo        
+        # Overview mini-modes
+        # Hyprexpo        
         "SUPER, grave, hyprexpo:expo, toggle # can be: toggle, off/disable or on/enable"
+        # Hyprspace
+        "$mainMod, A, overview:toggle"
       ];
 
       binde = [
@@ -259,6 +279,10 @@
       ];
       
       plugin = {
+        virtual-desktops = {
+          cycleworkspaces = 1;
+          rememberlayout = "size";
+        };
         hyprexpo = {
           columns = 3;
           gap_size = 5;
@@ -267,22 +291,160 @@
           enable_gesture = true; # laptop touchpad, 4 fingers
           gesture_distance = 300; # how far is the "max"
           gesture_positive = true; # positive = swipe down. Negative = swipe up.
+        };   
+        scroller = {
+          column_default_width = "onehalf";
+          focus_wrap = false;
+          # ultra-wide monitor
+          column_widths = "onefourth onethird onehalf onesixth";
+          # portrait mode monitors
+          monitor_modes = "eDP-1=col,HDMI-A-1=col";
         };
       };         
     };
 		extraConfig = ''
-      $activeBorderColor1 = rgba(da0c81cc) 
-      $activeBorderColor2 = rgba(940b92cc) 
-      $inactiveBorderColor = rgba(00000099) 
-      $swaylock = swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2
-      $swaybg-x = pkill mpvpaper & swaybg -m fill -i $HOME/.config/hypr/Wallpapers/Professional/balloon-wp.jpg
-      $mpvpaper-z = pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/Garden/
-      $mpvpaper-c = pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/CyberNeon/
-      $waybar = waybar -c $HOME/.config/hypr/waybar/config -s $HOME/.config/hypr/waybar/style.css
-      $fuzzel = fuzzel -w 80 -b 181818ef -t ccccccff
-      $hypridle = hypridle
-      $hyprlock = hyprlock
-      # source = $HOME/.config/hypr/device-specific.conf
+      # Move focus with mainMod + arrow keys
+      bind = $mainMod, left, scroller:movefocus, l
+      bind = $mainMod, right, scroller:movefocus, r
+      bind = $mainMod, up, scroller:movefocus, u
+      bind = $mainMod, down, scroller:movefocus, d
+      bind = $mainMod, home, scroller:movefocus, begin
+      bind = $mainMod, end, scroller:movefocus, end
+
+      # Movement
+      bind = $mainMod CTRL, left, scroller:movewindow, l
+      bind = $mainMod CTRL, right, scroller:movewindow, r
+      bind = $mainMod CTRL, up, scroller:movewindow, u
+      bind = $mainMod CTRL, down, scroller:movewindow, d
+      bind = $mainMod CTRL, home, scroller:movewindow, begin
+      bind = $mainMod CTRL, end, scroller:movewindow, end
+
+      # Modes
+      bind = $mainMod, bracketleft, scroller:setmode, row
+      bind = $mainMod, bracketright, scroller:setmode, col
+
+      # Sizing keys
+      bind = $mainMod, equal, scroller:cyclesize, next
+      bind = $mainMod, minus, scroller:cyclesize, prev
+
+      # Admit/Expel
+      bind = $mainMod, I, scroller:admitwindow,
+      bind = $mainMod, O, scroller:expelwindow,
+
+      # Center submap
+      # will switch to a submap called center
+      bind = $mainMod, C, submap, center
+      # will start a submap called "center"
+      submap = center
+      # sets repeatable binds for resizing the active window
+      bind = , C, scroller:alignwindow, c
+      bind = , C, submap, reset
+      bind = , right, scroller:alignwindow, r
+      bind = , right, submap, reset
+      bind = , left, scroller:alignwindow, l
+      bind = , left, submap, reset
+      bind = , up, scroller:alignwindow, u
+      bind = , up, submap, reset
+      bind = , down, scroller:alignwindow, d
+      bind = , down, submap, reset
+      # use reset to go back to the global submap
+      bind = , escape, submap, reset
+      # will reset the submap, meaning end the current one and return to the global one
+      submap = reset
+
+      # Resize submap
+      # will switch to a submap called resize
+      bind = $mainMod SHIFT, R, submap, resize
+      # will start a submap called "resize"
+      submap = resize
+      # sets repeatable binds for resizing the active window
+      binde = , right, resizeactive, 100 0
+      binde = , left, resizeactive, -100 0
+      binde = , up, resizeactive, 0 -100
+      binde = , down, resizeactive, 0 100
+      # use reset to go back to the global submap
+      bind = , escape, submap, reset
+      # will reset the submap, meaning end the current one and return to the global one
+      submap = reset
+
+      # Fit size submap
+      # will switch to a submap called fitsize
+      bind = $mainMod, W, submap, fitsize
+      # will start a submap called "fitsize"
+      submap = fitsize
+      # sets binds for fitting columns/windows in the screen
+      bind = , W, scroller:fitsize, visible
+      bind = , W, submap, reset
+      bind = , right, scroller:fitsize, toend
+      bind = , right, submap, reset
+      bind = , left, scroller:fitsize, tobeg
+      bind = , left, submap, reset
+      bind = , up, scroller:fitsize, active
+      bind = , up, submap, reset
+      bind = , down, scroller:fitsize, all
+      bind = , down, submap, reset
+      # use reset to go back to the global submap
+      bind = , escape, submap, reset
+      # will reset the submap, meaning end the current one and return to the global one
+      submap = reset
+
+      # overview keys
+      # bind key to toggle overview (normal)
+      bind = $mainMod, tab, scroller:toggleoverview
+      # overview submap
+      # will switch to a submap called overview
+      bind = $mainMod, tab, submap, overview
+      # will start a submap called "overview"
+      submap = overview
+      bind = , right, scroller:movefocus, right
+      bind = , left, scroller:movefocus, left
+      bind = , up, scroller:movefocus, up
+      bind = , down, scroller:movefocus, down
+      # use reset to go back to the global submap
+      bind = , escape, scroller:toggleoverview,
+      bind = , escape, submap, reset
+      bind = , return, scroller:toggleoverview,
+      bind = , return, submap, reset
+      bind = $mainMod, tab, scroller:toggleoverview,
+      bind = $mainMod, tab, submap, reset
+      # will reset the submap, meaning end the current one and return to the global one
+      submap = reset
+
+      # Marks
+      bind = $mainMod, M, submap, marksadd
+      submap = marksadd
+      bind = , a, scroller:marksadd, a
+      bind = , a, submap, reset
+      bind = , b, scroller:marksadd, b
+      bind = , b, submap, reset
+      bind = , c, scroller:marksadd, c
+      bind = , c, submap, reset
+      bind = , escape, submap, reset
+      submap = reset
+
+      bind = $mainMod SHIFT, M, submap, marksdelete
+      submap = marksdelete
+      bind = , a, scroller:marksdelete, a
+      bind = , a, submap, reset
+      bind = , b, scroller:marksdelete, b
+      bind = , b, submap, reset
+      bind = , c, scroller:marksdelete, c
+      bind = , c, submap, reset
+      bind = , escape, submap, reset
+      submap = reset
+
+      bind = $mainMod, apostrophe, submap, marksvisit
+      submap = marksvisit
+      bind = , a, scroller:marksvisit, a
+      bind = , a, submap, reset
+      bind = , b, scroller:marksvisit, b
+      bind = , b, submap, reset
+      bind = , c, scroller:marksvisit, c
+      bind = , c, submap, reset
+      bind = , escape, submap, reset
+      submap = reset
+
+      bind = $mainMod CTRL, M, scroller:marksreset
     '';
 	};
   # xdg.portal = {

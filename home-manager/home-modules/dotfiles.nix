@@ -85,10 +85,10 @@
     	source = ../dotfiles/helix;
         recursive = true;
     };
-    # ".config/hypr" = {
-    # 	source = ../dotfiles/hypr;
-    #     recursive = true;
-    # };
+    ".config/hypr" = {
+    	source = ../dotfiles/hypr;
+        recursive = true;
+    };
     ".config/i3bar-river" = {
     	source = ../dotfiles/i3bar-river;
     	recursive = true;
