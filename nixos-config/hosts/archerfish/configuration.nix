@@ -32,7 +32,7 @@
     # Bootloader
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.systemd-boot.configurationLimit = 3;
+    boot.loader.systemd-boot.configurationLimit = 8;
   
     # Kernel - Turn off when MS-Surface Kernel is enabled
    # boot.kernelPackages = pkgs.linuxPackages_latest;

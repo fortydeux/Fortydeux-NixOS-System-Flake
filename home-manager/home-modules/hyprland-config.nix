@@ -290,12 +290,12 @@
           gesture_positive = true; # positive = swipe down. Negative = swipe up.
         };   
         scroller = {
-          column_default_width = "onehalf";
+          column_default_width = "floating";
           focus_wrap = false;
           # ultra-wide monitor
-          column_widths = "onefourth onethird onehalf onesixth";
+          column_widths = "onesixth onefourth onethird onehalf twothirds one";
           # portrait mode monitors
-          monitor_modes = "eDP-1=col,HDMI-A-1=col";
+          monitor_modes = "eDP-1=col,DP-1=col,HDMI-A-1=col";
         };
       };         
     };
@@ -366,7 +366,7 @@
 
       # Fit size submap
       # will switch to a submap called fitsize
-      bind = $mainMod, W, submap, fitsize
+      bind = $mainMod, R, submap, fitsize
       # will start a submap called "fitsize"
       submap = fitsize
       # sets binds for fitting columns/windows in the screen

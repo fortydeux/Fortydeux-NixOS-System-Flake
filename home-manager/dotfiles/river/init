@@ -35,7 +35,7 @@ riverctl map normal Super S spawn kitty
 riverctl map normal Super Q close
 
 # Super+Shift+E to exit river
-riverctl map normal Super M exit
+riverctl map normal Super+Shift E exit
 
 # Launcher
 riverctl map normal Control Space  spawn "fuzzel -w 80 -b 181818ef -t ccccccff"

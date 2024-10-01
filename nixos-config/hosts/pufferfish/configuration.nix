@@ -15,7 +15,6 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-    inputs.home-manager.nixosModules.home-manager
   ];
 
 # Be sure to generate your own hardware-configuration.nix before building 
@@ -27,6 +26,7 @@
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 8;
 
   # Kernel - Turn off when MS-Surface Kernel is enabled
   boot.kernelPackages = pkgs.linuxPackages_latest;
