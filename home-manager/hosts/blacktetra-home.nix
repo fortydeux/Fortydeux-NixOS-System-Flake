@@ -10,6 +10,7 @@
     # ../home-modules/emacs-support.nix 
     # ../home-modules/ags.nix
     ../home-modules/hyprland-config.nix
+    ../home-modules/hyprland-dualingMonitors.nix
   ];
 
 }
