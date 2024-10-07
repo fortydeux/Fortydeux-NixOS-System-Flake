@@ -38,8 +38,9 @@
       ls = "lsd -lh --group-directories-first --color always --icon always";
       cat = "bat -f";
       rrr = "ranger";
-      ff = "cd ~/fortyflake && fish";
-      ffr = "cd ~/fortyflake && fish && ranger";
+      ff = "cd ~/fortyflake";
+      ffr = "cd ~/fortyflake && ranger";
+      fff = "cd ~/fortyflake && fish";
       stat = "git status";
       st = "git status -s";
     };
