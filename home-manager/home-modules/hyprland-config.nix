@@ -170,7 +170,6 @@
         "CTRL, SPACE, exec, pkill fuzzel || $fuzzel"
         "$mainMod, B, exec, pkill waybar || $waybar"
         "$mainMod, K, exec, kate"
-        ", PRINT, exec, grim -g '$(slurp)'"
         "$mainMod SHIFT, X, exec, $swaybg-x"
         "$mainMod SHIFT, Z, exec, $mpvpaper-z"
         "$mainMod SHIFT, C, exec, $mpvpaper-c"
@@ -300,6 +299,9 @@
       };         
     };
 		extraConfig = ''
+      # Screenshots
+      bind = , PRINT, exec, grim -g "$(slurp)"
+
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, scroller:movefocus, l
       bind = $mainMod, right, scroller:movefocus, r
