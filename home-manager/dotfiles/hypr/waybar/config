@@ -10,7 +10,7 @@
 
     // Choose the order of the modules
     "modules-left": ["custom/launcher", "clock", "custom/weather", "hyprland/workspaces", "hyprland/window"],
-    "modules-center": [ "custom/media" ],
+    // "modules-center": [ "custom/media" ],
     "modules-right": [ "idle_inhibitor", "pulseaudio", "backlight", "network", "cpu", "memory", "temperature", "battery", "battery#bat2", "tray", "custom/power"],
 
     // Modules configuration
