@@ -54,6 +54,14 @@
           ];
           specialArgs = { inherit inputs; };
       	};
+        #--Killifish host--#
+      	killifish-nixos = lib.nixosSystem {
+    	  	inherit system;
+    	  	modules = [ 
+    	  	  ./nixos-config/hosts/killifish/configuration.nix 
+          ];
+          specialArgs = { inherit inputs; };
+      	};
         #--Pufferfish host--#
       	pufferfish-nixos = lib.nixosSystem {
     	  	inherit system;
@@ -88,6 +96,13 @@
           extraSpecialArgs = { inherit inputs; };
     	    modules = [
             ./home-manager/hosts/archerfish-home.nix
+          ];
+        }; 
+        "fortydeux@killifish-nixos" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs; };
+    	    modules = [
+            ./home-manager/hosts/killifish-home.nix
           ];
         }; 
         "fortydeux@pufferfish-nixos" = home-manager.lib.homeManagerConfiguration {

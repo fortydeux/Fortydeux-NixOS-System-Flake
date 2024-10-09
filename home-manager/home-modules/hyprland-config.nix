@@ -34,6 +34,7 @@
       "$swaybg-x" = "pkill mpvpaper & swaybg -m fill -i $HOME/.config/hypr/Wallpapers/Professional/balloon-wp.jpg";
       "$mpvpaper-z" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/Garden/";
       "$mpvpaper-c" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/CyberNeon/";
+      "$removeWallpapers" = "pkill swaybg && pkill mpvpaper";
       "$waybar" = "waybar -c $HOME/.config/hypr/waybar/config -s $HOME/.config/hypr/waybar/style.css";
       "$fuzzel" = "fuzzel -w 80 -b 181818ef -t ccccccff";
       "$hypridle" = "hypridle";
@@ -173,6 +174,7 @@
         "$mainMod SHIFT, X, exec, $swaybg-x"
         "$mainMod SHIFT, Z, exec, $mpvpaper-z"
         "$mainMod SHIFT, C, exec, $mpvpaper-c"
+        "$mainMod SHIFT, B, exec, $removeWallpapers"
 
         # Volume
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
