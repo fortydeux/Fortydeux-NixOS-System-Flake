@@ -19,4 +19,10 @@
        package = pkgs.dracula-theme;
     }; 
   };
+
+  # Qt theming
+  qt = {
+    enable = true;
+    style.name = "breeze";
+  };
 }

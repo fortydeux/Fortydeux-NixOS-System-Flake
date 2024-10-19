@@ -27,7 +27,7 @@
     appflowy #An open-source alternative to Notion
     barrier #Open-source KVM software
     code-cursor #AI-powered code editor built on vscode    
-    decent-sampler #An audio sample player
+    # decent-sampler #An audio sample player
     # discord #Discord social client
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
