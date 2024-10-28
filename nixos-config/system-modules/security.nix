@@ -8,6 +8,14 @@
   security.doas.enable = false;
 
   # Services - swaylock (pam).
+  security.pam.services = {
+    login = {
+      limits = [
+        { domain = "*"; type = "soft"; item = "nofile"; value = "4096"; }
+        { domain = "*"; type = "hard"; item = "nofile"; value = "8192"; }
+      ];
+    };
+  };
   security.pam.services.swaylock = {};
 
     # Services - Mullvad VPN

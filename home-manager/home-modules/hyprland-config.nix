@@ -13,17 +13,17 @@
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprexpo plugin
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
       # pkgs.hyprlandPlugins.hyprexpo
       # Hyprgrass plugin
       inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
-      inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
+      # inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
       # pkgs.hyprlandPlugins.hyprscroller       
       # Hyprscpace plugin
-      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       # Hyprland Virtual Desktops Plugin
-      inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
+      # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
     ];
     settings = { 
       "$mainMod" = "SUPER";
@@ -220,16 +220,16 @@
         "$mainMod SHIFT CTRL, left, movetoworkspace, -1"
 
         # Scroll through existing workspaces with mainMod + CTRL + right/left
-        # "$mainMod + CTRL, right, workspace, e+1"
-        # "$mainMod + CTRL, left, workspace, e-1"
+        "$mainMod + CTRL, right, workspace, e+1"
+        "$mainMod + CTRL, left, workspace, e-1"
         ", mouse_right, workspace, e+1"
         ", mouse_left, workspace, e-1"
         "$mainModCTRL, mouse:273, workspace, m+1"
         "$mainModCTRL, mouse:272, workspace, m-1"      
 
         # Virtual-desktop Keybinds
-        "$mainModCTRL, right, nextdesk"
-        "$mainModCTRL, left, prevdesk"
+        # "$mainModCTRL, right, nextdesk"
+        # "$mainModCTRL, left, prevdesk"
 
         # Touchscreen Gestures
         # swipe left from right edge
@@ -277,10 +277,10 @@
       ];
       
       plugin = {
-        virtual-desktops = {
-          cycleworkspaces = 1;
-          rememberlayout = "size";
-        };
+        # virtual-desktops = {
+        #   cycleworkspaces = 1;
+        #   rememberlayout = "size";
+        # };
         hyprexpo = {
           columns = 3;
           gap_size = 5;

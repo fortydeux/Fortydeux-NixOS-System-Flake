@@ -145,6 +145,9 @@
     ## Caffeine
     caffeine-ng
     # libsForQt5.plasma-applet-caffeine-plus
+
+    ## Utilities
+    foo2zjs    
   ];
 
   ### Fonts
@@ -159,6 +162,9 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  ### Utilities
+  programs.nix-ld.enable = true; # Nix-ld ALlows for more normal running of linux binaries on Nix without repackaging or patching with autoPatchelfHook
 
   ### Services
   # List services that you want to enable:
