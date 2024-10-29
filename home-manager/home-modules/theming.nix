@@ -17,15 +17,15 @@
        name = "Dracula";
        package = pkgs.dracula-theme;
     }; 
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk2.extraConfig = "
-      gtk-application-prefer-dark-theme = true
-    ";
+    # gtk4.extraConfig = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
+    # gtk3.extraConfig = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
+    # gtk2.extraConfig = "
+    #   gtk-application-prefer-dark-theme = true
+    # ";
   };
 
   # Qt theming

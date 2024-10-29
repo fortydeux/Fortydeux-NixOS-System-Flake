@@ -14,6 +14,7 @@
     ./security.nix
     ./pcloud.nix
     ./virtualisation.nix
+    ./determinate.nix
    ];
 
   ### Shell
