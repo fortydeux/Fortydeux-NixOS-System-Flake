@@ -26,6 +26,9 @@
       pkgs.hyprlandPlugins.hyprspace
       # Hyprland Virtual Desktops Plugin
       # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
+      # Hyprsplit Plugin
+      pkgs.hyprlandPlugins.hyprsplit
+      # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
     ];
     settings = { 
       "$mainMod" = "SUPER";
@@ -196,28 +199,28 @@
         # "$mainMod, down, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        # "$mainMod, 1, workspace, 1"
+        # "$mainMod, 2, workspace, 2"
+        # "$mainMod, 3, workspace, 3"
+        # "$mainMod, 4, workspace, 4"
+        # "$mainMod, 5, workspace, 5"
+        # "$mainMod, 6, workspace, 6"
+        # "$mainMod, 7, workspace, 7"
+        # "$mainMod, 8, workspace, 8"
+        # "$mainMod, 9, workspace, 9"
+        # "$mainMod, 0, workspace, 10"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+        # "$mainMod SHIFT, 1, movetoworkspace, 1"
+        # "$mainMod SHIFT, 2, movetoworkspace, 2"
+        # "$mainMod SHIFT, 3, movetoworkspace, 3"
+        # "$mainMod SHIFT, 4, movetoworkspace, 4"
+        # "$mainMod SHIFT, 5, movetoworkspace, 5"
+        # "$mainMod SHIFT, 6, movetoworkspace, 6"
+        # "$mainMod SHIFT, 7, movetoworkspace, 7"
+        # "$mainMod SHIFT, 8, movetoworkspace, 8"
+        # "$mainMod SHIFT, 9, movetoworkspace, 9"
+        # "$mainMod SHIFT, 0, movetoworkspace, 10"
         "$mainMod SHIFT CTRL, right, movetoworkspace, +1"
         "$mainMod SHIFT CTRL, left, movetoworkspace, -1"
 
@@ -292,6 +295,9 @@
           gesture_distance = 300; # how far is the "max"
           gesture_positive = true; # positive = swipe down. Negative = swipe up.
         };   
+        hyprsplit = {
+          num_workspaces = 8;
+        };
         scroller = {
           column_default_width = "floating";
           focus_wrap = false;
@@ -305,6 +311,24 @@
 		extraConfig = ''
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
+      
+      # Hyprsplit
+      bind = SUPER, 1, split:workspace, 1
+      bind = SUPER, 2, split:workspace, 2
+      bind = SUPER, 3, split:workspace, 3
+      bind = SUPER, 4, split:workspace, 4
+      bind = SUPER, 5, split:workspace, 5
+      bind = SUPER, 6, split:workspace, 6
+
+      bind = SUPER SHIFT, 1, split:movetoworkspacesilent, 1
+      bind = SUPER SHIFT, 2, split:movetoworkspacesilent, 2
+      bind = SUPER SHIFT, 3, split:movetoworkspacesilent, 3
+      bind = SUPER SHIFT, 4, split:movetoworkspacesilent, 4
+      bind = SUPER SHIFT, 5, split:movetoworkspacesilent, 5
+      bind = SUPER SHIFT, 6, split:movetoworkspacesilent, 6
+
+      bind = SUPER, P, split:swapactiveworkspaces, current +1
+      bind = SUPER, G, split:grabroguewindows
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, scroller:movefocus, l

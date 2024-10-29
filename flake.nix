@@ -38,7 +38,10 @@
       url = "github:levnikmyskin/hyprland-virtual-desktops";
       inputs.hyprland.follows = "hyprland";
     };
-    
+    hyprlsplit = {
+      url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
   
   outputs = { self, nixpkgs, home-manager, nixos-hardware, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprscroller, hyprland-virtual-desktops, ... }@inputs: 
