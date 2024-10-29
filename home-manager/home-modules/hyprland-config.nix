@@ -319,6 +319,8 @@
       bind = SUPER, 4, split:workspace, 4
       bind = SUPER, 5, split:workspace, 5
       bind = SUPER, 6, split:workspace, 6
+      bind = SUPER, 7, split:workspace, 7
+      bind = SUPER, 8, split:workspace, 8
 
       bind = SUPER SHIFT, 1, split:movetoworkspacesilent, 1
       bind = SUPER SHIFT, 2, split:movetoworkspacesilent, 2
@@ -326,6 +328,8 @@
       bind = SUPER SHIFT, 4, split:movetoworkspacesilent, 4
       bind = SUPER SHIFT, 5, split:movetoworkspacesilent, 5
       bind = SUPER SHIFT, 6, split:movetoworkspacesilent, 6
+      bind = SUPER SHIFT, 7, split:movetoworkspacesilent, 7
+      bind = SUPER SHIFT, 8, split:movetoworkspacesilent, 8
 
       bind = SUPER, P, split:swapactiveworkspaces, current +1
       bind = SUPER, G, split:grabroguewindows
