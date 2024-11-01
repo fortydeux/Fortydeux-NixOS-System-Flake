@@ -8,6 +8,8 @@
 @define-color bar-button-color #555876;
 @define-color bar-button-hover-color #7c5e5e;
 @define-color bar-button-focused-color #eba0ac;
+@define-color bar-launcher-light-color #7EB8E2;
+@define-color bar-launcher-dark-color #4F72BB;
 
 * {
     border: none;
@@ -145,9 +147,9 @@ tooltip {
 }
 
 #custom-launcher {
-    color: #DA0C81;
+    color: @bar-launcher-light-color;
     font-size: 22px;
-    padding: 0px 12px;
+    padding: 0px 16px 0px 8px;
 }
 
 #custom-power {

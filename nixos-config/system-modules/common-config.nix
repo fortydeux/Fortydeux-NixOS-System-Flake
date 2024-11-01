@@ -15,7 +15,11 @@
     ./pcloud.nix
     ./virtualisation.nix
     ./determinate.nix
-   ];
+    ./system-theme.nix
+    inputs.catppuccin.nixosModules.catppuccin
+    # inputs.stylix.nixosModules.stylix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   ### Shell
   programs.zsh.enable = true;
@@ -84,6 +88,7 @@
     alacritty # A cross-platform, GPU-accelerated terminal emulator
     duf # Disk Usage/Free Utility
     fd # a simple, fast and user-friendly alternative to find
+    fh # Official FlakeHub CLI
     firefox # Firefox browser
     git # Git CLI utility
     gparted # Disk/Partition manager
@@ -149,6 +154,9 @@
 
     ## Utilities
     foo2zjs    
+
+    ## Theming
+    themechanger #Theme changing utility for Linux
   ];
 
   ### Fonts
@@ -162,6 +170,12 @@
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
+  # };
+
+  ### Theming
+  # catppuccin = {
+  #   enable = true;
+  #   flavor = "mocha";
   # };
 
   ### Utilities

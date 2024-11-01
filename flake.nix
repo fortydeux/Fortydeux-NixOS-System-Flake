@@ -4,6 +4,8 @@
 # Flake.nix
 
   inputs = {  
+    catppuccin.url = "https://flakehub.com/f/catppuccin/nix/1.0.2.tar.gz";
+    stylix.url = "github:danth/stylix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0";
   	# nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,7 +16,7 @@
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       # inputs.nixpkgs.follows = "nixpkgs";
-    };  
+    };    
     #Hyprland+Plugins
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
@@ -38,13 +40,13 @@
       url = "github:levnikmyskin/hyprland-virtual-desktops";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprlsplit = {
+    hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprscroller, hyprland-virtual-desktops, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, catppuccin, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprscroller, hyprland-virtual-desktops, hyprsplit, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

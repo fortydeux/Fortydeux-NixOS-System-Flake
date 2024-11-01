@@ -27,8 +27,8 @@
       # Hyprland Virtual Desktops Plugin
       # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
       # Hyprsplit Plugin
-      pkgs.hyprlandPlugins.hyprsplit
       # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      pkgs.hyprlandPlugins.hyprsplit
     ];
     settings = { 
       "$mainMod" = "SUPER";
@@ -44,7 +44,7 @@
       "$fuzzel" = "fuzzel -w 80 -b 181818ef -t ccccccff";
       "$hypridle" = "hypridle";
       "$hyprlock" = "hyprlock";
-      "source" = "$HOME/.config/hypr/device-specific.conf";
+      # "source" = "$HOME/.config/hypr/device-specific.conf";
       exec-once = [
         "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY"
         "hyprctl setcursor phinger-cursors 32"
@@ -80,8 +80,8 @@
           gaps_in = 4;
           gaps_out = 4;
           border_size = 2;
-          "col.active_border" =  "$activeBorderColor1 $activeBorderColor2 8deg";
-          "col.inactive_border" = "$inactiveBorderColor";
+          # "col.active_border" =  "$activeBorderColor1 $activeBorderColor2 8deg";
+          # "col.inactive_border" = "$inactiveBorderColor";
           #allow_session_lock_restore = true
           # layout = "dwindle";
           layout = "scroller";
@@ -100,7 +100,7 @@
           drop_shadow = true;
           shadow_range = 4;
           shadow_render_power = 3;
-          "col.shadow" = "rgba(1a1a1aed)";
+          # "col.shadow" = "rgba(1a1a1aed)";
       };
 
       animations = {
@@ -144,6 +144,7 @@
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
           workspace_swipe = true;
           workspace_swipe_fingers = 3;
+          workspace_swipe_cancel_ratio = 0.15;
       };
 
       # Example per-device config
@@ -306,9 +307,34 @@
           # portrait mode monitors
           monitor_modes = "eDP-1=col,DP-1=col,HDMI-A-1=col";
         };
+        touch_gestures = {
+          # default sensitivity is probably too low on tablet screens,
+          # I recommend turning it up to 4.0
+          sensitivity = 4.0;
+          workspace_swipe_fingers = 3;
+        };
       };         
     };
 		extraConfig = ''
+      # Environment Variables for the Hyprland session:
+      # ----------------------------------------------
+      env=XDG_CURRENT_DESKTOP,Hyprland
+      env=XDG_SESSION_TYPE,wayland
+      env=XDG_SESSION_DESKTOP,Hyprland
+      env=_JAVA_AWT_WM_NONREPARENTING,1
+      env=QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+      env=MOZ_ENABLE_WAYLAND,1
+      env=QT_QPA_PLATFORM,wayland;xcb
+      env=GDK_BACKEND,wayland,x11
+      env=WLR_NO_HARDWARE_CURSORS,1
+      env=SDL_VIDEODRIVER,wayland
+      env=CLUTTER_BACKEND,wayland
+      env=QT_AUTO_SCREEN_SCALE_FACTOR,1
+      # env=HYPRCURSOR_THEME,phinger-cursors-light
+      # env=GTK_THEME,Dracula
+      env=HYPRCURSOR_SIZE,32
+      env=QT_QPA_PLATFORMTHEME,qt6ct
+      
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
       

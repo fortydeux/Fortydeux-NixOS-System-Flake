@@ -197,7 +197,8 @@
     },
 
     "custom/launcher":{
-        "format": "",
+        // "format": "",
+        "format": "",
         "on-click": "wofi -S drun -GIm -w 3 -W 100% -H 96%",
         "on-click-right": "pkill wofi"
     },
