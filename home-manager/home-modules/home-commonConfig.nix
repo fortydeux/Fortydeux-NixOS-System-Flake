@@ -53,6 +53,7 @@
     # telegram-desktop #Telegram desktop client
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
+    kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     # zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       

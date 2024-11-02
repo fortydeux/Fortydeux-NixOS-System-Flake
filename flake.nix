@@ -4,7 +4,6 @@
 # Flake.nix
 
   inputs = {  
-    catppuccin.url = "https://flakehub.com/f/catppuccin/nix/1.0.2.tar.gz";
     stylix.url = "github:danth/stylix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0";
@@ -46,7 +45,7 @@
     };
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, catppuccin, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprscroller, hyprland-virtual-desktops, hyprsplit, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprscroller, hyprland-virtual-desktops, hyprsplit, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

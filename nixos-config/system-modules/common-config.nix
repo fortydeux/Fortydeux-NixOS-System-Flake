@@ -16,7 +16,6 @@
     ./virtualisation.nix
     ./determinate.nix
     ./system-theme.nix
-    inputs.catppuccin.nixosModules.catppuccin
     # inputs.stylix.nixosModules.stylix
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -49,8 +48,10 @@
 
   # Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Housekeeping
+  # Set $NIX_PATH to Flake input - suggested for nixd LSP to ensure <nixpkgs> reference works as expected
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+ 
+   # Housekeeping
   nix.optimise.automatic = true;
   nix.gc = {
     automatic = true;
@@ -170,12 +171,6 @@
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
-  # };
-
-  ### Theming
-  # catppuccin = {
-  #   enable = true;
-  #   flavor = "mocha";
   # };
 
   ### Utilities

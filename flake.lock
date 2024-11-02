@@ -8,11 +8,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1730241811,
-        "narHash": "sha256-CR9KHj9arsjyddcZTuoU4rxF39QOwCeYrRa+y46e1Tw=",
+        "lastModified": 1730484016,
+        "narHash": "sha256-qNxvhU6rTdzRYEuwuDSpflbJcJmTNW4Ldx6KIn54zYw=",
         "owner": "KZDKM",
         "repo": "Hyprspace",
-        "rev": "db7d2e223a741c0c2e17254b061c5c7660084263",
+        "rev": "bc892ffd1e58be8d329c20b9f4d5ebbab21cc757",
         "type": "github"
       },
       "original": {
@@ -118,20 +118,6 @@
         "owner": "tinted-theming",
         "repo": "base16-vim",
         "type": "github"
-      }
-    },
-    "catppuccin": {
-      "locked": {
-        "lastModified": 1719915848,
-        "narHash": "sha256-zq+CMkdT8A9z74HonwspXp8HsX4OvP4uaVdD98AO6as=",
-        "rev": "9345073d27d91ab66c1b6ab65df322906992aa59",
-        "revCount": 256,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/catppuccin/nix/1.0.2/019072fa-ccb0-7720-89a3-130f22a7b006/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/catppuccin/nix/1.0.2.tar.gz"
       }
     },
     "determinate": {
@@ -402,11 +388,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1730450782,
-        "narHash": "sha256-0AfApF8aexgB6o34qqLW2cCX4LaWJajBVdU6ddiWZBM=",
+        "lastModified": 1730490306,
+        "narHash": "sha256-AvCVDswOUM9D368HxYD25RsSKp+5o0L0/JHADjLoD38=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8ca921e5a806b5b6171add542defe7bdac79d189",
+        "rev": "1743615b61c7285976f85b303a36cdf88a556503",
         "type": "github"
       },
       "original": {
@@ -500,11 +486,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1730466192,
-        "narHash": "sha256-oP+XK3M7dUut9zAP6X3ZCrHd3LuyAM4n3RTXKf7NM30=",
+        "lastModified": 1730499652,
+        "narHash": "sha256-De3YRKpowtm15xN7hK0PdBpu96wwSyQE+qFoq9Gi6lM=",
         "ref": "refs/heads/main",
-        "rev": "3852418d2446555509738bf1486940042107afe7",
-        "revCount": 5398,
+        "rev": "32b18179dd789cde948c97eb3c2ebbdd6af36bf7",
+        "revCount": 5402,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1034,7 +1020,6 @@
     "root": {
       "inputs": {
         "Hyprspace": "Hyprspace",
-        "catppuccin": "catppuccin",
         "determinate": "determinate",
         "home-manager": "home-manager",
         "hyprgrass": "hyprgrass",

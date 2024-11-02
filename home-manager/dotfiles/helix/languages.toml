@@ -1,0 +1,7 @@
+[[language]]
+name = "nix"
+language-servers = ["nixd","nil"]
+formatter = { command = "nixfmt", args = ["-"], stdin = true }
+
+[language-server.nixd]
+command = "nixd"
