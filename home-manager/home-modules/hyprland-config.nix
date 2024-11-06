@@ -333,7 +333,7 @@
       # env=HYPRCURSOR_THEME,phinger-cursors-light
       # env=GTK_THEME,Dracula
       env=HYPRCURSOR_SIZE,32
-      env=QT_QPA_PLATFORMTHEME,qt6ct
+      # env=QT_QPA_PLATFORMTHEME,qt6ct
       
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"

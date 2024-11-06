@@ -1,6 +1,13 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
-{ # Configuration.nix - Pufferfish
+{
+  # Configuration.nix - Pufferfish
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/display-manager.nix
@@ -17,8 +24,8 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
-# Be sure to generate your own hardware-configuration.nix before building 
-# sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/pufferfish/hardware-configuration.nix
+  # Be sure to generate your own hardware-configuration.nix before building
+  # sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/pufferfish/hardware-configuration.nix
 
   # Hostname
   networking.hostName = "pufferfish-nixos"; # Define your hostname.
@@ -30,5 +37,5 @@
 
   # Kernel - Turn off when MS-Surface Kernel is enabled
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+
 }

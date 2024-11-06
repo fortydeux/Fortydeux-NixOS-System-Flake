@@ -3,14 +3,14 @@
 { # Display-manager.nix
 
   # Enable Cosmic Greeter / Display Manager
-  services.displayManager.cosmic-greeter.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
 
   #Enable SDDM Display manager
-  # services.displayManager = {
-  #   enable = true;
-  #   sddm.enable = true;
-  #   sddm.wayland.enable = true;
-  # };
+  services.displayManager = {
+    enable = true;
+    sddm.enable = true;
+    sddm.wayland.enable = true;
+  };
 
    # Greetd - enable if disabling other login managers 
  #  services.greetd = {

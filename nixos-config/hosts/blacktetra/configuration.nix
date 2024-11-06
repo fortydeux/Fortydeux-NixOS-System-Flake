@@ -1,6 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
-{ # Configuration.nix - Blacktetra
+{
+  # Configuration.nix - Blacktetra
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/display-manager.nix
@@ -14,8 +20,8 @@
     ./hardware-configuration.nix
   ];
 
-# Be sure to generate your own hardware-configuration.nix before building 
-# sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/blackfin/hardware-configuration.nix
+  # Be sure to generate your own hardware-configuration.nix before building
+  # sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/blackfin/hardware-configuration.nix
 
   # Hostname
   networking.hostName = "blacktetra-nixos"; # Define your hostname.

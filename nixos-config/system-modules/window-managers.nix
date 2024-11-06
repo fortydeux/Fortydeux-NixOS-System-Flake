@@ -97,10 +97,10 @@
     xfce.thunar #Xfce file manager
     xfce.thunar-archive-plugin #Thunar plugin providing file context menus for archives
     xfce.thunar-volman #Thunar extension for automatic management of removable drives and media
-    pyprland #Python plugins for Hyprland
+    # pyprland #Python plugins for Hyprland
     waybar #Wayland bar
     wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
-    wf-recorder # Wayland screen recorder
+    # wf-recorder # Wayland screen recorder
     wl-clipboard #Command-line copy/paste utilities for Wayland
     wlogout #A wayland based logout menu
     wlopm #Simple client implementing zwlr-output-power-management-v1    

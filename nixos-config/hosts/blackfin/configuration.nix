@@ -1,6 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
-{ # Configuration.nix - Blackfin
+{
+  # Configuration.nix - Blackfin
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/display-manager.nix
@@ -14,8 +20,8 @@
     ./hardware-configuration.nix
   ];
 
-# Be sure to generate your own hardware-configuration.nix before building 
-# sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/blackfin/hardware-configuration.nix
+  # Be sure to generate your own hardware-configuration.nix before building
+  # sudo nixos-generate-config --show-hardware-config > nixos-config/hosts/blackfin/hardware-configuration.nix
 
   # Hostname
   networking.hostName = "blackfin-nixos"; # Define your hostname.
