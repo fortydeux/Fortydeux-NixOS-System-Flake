@@ -6,29 +6,31 @@
 {
   imports = [
   ];
-
+  services.hyprpaper = {
+    enable = true;
+  };
 	wayland.windowManager.hyprland = {
     enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.default;
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
+    # package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprexpo plugin
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
-      pkgs.hyprlandPlugins.hyprexpo
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
+      # pkgs.hyprlandPlugins.hyprexpo
       # Hyprgrass plugin
       inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
-      # inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
-      pkgs.hyprlandPlugins.hyprscroller       
+      inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
+      # pkgs.hyprlandPlugins.hyprscroller       
       # Hyprscpace plugin
-      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      pkgs.hyprlandPlugins.hyprspace
+      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      # pkgs.hyprlandPlugins.hyprspace
       # Hyprland Virtual Desktops Plugin
       # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
       # Hyprsplit Plugin
-      # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
-      pkgs.hyprlandPlugins.hyprsplit
+      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      # pkgs.hyprlandPlugins.hyprsplit
     ];
     settings = { 
       "$mainMod" = "SUPER";
@@ -50,13 +52,13 @@
         "hyprctl setcursor phinger-cursors 32"
         "emacs --daemon"
         "foot -s"
-         "$waybar"
+        "$waybar"
         "mako"
         "nm-applet --indicator"
         "blueman-applet"
         "pcloud"
         "wlsunset -l 40.6 -L -75.4 -t 2300 -T 6500"
-        "$swaybg-x"
+        # "$swaybg-x"
         "$hypridle"
         
       ];

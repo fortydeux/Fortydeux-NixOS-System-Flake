@@ -6,8 +6,8 @@
   programs.hyprland = {
     enable = true;
     # xwayland.enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # package = pkgs.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
 
