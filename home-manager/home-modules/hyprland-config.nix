@@ -1,28 +1,34 @@
-{config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 # let
 #   system = pkgs.hostPlatform.system;
 # in
 {
-  imports = [
-  ];
+  imports =
+    [
+    ];
   services.hyprpaper = {
     enable = true;
   };
-	wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
     # package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprexpo plugin
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo   
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # pkgs.hyprlandPlugins.hyprexpo
       # Hyprgrass plugin
       inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
       inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
-      # pkgs.hyprlandPlugins.hyprscroller       
+      # pkgs.hyprlandPlugins.hyprscroller
       # Hyprscpace plugin
       inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       # pkgs.hyprlandPlugins.hyprspace
@@ -32,11 +38,11 @@
       inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
       # pkgs.hyprlandPlugins.hyprsplit
     ];
-    settings = { 
+    settings = {
       "$mainMod" = "SUPER";
       "$activeBorderColor1" = "rgba(da0c81cc)";
-      "$activeBorderColor2" = "rgba(940b92cc)"; 
-      "$inactiveBorderColor" = "rgba(00000099)"; 
+      "$activeBorderColor2" = "rgba(940b92cc)";
+      "$inactiveBorderColor" = "rgba(00000099)";
       "$swaylock" = "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2";
       "$swaybg-x" = "pkill mpvpaper & swaybg -m fill -i $HOME/.config/hypr/Wallpapers/Professional/balloon-wp.jpg";
       "$mpvpaper-z" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/Garden/";
@@ -60,105 +66,105 @@
         "wlsunset -l 40.6 -L -75.4 -t 2300 -T 6500"
         # "$swaybg-x"
         "$hypridle"
-        
+
       ];
       input = {
-          kb_layout = "us";
+        kb_layout = "us";
 
-          follow_mouse = 1;
+        follow_mouse = 1;
+        natural_scroll = true;
+        touchpad = {
           natural_scroll = true;
-          touchpad = {
-              natural_scroll = true;
-              middle_button_emulation = false;
-              disable_while_typing = true;
-              clickfinger_behavior = true;
-              scroll_factor = 2;
-          };
-          sensitivity = 0.3;
+          middle_button_emulation = false;
+          disable_while_typing = true;
+          clickfinger_behavior = true;
+          scroll_factor = 2;
+        };
+        sensitivity = 0.3;
       };
 
       general = {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          gaps_in = 4;
-          gaps_out = 4;
-          border_size = 2;
-          # "col.active_border" =  "$activeBorderColor1 $activeBorderColor2 8deg";
-          # "col.inactive_border" = "$inactiveBorderColor";
-          #allow_session_lock_restore = true
-          # layout = "dwindle";
-          layout = "scroller";
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        gaps_in = 4;
+        gaps_out = 4;
+        border_size = 2;
+        # "col.active_border" =  "$activeBorderColor1 $activeBorderColor2 8deg";
+        # "col.inactive_border" = "$inactiveBorderColor";
+        #allow_session_lock_restore = true
+        # layout = "dwindle";
+        layout = "scroller";
       };
 
       decoration = {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-         rounding = 12;
-         blur = {
-              enabled = true;
-              size = 3;
-              passes = 1;
-          };
+        rounding = 12;
+        blur = {
+          enabled = true;
+          size = 3;
+          passes = 1;
+        };
 
-          drop_shadow = true;
-          shadow_range = 4;
-          shadow_render_power = 3;
-          # "col.shadow" = "rgba(1a1a1aed)";
+        # drop_shadow = true;
+        # shadow_range = 4;
+        # shadow_render_power = 3;
+        # "col.shadow" = "rgba(1a1a1aed)";
       };
 
       animations = {
-          enabled = true;
+        enabled = true;
 
-          # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-          bezier = [
-             "myBezier, 0.05, 0.9, 0.1, 1.05"
+        # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+        bezier = [
+          "myBezier, 0.05, 0.9, 0.1, 1.05"
 
-             # Added from garden theme
-             "slow, 0, 0.85, 0.3, 1"
-             "overshot, 0.7, 0.6, 0.1, 1.1"
-             "bounce, 1, 1.6, 0.1, 0.85"
-             "slingshot, 1, -2, 0.9, 1.25"
-             "nice, 0, 6.9, 0.5, -4.20"
-           ];
-           #    animation = windows, 1, 7, myBezier
-           animation = [
-             "windows, 1, 5, bounce, slide"
-             "windowsOut, 1, 7, default, popin 80%"
-             "border, 1, 20, default"
-             "borderangle, 1, 8, default"
-             "fade, 1, 7, default"
-            #    animation = workspaces, 1, 6, default
-             "workspaces, 1, 5, overshot, slide"
-           ];
+          # Added from garden theme
+          "slow, 0, 0.85, 0.3, 1"
+          "overshot, 0.7, 0.6, 0.1, 1.1"
+          "bounce, 1, 1.6, 0.1, 0.85"
+          "slingshot, 1, -2, 0.9, 1.25"
+          "nice, 0, 6.9, 0.5, -4.20"
+        ];
+        #    animation = windows, 1, 7, myBezier
+        animation = [
+          "windows, 1, 5, bounce, slide"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 20, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+          #    animation = workspaces, 1, 6, default
+          "workspaces, 1, 5, overshot, slide"
+        ];
       };
 
       dwindle = {
-          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-          pseudotile = true;
-          preserve_split = true;
+        # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+        pseudotile = true;
+        preserve_split = true;
       };
 
       master = {
-          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-          new_status = "master";
+        # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+        new_status = "master";
       };
 
       gestures = {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          workspace_swipe = true;
-          workspace_swipe_fingers = 3;
-          workspace_swipe_cancel_ratio = 0.15;
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+        workspace_swipe_cancel_ratio = 0.15;
       };
 
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
       device = {
         name = "microsoft-arc-mouse";
-          sensitivity = 1;
+        sensitivity = 1;
       };
 
       misc = {
-          disable_hyprland_logo = true;
-          disable_splash_rendering = true;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
       bind = [
         "$mainMod, S, exec, kitty"
@@ -189,9 +195,9 @@
 
         # Playerctl
         ", XF86AudioPlay, exec, playerctl play-pause"
-       
+
         #Switches
-        "SUPER, Escape, exec, hyprctl reload"        
+        "SUPER, Escape, exec, hyprctl reload"
         "SUPER, Escape, exec, pkill waybar && sleep 1 && $waybar &"
         "SUPER, Escape, exec, notify-send 'Config Reloaded'"
 
@@ -233,7 +239,7 @@
         ", mouse_right, workspace, e+1"
         ", mouse_left, workspace, e-1"
         "$mainModCTRL, mouse:273, workspace, m+1"
-        "$mainModCTRL, mouse:272, workspace, m-1"      
+        "$mainModCTRL, mouse:272, workspace, m-1"
 
         # Virtual-desktop Keybinds
         # "$mainModCTRL, right, nextdesk"
@@ -256,9 +262,8 @@
         # l (or r) must come before d and u
         ", swipe:3:ld, exec, foot"
 
-
         # Overview mini-modes
-        # Hyprexpo        
+        # Hyprexpo
         "SUPER, grave, hyprexpo:expo, toggle # can be: toggle, off/disable or on/enable"
         # Hyprspace
         "$mainMod, A, overview:toggle"
@@ -275,15 +280,15 @@
 
       bindl = [
         #Switches
-        ", switch:Lid Switch, exec, $hyprlock"           
+        ", switch:Lid Switch, exec, $hyprlock"
       ];
 
-      bindm = [       
+      bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
         "$mainMod, mouse:272, movewindow"
         "$mainMod + SHIFT, mouse:272, resizewindow"
       ];
-      
+
       plugin = {
         # virtual-desktops = {
         #   cycleworkspaces = 1;
@@ -297,7 +302,7 @@
           enable_gesture = true; # laptop touchpad, 4 fingers
           gesture_distance = 300; # how far is the "max"
           gesture_positive = true; # positive = swipe down. Negative = swipe up.
-        };   
+        };
         hyprsplit = {
           num_workspaces = 8;
         };
@@ -315,9 +320,9 @@
           sensitivity = 4.0;
           workspace_swipe_fingers = 3;
         };
-      };         
+      };
     };
-		extraConfig = ''
+    extraConfig = ''
       # Environment Variables for the Hyprland session:
       # ----------------------------------------------
       env=XDG_CURRENT_DESKTOP,Hyprland
@@ -336,10 +341,10 @@
       # env=GTK_THEME,Dracula
       env=HYPRCURSOR_SIZE,32
       # env=QT_QPA_PLATFORMTHEME,qt6ct
-      
+
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
-      
+
       # Hyprsplit
       bind = SUPER, 1, split:workspace, 1
       bind = SUPER, 2, split:workspace, 2
@@ -505,7 +510,7 @@
 
       bind = $mainMod CTRL, M, scroller:marksreset
     '';
-	};
+  };
   # xdg.portal = {
   #   enable = true;
   #   extraPortals = [config.wayland.windowManager.hyprland.package];
