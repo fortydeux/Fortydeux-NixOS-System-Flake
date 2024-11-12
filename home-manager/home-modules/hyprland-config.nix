@@ -22,7 +22,7 @@
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprexpo plugin
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # pkgs.hyprlandPlugins.hyprexpo
       # Hyprgrass plugin
       inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
@@ -30,12 +30,12 @@
       inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
       # pkgs.hyprlandPlugins.hyprscroller
       # Hyprscpace plugin
-      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       # pkgs.hyprlandPlugins.hyprspace
       # Hyprland Virtual Desktops Plugin
       # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
       # Hyprsplit Plugin
-      inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+      # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
       # pkgs.hyprlandPlugins.hyprsplit
     ];
     settings = {
@@ -185,6 +185,7 @@
         "CTRL, SPACE, exec, pkill fuzzel || $fuzzel"
         "$mainMod, B, exec, pkill waybar || $waybar"
         "$mainMod, K, exec, kate"
+        "$mainMod, R, exec, hyprctl seterror disable"
         "$mainMod SHIFT, X, exec, $swaybg-x"
         "$mainMod SHIFT, Z, exec, $mpvpaper-z"
         "$mainMod SHIFT, C, exec, $mpvpaper-c"
@@ -208,28 +209,28 @@
         # "$mainMod, down, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
-        # "$mainMod, 1, workspace, 1"
-        # "$mainMod, 2, workspace, 2"
-        # "$mainMod, 3, workspace, 3"
-        # "$mainMod, 4, workspace, 4"
-        # "$mainMod, 5, workspace, 5"
-        # "$mainMod, 6, workspace, 6"
-        # "$mainMod, 7, workspace, 7"
-        # "$mainMod, 8, workspace, 8"
-        # "$mainMod, 9, workspace, 9"
-        # "$mainMod, 0, workspace, 10"
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        # "$mainMod SHIFT, 1, movetoworkspace, 1"
-        # "$mainMod SHIFT, 2, movetoworkspace, 2"
-        # "$mainMod SHIFT, 3, movetoworkspace, 3"
-        # "$mainMod SHIFT, 4, movetoworkspace, 4"
-        # "$mainMod SHIFT, 5, movetoworkspace, 5"
-        # "$mainMod SHIFT, 6, movetoworkspace, 6"
-        # "$mainMod SHIFT, 7, movetoworkspace, 7"
-        # "$mainMod SHIFT, 8, movetoworkspace, 8"
-        # "$mainMod SHIFT, 9, movetoworkspace, 9"
-        # "$mainMod SHIFT, 0, movetoworkspace, 10"
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+        "$mainMod SHIFT, 4, movetoworkspace, 4"
+        "$mainMod SHIFT, 5, movetoworkspace, 5"
+        "$mainMod SHIFT, 6, movetoworkspace, 6"
+        "$mainMod SHIFT, 7, movetoworkspace, 7"
+        "$mainMod SHIFT, 8, movetoworkspace, 8"
+        "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
         "$mainMod SHIFT CTRL, right, movetoworkspace, +1"
         "$mainMod SHIFT CTRL, left, movetoworkspace, -1"
 
@@ -264,9 +265,9 @@
 
         # Overview mini-modes
         # Hyprexpo
-        "SUPER, grave, hyprexpo:expo, toggle # can be: toggle, off/disable or on/enable"
+        # "SUPER, grave, hyprexpo:expo, toggle # can be: toggle, off/disable or on/enable"
         # Hyprspace
-        "$mainMod, A, overview:toggle"
+        # "$mainMod, A, overview:toggle"
       ];
 
       binde = [
@@ -294,18 +295,18 @@
         #   cycleworkspaces = 1;
         #   rememberlayout = "size";
         # };
-        hyprexpo = {
-          columns = 3;
-          gap_size = 5;
-          bg_col = "rgb(111111)";
-          workspace_method = "first current"; # [center/first] [workspace] e.g. first 1 or center m+1
-          enable_gesture = true; # laptop touchpad, 4 fingers
-          gesture_distance = 300; # how far is the "max"
-          gesture_positive = true; # positive = swipe down. Negative = swipe up.
-        };
-        hyprsplit = {
-          num_workspaces = 8;
-        };
+        # hyprexpo = {
+        #   columns = 3;
+        #   gap_size = 5;
+        #   bg_col = "rgb(111111)";
+        #   workspace_method = "first current"; # [center/first] [workspace] e.g. first 1 or center m+1
+        #   enable_gesture = true; # laptop touchpad, 4 fingers
+        #   gesture_distance = 300; # how far is the "max"
+        #   gesture_positive = true; # positive = swipe down. Negative = swipe up.
+        # };
+        # hyprsplit = {
+        #   num_workspaces = 8;
+        # };
         scroller = {
           column_default_width = "floating";
           focus_wrap = false;
@@ -346,27 +347,28 @@
       bind = , PRINT, exec, grim -g "$(slurp)"
 
       # Hyprsplit
-      bind = SUPER, 1, split:workspace, 1
-      bind = SUPER, 2, split:workspace, 2
-      bind = SUPER, 3, split:workspace, 3
-      bind = SUPER, 4, split:workspace, 4
-      bind = SUPER, 5, split:workspace, 5
-      bind = SUPER, 6, split:workspace, 6
-      bind = SUPER, 7, split:workspace, 7
-      bind = SUPER, 8, split:workspace, 8
+      # bind = SUPER, 1, split:workspace, 1
+      # bind = SUPER, 2, split:workspace, 2
+      # bind = SUPER, 3, split:workspace, 3
+      # bind = SUPER, 4, split:workspace, 4
+      # bind = SUPER, 5, split:workspace, 5
+      # bind = SUPER, 6, split:workspace, 6
+      # bind = SUPER, 7, split:workspace, 7
+      # bind = SUPER, 8, split:workspace, 8
 
-      bind = SUPER SHIFT, 1, split:movetoworkspacesilent, 1
-      bind = SUPER SHIFT, 2, split:movetoworkspacesilent, 2
-      bind = SUPER SHIFT, 3, split:movetoworkspacesilent, 3
-      bind = SUPER SHIFT, 4, split:movetoworkspacesilent, 4
-      bind = SUPER SHIFT, 5, split:movetoworkspacesilent, 5
-      bind = SUPER SHIFT, 6, split:movetoworkspacesilent, 6
-      bind = SUPER SHIFT, 7, split:movetoworkspacesilent, 7
-      bind = SUPER SHIFT, 8, split:movetoworkspacesilent, 8
+      # bind = SUPER SHIFT, 1, split:movetoworkspacesilent, 1
+      # bind = SUPER SHIFT, 2, split:movetoworkspacesilent, 2
+      # bind = SUPER SHIFT, 3, split:movetoworkspacesilent, 3
+      # bind = SUPER SHIFT, 4, split:movetoworkspacesilent, 4
+      # bind = SUPER SHIFT, 5, split:movetoworkspacesilent, 5
+      # bind = SUPER SHIFT, 6, split:movetoworkspacesilent, 6
+      # bind = SUPER SHIFT, 7, split:movetoworkspacesilent, 7
+      # bind = SUPER SHIFT, 8, split:movetoworkspacesilent, 8
 
-      bind = SUPER, P, split:swapactiveworkspaces, current +1
-      bind = SUPER, G, split:grabroguewindows
+      # bind = SUPER, P, split:swapactiveworkspaces, current +1
+      # bind = SUPER, G, split:grabroguewindows
 
+      # Hyprscroller
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, scroller:movefocus, l
       bind = $mainMod, right, scroller:movefocus, r
