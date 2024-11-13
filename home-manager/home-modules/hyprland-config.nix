@@ -237,6 +237,7 @@
         # Scroll through existing workspaces with mainMod + CTRL + right/left
         "$mainMod + CTRL, right, workspace, e+1"
         "$mainMod + CTRL, left, workspace, e-1"
+        "$mainMod + CTRL, down, workspace, empty"
         ", mouse_right, workspace, e+1"
         ", mouse_left, workspace, e-1"
         "$mainModCTRL, mouse:273, workspace, m+1"
