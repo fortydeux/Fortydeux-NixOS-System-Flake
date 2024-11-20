@@ -39,6 +39,7 @@
     # lan-mouse #Wayland software KVM switch
     # media-downloader #Media-downloader desktop client
     # mediawriter #USB imaage writer
+    moc # Terminal music player
     # musescore #Music notation and composition software
     nix-melt # A ranger-like flake.lock viewer
     # obs-studio #Screen recorder       
