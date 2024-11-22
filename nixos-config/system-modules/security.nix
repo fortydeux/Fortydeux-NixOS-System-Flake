@@ -18,8 +18,11 @@
   };
   security.pam.services.swaylock = {};
 
-    # Services - Mullvad VPN
-  services.mullvad-vpn.enable = true;
+  # Services - Mullvad VPN
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
 
   #Services - clamav updater: freshclam
   services.clamav.updater.enable = true;
