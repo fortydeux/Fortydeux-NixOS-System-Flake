@@ -102,6 +102,11 @@
     	source = ../dotfiles/kitty;
     	recursive = true;
     };
+    
+    ".config/logos" = {
+    	source = ../dotfiles/logos;
+    	recursive = true;
+    };
 
     ".config/mako" = {
     	source = ../dotfiles/mako;
