@@ -31,10 +31,10 @@
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
-    hyprscroller = {
-      url = "github:dawsers/hyprscroller";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprscroller = {
+    #   url = "github:dawsers/hyprscroller";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
     hyprland-virtual-desktops = { 
       url = "github:levnikmyskin/hyprland-virtual-desktops";
       inputs.hyprland.follows = "hyprland";
@@ -43,9 +43,11 @@
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
+    #MusNix
+    musnix.url = "github:musnix/musnix";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprscroller, hyprland-virtual-desktops, hyprsplit, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprland-virtual-desktops, hyprsplit, musnix, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

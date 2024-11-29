@@ -13,6 +13,7 @@
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
     ../../system-modules/cosmic-desktop.nix
+    ../../system-modules/audio-prod.nix
     # ../../system-modules/fun-and-games.nix
     # Home-manager
     inputs.home-manager.nixosModules.home-manager
@@ -32,6 +33,9 @@
   boot.loader.systemd-boot.configurationLimit = 8;
 
   # Kernel - Turn off when MS-Surface Kernel is enabled
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  musnix.kernel = {
+    realtime = true;
+    packages = pkgs.linuxPackages_latest_rt;
+  };
 }
