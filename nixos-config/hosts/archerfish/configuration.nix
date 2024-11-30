@@ -13,6 +13,7 @@
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
     ../../system-modules/cosmic-desktop.nix
+    # ../../system-modules/audio-prod.nix
     # ../../system-modules/fun-and-games.nix
     # Home-manager
     inputs.home-manager.nixosModules.home-manager

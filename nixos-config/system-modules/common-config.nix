@@ -163,7 +163,7 @@
   ### Fonts
   fonts.fontconfig.enable = true;
   fonts.enableDefaultPackages = true;
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; }) ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

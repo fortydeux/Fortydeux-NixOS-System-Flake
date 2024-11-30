@@ -6,12 +6,13 @@
 }:
 
 {
-  # Configuration.nix - Archerfish
+  # Configuration.nix - Killifish
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
+    ../../system-modules/audio-prod.nix
     ../../system-modules/cosmic-desktop.nix
     # ../../system-modules/fun-and-games.nix
     # Home-manager
@@ -19,7 +20,7 @@
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
-    ../../system-modules/ms-surface.nix
+    # ../../system-modules/ms-surface.nix
   ];
   # The most common options you'll want to change for a new host machine reside here
   # For most machines, you'll want to comment out ./ms-surface.nix
@@ -42,4 +43,10 @@
 
   # Kernel - Turn off when MS-Surface Kernel is enabled
   # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Real-time kernel settings for audio production
+  musnix.kernel = {
+    realtime = true;
+    packages = pkgs.linuxPackages_latest_rt;
+  };
 }
