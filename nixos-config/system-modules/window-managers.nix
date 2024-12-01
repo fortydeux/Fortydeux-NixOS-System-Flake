@@ -6,9 +6,10 @@
   programs.hyprland = {
     enable = true;
     # xwayland.enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    # package = pkgs.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    # portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
 
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config

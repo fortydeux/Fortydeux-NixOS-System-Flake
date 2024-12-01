@@ -20,7 +20,7 @@
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
-    # ../../system-modules/ms-surface.nix
+    ../../system-modules/ms-surface.nix
   ];
   # The most common options you'll want to change for a new host machine reside here
   # For most machines, you'll want to comment out ./ms-surface.nix
@@ -45,8 +45,8 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Real-time kernel settings for audio production
-  musnix.kernel = {
-    realtime = true;
-    packages = pkgs.linuxPackages_latest_rt;
-  };
+  # musnix.kernel = {
+  #   realtime = true;
+  #   packages = pkgs.linuxPackages_latest_rt;
+  # };
 }

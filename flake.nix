@@ -31,10 +31,6 @@
       # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
       inputs.hyprland.follows = "hyprland";
     };
-    # hyprscroller = {
-    #   url = "github:dawsers/hyprscroller";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
     hyprland-virtual-desktops = { 
       url = "github:levnikmyskin/hyprland-virtual-desktops";
       inputs.hyprland.follows = "hyprland";

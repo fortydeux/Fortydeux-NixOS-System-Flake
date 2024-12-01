@@ -19,7 +19,7 @@
   		             {
   		                block = "time";
   		                interval = 5;
-  		                format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+  		                format = " $timestamp.datetime(f:'%a %m/%d %R') ";
   		             }
   		             {  		            
   		                block = "disk_space";

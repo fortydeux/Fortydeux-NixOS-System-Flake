@@ -17,17 +17,17 @@
   };
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
-    # package = pkgs.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprexpo plugin
       # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # pkgs.hyprlandPlugins.hyprexpo
       # Hyprgrass plugin
-      inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
+      pkgs.hyprlandPlugins.hyprgrass
+      # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
-      # inputs.hyprscroller.packages.${pkgs.system}.hyprscroller
       pkgs.hyprlandPlugins.hyprscroller
       # Hyprscpace plugin
       # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
