@@ -15,6 +15,9 @@
   services.hyprpaper = {
     enable = true;
   };
+  home.packages = with pkgs; [
+    inputs.hyprland-qtutils.packages.${pkgs.system}.default
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     # package = inputs.hyprland.packages.${pkgs.system}.default;

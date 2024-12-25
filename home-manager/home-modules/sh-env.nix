@@ -55,6 +55,7 @@
     };
   #Shell-related packages
   home.packages = (with pkgs; [
+    devenv #Fast, Declarative, Reproducible, and Composable Developer Environments
     starship
     lsd
     eza

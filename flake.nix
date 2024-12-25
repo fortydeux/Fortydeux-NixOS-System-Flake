@@ -39,11 +39,15 @@
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprland-qtutils = {
+      url = "github:hyprwm/hyprland-qtutils";
+      inputs.hyprland.follows = "hyprland";
+    };
     #MusNix
     musnix.url = "github:musnix/musnix";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprland-virtual-desktops, hyprsplit, musnix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprland-virtual-desktops, hyprsplit, hyprland-qtutils, musnix, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

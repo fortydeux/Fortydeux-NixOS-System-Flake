@@ -95,6 +95,7 @@
     gparted # Disk/Partition manager
     htop # Human readable CLI top utility
     kitty # A modern, hackable, featureful, OpenGL based terminal emulator - Default Terminal for Hyprland
+    mc # File Manager and User Shell for the GNU Project, known as Midnight Commander
     micro # Modern and intuitive terminal-based text editor
     neovim # Vim text editor fork focused on extensibility and agility
     nnn # Small ncurses-based file browser forked from noice
