@@ -16,8 +16,8 @@
     ../../system-modules/window-managers.nix
     # ../../system-modules/audio-prod.nix
     ../../system-modules/cosmic-desktop.nix
-    ../../pcloud.nix
-    ../../virtualisation.nix
+    ../../system-modules/pcloud.nix
+    ../../system-modules/virtualisation.nix
     ../../system-modules/extraFonts.nix
     # ../../system-modules/fun-and-games.nix
     # Home-manager
