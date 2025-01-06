@@ -32,6 +32,7 @@
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
     gh #Github CLI tool 
+    ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
  #   logseq #Logseq electron desktop client

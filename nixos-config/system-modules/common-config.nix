@@ -131,12 +131,14 @@
   # Enable Hardware. Components
   hardware = {
     bluetooth.enable = true;
-    pulseaudio.enable = false;
     graphics.enable = true;
   };
 
-  services.blueman.enable = true;
-
+  services = { 
+    pulseaudio.enable = false;
+    blueman.enable = true;
+  };
+  
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   

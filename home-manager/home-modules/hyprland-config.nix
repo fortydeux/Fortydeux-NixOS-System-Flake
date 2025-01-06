@@ -170,7 +170,7 @@
         disable_splash_rendering = true;
       };
       bind = [
-        "$mainMod, S, exec, kitty"
+        "$mainMod, S, exec, ghostty"
         "CTRL ALT, T, exec, wezterm"
         "$mainMod, RETURN, exec, footclient"
         "$mainMod SHIFT, T, exec, alacritty"
