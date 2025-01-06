@@ -12,6 +12,9 @@
     sddm.wayland.enable = true;
   };
 
+  # Enable NumLock at login:
+  services.displayManager.sddm.autoNumlock = true;
+
    # Greetd - enable if disabling other login managers 
  #  services.greetd = {
  #    enable = true;

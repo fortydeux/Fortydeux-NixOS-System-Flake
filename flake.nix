@@ -41,7 +41,7 @@
     };
     hyprland-qtutils = {
       url = "github:hyprwm/hyprland-qtutils";
-      inputs.hyprland.follows = "hyprland";
+      # inputs.hyprland.follows = "hyprland";
     };
     #MusNix
     musnix.url = "github:musnix/musnix";
