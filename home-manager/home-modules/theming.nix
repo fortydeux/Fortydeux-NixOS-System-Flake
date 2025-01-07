@@ -45,8 +45,10 @@
     enable = true;
     #Icon Theme
     iconTheme = {
-      package = pkgs.kdePackages.breeze-icons;
-      name = "Breeze-Dark";
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+      # package = pkgs.kdePackages.breeze-icons;
+      # name = "Breeze-Dark";
     };
   #   # Catppuccin
   #   catppuccin = {

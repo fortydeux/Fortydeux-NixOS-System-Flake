@@ -21,6 +21,15 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    adwaita-icon-theme
+    gnome-icon-theme
+    hicolor-icon-theme
+    hicolor-icon-theme
+    kdePackages.breeze-gtk
+    kdePackages.breeze-icons
+  ];
+
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "kde";
   };
