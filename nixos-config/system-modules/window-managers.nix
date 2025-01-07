@@ -85,6 +85,7 @@
     libappindicator #A library to allow applications to export a menu into the Unity Menu bar
     libdbusmenu #Library for passing menu structures across DBus
     libnotify #A library that sends desktop notifications to a notification daemon
+    lm_sensors #Tools for reading hardware sensors
     meld #Visual diff and merge tool
     networkmanagerapplet #NetworkManager control applet for GNOME
     nwg-displays #Output management utility for Sway and Hyprland
