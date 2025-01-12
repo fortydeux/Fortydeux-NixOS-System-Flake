@@ -89,7 +89,7 @@
     meld #Visual diff and merge tool
     networkmanagerapplet #NetworkManager control applet for GNOME
     nwg-displays #Output management utility for Sway and Hyprland
-    nwg-dock-hyprland #GTK3-based dock for Hyprland
+    # nwg-dock-hyprland #GTK3-based dock for Hyprland
     nwg-look # GTK theme tool
     rofi-wayland #Window switcher, run dialog and dmenu replacement for Wayland
     slurp #Select a region in a Wayland compositor

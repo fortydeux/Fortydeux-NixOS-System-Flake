@@ -10,10 +10,10 @@
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/extraPackages.nix
-    ../../system-modules/display-manager.nix
+    # ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
-    ../../system-modules/cosmic-desktop.nix
+    # ../../system-modules/cosmic-desktop.nix
     ../../system-modules/pcloud.nix
     ../../system-modules/extraFonts.nix
     # ../../system-modules/virtualisation.nix
@@ -39,6 +39,14 @@
 
   # Hostname
   networking.hostName = "killifish-nixos"; # Define your hostname.
+
+  # Temporary Display Manager
+  services.displayManager = {
+    enable = true;
+    sddm.enable = true;
+    sddm.wayland.enable = true;
+  };
+  
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;

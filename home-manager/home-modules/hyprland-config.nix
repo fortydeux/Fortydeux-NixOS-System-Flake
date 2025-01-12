@@ -172,7 +172,7 @@
       bind = [
         "$mainMod, S, exec, ghostty"
         "CTRL ALT, T, exec, wezterm"
-        "$mainMod, RETURN, exec, footclient"
+        "$mainMod, RETURN, exec, kitty"
         "$mainMod SHIFT, T, exec, alacritty"
         "$mainMod, Q, killactive,"
         "$mainModSHIFT, E, exit,"
@@ -312,7 +312,7 @@
         #   num_workspaces = 8;
         # };
         scroller = {
-          column_default_width = "floating";
+          column_default_width = "twothirds";
           focus_wrap = false;
           # ultra-wide monitor
           column_widths = "onesixth onefourth onethird onehalf twothirds one";
@@ -323,7 +323,7 @@
           # default sensitivity is probably too low on tablet screens,
           # I recommend turning it up to 4.0
           sensitivity = 4.0;
-          workspace_swipe_fingers = 3;
+          workspace_swipe_fingers = 4;
         };
       };
     };

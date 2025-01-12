@@ -54,6 +54,7 @@
  #   teams #Microsoft Teams application - not yet available for Linux
     # telegram-desktop #Telegram desktop client
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
+    tmux #Terminal multiplexer
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
     kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
@@ -61,6 +62,7 @@
     warp-terminal # Modern rust-based terminal       
     # waynergy #A synergy client for Wayland compositors
     zed-editor #Modern text editor with AI built in - still in development for Linux
+    zellij #Terminal workspace with batteries included
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -75,7 +77,50 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   
+  programs = {
+    nnn = {
+      enable = true;
+      package = pkgs.nnn.override ({ withNerdIcons = true; });
+      extraPackages = with pkgs; [
+        mediainfo
+        ffmpegthumbnailer
+        sxiv
+        nsxiv
+        tabbed
+        file
+        zathura
+        tree
+      ];
+      plugins = {
+        mappings = {
+          #f = "finder";
+          #o = "fzopen";
+          n = "nuke";
+          v = "preview-tabbed";
+          p = "preview-tui";
+          #s = "-!printf $PWD/$nnn|wl-copy*";
+          #d = "";
+        };
+        src = ./plugins/nnn;
+        #src = (pkgs.fetchFromGitHub {
+        #  owner = "jarun";
+        #  repo = "nnn";
+        #  rev = "v4.0";
+        #  sha256 = "sha256-Hpc8YaJeAzJoEi7aJ6DntH2VLkoR6ToP6tPYn3llR7k=";
+        #}) + "/plugins";
+      };
+    };
+    yazi = {
+      enable = true;
+    };
+  };
 
+  home.sessionVariables = {
+    # NNN_OPENER = "/home/fortydeux/scripts/file-ops/linkhandler.sh";
+    # NNN_FCOLORS = "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER";
+    NNN_TRASH = 1;
+    NNN_FIFO = "/tmp/nnn.fifo";
+  };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
   # Manager then you have to manually source 'hm-session-vars.sh' located at
