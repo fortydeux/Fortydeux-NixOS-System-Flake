@@ -27,6 +27,7 @@
     appflowy #An open-source alternative to Notion
     barrier #Open-source KVM software
     code-cursor #AI-powered code editor built on vscode    
+    cheese # Cheesy camera app
     # decent-sampler #An audio sample player
     # discord #Discord social client
     fish #Fish terminal
@@ -43,7 +44,7 @@
     moc # Terminal music player
     # musescore #Music notation and composition software
     nix-melt # A ranger-like flake.lock viewer
-    # obs-studio #Screen recorder       
+    obs-studio #Screen recorder       
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust

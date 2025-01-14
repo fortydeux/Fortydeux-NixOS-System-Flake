@@ -152,6 +152,30 @@
     	source = ../dotfiles/sway;
     	recursive = true;
     };
+    
+    ".config/nwg-bar" = {
+    	source = ../dotfiles/miracle-wm/nwg-bar;
+    	recursive = true;
+    };
+
+    ".config/nwg-panel" = {
+    	source = ../dotfiles/miracle-wm/nwg-panel;
+    	recursive = true;
+    };
+
+    ".config/nwg-drawer" = {
+    	source = ../dotfiles/miracle-wm/nwg-drawer;
+    	recursive = true;
+    };
+    
+    ".config/nwg-dock" = {
+    	source = ../dotfiles/miracle-wm/nwg-dock;
+    	recursive = true;
+    };
+    
+    ".config/miracle-wm.yaml" = {
+    	source = ../dotfiles/miracle-wm/miracle-wm.yaml;
+    }; 
 
     ".config/wayfire.ini" = {
     	source = ../dotfiles/wayfire/wayfire.ini;

@@ -13,36 +13,36 @@
   };
 
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config
-  programs.wayfire = {
-    enable = true;
-    plugins = with pkgs.wayfirePlugins; [
-      wcm
-      wf-shell
-      wayfire-plugins-extra
-    ];
-  };
+  # programs.wayfire = {
+  #   enable = true;
+  #   plugins = with pkgs.wayfirePlugins; [
+  #     wcm
+  #     wf-shell
+  #     wayfire-plugins-extra
+  #   ];
+  # };
 
   # ...and River wm/compositor - basic config
-  programs.river = {
-  	enable = true;
-  };
+  # programs.river = {
+  # 	enable = true;
+  # };
 
   # ...and Sway wm/compositor - basic config
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true; # so that gtk works properly
-    extraSessionCommands = ''
-      export SDL_VIDEODRIVER=wayland
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      export MOZ_ENABLE_WAYLAND=1
-    '';
-    package = pkgs.swayfx;
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true; # so that gtk works properly
+  #   extraSessionCommands = ''
+  #     export SDL_VIDEODRIVER=wayland
+  #     export QT_QPA_PLATFORM=wayland
+  #     export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+  #     export _JAVA_AWT_WM_NONREPARENTING=1
+  #     export MOZ_ENABLE_WAYLAND=1
+  #   '';
+  #   package = pkgs.swayfx;
+  # };
  
   #Enables Miracle-WM
-  # programs.wayland.miracle-wm.enable = true;
+  programs.wayland.miracle-wm.enable = true;
 
   # Desktop portal
   # xdg.portal = {
@@ -114,6 +114,12 @@
     wdisplays #A graphical application for configuring displays in Wayland compositors
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks    
     yambar #Another bar option
+
+    # Miracle
+    nwg-dock
+    nwg-drawer
+    nwg-bar
+    nwg-panel
   ];  
      
 }
