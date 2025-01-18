@@ -3,14 +3,14 @@
 { # Display-manager.nix
 
   # Enable Cosmic Greeter / Display Manager
-  services.displayManager.cosmic-greeter.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
 
   #Enable SDDM Display manager
- # services.displayManager = {
- #    enable = true;
- #    sddm.enable = true;
- #    sddm.wayland.enable = true;
- #  };
+ services.displayManager = {
+    enable = true;
+    sddm.enable = true;
+    sddm.wayland.enable = true;
+  };
 
   # Enable NumLock at login:
   services.displayManager.sddm.autoNumlock = true;
