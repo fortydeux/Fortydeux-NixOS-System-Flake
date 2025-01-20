@@ -312,10 +312,10 @@
         #   num_workspaces = 8;
         # };
         scroller = {
-          column_default_width = "twothirds";
+          column_default_width = "one";
           focus_wrap = false;
           # ultra-wide monitor
-          column_widths = "onesixth onefourth onethird onehalf twothirds one";
+          column_widths = "onesixth onefourth onethird onehalf twothirds fivesixths one";
           # portrait mode monitors
           monitor_modes = "eDP-1=col,DP-1=col,HDMI-A-1=col";
         };

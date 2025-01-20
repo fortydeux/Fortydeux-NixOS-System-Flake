@@ -38,6 +38,7 @@
       ls = "lsd -lh --group-directories-first --color always --icon always";
       cat = "bat -f";
       rrr = "ranger";
+      yyy = "yazi";
       ff = "cd ~/fortyflake";
       ffr = "cd ~/fortyflake && ranger";
       fff = "cd ~/fortyflake && fish";
