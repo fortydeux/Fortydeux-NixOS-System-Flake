@@ -41,6 +41,7 @@
       yyy = "yazi";
       ff = "cd ~/fortyflake";
       ffr = "cd ~/fortyflake && ranger";
+      ffy = "cd ~/fortyflake && yazi";
       fff = "cd ~/fortyflake && fish";
       stat = "git status";
       st = "git status -s";

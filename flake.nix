@@ -26,19 +26,6 @@
        url = "github:horriblename/hyprgrass";
        inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };  
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprland-virtual-desktops = { 
-      url = "github:levnikmyskin/hyprland-virtual-desktops";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
-    };
     hyprland-qtutils = {
       url = "github:hyprwm/hyprland-qtutils";
       # inputs.hyprland.follows = "hyprland";
@@ -47,7 +34,7 @@
     musnix.url = "github:musnix/musnix";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, Hyprspace, hyprland-plugins, hyprland-virtual-desktops, hyprsplit, hyprland-qtutils, musnix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, hyprland-plugins, hyprland-qtutils, musnix, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

@@ -199,7 +199,7 @@
     "custom/launcher":{
         // "format": "",
         "format": "",
-        "on-click": "wofi -S drun -GIm -w 3 -W 100% -H 96%",
+        "on-click": "pgrep wofi > /dev/null && pkill wofi || wofi -S drun -GIm -w 3 -W 100% -H 96%",
         "on-click-right": "pkill wofi"
     },
 
@@ -207,7 +207,7 @@
         "format": "⏻",
         //"format": "",
         "on-click": "exec wlogout",
-        "on-click-right": "pkill wofi"
+        "on-click-right": "pkill wlogout"
     },
 
     "custom/updater":{

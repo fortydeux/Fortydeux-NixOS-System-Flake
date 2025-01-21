@@ -110,6 +110,7 @@
     wlsunset #Day/night gamma adjustments for Wayland
     wlr-randr #An xrandr clone for wlroots compositors
     wofi #A launcher/menu program for wlroots based wayland compositors such as sway
+    wvkbd #On-screen keyboard for wlroots
     xfce.xfce4-terminal #Xfce Terminal Emulator
     wdisplays #A graphical application for configuring displays in Wayland compositors
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks    

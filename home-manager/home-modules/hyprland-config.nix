@@ -15,7 +15,7 @@
   services.hyprpaper = {
     enable = true;
   };
-  home.packages = with pkgs; [
+  home.packages = [
     inputs.hyprland-qtutils.packages.${pkgs.system}.default
   ];
   wayland.windowManager.hyprland = {
@@ -24,22 +24,11 @@
     package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
-      # Hyprexpo plugin
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
-      # pkgs.hyprlandPlugins.hyprexpo
       # Hyprgrass plugin
       pkgs.hyprlandPlugins.hyprgrass
       # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
       pkgs.hyprlandPlugins.hyprscroller
-      # Hyprscpace plugin
-      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      # pkgs.hyprlandPlugins.hyprspace
-      # Hyprland Virtual Desktops Plugin
-      # inputs.hyprland-virtual-desktops.packages.${pkgs.system}.virtual-desktops
-      # Hyprsplit Plugin
-      # inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
-      # pkgs.hyprlandPlugins.hyprsplit
     ];
     settings = {
       "$mainMod" = "SUPER";
@@ -53,6 +42,7 @@
       "$removeWallpapers" = "pkill swaybg || pkill mpvpaper";
       "$waybar" = "waybar -c $HOME/.config/hypr/waybar/config -s $HOME/.config/hypr/waybar/style.css";
       "$fuzzel" = "fuzzel -w 80 -b 181818ef -t ccccccff";
+      "$wofi" = "wofi -S drun -GIm -w 3 -W 100% -H 96%";
       "$hypridle" = "hypridle";
       "$hyprlock" = "hyprlock";
       # "source" = "$HOME/.config/hypr/device-specific.conf";
@@ -73,7 +63,6 @@
       ];
       input = {
         kb_layout = "us";
-
         follow_mouse = 1;
         natural_scroll = true;
         touchpad = {
@@ -100,27 +89,19 @@
 
       decoration = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
         rounding = 12;
         blur = {
           enabled = true;
           size = 3;
           passes = 1;
         };
-
-        # drop_shadow = true;
-        # shadow_range = 4;
-        # shadow_render_power = 3;
-        # "col.shadow" = "rgba(1a1a1aed)";
       };
 
       animations = {
         enabled = true;
-
         # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
         bezier = [
           "myBezier, 0.05, 0.9, 0.1, 1.05"
-
           # Added from garden theme
           "slow, 0, 0.85, 0.3, 1"
           "overshot, 0.7, 0.6, 0.1, 1.1"
@@ -153,9 +134,9 @@
 
       gestures = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
-        workspace_swipe_cancel_ratio = 0.15;
+        workspace_swipe = false;
+        # workspace_swipe_fingers = 4;
+        # workspace_swipe_cancel_ratio = 0.15;
       };
 
       # Example per-device config
@@ -179,7 +160,7 @@
         "$mainMod, E, exec, nautilus"
         "$mainMod, V, togglefloating,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
-        "$mainMod, W, exec, wofi -S drun -GIm -w 3 -W 100% -H 96%"
+        "$mainMod, W, exec, pkill wofi || $wofi"
         "$mainMod, P, pseudo, "
         "$mainMod, L, exec, $hyprlock"
         "$mainMod, J, togglesplit, "
@@ -245,33 +226,6 @@
         ", mouse_left, workspace, e-1"
         "$mainModCTRL, mouse:273, workspace, m+1"
         "$mainModCTRL, mouse:272, workspace, m-1"
-
-        # Virtual-desktop Keybinds
-        # "$mainModCTRL, right, nextdesk"
-        # "$mainModCTRL, left, prevdesk"
-
-        # Touchscreen Gestures
-        # swipe left from right edge
-        ", edge:r:l, workspace, +1"
-
-        # swipe up from bottom edge
-        ", edge:d:u, exec, firefox"
-
-        # swipe down from left edge
-        ", edge:l:d, exec, pactl set-sink-volume @DEFAULT_SINK@ -4%"
-
-        # swipe down with 4 fingers
-        ", swipe:4:d, killactive"
-
-        # swipe diagonally leftwards and downwards with 3 fingers
-        # l (or r) must come before d and u
-        ", swipe:3:ld, exec, foot"
-
-        # Overview mini-modes
-        # Hyprexpo
-        # "SUPER, grave, hyprexpo:expo, toggle # can be: toggle, off/disable or on/enable"
-        # Hyprspace
-        # "$mainMod, A, overview:toggle"
       ];
 
       binde = [
@@ -295,22 +249,7 @@
       ];
 
       plugin = {
-        # virtual-desktops = {
-        #   cycleworkspaces = 1;
-        #   rememberlayout = "size";
-        # };
-        # hyprexpo = {
-        #   columns = 3;
-        #   gap_size = 5;
-        #   bg_col = "rgb(111111)";
-        #   workspace_method = "first current"; # [center/first] [workspace] e.g. first 1 or center m+1
-        #   enable_gesture = true; # laptop touchpad, 4 fingers
-        #   gesture_distance = 300; # how far is the "max"
-        #   gesture_positive = true; # positive = swipe down. Negative = swipe up.
-        # };
-        # hyprsplit = {
-        #   num_workspaces = 8;
-        # };
+        # Hyprscroller
         scroller = {
           column_default_width = "one";
           focus_wrap = false;
@@ -318,12 +257,28 @@
           column_widths = "onesixth onefourth onethird onehalf twothirds fivesixths one";
           # portrait mode monitors
           monitor_modes = "eDP-1=col,DP-1=col,HDMI-A-1=col";
+          gesture_scroll_distance = 200;
+          gesture_workspace_switch_fingers = 4;
         };
+        # Hyprgrass
         touch_gestures = {
+          workspace_swipe_fingers = 4;
           # default sensitivity is probably too low on tablet screens,
           # I recommend turning it up to 4.0
-          sensitivity = 4.0;
-          workspace_swipe_fingers = 4;
+          sensitivity = 8.0;
+          # NOTE: swipe events only trigger for finger count of >= 3
+          hyprgrass-bind = [
+            " , swipe:3:l, movefocus, r"
+            " , swipe:3:r, movefocus, l"
+            " , swipe:3:u, movefocus, d"
+            " , swipe:3:d, movefocus, u"
+            " , swipe:4:u, scroller:toggleoverview"
+            " , swipe:4:d, scroller:toggleoverview"
+            " , swipe:3:ld, killactive"
+            " , swipe:3:ru, exec, $wofi"
+            " , swipe:3:lu, exec, wvkbd-mobintl"
+            " , swipe:3:rd, exec, pkill wvkbd-mobintl"
+          ];
         };
       };
     };
@@ -350,52 +305,34 @@
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
 
-      # Hyprsplit
-      # bind = SUPER, 1, split:workspace, 1
-      # bind = SUPER, 2, split:workspace, 2
-      # bind = SUPER, 3, split:workspace, 3
-      # bind = SUPER, 4, split:workspace, 4
-      # bind = SUPER, 5, split:workspace, 5
-      # bind = SUPER, 6, split:workspace, 6
-      # bind = SUPER, 7, split:workspace, 7
-      # bind = SUPER, 8, split:workspace, 8
-
-      # bind = SUPER SHIFT, 1, split:movetoworkspacesilent, 1
-      # bind = SUPER SHIFT, 2, split:movetoworkspacesilent, 2
-      # bind = SUPER SHIFT, 3, split:movetoworkspacesilent, 3
-      # bind = SUPER SHIFT, 4, split:movetoworkspacesilent, 4
-      # bind = SUPER SHIFT, 5, split:movetoworkspacesilent, 5
-      # bind = SUPER SHIFT, 6, split:movetoworkspacesilent, 6
-      # bind = SUPER SHIFT, 7, split:movetoworkspacesilent, 7
-      # bind = SUPER SHIFT, 8, split:movetoworkspacesilent, 8
-
-      # bind = SUPER, P, split:swapactiveworkspaces, current +1
-      # bind = SUPER, G, split:grabroguewindows
-
-      # Hyprscroller
+      # Begin Hyprscroller
       # Move focus with mainMod + arrow keys
-      bind = $mainMod, left, scroller:movefocus, l
-      bind = $mainMod, right, scroller:movefocus, r
-      bind = $mainMod, up, scroller:movefocus, u
-      bind = $mainMod, down, scroller:movefocus, d
+      bind = $mainMod, left, movefocus, l
+      bind = $mainMod, right, movefocus, r
+      bind = $mainMod, up, movefocus, u
+      bind = $mainMod, down, movefocus, d
       bind = $mainMod, home, scroller:movefocus, begin
       bind = $mainMod, end, scroller:movefocus, end
 
       # Movement
-      bind = $mainMod SHIFT, left, scroller:movewindow, l
-      bind = $mainMod SHIFT, right, scroller:movewindow, r
-      bind = $mainMod SHIFT, up, scroller:movewindow, u
-      bind = $mainMod SHIFT, down, scroller:movewindow, d
-      bind = $mainMod SHIFT, home, scroller:movewindow, begin
-      bind = $mainMod SHIFT, end, scroller:movewindow, end
+      bind = $mainMod CTRL, left, movewindow, l
+      bind = $mainMod CTRL, right, movewindow, r
+      bind = $mainMod CTRL, up, movewindow, u
+      bind = $mainMod CTRL, down, movewindow, d
+      bind = $mainMod CTRL, home, scroller:movewindow, begin
+      bind = $mainMod CTRL, end, scroller:movewindow, end
 
       # Modes
       bind = $mainMod, bracketleft, scroller:setmode, row
       bind = $mainMod, bracketright, scroller:setmode, col
 
       # Sizing keys
-      bind = $mainMod, equal, scroller:cyclesize, next
-      bind = $mainMod, minus, scroller:cyclesize, prev
+      # bind = $mainMod, equal, scroller:cyclesize, next
+      # bind = $mainMod, minus, scroller:cyclesize, prev
+      bind = $mainMod, equal, scroller:cyclewidth, next
+      bind = $mainMod, minus, scroller:cyclewidth, prev
+      bind = $mainMod SHIFT, equal, scroller:cycleheight, next
+      bind = $mainMod SHIFT, minus, scroller:cycleheight, prev
 
       # Admit/Expel
       bind = $mainMod, I, scroller:admitwindow,
@@ -409,6 +346,8 @@
       # sets repeatable binds for resizing the active window
       bind = , C, scroller:alignwindow, c
       bind = , C, submap, reset
+      bind = , m, scroller:alignwindow, m
+      bind = , m, submap, reset
       bind = , right, scroller:alignwindow, r
       bind = , right, submap, reset
       bind = , left, scroller:alignwindow, l
@@ -439,7 +378,7 @@
 
       # Fit size submap
       # will switch to a submap called fitsize
-      bind = $mainMod, R, submap, fitsize
+      bind = $mainMod, W, submap, fitsize
       # will start a submap called "fitsize"
       submap = fitsize
       # sets binds for fitting columns/windows in the screen
@@ -453,6 +392,10 @@
       bind = , up, submap, reset
       bind = , down, scroller:fitsize, all
       bind = , down, submap, reset
+      # bind = , bracketleft, scroller:fitwidth, all
+      bind = , bracketleft, submap, reset
+      # bind = , bracketright, scroller:fitheight, all
+      bind = , bracketright, submap, reset
       # use reset to go back to the global submap
       bind = , escape, submap, reset
       # will reset the submap, meaning end the current one and return to the global one
@@ -461,24 +404,7 @@
       # overview keys
       # bind key to toggle overview (normal)
       bind = $mainMod, tab, scroller:toggleoverview
-      # overview submap
-      # will switch to a submap called overview
-      bind = $mainMod, tab, submap, overview
-      # will start a submap called "overview"
-      submap = overview
-      bind = , right, scroller:movefocus, right
-      bind = , left, scroller:movefocus, left
-      bind = , up, scroller:movefocus, up
-      bind = , down, scroller:movefocus, down
-      # use reset to go back to the global submap
-      bind = , escape, scroller:toggleoverview,
-      bind = , escape, submap, reset
-      bind = , return, scroller:toggleoverview,
-      bind = , return, submap, reset
-      bind = $mainMod, tab, scroller:toggleoverview,
-      bind = $mainMod, tab, submap, reset
-      # will reset the submap, meaning end the current one and return to the global one
-      submap = reset
+      bind = ,mouse:275, scroller:toggleoverview
 
       # Marks
       bind = $mainMod, M, submap, marksadd
@@ -515,6 +441,43 @@
       submap = reset
 
       bind = $mainMod CTRL, M, scroller:marksreset
+
+      # Pin
+      bind = $mainMod, P, scroller:pin,
+
+      # Window copy/paste
+      bind = $mainMod, Insert, scroller:selectiontoggle,
+      bind = $mainMod CTRL, Insert, scroller:selectionreset,
+      bind = $mainMod SHIFT, Insert, scroller:selectionmove, right
+      # bind = $mainMod CTRL SHIFT, Insert, scroller:selectionworkspace,
+
+      # Trails and Trailmarks
+      bind = $mainMod SHIFT, semicolon, submap, trail
+      submap = trail
+      bind = , bracketright, scroller:trailnext,
+      bind = , bracketleft, scroller:trailprevious,
+      bind = , semicolon, scroller:trailnew,
+      bind = , semicolon, submap, reset
+      bind = , d, scroller:traildelete,
+      bind = , d, submap, reset
+      bind = , c, scroller:trailclear,
+      bind = , c, submap, reset
+      bind = , Insert, scroller:trailtoselection,
+      bind = , Insert, submap, reset
+      bind = , escape, submap, reset
+      submap = reset
+
+      bind = $mainMod, semicolon, submap, trailmark
+      submap = trailmark
+      bind = , bracketright, scroller:trailmarknext,
+      bind = , bracketleft, scroller:trailmarkprevious,
+      bind = , semicolon, scroller:trailmarktoggle,
+      bind = , semicolon, submap, reset
+      bind = , escape, submap, reset
+      submap = reset
+
+      bind = $mainMod, slash, scroller:jump,
+      # End Hyprscroller
     '';
   };
   # xdg.portal = {
