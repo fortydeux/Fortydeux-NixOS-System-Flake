@@ -38,7 +38,7 @@
       export _JAVA_AWT_WM_NONREPARENTING=1
       export MOZ_ENABLE_WAYLAND=1
     '';
-    package = pkgs.swayfx;
+    package = pkgs.sway;
   };
  
   #Enables Miracle-WM

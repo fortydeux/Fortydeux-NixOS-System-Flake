@@ -33,7 +33,7 @@
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
     gh #Github CLI tool 
-    ghostty #Fast, native, feature-rich terminal emulator pushing modern features
+    # ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
  #   logseq #Logseq electron desktop client
@@ -55,6 +55,7 @@
  #   teams #Microsoft Teams application - not yet available for Linux
     # telegram-desktop #Telegram desktop client
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
+    tldr # Simplified and community-driven man pages
     tmux #Terminal multiplexer
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
     kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
@@ -79,6 +80,13 @@
     # '')
   
   programs = {
+    fzf.enable = true;
+    ghostty = {
+      enable = true;
+      settings = {
+        theme = "stylix";
+      };
+    };
     nnn = {
       enable = true;
       package = pkgs.nnn.override ({ withNerdIcons = true; });

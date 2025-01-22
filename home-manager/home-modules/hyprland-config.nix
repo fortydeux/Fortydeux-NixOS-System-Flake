@@ -315,12 +315,12 @@
       bind = $mainMod, end, scroller:movefocus, end
 
       # Movement
-      bind = $mainMod CTRL, left, movewindow, l
-      bind = $mainMod CTRL, right, movewindow, r
-      bind = $mainMod CTRL, up, movewindow, u
-      bind = $mainMod CTRL, down, movewindow, d
-      bind = $mainMod CTRL, home, scroller:movewindow, begin
-      bind = $mainMod CTRL, end, scroller:movewindow, end
+      bind = $mainMod SHIFT, left, movewindow, l
+      bind = $mainMod SHIFT, right, movewindow, r
+      bind = $mainMod SHIFT, up, movewindow, u
+      bind = $mainMod SHIFT, down, movewindow, d
+      bind = $mainMod SHIFT, home, scroller:movewindow, begin
+      bind = $mainMod SHIFT, end, scroller:movewindow, end
 
       # Modes
       bind = $mainMod, bracketleft, scroller:setmode, row

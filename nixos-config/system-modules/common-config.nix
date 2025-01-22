@@ -80,6 +80,7 @@
     duf # Disk Usage/Free Utility
     fd # a simple, fast and user-friendly alternative to find
     fh # Official FlakeHub CLI
+    fzf # Command-line fuzzy finder written in go
     firefox # Firefox browser
     git # Git CLI utility
     gparted # Disk/Partition manager
