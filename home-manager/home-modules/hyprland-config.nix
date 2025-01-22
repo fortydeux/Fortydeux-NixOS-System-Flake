@@ -158,7 +158,7 @@
         "$mainMod, Q, killactive,"
         "$mainModSHIFT, E, exit,"
         "$mainMod, E, exec, nautilus"
-        "$mainMod, V, togglefloating,"
+        "$mainMod, SPACE, togglefloating,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
         "$mainMod, W, exec, pkill wofi || $wofi"
         "$mainMod, P, pseudo, "
