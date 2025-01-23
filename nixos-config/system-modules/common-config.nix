@@ -18,8 +18,8 @@
   ];
 
   ### Shell
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.bash;
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
 
   ### System settings
   # Set your time zone.
@@ -60,7 +60,7 @@
   ### Users
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fortydeux = {
-    shell = pkgs.bash;
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "Fortydeux";
     extraGroups =
