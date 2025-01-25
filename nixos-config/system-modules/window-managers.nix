@@ -53,14 +53,17 @@
   #   };
   
   # Hint electron apps to use wayland
-  environment.variables.NIXOS_OZONE_WL = "1";  
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
+    variables = {
+      NIXOS_OZONE_WL = "1";
+      XCURSOR_SIZE = "32";
+      KDE_SESSION_VERSION = "6";
+      KDE_FULL_SESSION = "true";
+    };
   };
 
-  # Environment 
-  environment.variables.XCURSOR_SIZE = "32";
-  # environment.variables.Xcursor.theme = "phinger-cursors-light";
+  programs.dconf.enable = true;
 
   # Wayland apps 
   environment.systemPackages = with pkgs; [

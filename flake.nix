@@ -26,15 +26,11 @@
        url = "github:horriblename/hyprgrass";
        inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };  
-    hyprland-qtutils = {
-      url = "github:hyprwm/hyprland-qtutils";
-      # inputs.hyprland.follows = "hyprland";
-    };
     #MusNix
     musnix.url = "github:musnix/musnix";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, hyprland-plugins, hyprland-qtutils, musnix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

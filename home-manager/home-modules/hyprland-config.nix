@@ -16,7 +16,7 @@
     enable = true;
   };
   home.packages = [
-    inputs.hyprland-qtutils.packages.${pkgs.system}.default
+    # inputs.hyprland-qtutils.packages.${pkgs.system}.default
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -174,6 +174,7 @@
         "$mainMod SHIFT, Z, exec, $mpvpaper-z"
         "$mainMod SHIFT, C, exec, $mpvpaper-c"
         "$mainMod SHIFT, B, exec, $removeWallpapers"
+        # "$mainMod, slash, exec, $show_binds"
 
         # Volume
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -251,12 +252,13 @@
       plugin = {
         # Hyprscroller
         scroller = {
+          mode = "column";
           column_default_width = "one";
           focus_wrap = false;
           # ultra-wide monitor
           column_widths = "onesixth onefourth onethird onehalf twothirds fivesixths one";
-          # portrait mode monitors
-          monitor_modes = "eDP-1=col,DP-1=col,HDMI-A-1=col";
+          # portrait mode monitors          
+          monitor_options = "(eDP-1 = (mode = col; column_default_width = one;), DP-1 = (mode = col; column_default_width = onehalf;),  HDMI-A-1 = (mode = col; column_default_width = one;))";
           gesture_scroll_distance = 200;
           gesture_workspace_switch_fingers = 4;
         };
@@ -272,7 +274,7 @@
             " , swipe:3:r, movefocus, l"
             " , swipe:3:u, movefocus, d"
             " , swipe:3:d, movefocus, u"
-            " , swipe:4:u, scroller:toggleoverview"
+            " , swipe:4:u, scroller:jump"
             " , swipe:4:d, scroller:toggleoverview"
             " , swipe:3:ld, killactive"
             " , swipe:3:ru, exec, $wofi"
@@ -297,6 +299,11 @@
       env=SDL_VIDEODRIVER,wayland
       env=CLUTTER_BACKEND,wayland
       env=QT_AUTO_SCREEN_SCALE_FACTOR,1
+      # KWallet6 configuration
+      env=KDE_FULL_SESSION,true
+      env=KDE_SESSION_VERSION,6
+      env=QT_QPA_PLATFORMTHEME,kde
+      env=SSH_AUTH_SOCK,/run/user/1000/kwallet6.socket
       # env=HYPRCURSOR_THEME,phinger-cursors-light
       # env=GTK_THEME,Dracula
       env=HYPRCURSOR_SIZE,32
@@ -323,7 +330,9 @@
       bind = $mainMod SHIFT, end, scroller:movewindow, end
 
       # Modes
+      bind = $mainMod, bracketleft, exec, notify-send "Scroller Mode" "Row Mode Activated"
       bind = $mainMod, bracketleft, scroller:setmode, row
+      bind = $mainMod, bracketright, exec, notify-send "Scroller Mode" "Column Mode Activated"
       bind = $mainMod, bracketright, scroller:setmode, col
 
       # Sizing keys
@@ -340,6 +349,7 @@
 
       # Center submap
       # will switch to a submap called center
+      bind = $mainMod, C, exec, notify-send "Scroller Submap" "Center Mode - Use C/M/arrows to align, ESC to exit"
       bind = $mainMod, C, submap, center
       # will start a submap called "center"
       submap = center
@@ -363,6 +373,7 @@
 
       # Resize submap
       # will switch to a submap called resize
+      bind = $mainMod SHIFT, R, exec, notify-send "Scroller Submap" "Resize Mode - Use arrows to resize, ESC to exit"
       bind = $mainMod SHIFT, R, submap, resize
       # will start a submap called "resize"
       submap = resize
@@ -378,12 +389,13 @@
 
       # Fit size submap
       # will switch to a submap called fitsize
-      bind = $mainMod, W, submap, fitsize
+      bind = $mainMod, G, exec, notify-send "Scroller Submap" "Fit Size Mode - G/arrows to fit, ESC to exit"
+      bind = $mainMod, G, submap, fitsize
       # will start a submap called "fitsize"
       submap = fitsize
       # sets binds for fitting columns/windows in the screen
-      bind = , W, scroller:fitsize, visible
-      bind = , W, submap, reset
+      bind = , G, scroller:fitsize, visible
+      bind = , G, submap, reset
       bind = , right, scroller:fitsize, toend
       bind = , right, submap, reset
       bind = , left, scroller:fitsize, tobeg
@@ -403,40 +415,52 @@
 
       # overview keys
       # bind key to toggle overview (normal)
-      bind = $mainMod, tab, scroller:toggleoverview
+      bind = $mainMod, grave, scroller:toggleoverview
       bind = ,mouse:275, scroller:toggleoverview
 
       # Marks
+      bind = $mainMod, M, exec, notify-send "Scroller Submap" "Add Marks Mode - Use A/B/C to mark, ESC to exit"
       bind = $mainMod, M, submap, marksadd
       submap = marksadd
       bind = , a, scroller:marksadd, a
       bind = , a, submap, reset
+      bind = , a, exec, notify-send "Marks" "Added mark A"
       bind = , b, scroller:marksadd, b
       bind = , b, submap, reset
+      bind = , b, exec, notify-send "Marks" "Added mark B"
       bind = , c, scroller:marksadd, c
       bind = , c, submap, reset
+      bind = , c, exec, notify-send "Marks" "Added mark C"
       bind = , escape, submap, reset
       submap = reset
 
+      bind = $mainMod SHIFT, M, exec, notify-send "Scroller Submap" "Delete Marks Mode - Use A/B/C to delete, ESC to exit"
       bind = $mainMod SHIFT, M, submap, marksdelete
       submap = marksdelete
       bind = , a, scroller:marksdelete, a
       bind = , a, submap, reset
+      bind = , a, exec, notify-send "Marks" "Deleted mark A"
       bind = , b, scroller:marksdelete, b
       bind = , b, submap, reset
+      bind = , b, exec, notify-send "Marks" "Deleted mark B"
       bind = , c, scroller:marksdelete, c
       bind = , c, submap, reset
+      bind = , c, exec, notify-send "Marks" "Deleted mark C"
       bind = , escape, submap, reset
       submap = reset
 
+      bind = $mainMod, apostrophe, exec, notify-send "Scroller Submap" "Visit Marks Mode - Use A/B/C to visit, ESC to exit"
       bind = $mainMod, apostrophe, submap, marksvisit
       submap = marksvisit
       bind = , a, scroller:marksvisit, a
       bind = , a, submap, reset
+      bind = , a, exec, notify-send "Marks" "Visited mark A"
       bind = , b, scroller:marksvisit, b
       bind = , b, submap, reset
+      bind = , b, exec, notify-send "Marks" "Visited mark B"
       bind = , c, scroller:marksvisit, c
       bind = , c, submap, reset
+      bind = , c, exec, notify-send "Marks" "Visited mark C"
       bind = , escape, submap, reset
       submap = reset
 
@@ -452,6 +476,7 @@
       # bind = $mainMod CTRL SHIFT, Insert, scroller:selectionworkspace,
 
       # Trails and Trailmarks
+      bind = $mainMod SHIFT, semicolon, exec, notify-send "Scroller Submap" "Trail Mode - Use brackets to navigate, semicolon for new, ESC to exit"
       bind = $mainMod SHIFT, semicolon, submap, trail
       submap = trail
       bind = , bracketright, scroller:trailnext,
@@ -467,6 +492,7 @@
       bind = , escape, submap, reset
       submap = reset
 
+      bind = $mainMod, semicolon, exec, notify-send "Scroller Submap" "Trail Mark Mode - Use brackets to navigate, semicolon to toggle, ESC to exit"
       bind = $mainMod, semicolon, submap, trailmark
       submap = trailmark
       bind = , bracketright, scroller:trailmarknext,
@@ -476,7 +502,7 @@
       bind = , escape, submap, reset
       submap = reset
 
-      bind = $mainMod, slash, scroller:jump,
+      bind = $mainMod, tab, scroller:jump,
       # End Hyprscroller
     '';
   };
