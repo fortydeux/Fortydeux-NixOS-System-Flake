@@ -45,6 +45,7 @@
     # musescore #Music notation and composition software
     nix-melt # A ranger-like flake.lock viewer
     obs-studio #Screen recorder       
+    patchance # JACK Patchbay GUI
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
