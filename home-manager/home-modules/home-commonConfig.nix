@@ -36,6 +36,13 @@
     # ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
+    (kdePackages.kdenlive.overrideAttrs (prevAttrs: {
+      nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
+      postInstall = (prevAttrs.postInstall or "") + ''
+        wrapProgram $out/bin/kdenlive --prefix LADSPA_PATH : ${rnnoise-plugin}/lib/ladspa
+      '';
+    }))
+    # kdePackages.kdenlive # Open source video editor based on MLT and KDE frameworks
  #   logseq #Logseq electron desktop client
  #   libsForQt5.kdenlive #KdenLive Video Editor 
     # lan-mouse #Wayland software KVM switch
@@ -44,11 +51,12 @@
     moc # Terminal music player
     # musescore #Music notation and composition software
     nix-melt # A ranger-like flake.lock viewer
-    obs-studio #Screen recorder       
+    # obs-studio #Screen recorder       
     patchance # JACK Patchbay GUI
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
+    shotcut #Open-source cross-platform video editor
     signal-desktop #Signal electron desktop client
     # simplex-chat-desktop #SimpleX Chat Desktop Client
     # spotify #Spotify music client - Requires non-free packages enabled

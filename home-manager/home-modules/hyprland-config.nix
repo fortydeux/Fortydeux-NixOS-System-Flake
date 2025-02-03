@@ -25,8 +25,8 @@
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprgrass plugin
-      pkgs.hyprlandPlugins.hyprgrass
-      # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
+      # pkgs.hyprlandPlugins.hyprgrass
+      inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
       pkgs.hyprlandPlugins.hyprscroller
     ];

@@ -113,7 +113,6 @@
   #Services - locate:
   services.locate.enable = true;
   services.locate.package = pkgs.plocate;
-  services.locate.localuser = null;
 
   # Configure keymap in X11
   services.xserver = {

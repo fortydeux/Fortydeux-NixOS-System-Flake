@@ -11,6 +11,7 @@
     # ../home-modules/ags.nix
     ../home-modules/hyprland-config.nix
     ../home-modules/hyprland-dualingStudioMonitors.nix
+    ../home-modules/screen-recording.nix
   ];
 
 }
