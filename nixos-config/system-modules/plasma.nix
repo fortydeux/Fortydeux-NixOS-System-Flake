@@ -8,7 +8,8 @@
   # Enable Xorg session
   # services.xserver.enable = true;
  
-  # environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
+    kdePackages.filelight
   #   xorg.xinit
-  # ];
+  ];
 }
