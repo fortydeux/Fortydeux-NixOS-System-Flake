@@ -30,7 +30,7 @@
     kdePackages.breeze-icons
   ];
 
-  environment.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "kde";
-  };
+  # environment.sessionVariables = {
+  #   QT_QPA_PLATFORMTHEME = "kde";
+  # };
 }
