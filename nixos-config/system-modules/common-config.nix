@@ -135,7 +135,7 @@
   };
 
   services = { 
-    pulseaudio.enable = false;
+    # pulseaudio.enable = false; #Option no longer exists? Feb 2025
     blueman.enable = true;
   };
   

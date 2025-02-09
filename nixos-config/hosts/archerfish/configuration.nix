@@ -19,6 +19,7 @@
     ../../system-modules/virtualisation.nix
     # ../../system-modules/audio-prod.nix
     # ../../system-modules/fun-and-games.nix
+    # ../../system-modules/misc-utils.nix
     # Home-manager
     inputs.home-manager.nixosModules.home-manager
     # Device-specific

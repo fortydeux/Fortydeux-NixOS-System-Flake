@@ -12,6 +12,7 @@
     ../home-modules/hyprland-config.nix
     ../home-modules/hyprland-dualingStudioMonitors.nix
     ../home-modules/screen-recording.nix
+    ../home-modules/misc-utils.nix
   ];
 
 }
