@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
+   home.packages = with pkgs; [
     openai-whisper # General-purpose speech recognition model
   ];  
 }

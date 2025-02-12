@@ -6,11 +6,11 @@
   inputs = {  
     stylix.url = "github:danth/stylix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.714101.tar.gz"; # Feb 5, 2025 from Flakehub
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.714101.tar.gz"; # Feb 5, 2025 from Flakehub
   	# nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable from NixOS
-  	home-manager.url = "github:nix-community/home-manager/master";
-  	# home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  	home-manager.url = "github:nix-community/home-manager";
+  	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master"; 
     #Cosmic
     nixos-cosmic = {
