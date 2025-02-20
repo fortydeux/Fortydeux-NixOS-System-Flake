@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -19,6 +19,8 @@
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-light";
     };
+    # targets = {
+    # };
   };
 
   environment.systemPackages = with pkgs; [
@@ -30,7 +32,7 @@
     kdePackages.breeze-icons
   ];
 
-  # environment.sessionVariables = {
-  #   QT_QPA_PLATFORMTHEME = "kde";
-  # };
+  environment.sessionVariables = lib.mkForce {
+    QT_QPA_PLATFORMTHEME = "kde";
+  };
 }

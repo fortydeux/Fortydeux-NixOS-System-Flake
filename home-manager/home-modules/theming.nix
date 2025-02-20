@@ -1,4 +1,4 @@
-{config, pkgs, inputs, ...}:
+{config, lib, pkgs, inputs, ...}:
 
 {
   imports = [
@@ -21,25 +21,6 @@
     };
   };
 
-  # imports = [
-  #   inputs.stylix.homeManagerModules.stylix
-  #   inputs.catppuccin.homeManagerModules.catppuccin
-  # ];
- 
-  # Catppuccin
-  # catppuccin = {
-  #   enable = true;
-  #   flavor = "mocha";
-  #   accent = "mauve";
-  # };
-  # Cursors
-  # home.pointerCursor = {
-  #   gtk.enable = true;
-  #   package = pkgs.phinger-cursors;
-  #   name = "phinger-cursors-light";
-  #   size = 32;
-  # };
-  
   # GTK theming settings
   gtk = {
     enable = true;
@@ -47,45 +28,21 @@
     iconTheme = {
       package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
-      # package = pkgs.kdePackages.breeze-icons;
-      # name = "Breeze-Dark";
     };
-  #   # Catppuccin
-  #   catppuccin = {
-  #     enable = true;
-  #     flavor = "mocha";
-  #     accent = "mauve";
-  #     icon.enable = true;
-      
-  #   };
-    # GTK Theme
-  #   theme = {
-  #      name = "Dracula";
-  #      package = pkgs.dracula-theme;
-  #   }; 
-  #   gtk4.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #   };
-  #   gtk3.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #   };
-  #   gtk2.extraConfig = "
-  #     gtk-application-prefer-dark-theme = true
-  #   ";
   };
 
   # Qt theming
-  # qt = {
-  #   enable = true;
-  #   platformTheme.name = "kvantum";
-  #   style = {
-  #     name = "kvantum";
-  #     catppuccin = {
-  #       enable = true;
-  #       # apply = true;
-  #       flavor = "mocha";
-  #       accent = "mauve";
-  #     };
-  #   };
-  # };
+   qt = {
+      enable = true;
+      # platformTheme.package = with pkgs.kdePackages; [
+      #     plasma-integration
+      #     # I don't remember why I put this is here, maybe it fixes the theme of the system setttings
+      #     systemsettings
+      # ];
+      style = {
+          package = pkgs.kdePackages.breeze;
+          # name = "Breeze";
+      };
+  };
+  systemd.user.sessionVariables = lib.mkForce { QT_QPA_PLATFORMTHEME = "kde"; };
 }

@@ -4,7 +4,8 @@
 # Flake.nix
 
   inputs = {  
-    stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.714101.tar.gz"; # Feb 5, 2025 from Flakehub

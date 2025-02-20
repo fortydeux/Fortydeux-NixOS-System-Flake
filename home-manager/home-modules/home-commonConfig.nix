@@ -23,11 +23,11 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # hello
-    anytype #P2P note-taking tool
+    # anytype #P2P note-taking tool
     appflowy #An open-source alternative to Notion
     barrier #Open-source KVM software
     code-cursor #AI-powered code editor built on vscode    
-    cheese # Cheesy camera app
+    # cheese # Cheesy camera app
     # decent-sampler #An audio sample player
     # discord #Discord social client
     fish #Fish terminal
@@ -36,12 +36,12 @@
     # ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
-    (kdePackages.kdenlive.overrideAttrs (prevAttrs: {
-      nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
-      postInstall = (prevAttrs.postInstall or "") + ''
-        wrapProgram $out/bin/kdenlive --prefix LADSPA_PATH : ${rnnoise-plugin}/lib/ladspa
-      '';
-    }))
+    # (kdePackages.kdenlive.overrideAttrs (prevAttrs: {
+    #   nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
+    #   postInstall = (prevAttrs.postInstall or "") + ''
+    #     wrapProgram $out/bin/kdenlive --prefix LADSPA_PATH : ${rnnoise-plugin}/lib/ladspa
+    #   '';
+    # }))
     # kdePackages.kdenlive # Open source video editor based on MLT and KDE frameworks
  #   logseq #Logseq electron desktop client
  #   libsForQt5.kdenlive #KdenLive Video Editor 
@@ -57,7 +57,7 @@
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
-    shotcut #Open-source cross-platform video editor
+    # shotcut #Open-source cross-platform video editor
     signal-desktop #Signal electron desktop client
     # simplex-chat-desktop #SimpleX Chat Desktop Client
     # spotify #Spotify music client - Requires non-free packages enabled
@@ -68,7 +68,7 @@
     tldr # Simplified and community-driven man pages
     tmux #Terminal multiplexer
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
-    kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
+    # kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     # zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       

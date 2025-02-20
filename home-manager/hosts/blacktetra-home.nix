@@ -11,7 +11,7 @@
     # ../home-modules/ags.nix
     ../home-modules/hyprland-config.nix
     ../home-modules/hyprland-dualingOfficeMonitors.nix
-    ../home-modules/misc-utils.nix
+    # ../home-modules/misc-utils.nix
   ];
 
 }
