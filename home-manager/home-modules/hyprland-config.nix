@@ -20,7 +20,7 @@
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
     # package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
