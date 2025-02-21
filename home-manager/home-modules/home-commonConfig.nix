@@ -19,6 +19,94 @@
   # environment.
   nixpkgs.config.allowUnfree = true;
 
+  # Ensure desktop entries are properly registered
+  xdg.desktopEntries = {
+    code = {
+      name = "Visual Studio Code";
+      genericName = "Text Editor";
+      exec = "code %F";
+      terminal = false;
+      type = "Application";
+      categories = [ "Development" "TextEditor" ];
+      mimeType = [ "text/plain" "text/markdown" "text/html" "text/xml" "application/json" ];
+    };
+    
+    helix = {
+      name = "Helix";
+      genericName = "Text Editor";
+      exec = "helix %F";
+      terminal = true;
+      type = "Application";
+      categories = [ "Development" "TextEditor" ];
+      mimeType = [ "text/plain" "text/markdown" "text/html" "text/xml" "application/json" ];
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      # Documents
+      "application/pdf" = "org.kde.okular.desktop";
+      "text/plain" = "code.desktop";
+      "text/markdown" = "code.desktop";
+      "text/html" = "firefox.desktop";
+      "text/xml" = "code.desktop";
+      "application/json" = "code.desktop";
+      
+      # Images
+      "image/jpeg" = "org.kde.gwenview.desktop";
+      "image/png" = "org.kde.gwenview.desktop";
+      "image/gif" = "org.kde.gwenview.desktop";
+      "image/webp" = "org.kde.gwenview.desktop";
+      
+      # Video
+      "video/mp4" = "mpv.desktop";
+      "video/x-matroska" = "mpv.desktop";
+      "video/webm" = "mpv.desktop";
+      
+      # Directories
+      "inode/directory" = "org.kde.dolphin.desktop";
+      
+      # Archives
+      "application/zip" = "org.kde.ark.desktop";
+      "application/x-7z-compressed" = "org.kde.ark.desktop";
+      "application/x-rar" = "org.kde.ark.desktop";
+      "application/x-tar" = "org.kde.ark.desktop";
+    };
+
+    associations = {
+      added = {
+        # Documents
+        "application/pdf" = ["org.kde.okular.desktop" "org.pwmt.zathura.desktop"];
+        "text/plain" = ["code.desktop" "helix.desktop" "nvim.desktop"];
+        "text/markdown" = ["code.desktop" "org.kde.okular.desktop" "helix.desktop" "nvim.desktop"];
+        "text/html" = ["firefox.desktop" "code.desktop" "helix.desktop"];
+        "text/xml" = ["code.desktop" "helix.desktop" "nvim.desktop"];
+        "application/json" = ["code.desktop" "helix.desktop" "nvim.desktop"];
+        
+        # Images
+        "image/jpeg" = ["org.kde.gwenview.desktop" "imv.desktop"];
+        "image/png" = ["org.kde.gwenview.desktop" "imv.desktop"];
+        "image/gif" = ["org.kde.gwenview.desktop" "imv.desktop"];
+        "image/webp" = ["org.kde.gwenview.desktop" "imv.desktop"];
+        
+        # Video
+        "video/mp4" = ["mpv.desktop"];
+        "video/x-matroska" = ["mpv.desktop"];
+        "video/webm" = ["mpv.desktop"];
+        
+        # Directories
+        "inode/directory" = ["org.kde.dolphin.desktop" "thunar.desktop" "nnn.desktop"];
+        
+        # Archives
+        "application/zip" = ["org.kde.ark.desktop" "thunar.desktop"];
+        "application/x-7z-compressed" = ["org.kde.ark.desktop" "thunar.desktop"];
+        "application/x-rar" = ["org.kde.ark.desktop" "thunar.desktop"];
+        "application/x-tar" = ["org.kde.ark.desktop" "thunar.desktop"];
+      };
+    };
+  };
+
   home.packages = (with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
