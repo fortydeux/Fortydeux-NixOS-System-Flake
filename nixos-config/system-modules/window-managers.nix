@@ -122,11 +122,11 @@
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks    
     yambar #Another bar option
 
-    # Miracle
-    nwg-dock
-    nwg-drawer
-    nwg-bar
-    nwg-panel
+    # Miracle-WM Packages
+    # nwg-dock
+    # nwg-drawer
+    # nwg-bar
+    # nwg-panel
   ];  
      
 }

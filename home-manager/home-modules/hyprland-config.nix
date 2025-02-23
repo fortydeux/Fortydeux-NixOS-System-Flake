@@ -15,8 +15,9 @@
   services.hyprpaper = {
     enable = true;
   };
-  home.packages = [
+  home.packages = with pkgs; [
     # inputs.hyprland-qtutils.packages.${pkgs.system}.default
+    iio-hyprland
   ];
   xdg.portal = {
     enable = true;
@@ -59,6 +60,7 @@
         "mako"
         "nm-applet --indicator"
         "blueman-applet"
+        "iio-hyprland"
         "pcloud"
         "wlsunset -l 40.6 -L -75.4 -t 2300 -T 6500"
         # "$swaybg-x"
@@ -149,6 +151,9 @@
         name = "microsoft-arc-mouse";
         sensitivity = 1;
       };
+      monitor = [
+        "eDP-1,preferred,auto,2,transform,0"
+      ];
 
       misc = {
         disable_hyprland_logo = true;
@@ -514,9 +519,4 @@
       # End Hyprscroller
     '';
   };
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [config.wayland.windowManager.hyprland.package];
-  #   configPackages = [config.wayland.windowManager.hyprland.package];
-  # };
 }
