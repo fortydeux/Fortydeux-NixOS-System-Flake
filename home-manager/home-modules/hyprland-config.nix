@@ -18,6 +18,10 @@
   home.packages = [
     # inputs.hyprland-qtutils.packages.${pkgs.system}.default
   ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     # package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -25,8 +29,8 @@
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprgrass plugin
-      # pkgs.hyprlandPlugins.hyprgrass
-      inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
+      pkgs.hyprlandPlugins.hyprgrass
+      # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
       pkgs.hyprlandPlugins.hyprscroller
     ];
@@ -280,6 +284,10 @@
             " , swipe:3:ru, exec, $wofi"
             " , swipe:3:lu, exec, wvkbd-mobintl"
             " , swipe:3:rd, exec, pkill wvkbd-mobintl"
+          ];
+          hyprgrass-bindm = [
+            " , longpress:2, movewindow"
+            " , longpress:3, resizewindow"
           ];
         };
       };

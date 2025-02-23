@@ -11,7 +11,10 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     # portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
-
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config
   programs.wayfire = {
     enable = true;
