@@ -78,7 +78,6 @@
     warp-terminal # Modern rust-based terminal       
     # waynergy #A synergy client for Wayland compositors
     # zed-editor #Modern text editor with AI built in - still in development for Linux
-    zellij #Terminal workspace with batteries included
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -135,6 +134,12 @@
     };
     yazi = {
       enable = true;
+    };
+    zellij = {
+      enable = true;
+      settings = {
+        theme = "dracula";
+      };
     };
   };
 
