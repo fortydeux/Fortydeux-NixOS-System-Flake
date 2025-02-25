@@ -134,9 +134,23 @@
     };
     yazi = {
       enable = true;
+      settings = {
+        manager = {
+          prepend_keymap = [
+            {
+              on = "!"; # Might need different keybinding
+              run = "shell \"$SHELL\" --block";
+              desc = "Open interactive shell";
+            }
+          ];
+        };
+      };
     };
     zellij = {
       enable = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+      enableZshIntegration = false;
       settings = {
         theme = "dracula";
       };

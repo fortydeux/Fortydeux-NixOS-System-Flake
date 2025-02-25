@@ -74,6 +74,7 @@
       fff = "cd ~/fortyflake && fish";
       stat = "git status";
       st = "git status -s";
+      zzz = "zellij";
     };
   };
   # Nix-direnv
