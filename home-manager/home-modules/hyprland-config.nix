@@ -321,6 +321,7 @@
       # env=GTK_THEME,Dracula
       env=HYPRCURSOR_SIZE,32
       # env=QT_QPA_PLATFORMTHEME,qt6ct
+      env = XDG_MENU_PREFIX,plasma-
 
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
