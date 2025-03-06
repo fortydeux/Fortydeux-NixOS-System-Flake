@@ -13,7 +13,10 @@
   };
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+    # Ensure the portal services are properly configured
+    configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
   };
   # Oh look, Wayfire wm/compositor snuck in here too - very basic config
   programs.wayfire = {
@@ -73,7 +76,7 @@
     # Wayland WM Dependencies & Support packages
     brightnessctl #This program allows you read and control device brightness
     dunst #Lightweight and customizable notification daemon
-    fuzzel #Wayland-native application launcher, similar to rofi’s drun mode
+    fuzzel #Wayland-native application launcher, similar to rofi's drun mode
     grim #Grab images from a Wayland compositor
     fastfetch #A fast system info script
     hypridle #Hyprland's idle daemon

@@ -91,6 +91,43 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   
+  # Add custom protocol handlers for VS Code and Cursor
+  xdg.desktopEntries = {
+    vscode-url-handler = {
+      name = "VS Code URL Handler";
+      exec = "code --open-url %U";
+      icon = "vscode";
+      type = "Application";
+      noDisplay = true;
+      mimeType = [ "x-scheme-handler/vscode" ];
+    };
+    cursor-url-handler = {
+      name = "Cursor URL Handler";
+      exec = "cursor --open-url %U";
+      icon = "cursor";
+      type = "Application";
+      noDisplay = true;
+      mimeType = [ "x-scheme-handler/cursor" "x-scheme-handler/vscode" "x-scheme-handler/vscode-insiders" ];
+    };
+  };
+  
+  # Ensure XDG desktop portal is properly configured
+  systemd.user.services.configure-url-handlers = {
+    Unit = {
+      Description = "Configure URL handlers for VS Code and Cursor";
+      After = "graphical-session-pre.target";
+      PartOf = "graphical-session.target";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${./register-url-handlers.sh}";
+      RemainAfterExit = true;
+    };
+  };
+  
   programs = {
     fzf.enable = true;
     ghostty = {
