@@ -142,6 +142,7 @@
       gestures = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
         workspace_swipe = false;
+        workspace_swipe_invert = false;
         # workspace_swipe_fingers = 4;
         # workspace_swipe_cancel_ratio = 0.15;
       };
@@ -284,7 +285,7 @@
             " , swipe:3:r, movefocus, l"
             " , swipe:3:u, movefocus, d"
             " , swipe:3:d, movefocus, u"
-            " , swipe:4:u, scroller:jump"
+            " , swipe:4:u, scroller:toggleoverview"
             " , swipe:4:d, scroller:toggleoverview"
             " , swipe:3:ld, killactive"
             " , swipe:3:ru, exec, $wofi"
