@@ -2,11 +2,11 @@
 
 # Register VS Code URL handler
 xdg-mime default vscode-url-handler.desktop x-scheme-handler/vscode
+xdg-mime default vscode-url-handler.desktop x-scheme-handler/vscode-insiders
 
 # Register Cursor URL handlers
 xdg-mime default cursor-url-handler.desktop x-scheme-handler/cursor
-xdg-mime default cursor-url-handler.desktop x-scheme-handler/vscode
-xdg-mime default cursor-url-handler.desktop x-scheme-handler/vscode-insiders
+xdg-mime default cursor-url-handler.desktop x-scheme-handler/cursor-insiders
 
 # Update the MIME database
 update-desktop-database ~/.local/share/applications

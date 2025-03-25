@@ -14,7 +14,7 @@
     #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     # };
     polarity = "dark"; 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/colors.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/darkmoss.yaml";
     cursor = {
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-light";

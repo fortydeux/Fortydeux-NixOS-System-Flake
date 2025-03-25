@@ -37,7 +37,7 @@
     # freetube #An Open Source YouTube app for privacy
     gh #Github CLI tool 
     # ghostty #Fast, native, feature-rich terminal emulator pushing modern features
-    helix #Post modern modal text editor
+    # helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     # (kdePackages.kdenlive.overrideAttrs (prevAttrs: {
     #   nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
@@ -99,7 +99,7 @@
       icon = "vscode";
       type = "Application";
       noDisplay = true;
-      mimeType = [ "x-scheme-handler/vscode" ];
+      mimeType = [ "x-scheme-handler/vscode" "x-scheme-handler/vscode-insiders" ];
     };
     cursor-url-handler = {
       name = "Cursor URL Handler";
@@ -107,7 +107,7 @@
       icon = "cursor";
       type = "Application";
       noDisplay = true;
-      mimeType = [ "x-scheme-handler/cursor" "x-scheme-handler/vscode" "x-scheme-handler/vscode-insiders" ];
+      mimeType = [ "x-scheme-handler/cursor" "x-scheme-handler/cursor-insiders" ];
     };
   };
   
@@ -134,6 +134,47 @@
       enable = true;
       settings = {
         theme = "stylix";
+      };
+    };
+    helix = {
+      enable = true;
+      defaultEditor = true;
+      settings = {
+        # theme = "tokyonight";
+        editor = {
+          line-number = "relative";
+          mouse = true;
+        };      
+        editor.lsp = {
+          display-messages = true;
+        };        
+        editor.cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };        
+        editor.soft-wrap = {
+          enable = true;
+        };
+      };
+      languages = {
+        language-server = {
+          nixd = {
+            command = "nixd";
+          };
+          nil = {
+            command = "nil";
+          };
+        };
+        language = [{
+          name = "nix";
+          language-servers = [ "nixd" "nil" ];
+          formatter = {
+            command = "nixfmt";
+            args = [ "-" ];
+          };
+          auto-format = false;
+        }];       
       };
     };
     nnn = {
@@ -184,11 +225,8 @@
     };
     zellij = {
       enable = true;
-      enableBashIntegration = false;
-      enableFishIntegration = false;
-      enableZshIntegration = false;
       settings = {
-        theme = "dracula";
+        # theme = "dracula";
       };
     };
   };

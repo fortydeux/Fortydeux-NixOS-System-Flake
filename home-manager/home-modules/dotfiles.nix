@@ -81,10 +81,10 @@
     	source = ../dotfiles/dunst;
         recursive = true;
     };
-    ".config/helix" = {
-    	source = ../dotfiles/helix;
-        recursive = true;
-    };
+    # ".config/helix" = {
+    # 	source = ../dotfiles/helix;
+    #     recursive = true;
+    # };
     ".config/hypr" = {
     	source = ../dotfiles/hypr;
         recursive = true;
