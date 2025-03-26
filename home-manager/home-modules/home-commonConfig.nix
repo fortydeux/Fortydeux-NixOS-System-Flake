@@ -36,7 +36,7 @@
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
     gh #Github CLI tool 
-    # ghostty #Fast, native, feature-rich terminal emulator pushing modern features
+    ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     # helix #Post modern modal text editor
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     # (kdePackages.kdenlive.overrideAttrs (prevAttrs: {
@@ -76,7 +76,7 @@
     # zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       
     # waynergy #A synergy client for Wayland compositors
-    # zed-editor #Modern text editor with AI built in - still in development for Linux
+    zed-editor #Modern text editor with AI built in - still in development for Linux
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
