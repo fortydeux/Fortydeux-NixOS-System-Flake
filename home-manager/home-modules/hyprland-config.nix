@@ -11,6 +11,7 @@
 {
   imports =
     [
+      ./waybar-config.nix
     ];
   services.hyprpaper = {
     enable = true;
@@ -56,7 +57,7 @@
         "hyprctl setcursor phinger-cursors 32"
         "emacs --daemon"
         "foot -s"
-        "$waybar"
+        # "waybar"
         "mako"
         "nm-applet --indicator"
         "blueman-applet"
