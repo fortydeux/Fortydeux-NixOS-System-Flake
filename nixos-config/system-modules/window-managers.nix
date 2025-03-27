@@ -1,10 +1,12 @@
 { config, pkgs, inputs, ... }: 
 
-{ # Hyprland-wm.nix
-  
+{ # window-managers.nix
+
+  programs.uwsm.enable = true;  
   # # Enable Hyprland wm/compositor
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     # xwayland.enable = true;
     # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     package = pkgs.hyprland;

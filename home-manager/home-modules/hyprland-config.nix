@@ -26,6 +26,7 @@
   };
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = false;
     # package = inputs.hyprland.packages.${pkgs.system}.default;
     # package = pkgs.hyprland;
     # systemd.variables = ["--all"];
@@ -57,7 +58,7 @@
         "hyprctl setcursor phinger-cursors 32"
         "emacs --daemon"
         "foot -s"
-        # "waybar"
+        "waybar"
         "mako"
         "nm-applet --indicator"
         "blueman-applet"
