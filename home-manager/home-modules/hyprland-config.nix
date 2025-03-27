@@ -178,7 +178,7 @@
         "$mainMod, J, togglesplit, "
         "$mainMod, F, fullscreen, 0"
         "$mainMod, H, fullscreen, 1"
-        "CTRL, SPACE, exec, pkill fuzzel || fuzzel"
+        "CTRL, SPACE, exec, pkill fuzzel || $fuzzel"
         "$mainMod, B, exec, pkill waybar || waybar"
         "$mainMod, K, exec, kate"
         "$mainMod, R, exec, hyprctl seterror disable"

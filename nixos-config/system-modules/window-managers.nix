@@ -76,7 +76,7 @@
     # Wayland WM Dependencies & Support packages
     brightnessctl #This program allows you read and control device brightness
     dunst #Lightweight and customizable notification daemon
-    fuzzel #Wayland-native application launcher, similar to rofi's drun mode
+    # fuzzel #Wayland-native application launcher, similar to rofi's drun mode
     grim #Grab images from a Wayland compositor
     fastfetch #A fast system info script
     hypridle #Hyprland's idle daemon

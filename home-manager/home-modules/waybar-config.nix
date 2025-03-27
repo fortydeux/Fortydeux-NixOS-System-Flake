@@ -246,7 +246,7 @@
       }
 
       #workspaces button:hover {
-        color: @theme_fg_color;
+        color: @accent_color;
         background: @theme_bg_color;
         border-radius: 10px;
       }
@@ -283,16 +283,28 @@
         color: @theme_fg_color;
       }
 
-      #workspaces {
-        color: @theme_bg_color;
-      }
-
-      #idle_inhibitor {
-        color: @accent_color;
+      #battery {
+        color: @success_color;
       }
 
       #clock {
         color: @theme_fg_color;
+      }
+
+      #custom-launcher {
+        color: @accent_color;
+        font-size: 22px;
+        padding: 0px 16px 0px 8px;
+      }
+
+      #custom-power {
+        color: @accent_color;
+        font-size: 18px;
+        padding-right: 14px;
+      }
+
+      #idle_inhibitor {
+        color: @accent_color;
       }
 
       #network {
@@ -307,21 +319,10 @@
         color: @theme_selected_bg_color;
       }
 
-      #battery {
-        color: @success_color;
+      #workspaces {
+        color: @theme_fg_color;
       }
-
-      #custom-launcher {
-        color: @accent_color;
-        font-size: 22px;
-        padding: 0px 16px 0px 8px;
-      }
-
-      #custom-power {
-        color: @accent_color;
-        font-size: 18px;
-        padding-right: 14px;
-      }
+      
     '';
   };
 }

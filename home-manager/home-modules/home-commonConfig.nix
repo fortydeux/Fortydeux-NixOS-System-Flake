@@ -35,6 +35,7 @@
     # discord #Discord social client
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
+    fuzzel # Wayland launcher
     gh #Github CLI tool 
     ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     # helix #Post modern modal text editor
