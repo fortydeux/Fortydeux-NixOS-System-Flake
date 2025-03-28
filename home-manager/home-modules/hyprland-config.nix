@@ -43,7 +43,7 @@
       "$activeBorderColor2" = "rgba(940b92cc)";
       "$inactiveBorderColor" = "rgba(00000099)";
       "$swaylock" = "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2";
-      "$swaybg-x" = "pkill mpvpaper & swaybg -m fill -i $HOME/.config/hypr/Wallpapers/Professional/balloon-wp.jpg";
+      "$swaybg-x" = "pkill mpvpaper & swaybg -m fill -i $HOME/.config/wallpapers/redwood-sunshine.webp";
       "$mpvpaper-z" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/Garden/";
       "$mpvpaper-c" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/CyberNeon/";
       "$removeWallpapers" = "pkill swaybg || pkill mpvpaper";
@@ -197,7 +197,7 @@
 
         #Switches
         "SUPER, Escape, exec, hyprctl reload"
-        "SUPER, Escape, exec, pkill waybar && sleep 1 && $waybar &"
+        "SUPER, Escape, exec, pkill waybar && sleep 1 && waybar &"
         "SUPER, Escape, exec, notify-send 'Config Reloaded'"
 
         # Move focus with mainMod + arrow keys
