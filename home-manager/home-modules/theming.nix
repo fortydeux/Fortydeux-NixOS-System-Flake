@@ -29,6 +29,7 @@
     cursor = {
       package = pkgs.phinger-cursors;
       name = "phinger-cursors-light";
+      size = 32;
     };
     targets = {
       fuzzel.enable = true;

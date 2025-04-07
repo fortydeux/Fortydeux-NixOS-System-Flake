@@ -22,13 +22,13 @@
   ];
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
+    # extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
   };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
     # package = inputs.hyprland.packages.${pkgs.system}.default;
-    # package = pkgs.hyprland;
+    package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprgrass plugin
@@ -36,6 +36,7 @@
       # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
       pkgs.hyprlandPlugins.hyprscroller
+      # (pkgs.callPackage ./plugins/hyprland/hyprscroller.nix {})
     ];
     settings = {
       "$mainMod" = "SUPER";

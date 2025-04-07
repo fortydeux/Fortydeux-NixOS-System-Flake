@@ -4,8 +4,8 @@
 # Flake.nix
 
   inputs = {  
-    # stylix.url = "github:danth/stylix";
-    stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
+    stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.714101.tar.gz"; # Feb 5, 2025 from Flakehub
@@ -19,6 +19,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };    
     #Hyprland+Plugins
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=a46576afc32d7fbad6c358cc72ead7f4489d8ea8";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
