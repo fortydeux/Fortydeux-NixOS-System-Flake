@@ -79,6 +79,8 @@
   environment.systemPackages = with pkgs; [
     zrythm #Automated and intuitive digital audio workstation
     qjackctl # JACK control GUI
+    ffado
+    ffado-mixer
   ];
 
 }

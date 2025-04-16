@@ -62,7 +62,7 @@
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
     # shotcut #Open-source cross-platform video editor
-    signal-desktop #Signal electron desktop client
+    signal-desktop-bin #Signal electron desktop client
     # simplex-chat-desktop #SimpleX Chat Desktop Client
     # spotify #Spotify music client - Requires non-free packages enabled
     super-productivity # To Do List / Time Tracker with Jira Integration

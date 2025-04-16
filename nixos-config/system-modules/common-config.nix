@@ -77,6 +77,9 @@
 
     ## A few of my favorite things that I want on every new install
     alacritty # A cross-platform, GPU-accelerated terminal emulator
+    axel # Console downloading program with some features for parallel connections for faster downloading
+    btop # User-friendly TUI resource monitor
+    browsh # Modern TUI browser
     duf # Disk Usage/Free Utility
     fd # a simple, fast and user-friendly alternative to find
     fh # Official FlakeHub CLI
