@@ -21,7 +21,7 @@
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    initExtra = ''
+    initContent = ''
       # fastfetch|lolc
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
