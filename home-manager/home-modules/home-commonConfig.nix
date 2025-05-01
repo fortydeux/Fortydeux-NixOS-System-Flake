@@ -49,7 +49,7 @@
     # kdePackages.kdenlive # Open source video editor based on MLT and KDE frameworks
  #   logseq #Logseq electron desktop client
  #   libsForQt5.kdenlive #KdenLive Video Editor 
-    # lan-mouse #Wayland software KVM switch
+    lan-mouse #Wayland software KVM switch
     # media-downloader #Media-downloader desktop client
     # mediawriter #USB imaage writer
     moc # Terminal music player
