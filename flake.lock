@@ -468,11 +468,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746134275,
-        "narHash": "sha256-sxfY7TIP59o2hcueanoRAtg833PiNroZkQDwlKJxGvs=",
+        "lastModified": 1746177088,
+        "narHash": "sha256-hmHKl4meWr6ryzqQAwRD3+3Ihfb/Y/0CbK+WnE+oa6Q=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "015f1913109d44c36e683b55f0e47e283b383caa",
+        "rev": "f045bd46b73c3b0ed4e46cdb6036b3d5823d7dee",
         "type": "github"
       },
       "original": {
@@ -601,11 +601,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1746125293,
-        "narHash": "sha256-8ugeWpzD+WhWEX6XpF7Obxka4PWIaTb4UrvXwjAAYyo=",
+        "lastModified": 1746141377,
+        "narHash": "sha256-PNWRsLFjDSfjcClT12eO3o4qo8DzoUdeOspNcqWMviU=",
         "ref": "refs/heads/main",
-        "rev": "2670b8f7724e94020f21fe81483e69d73e1337cf",
-        "revCount": 6060,
+        "rev": "6f174a9e0892aab5c4c17a7da9be7f92bcdcebec",
+        "revCount": 6062,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1023,12 +1023,12 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1745930157,
-        "narHash": "sha256-y3h3NLnzRSiUkYpnfvnS669zWZLoqqI6NprtLQ+5dck=",
-        "rev": "46e634be05ce9dc6d4db8e664515ba10b78151ae",
-        "revCount": 791944,
+        "lastModified": 1746141548,
+        "narHash": "sha256-IgBWhX7A2oJmZFIrpRuMnw5RAufVnfvOgHWgIdds+hc=",
+        "rev": "f02fddb8acef29a8b32f10a335d44828d7825b78",
+        "revCount": 793008,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.791944%2Brev-46e634be05ce9dc6d4db8e664515ba10b78151ae/0196836f-51af-7a10-982c-65d80fd13bb7/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.793008%2Brev-f02fddb8acef29a8b32f10a335d44828d7825b78/01968fe3-3ea9-7446-8f47-5d50b895d1d3/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -1220,11 +1220,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1746111784,
-        "narHash": "sha256-94MEscICizhXBJvP5o6f9lcY2vWXTSg1XKZZbS19Yso=",
+        "lastModified": 1746158690,
+        "narHash": "sha256-Pe2emz36QL8GOILXvvmH/agqkspZFrcOrQxv6uufaEc=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "716e6669a9840e4ba0d8deb6ab1d016ef01c475a",
+        "rev": "bc38629511dd9cc78c5ca37a6e546fa66330d50e",
         "type": "github"
       },
       "original": {
