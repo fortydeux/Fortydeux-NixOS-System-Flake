@@ -73,6 +73,8 @@
       ];
       input = {
         kb_layout = "us";
+        numlock_by_default = "true";
+        repeat_rate = "50";
         follow_mouse = 1;
         natural_scroll = true;
         touchpad = {
