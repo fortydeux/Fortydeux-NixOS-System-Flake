@@ -76,6 +76,7 @@
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     # zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       
+    waveterm # Paneled Terminal, File-Manager w/ Preview, AI chat, and Webviewer
     # waynergy #A synergy client for Wayland compositors
     zed-editor #Modern text editor with AI built in - still in development for Linux
   ]);
