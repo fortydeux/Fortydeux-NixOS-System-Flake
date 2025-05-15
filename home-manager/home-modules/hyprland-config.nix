@@ -24,6 +24,90 @@
     enable = true;
     # extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
   };
+  programs.anyrun = {
+    enable = true;
+    config = {
+      x = { fraction = 0.5; };
+      y = { fraction = 0.3; };
+      width = { fraction = 0.3; };
+      hideIcons = false;
+      ignoreExclusiveZones = false;
+      layer = "overlay";
+      hidePluginInfo = false;
+      closeOnClick = false;
+      showResultsImmediately = false;
+      maxEntries = null;
+      plugins = [
+        inputs.anyrun.packages.${pkgs.system}.applications
+        inputs.anyrun.packages.${pkgs.system}.dictionary
+        inputs.anyrun.packages.${pkgs.system}.kidex
+        inputs.anyrun.packages.${pkgs.system}.randr
+        inputs.anyrun.packages.${pkgs.system}.rink
+        inputs.anyrun.packages.${pkgs.system}.shell
+        inputs.anyrun.packages.${pkgs.system}.stdin
+        inputs.anyrun.packages.${pkgs.system}.symbols
+        inputs.anyrun.packages.${pkgs.system}.translate
+        inputs.anyrun.packages.${pkgs.system}.websearch
+      ];
+    };
+    extraCss = ''
+       window {
+          background-color: transparent;
+        }
+
+        #search {
+          background: ${config.lib.stylix.colors.base00}CC;  # 80% opacity
+          border: 2px solid ${config.lib.stylix.colors.base01}CC;
+          border-radius: 12px;
+          margin: 1em;
+          padding: 0.5em;
+        }
+
+        #entries {
+          background: ${config.lib.stylix.colors.base00};    # opaque
+          border: 2px solid ${config.lib.stylix.colors.base01};
+          border-radius: 12px;
+          margin: 1em;
+          margin-top: -1.5em;
+        }
+
+        entry {
+          color: ${config.lib.stylix.colors.base05};
+          font-size: 16pt;
+          padding: 0.5em 1em;
+        }
+
+        list {
+          background: transparent;
+        }
+
+        .row {
+          background: transparent;
+          padding: 0.5em 1em;
+        }
+
+        .row:selected {
+          background: ${config.lib.stylix.colors.base01};
+          border-radius: 8px;
+        }
+    '';
+    extraConfigFiles = {
+      "websearch.ron".text = ''
+        Config(          
+          prefix: "?",
+          // Options: Google, Ecosia, Bing, DuckDuckGo, Custom
+          //
+          // Custom engines can be defined as such:
+          // Custom(
+          //   name: "Searx",
+          //   url: "searx.be/?q={}",
+          // )
+          //
+          // NOTE: `{}` is replaced by the search query and `https://` is automatically added in front.
+          engines: [DuckDuckGo]         )
+      '';
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -68,6 +152,7 @@
         "wlsunset -l 40.6 -L -75.4 -t 2300 -T 6500"
         # Add this line to start KWallet daemon
         "kwalletd6" 
+        "ked6"
         # "$swaybg-x"
         "$hypridle"
       ];
@@ -167,6 +252,7 @@
         disable_splash_rendering = true;
       };
       bind = [
+        "ALT, SPACE, exec, anyrun"
         "$mainMod, S, exec, kitty"
         "CTRL ALT, T, exec, wezterm"
         "$mainMod, RETURN, exec, ghostty"
@@ -182,7 +268,7 @@
         "$mainMod, J, togglesplit, "
         "$mainMod, F, fullscreen, 0"
         "$mainMod, H, fullscreen, 1"
-        "CTRL, SPACE, exec, pkill fuzzel || $fuzzel"
+        "CTRL, SPACE, exec, pkill fuzzel || fuzzel"
         "$mainMod, B, exec, pkill waybar || waybar"
         "$mainMod, K, exec, kate"
         "$mainMod, R, exec, hyprctl seterror disable"

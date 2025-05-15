@@ -35,7 +35,7 @@
     # discord #Discord social client
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
-    fuzzel # Wayland launcher
+    # fuzzel # Wayland launcher
     gh #Github CLI tool 
     ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     # helix #Post modern modal text editor
@@ -78,6 +78,7 @@
     warp-terminal # Modern rust-based terminal       
     waveterm # Paneled Terminal, File-Manager w/ Preview, AI chat, and Webviewer
     # waynergy #A synergy client for Wayland compositors
+    windsurf # Agentic IDE powered by AI Flow paradigm
     zed-editor #Modern text editor with AI built in - still in development for Linux
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -132,6 +133,9 @@
   
   programs = {
     fzf.enable = true;
+    fuzzel = {
+      enable = true;
+    };
     ghostty = {
       enable = true;
       settings = {

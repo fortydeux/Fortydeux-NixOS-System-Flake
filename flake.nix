@@ -4,6 +4,7 @@
 # Flake.nix
 
   inputs = {  
+    anyrun.url = "github:anyrun-org/anyrun";
     stylix.url = "github:danth/stylix";
     # stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
