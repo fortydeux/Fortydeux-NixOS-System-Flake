@@ -49,7 +49,7 @@ pkgs,
     # librewolf # A fork of Firefox, focused on privacy, security and freedom
     kdePackages.kate # Plasma text editor
     #   libsForQt5.kdeconnect-kde #KDE Connect provides several features to integrate your phone and your computer
-    monitor # Manage processes and monitor system resources
+    # monitor # ElementayOS/Pantheon package for managing processes and monitoring system resources
     # pcloud #Previously using nix-env -f channel:nixos-22.11 -iA pcloud instead (seemed to be broken package issue with patchelf https://github.com/NixOS/nixpkgs/issues/226339)
     nautilus # Gnome File Manager
     onlyoffice-bin # Office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
