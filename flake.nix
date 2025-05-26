@@ -16,10 +16,10 @@
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master"; 
     #Cosmic
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };    
+    # nixos-cosmic = {
+    #   url = "github:lilyinstarlight/nixos-cosmic";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };    
     #Hyprland+Plugins
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=a46576afc32d7fbad6c358cc72ead7f4489d8ea8";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -37,7 +37,7 @@
     transcribee.url = "github:bugbakery/transcribee";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, nixos-cosmic, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
