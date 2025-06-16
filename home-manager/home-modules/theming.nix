@@ -8,13 +8,13 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ../dotfiles/wallpapers/redwood-sunshine.webp; 
+    image = ../dotfiles/wallpapers/zetong_san_francisco.jpg; 
     # image = pkgs.fetchurl {
     #   url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
     #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
     # };
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/darkmoss.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/valua.yaml";
     # https://tinted-theming.github.io/tinted-gallery/
     # # 3024, ayu-mirage, brewer, bright, chalk, circus, classic-dark, colors, da-one-black, default-dark, 
     # embers, equilibrium-dark, equilibrium-gray-dark, evenok-dark, framer, gigavolt, google-dark, gruber,

@@ -64,7 +64,7 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 2
@@ -82,9 +82,9 @@ input {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
 }
-/-output "HDMI-A-1" {
+output "DP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -94,7 +94,7 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@60"
+    mode "3440x1440"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
@@ -112,7 +112,37 @@ input {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=3440 y=0
+    position x=0 y=0
+}
+output "HDMI-A-1" {
+    // Uncomment this line to disable this output.
+    // off
+
+    // Resolution and, optionally, refresh rate of the output.
+    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
+    // If the refresh rate is omitted, niri will pick the highest refresh rate
+    // for the resolution.
+    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
+    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+    mode "1920x1080"
+
+    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    scale 1
+
+    // Transform allows to rotate the output counter-clockwise, valid values are:
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    transform "normal"
+
+    // Position of the output in the global coordinate space.
+    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+    // The cursor can only move between directly adjacent outputs.
+    // Output scale and rotation has to be taken into account for positioning:
+    // outputs are sized in logical, or scaled, pixels.
+    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+    // so to put another output directly adjacent to it on the right, set its x to 1920.
+    // If the position is unset or results in an overlap, the output is instead placed
+    // automatically.
+    position x=3440 y=200
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -123,9 +153,9 @@ layout {
         off
         width 4
         // catppuccin-mocha Sapphire
-        active-color "#74c7ec"
+        // active-color "#74c7ec"
         // catppuccin-mocha Surface2
-        inactive-color "#585b70"
+        // inactive-color "#585b70"
 
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
     }
@@ -139,8 +169,8 @@ layout {
         // inactive-color "#585b70"
 
         // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
-        active-gradient from="#ff79c6" to="#bd93f9" angle=-45 relative-to="workspace-view"
-        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // active-gradient from="#ff79c6" to="#bd93f9" angle=-45 relative-to="workspace-view"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#f00" to="#0f0" angle=90
@@ -279,12 +309,9 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "bash" "-c" "pgrep waybar && pkill waybar || waybar -c \"$HOME/.config/niri/waybar/config\" -s \"$HOME/.config/niri/waybar/style.css\""
+spawn-at-startup "waybar"
 spawn-at-startup "mako"
-
-spawn-at-startup "bash" "-c" "swaybg -m fill -i $HOME/.config/niri/wallpapers/balloon-wp.jpg"
-
-
+spawn-at-startup "xwayland-satellite"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -633,18 +660,18 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+S { spawn "alacritty"; }
+    Mod+S { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
-    Ctrl+Space { spawn "bash" "-c" "fuzzel -w 80 -b 181818ef -t ccccccff"; }
-    Mod+Return { spawn "kitty"; }
-    Mod+T { spawn "foot"; }
-    Mod+W { spawn "bash" "-c" "wofi -S drun -GIm -w 3 -W 100% -H 97%"; }
+    Ctrl+Space { spawn "fuzzel"; }
+    // Mod+Return { spawn "alacritty"; }
+    // Mod+T { spawn "foot"; }
+    // Mod+R { spawn "wofi"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
-    Mod+B { spawn "bash" "-c" "pgrep waybar && pkill waybar || waybar -c \"$HOME/.config/niri/waybar/config\" -s \"$HOME/.config/niri/waybar/style.css\""; }
+    Mod+B { spawn "bash" "-c" "pgrep waybar && pkill waybar || waybar"; }
    
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -653,7 +680,12 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
-    Mod+Q { close-window; }
+    // Open/close the Overview: a zoomed-out view of workspaces and windows.
+    // You can also move the mouse into the top-left hot corner,
+    // or do a four-finger swipe up on a touchpad.
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
@@ -794,18 +826,31 @@ binds {
     // Switches focus between the current and the previous workspace.
     // Mod+Tab { focus-workspace-previous; }
 
+    // The following binds move the focused window in and out of a column.
+    // If the window is alone, they will consume it into the nearby column to the side.
+    // If the window is already in a column, they will expel it out.
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    // There are also commands that consume or expel a single window to the side.
-    // Mod+BracketLeft  { consume-or-expel-window-left; }
-    // Mod+BracketRight { consume-or-expel-window-right; }
-
     Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { reset-window-height; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
+
+    // Expand the focused column to space not taken up by other fully visible columns.
+    // Makes the column "fill the rest of the space".
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
     Mod+C { center-column; }
+
+    // Center all fully visible columns on screen.
+    Mod+Ctrl+C { center-visible-columns; }
 
     // Finer width adjustments.
     // This command can also:
@@ -822,6 +867,15 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
+    // Move the focused window between the floating and the tiling layout.
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    // Windows in this column will appear as vertical tabs,
+    // rather than stacked on top of each other.
+    Mod+W { toggle-column-tabbed-display; }
+
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
     // a matching layout switch hotkey configured in xkb options above.
@@ -834,8 +888,19 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.

@@ -35,6 +35,11 @@
   	enable = true;
   };
 
+  # Niri compositor
+  programs.niri = {
+    enable = true;
+  };
+
   # ...and Sway wm/compositor - basic config
   programs.sway = {
     enable = true;
@@ -50,7 +55,7 @@
   };
  
   #Enables Miracle-WM
-  # programs.wayland.miracle-wm.enable = true;
+  programs.wayland.miracle-wm.enable = true;
 
   # Desktop portal
   # xdg.portal = {
@@ -90,7 +95,7 @@
     kdePackages.qt6ct #Qt6 configuration tool
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
-    niri #A scrollable-tiling Wayland compositor
+    # niri #A scrollable-tiling Wayland compositor
     phinger-cursors # Over-engineered cursor theme
     playerctl #Command-line utility and library for controlling media players that implement MPRIS
     libappindicator #A library to allow applications to export a menu into the Unity Menu bar
@@ -125,6 +130,7 @@
     xfce.xfce4-terminal #Xfce Terminal Emulator
     wdisplays #A graphical application for configuring displays in Wayland compositors
     xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks    
+    xwayland-satellite #Xwayland outside of your Wayland compositor
     yambar #Another bar option
 
     # Miracle-WM Packages
