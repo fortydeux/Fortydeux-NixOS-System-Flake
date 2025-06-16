@@ -112,7 +112,7 @@
     xfce.thunar-volman #Thunar extension for automatic management of removable drives and media
     # pyprland #Python plugins for Hyprland
     waybar #Wayland bar
-    wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
+    # wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
     # wf-recorder # Wayland screen recorder
     wl-clipboard #Command-line copy/paste utilities for Wayland
     wlogout #A wayland based logout menu

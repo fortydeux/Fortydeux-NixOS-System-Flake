@@ -56,8 +56,11 @@ pkgs,
     tor-browser-bundle-bin # Tor Browser Bundle built by torproject.org
     vscodium # Open source source code editor developed by Microsoft for Windows, Linux and macOS (VS Code without MS branding/telemetry/licensing)
     wezterm # GPU-accelerated cross-platform terminal emulator and multiplexer written by wez and implemented in Rust
+
+    ## Wine
+    samba
     winetricks
-    wineWowPackages.waylandFull
+    wineWowPackages.stable
 
     ## Caffeine
     caffeine-ng
@@ -69,4 +72,9 @@ pkgs,
     ## Theming
     themechanger #Theme changing utility for Linux
   ];
+
+  ## More Wine
+  programs.xwayland = {
+    enable = true;
+  };
 }
