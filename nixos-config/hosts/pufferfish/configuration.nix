@@ -14,7 +14,7 @@
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix
-    # ../../system-modules/cosmic-desktop.nix
+    ../../system-modules/cosmic-desktop.nix
     ../../system-modules/pcloud.nix
     ../../system-modules/virtualisation.nix
     ../../system-modules/extraFonts.nix
