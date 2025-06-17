@@ -15,7 +15,7 @@
   };
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
     config.common.default = "*";
     # Ensure the portal services are properly configured
     configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
@@ -40,6 +40,11 @@
     enable = true;
   };
 
+  # Labwc
+  programs.labwc = {
+    enable = true;
+  };
+
   # ...and Sway wm/compositor - basic config
   programs.sway = {
     enable = true;
@@ -55,7 +60,7 @@
   };
  
   #Enables Miracle-WM
-  programs.wayland.miracle-wm.enable = true;
+  # programs.wayland.miracle-wm.enable = true;
 
   # Desktop portal
   # xdg.portal = {
@@ -64,10 +69,19 @@
   #     # extraPortals =
   #     #   [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
   #   };
-  
+
+  # Environment Variables/SessionVariables
   # Hint electron apps to use wayland
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      XDG_DATA_DIRS = [
+        "${pkgs.gnome.adwaita-icon-theme}/share"
+        "${pkgs.breeze-icons}/share"
+        "${pkgs.hicolor-icon-theme}/share"
+      ];
+      GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+    };
     variables = {
       NIXOS_OZONE_WL = "1";
       XCURSOR_SIZE = "32";
@@ -81,9 +95,11 @@
   # Wayland apps 
   environment.systemPackages = with pkgs; [
     # Wayland WM Dependencies & Support packages
+    bemenu #Simple launcher inpired my dmenu
     brightnessctl #This program allows you read and control device brightness
     dunst #Lightweight and customizable notification daemon
     # fuzzel #Wayland-native application launcher, similar to rofi's drun mode
+    gdk-pixbuf # For Wayfire icon rendering
     grim #Grab images from a Wayland compositor
     fastfetch #A fast system info script
     hypridle #Hyprland's idle daemon
@@ -96,11 +112,13 @@
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
     # niri #A scrollable-tiling Wayland compositor
+    niriswitcher #Application switcher for Niri
     phinger-cursors # Over-engineered cursor theme
     playerctl #Command-line utility and library for controlling media players that implement MPRIS
     libappindicator #A library to allow applications to export a menu into the Unity Menu bar
     libdbusmenu #Library for passing menu structures across DBus
     libnotify #A library that sends desktop notifications to a notification daemon
+    librsvg # SVG render library (for Wayfire icons)
     lm_sensors #Tools for reading hardware sensors
     meld #Visual diff and merge tool
     networkmanagerapplet #NetworkManager control applet for GNOME

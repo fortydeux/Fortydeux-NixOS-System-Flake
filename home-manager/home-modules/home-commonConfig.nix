@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./wm-homeConfig.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -39,7 +40,9 @@
     gh #Github CLI tool 
     ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     # helix #Post modern modal text editor
+    jellyfin-tui #TUI for Jellyfin music
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
+    joshuto #Ranger-like TUI file manager written in Rust
     # (kdePackages.kdenlive.overrideAttrs (prevAttrs: {
     #   nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
     #   postInstall = (prevAttrs.postInstall or "") + ''
@@ -68,18 +71,21 @@
     super-productivity # To Do List / Time Tracker with Jira Integration
  #   teams #Microsoft Teams application - not yet available for Linux
     # telegram-desktop #Telegram desktop client
+    tenere #Rust-based TUI for interacting with LLMs
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     tldr # Simplified and community-driven man pages
     tmux #Terminal multiplexer
+    vault-tasks #TUI Markdown Task manager
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
     # kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
-    yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-    # zoom-us #zoom.us video conferencing application
     warp-terminal # Modern rust-based terminal       
     waveterm # Paneled Terminal, File-Manager w/ Preview, AI chat, and Webviewer
     # waynergy #A synergy client for Wayland compositors
+    wiki-tui #Wikipedia TUI interface
     windsurf # Agentic IDE powered by AI Flow paradigm
+    yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     zed-editor #Modern text editor with AI built in - still in development for Linux
+    # zoom-us #zoom.us video conferencing application
   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -218,7 +224,7 @@
     yazi = {
       enable = true;
       settings = {
-        manager = {
+        mgr = {
           prepend_keymap = [
             {
               on = "!"; # Might need different keybinding

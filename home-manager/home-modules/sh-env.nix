@@ -25,7 +25,7 @@
       # fastfetch|lolc
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
-      eval "$(gh copilot alias -- zsh)"
+      # eval "$(gh copilot alias -- zsh)"
       
       function y() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -70,6 +70,7 @@
       ff = "cd ~/fortyflake";
       ffr = "cd ~/fortyflake && ranger";
       ffy = "cd ~/fortyflake && yazi";
+      ffz = "cd ~/fortyflake && zellij";
       fff = "cd ~/fortyflake && fish";
       stat = "git status";
       st = "git status -s";
