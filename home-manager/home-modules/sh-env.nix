@@ -58,6 +58,9 @@
   };
   # Session variables and shell aliases
   home = {
+    sessionPath = [
+      "${config.home.homeDirectory}/.cargo/bin"
+    ];
     sessionVariables = {
       # EDITOR = "emacs";
       VISUAL = "hx";

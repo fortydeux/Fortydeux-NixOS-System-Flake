@@ -25,7 +25,8 @@ pkgs,
 
     ## Build tools
     cargo # Downloads your Rust project's dependencies and builds your project
-    clang
+    clang # C language frontend
+    rustc # Rust language wrapper
     # (python311.withPackages
     #   (ps: with ps; [ pycairo pygobject3 ])) # Python3.11 with packages
     wireplumber

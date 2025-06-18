@@ -224,15 +224,6 @@
     yazi = {
       enable = true;
       settings = {
-        mgr = {
-          prepend_keymap = [
-            {
-              on = "!"; # Might need different keybinding
-              run = "shell \"$SHELL\" --block";
-              desc = "Open interactive shell";
-            }
-          ];
-        };
       };
     };
     zellij = {

@@ -41,9 +41,9 @@
   };
 
   # Labwc
-  programs.labwc = {
-    enable = true;
-  };
+  # programs.labwc = {
+  #   enable = true;
+  # };
 
   # ...and Sway wm/compositor - basic config
   programs.sway = {
@@ -109,6 +109,7 @@
     i3status-rust #Very resource-friendly and feature-rich replacement for i3status
     kanshi #Dynamic display configuration tool
     kdePackages.qt6ct #Qt6 configuration tool
+    labwc #Another wayland compositor
     mako #A lightweight Wayland notification daemon
     mpvpaper #A video wallpaper program for wlroots based wayland compositors
     # niri #A scrollable-tiling Wayland compositor
