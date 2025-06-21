@@ -28,6 +28,16 @@
     SUBSYSTEM=="firewire", ATTR{guid}=="0x00130e040140b9f4", ATTR{power/control}="on"
   '';
 
+  # Low-latency settings for pipewire
+  services.pipewire.extraConfig.pipewire."92-low-latency" = {
+    "context.properties" = {
+      "default.clock.rate" = 48000;
+      "default.clock.quantum" = 32;
+      "default.clock.min-quantum" = 32;
+      "default.clock.max-quantum" = 512;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     zrythm #Automated and intuitive digital audio workstation
     qjackctl # JACK control GUI
