@@ -39,10 +39,10 @@
   boot.loader.systemd-boot.configurationLimit = 8;
 
   # Kernel - Turn off when MS-Surface Kernel is enabled
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # Musnix realtime kernel
-  musnix.kernel = {
-    realtime = true;
-    # packages = pkgs.linuxPackages_latest_rt;
-  };
+  # musnix.kernel = {
+  #   realtime = true;
+  #   # packages = pkgs.linuxPackages_latest_rt;
+  # };
 }

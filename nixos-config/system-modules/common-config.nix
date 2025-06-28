@@ -64,7 +64,7 @@
     isNormalUser = true;
     description = "Fortydeux";
     extraGroups =
-      [ "networkmanager" "wheel" "video" "audio" "lp" "surface-control" ];
+      [ "networkmanager" "wheel" "video" "audio" "jackaudio" "lp" "surface-control" ];
     packages = [
         # User packages may also go into Home.nix if using home-manager
       ];
@@ -156,7 +156,7 @@
     pulse.enable = true;
     wireplumber.enable = true; 
     # If you want to use JACK applications, uncomment this
-    jack.enable = true;
+    # jack.enable = true;
   };
    
   # Enable touchpad support (enabled default in most desktopManager).
