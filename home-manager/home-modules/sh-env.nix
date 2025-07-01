@@ -78,6 +78,7 @@
       stat = "git status";
       st = "git status -s";
       zzz = "zellij";
+      reset-audio = "systemctl --user restart pipewire wireplumber && sleep 2";
     };
   };
   # Nix-direnv
