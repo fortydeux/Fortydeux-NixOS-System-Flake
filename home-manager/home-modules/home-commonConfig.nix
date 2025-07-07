@@ -34,6 +34,8 @@
     # cheese # Cheesy camera app
     # decent-sampler #An audio sample player
     # discord #Discord social client
+    ext4magic #Recover / undelete files from ext3 or ext4 partitions
+    extundelete #Utility that can recover deleted files from an ext3 or ext4 partition
     fish #Fish terminal
     # freetube #An Open Source YouTube app for privacy
     # fuzzel # Wayland launcher
@@ -72,6 +74,7 @@
  #   teams #Microsoft Teams application - not yet available for Linux
     # telegram-desktop #Telegram desktop client
     tenere #Rust-based TUI for interacting with LLMs
+    testdisk #Data recovery utilities
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     tldr # Simplified and community-driven man pages
     tmux #Terminal multiplexer
