@@ -29,12 +29,15 @@ gaps outer 1
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg ~/.config/sway/wallpapers/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.config/wallpapers/zetong_san_francisco.jpg fill
 #
 # Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
+output HDMI-A-1 resolution 1920x1080 position 1920,0
+output eDP-1 resolution 3440x2160 position 0,0 scale 2
+output DP-1 resolution 1920x1080 position 1620,0
+workspace 1 output eDP-1
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
@@ -42,8 +45,8 @@ output * bg ~/.config/sway/wallpapers/Sway_Wallpaper_Blue_1920x1080.png fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 3000 'swaylock -f -c 000000' \
+         timeout 6000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -64,6 +67,25 @@ exec swayidle -w \
       natural_scroll enabled
       middle_emulation enabled
   }
+
+  input 7847:100:2.4G_Mouse {
+    natural_scroll enabled
+  }
+
+  input type:touchpad {
+      accel_profile adaptive
+      click_method clickfinger
+      drag enabled
+      pointer_accel 0.8
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      middle_emulation enabled
+  }
+
+  input type:mouse {
+      natural_scroll enabled
+  }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -73,7 +95,6 @@ exec swayidle -w \
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
     bindsym $mod+s exec $term
 
     # Kill focused window
@@ -83,6 +104,8 @@ exec swayidle -w \
     # Start your launcher
     bindsym $mod+d exec $menu
     bindsym ctrl+space exec $menu
+    bindsym alt+space exec "anyrun"
+    bindsym $mod+Return exec "fuzzel"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

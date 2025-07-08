@@ -39,25 +39,30 @@
   # GTK theming settings
   gtk = {
     enable = true;
-    #Icon Theme
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
+    
+    # Icon Theme - Critical for missing icons pavucontrol
+    # iconTheme = {
+    #   package = pkgs.kdePackages.breeze-icons;
+    #   name = "breeze-dark";
+    # };
+   iconTheme = {
+     package = pkgs.papirus-icon-theme;
+     name = "Papirus-Dark";
+   };
   };
 
   # Qt theming
-   qt = {
+  qt = {
       enable = true;
       # platformTheme.package = with pkgs.kdePackages; [
-      #     plasma-integration
-      #     # I don't remember why I put this is here, maybe it fixes the theme of the system setttings
-      #     systemsettings
-      # ];
-      style = {
-          package = pkgs.kdePackages.breeze;
-          # name = "Breeze";
-      };
-  };
-  systemd.user.sessionVariables = lib.mkForce { QT_QPA_PLATFORMTHEME = "kde"; };
+       #     plasma-integration
+       #     # I don't remember why I put this is here, maybe it fixes the theme of the system setttings
+       #     systemsettings
+       # ];
+       style = {
+           package = pkgs.kdePackages.breeze;
+           # name = "Breeze";
+       };
+   };
+   # systemd.user.sessionVariables = lib.mkForce { QT_QPA_PLATFORMTHEME = "kde"; };
 }

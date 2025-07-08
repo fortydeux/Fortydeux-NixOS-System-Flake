@@ -7,6 +7,7 @@
     anyrun.url = "github:anyrun-org/anyrun";
     stylix.url = "https://flakehub.com/f/danth/stylix/0.1";
     # stylix.url = "github:danth/stylix";
+    niri.url = "github:YaLTeR/niri";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2505"; # 25.05 from Flakehub
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
@@ -37,7 +38,7 @@
     transcribee.url = "github:bugbakery/transcribee";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, determinate, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, niri, stylix, determinate, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

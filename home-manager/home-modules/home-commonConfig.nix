@@ -3,6 +3,7 @@
 {
   imports = [
     ./wm-homeConfig.nix
+    ./mime-config.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -89,7 +90,12 @@
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     zed-editor #Modern text editor with AI built in - still in development for Linux
     # zoom-us #zoom.us video conferencing application
-  ]);
+    
+    # Alternative audio control applications that work properly
+    pwvucontrol  # Modern PipeWire volume control (should have working icons)
+    pavucontrol  # Keep original as fallback
+    
+   ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -102,44 +108,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  
-  # Add custom protocol handlers for VS Code and Cursor
-  xdg.desktopEntries = {
-    vscode-url-handler = {
-      name = "VS Code URL Handler";
-      exec = "code --open-url %U";
-      icon = "vscode";
-      type = "Application";
-      noDisplay = true;
-      mimeType = [ "x-scheme-handler/vscode" "x-scheme-handler/vscode-insiders" ];
-    };
-    cursor-url-handler = {
-      name = "Cursor URL Handler";
-      exec = "cursor --open-url %U";
-      icon = "cursor";
-      type = "Application";
-      noDisplay = true;
-      mimeType = [ "x-scheme-handler/cursor" "x-scheme-handler/cursor-insiders" ];
-    };
-  };
-  
-  # Ensure XDG desktop portal is properly configured
-  systemd.user.services.configure-url-handlers = {
-    Unit = {
-      Description = "Configure URL handlers for VS Code and Cursor";
-      After = "graphical-session-pre.target";
-      PartOf = "graphical-session.target";
-    };
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${./register-url-handlers.sh}";
-      RemainAfterExit = true;
-    };
-  };
-  
+     
   programs = {
     fzf.enable = true;
     fuzzel = {

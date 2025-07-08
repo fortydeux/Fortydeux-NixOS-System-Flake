@@ -41,6 +41,8 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
+      set fish_greeting
+      
       function y
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
         yazi $argv --cwd-file="$tmp"

@@ -33,7 +33,7 @@
     kdePackages.breeze-icons
   ];
 
-  environment.sessionVariables = lib.mkForce {
-    QT_QPA_PLATFORMTHEME = "kde";
-  };
+  # environment.sessionVariables = lib.mkForce {
+  #   QT_QPA_PLATFORMTHEME = "kde";
+  # };
 }

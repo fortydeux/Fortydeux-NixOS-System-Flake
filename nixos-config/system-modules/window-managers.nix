@@ -1,26 +1,52 @@
-{ config, pkgs, inputs, ... }: 
+{ config, pkgs, inputs, lib, ... }: 
 
-{ # window-managers.nix
+{ # window-managers.nix - Optimized compositor configuration
 
-  programs.uwsm.enable = true;  
-  # # Enable Hyprland wm/compositor
+  # UWSM - Universal Wayland Session Manager
+  # Only enable for compositors that work well with UWSM
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/Hyprland";
+      };
+      # Note: Sway and Niri seem to have issues with UWSM, keeping them as direct launches
+    };
+  };
+
+  # Hyprland - Primary compositor
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    # xwayland.enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     package = pkgs.hyprland;
-    # portalPackage = pkgs.xdg-desktop-portal-hyprland;
-    # portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
-  xdg.portal = {
+
+  # Sway compositor
+  programs.sway = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
-    config.common.default = "*";
-    # Ensure the portal services are properly configured
-    configPackages = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+    wrapperFeatures.gtk = true;
+    extraSessionCommands = ''
+      # Wayland-specific environment variables
+      export SDL_VIDEODRIVER=wayland
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export MOZ_ENABLE_WAYLAND=1
+      
+      # Icon theme paths for proper icon display
+      export XDG_DATA_DIRS="${pkgs.adwaita-icon-theme}/share:${pkgs.kdePackages.breeze-icons}/share:${pkgs.hicolor-icon-theme}/share:$XDG_DATA_DIRS"
+    '';
+    package = pkgs.sway;
   };
-  # Oh look, Wayfire wm/compositor snuck in here too - very basic config
+
+  # River compositor
+  programs.river = {
+    enable = true;
+  };
+
+  # Wayfire compositor with enhanced icon support
   programs.wayfire = {
     enable = true;
     plugins = with pkgs.wayfirePlugins; [
@@ -29,134 +55,191 @@
       wayfire-plugins-extra
     ];
   };
+  
 
-  # ...and River wm/compositor - basic config
-  programs.river = {
-  	enable = true;
-  };
 
   # Niri compositor
   programs.niri = {
     enable = true;
+    package = inputs.niri.packages.${pkgs.system}.default;
   };
 
-  # Labwc
-  # programs.labwc = {
-  #   enable = true;
-  # };
-
-  # ...and Sway wm/compositor - basic config
-  programs.sway = {
+  # XDG Desktop Portal
+  xdg.portal = {
     enable = true;
-    wrapperFeatures.gtk = true; # so that gtk works properly
-    extraSessionCommands = ''
-      export SDL_VIDEODRIVER=wayland
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      export MOZ_ENABLE_WAYLAND=1
-    '';
-    package = pkgs.sway;
+    
+    # Compositor-specific portal configuration
+    config = {
+      common = {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
+      };
+      
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      
+      sway = lib.mkForce {
+        default = [ "wlr" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      
+      river = {
+        default = [ "wlr" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      
+      wayfire = {
+        default = [ "wlr" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      
+      niri = {
+        default = [ "gnome" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+    };
+    
+    # Portal packages
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
   };
- 
-  #Enables Miracle-WM
-  # programs.wayland.miracle-wm.enable = true;
 
-  # Desktop portal
-  # xdg.portal = {
-  #     enable = true;
-  #     # xdg-desktop-portal backend for Hyprland
-  #     # extraPortals =
-  #     #   [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
-  #   };
-
-  # Environment Variables/SessionVariables
-  # Hint electron apps to use wayland
+  # Environment Variables - Optimized for all compositors
   environment = {
     sessionVariables = {
+      # Wayland compatibility
       NIXOS_OZONE_WL = "1";
-      XDG_DATA_DIRS = [
-        "${pkgs.gnome.adwaita-icon-theme}/share"
-        "${pkgs.breeze-icons}/share"
-        "${pkgs.hicolor-icon-theme}/share"
-      ];
-      GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
-    };
-    variables = {
-      NIXOS_OZONE_WL = "1";
+      
+      # Cursor configuration
       XCURSOR_SIZE = "32";
+      XCURSOR_THEME = "phinger-cursors-light";
+      
+      # Qt/KDE configuration
       KDE_SESSION_VERSION = "6";
       KDE_FULL_SESSION = "true";
     };
+    
+    variables = {
+      NIXOS_OZONE_WL = "1";
+      QT_QPA_PLATFORMTHEME = "kde";
+    };
   };
 
+  # Enable dconf for proper settings management
   programs.dconf.enable = true;
 
-  # Wayland apps 
-  environment.systemPackages = with pkgs; [
-    # Wayland WM Dependencies & Support packages
-    bemenu #Simple launcher inpired my dmenu
-    brightnessctl #This program allows you read and control device brightness
-    dunst #Lightweight and customizable notification daemon
-    # fuzzel #Wayland-native application launcher, similar to rofi's drun mode
-    gdk-pixbuf # For Wayfire icon rendering
-    grim #Grab images from a Wayland compositor
-    fastfetch #A fast system info script
-    hypridle #Hyprland's idle daemon
-    hyprlang #The official implementation library for the hypr config language
-    hyprlock #Hyprland's simple, yet multi-threaded and GPU-accelerated screen locking utility
-    i3bar-river #A port of i3bar for River WM
-    i3status-rust #Very resource-friendly and feature-rich replacement for i3status
-    kanshi #Dynamic display configuration tool
-    kdePackages.qt6ct #Qt6 configuration tool
-    labwc #Another wayland compositor
-    mako #A lightweight Wayland notification daemon
-    mpvpaper #A video wallpaper program for wlroots based wayland compositors
-    # niri #A scrollable-tiling Wayland compositor
-    niriswitcher #Application switcher for Niri
-    phinger-cursors # Over-engineered cursor theme
-    playerctl #Command-line utility and library for controlling media players that implement MPRIS
-    libappindicator #A library to allow applications to export a menu into the Unity Menu bar
-    libdbusmenu #Library for passing menu structures across DBus
-    libnotify #A library that sends desktop notifications to a notification daemon
-    librsvg # SVG render library (for Wayfire icons)
-    lm_sensors #Tools for reading hardware sensors
-    meld #Visual diff and merge tool
-    networkmanagerapplet #NetworkManager control applet for GNOME
-    # nwg-displays #Output management utility for Sway and Hyprland
-    # nwg-dock-hyprland #GTK3-based dock for Hyprland
-    nwg-look # GTK theme tool
-    rofi-wayland #Window switcher, run dialog and dmenu replacement for Wayland
-    slurp #Select a region in a Wayland compositor
-    swaybg #Wallpaper tool for Wayland compositors
-    swayidle #Idle management daemon for Wayland
-    swaylock-effects #Screen locker for Wayland
-    xfce.thunar #Xfce file manager
-    xfce.thunar-archive-plugin #Thunar plugin providing file context menus for archives
-    xfce.thunar-volman #Thunar extension for automatic management of removable drives and media
-    # pyprland #Python plugins for Hyprland
-    waybar #Wayland bar
-    # wine-wayland #An Open Source implementation of the Windows API on top of OpenGL and Unix (with experimental Wayland support)
-    # wf-recorder # Wayland screen recorder
-    wl-clipboard #Command-line copy/paste utilities for Wayland
-    wlogout #A wayland based logout menu
-    wlopm #Simple client implementing zwlr-output-power-management-v1    
-    wlroots #A modular Wayland compositor library
-    wlsunset #Day/night gamma adjustments for Wayland
-    wlr-randr #An xrandr clone for wlroots compositors
-    wofi #A launcher/menu program for wlroots based wayland compositors such as sway
-    wvkbd #On-screen keyboard for wlroots
-    xfce.xfce4-terminal #Xfce Terminal Emulator
-    wdisplays #A graphical application for configuring displays in Wayland compositors
-    xdg-utils #A set of command line tools that assist applications with a variety of desktop integration tasks    
-    xwayland-satellite #Xwayland outside of your Wayland compositor
-    yambar #Another bar option
 
-    # Miracle-WM Packages
-    # nwg-dock
-    # nwg-drawer
-    # nwg-bar
-    # nwg-panel
-  ];  
-     
+
+  # System packages optimized for compositor compatibility
+  environment.systemPackages = with pkgs; [
+    # Core Wayland utilities
+    wl-clipboard
+    wlr-randr
+    wlroots
+    xdg-utils
+    
+    # Portal and integration packages
+    xdg-desktop-portal
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
+    gnome-keyring
+    
+    # Icon and theme support - System-wide installation for all apps
+    kdePackages.breeze-icons
+    adwaita-icon-theme
+    hicolor-icon-theme
+    papirus-icon-theme
+    gnome-icon-theme
+    gdk-pixbuf
+    librsvg
+    gtk3
+    gtk4
+    
+    # Icon theme tools
+    gtk3.dev  # Provides gtk-update-icon-cache
+    shared-mime-info  # MIME type support
+    
+    # Application launchers
+    wofi
+    rofi-wayland
+    bemenu
+    
+    # Notifications
+    mako
+    dunst
+    libnotify
+    
+    # Media and utilities
+    grim
+    slurp
+    swaybg
+    swaylock-effects
+    swayidle
+    brightnessctl
+    playerctl
+    
+    # Audio/Video
+    pavucontrol
+    pamixer
+    
+    # Hyprland specific
+    hyprlock
+    hypridle
+    
+    # Terminal and file management
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-volman
+    xfce.xfce4-terminal
+    
+    # Network management
+    networkmanagerapplet
+    
+    # System monitoring
+    lm_sensors
+    
+    # Wayfire specific
+    wayfire
+    wayfirePlugins.wcm
+    wayfirePlugins.wf-shell
+    wayfirePlugins.wayfire-plugins-extra
+    
+    # Niri specific
+    niriswitcher
+    
+    # River specific
+    i3bar-river
+    i3status-rust
+    
+    # Additional utilities
+    kanshi
+    wdisplays
+    wlogout
+    wlsunset
+    yambar
+    fastfetch
+    
+    # Cursor theme
+    phinger-cursors
+  ];
 }
