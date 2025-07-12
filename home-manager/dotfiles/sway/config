@@ -162,6 +162,8 @@ exec swayidle -w \
 
     bindgesture swipe:right workspace prev
     bindgesture swipe:left exec ~/.config/sway/scripts/swipe-left.sh
+    bindgesture swipe:up focus up
+    bindgesture swipe:down focus down
 
     
     # Move focused container to workspace
