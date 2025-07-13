@@ -150,8 +150,8 @@
     libjack2           # JACK library
     
     # FireWire audio support
-    ffado              # FireWire audio drivers
-    ffado-mixer        # FFADO mixer interface
+    ffado              # FireWire audio drivers (kernel modules only)
+    # Note: ffado-mixer not needed - use helvum/pavucontrol instead
     
     # Qt support for ffado-mixer
     qt5.qtbase
@@ -165,8 +165,8 @@
     yabridgectl        # yabridge control utility
     
     # Development tools (commented out due to build issues)
-    # zrythm           # DAW - currently has build issues
-    # carla            # Plugin host - currently has build issues
+    # zrythm           # DAW - currently has build issues due to Cython/Python3.13 incompatibility
+    # carla            # Plugin host - currently has build issues due to Python3.13 incompatibility
   ];
 
   # Environment variables for audio applications
