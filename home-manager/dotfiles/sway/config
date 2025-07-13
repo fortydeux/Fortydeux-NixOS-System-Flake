@@ -160,10 +160,12 @@ exec swayidle -w \
     bindsym $mod+Ctrl+Left workspace prev
     bindsym $mod+Ctrl+Right workspace next
 
-    bindgesture swipe:right workspace prev
-    bindgesture swipe:left exec ~/.config/sway/scripts/swipe-left.sh
-    bindgesture swipe:up focus up
-    bindgesture swipe:down focus down
+    bindgesture swipe:4:right workspace prev
+    bindgesture swipe:4:left exec ~/.config/sway/scripts/swipe-left.sh
+    bindgesture swipe:3:up focus down
+    bindgesture swipe:3:down focus up
+    bindgesture swipe:3:right focus left
+    bindgesture swipe:3:left focus right
 
     
     # Move focused container to workspace
