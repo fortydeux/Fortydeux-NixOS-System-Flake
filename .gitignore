@@ -1,6 +1,5 @@
 # Large wallpaper files - exclude from FlakeHub 
 home-manager/dotfiles/hypr/Wallpapers/
-home-manager/dotfiles/wallpapers/
 *.jpg
 *.jpeg
 *.png
