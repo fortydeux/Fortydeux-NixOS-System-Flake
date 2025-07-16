@@ -1,16 +1,13 @@
-name: "FlakeHub Publish"
+name: "FlakeHub Build & Publish"
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
-  flakehub-publish:
+  publish-flake:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -21,24 +18,19 @@ jobs:
           submodules: true
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v10
-        with:
-          extra-conf: |
-            accept-flake-config = true
-            experimental-features = nix-command flakes
+        uses: DeterminateSystems/determinate-nix-action@v3
 
-      - name: Setup Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v4
-
-      - name: Setup FlakeHub Cache
-        uses: DeterminateSystems/flakehub-push@v4
+      - name: Publish to FlakeHub
+        uses: DeterminateSystems/flakehub-push@main
         with:
           name: fortydeux/Fortydeux-NixOS-System-Flake
-          tag: ${{ github.ref_name }}
+          rolling: true
           visibility: public
+          include-output-paths: true
 
   build-systems:
     runs-on: ubuntu-latest
+    needs: publish-flake
     strategy:
       matrix:
         system: [archerfish-nixos, killifish-nixos, pufferfish-nixos, blackfin-nixos, blacktetra-nixos]
@@ -49,21 +41,7 @@ jobs:
           submodules: true
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v10
-        with:
-          extra-conf: |
-            accept-flake-config = true
-            experimental-features = nix-command flakes
-
-      - name: Setup Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v4
-
-      - name: Setup FlakeHub Cache
-        uses: DeterminateSystems/flakehub-push@v4
-        with:
-          name: fortydeux/Fortydeux-NixOS-System-Flake
-          tag: ${{ github.ref_name }}
-          visibility: public
+        uses: DeterminateSystems/determinate-nix-action@v3
 
       - name: Build NixOS System
         run: |
@@ -76,18 +54,18 @@ jobs:
             fi
           fi
           
-          # Build the system derivation without actually building everything
-          # This builds the expensive kernel derivations and pushes to cache
-          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel" || true
+          # Build the system derivation to populate cache
+          echo "Building system configuration..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel" || echo "Build failed but continuing..."
           
           # Also build the kernel specifically for Surface devices
           if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
             echo "Building Surface kernel derivation..."
-            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.boot.kernelPackages.kernel" || true
+            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.boot.kernelPackages.kernel" || echo "Kernel build failed but continuing..."
           fi
 
       - name: Report build status
         if: always()
         run: |
           echo "Build completed for ${{ matrix.system }}"
-          echo "Derivations should now be cached in FlakeHub"
+          echo "Built derivations should now be available in binary cache"
