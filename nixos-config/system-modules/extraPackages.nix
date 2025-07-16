@@ -71,7 +71,7 @@ pkgs,
     foo2zjs    
 
     ## Theming
-    themechanger #Theme changing utility for Linux
+    # themechanger #Theme changing utility for Linux
   ];
 
   ## More Wine
