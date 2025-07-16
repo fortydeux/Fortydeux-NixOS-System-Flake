@@ -13,7 +13,12 @@ exclude = [
   ".git/**",
   ".github/**",
   "*.md",
-  "!README.md"
+  "!README.md",
+  "home-manager/dotfiles/hypr/Wallpapers/*/Clips/**",
+  "home-manager/dotfiles/hypr/Wallpapers/*/*.mkv",
+  "home-manager/dotfiles/hypr/Wallpapers/*/*.mp4",
+  "home-manager/dotfiles/hypr/Wallpapers/*/*.mov",
+  "home-manager/dotfiles/hypr/Wallpapers/*/*.avi"
 ]
 
 [publishing]
