@@ -1,3 +1,14 @@
-# Large wallpaper files - exclude from FlakeHub
+# Large wallpaper files - exclude from FlakeHub 
+home-manager/dotfiles/hypr/Wallpapers/
+home-manager/dotfiles/wallpapers/
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.mkv
+*.mov
+*.avi
+
+# FlakeHub setup files
 FLAKEHUB_SETUP.md
 nix.conf
