@@ -1,2 +1,6 @@
+# Large wallpaper files - exclude from FlakeHub
+home-manager/dotfiles/hypr/Wallpapers/Fun/Garden/Clips/
+home-manager/dotfiles/hypr/Wallpapers/Fun/CyberNeon/Neon/Clips/
+home-manager/dotfiles/hypr/Wallpapers/Fun/CyberNeon/Neon/*.mkv
 FLAKEHUB_SETUP.md
 nix.conf
