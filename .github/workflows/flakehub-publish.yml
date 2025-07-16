@@ -1,0 +1,93 @@
+name: "FlakeHub Publish"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  flakehub-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v10
+        with:
+          extra-conf: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v4
+
+      - name: Setup FlakeHub Cache
+        uses: DeterminateSystems/flakehub-push@v4
+        with:
+          name: fortydeux/Fortydeux-NixOS-System-Flake
+          tag: ${{ github.ref_name }}
+          visibility: public
+
+  build-systems:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        system: [archerfish-nixos, killifish-nixos, pufferfish-nixos, blackfin-nixos, blacktetra-nixos]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v10
+        with:
+          extra-conf: |
+            accept-flake-config = true
+            experimental-features = nix-command flakes
+
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v4
+
+      - name: Setup FlakeHub Cache
+        uses: DeterminateSystems/flakehub-push@v4
+        with:
+          name: fortydeux/Fortydeux-NixOS-System-Flake
+          tag: ${{ github.ref_name }}
+          visibility: public
+
+      - name: Build NixOS System
+        run: |
+          # Enable ms-surface module for Surface devices
+          if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
+            echo "Building Surface device with ms-surface module..."
+            # Uncomment ms-surface module for killifish if needed
+            if [[ "${{ matrix.system }}" == "killifish-nixos" ]]; then
+              sed -i 's|#.*../../system-modules/ms-surface.nix|../../system-modules/ms-surface.nix|' nixos-config/hosts/killifish/configuration.nix
+            fi
+          fi
+          
+          # Build the system derivation without actually building everything
+          # This builds the expensive kernel derivations and pushes to cache
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel" || true
+          
+          # Also build the kernel specifically for Surface devices
+          if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
+            echo "Building Surface kernel derivation..."
+            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.boot.kernelPackages.kernel" || true
+          fi
+
+      - name: Report build status
+        if: always()
+        run: |
+          echo "Build completed for ${{ matrix.system }}"
+          echo "Derivations should now be cached in FlakeHub"

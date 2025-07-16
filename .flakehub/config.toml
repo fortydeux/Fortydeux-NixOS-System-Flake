@@ -1,0 +1,28 @@
+[flake]
+description = "Fortydeux NixOS System and Home-manager Flake"
+systems = ["x86_64-linux"]
+include = [
+  "*.nix",
+  "*.lock", 
+  "nixos-config/**",
+  "home-manager/**",
+  "media/**",
+  "README.md"
+]
+exclude = [
+  ".git/**",
+  ".github/**",
+  "*.md",
+  "!README.md"
+]
+
+[publishing]
+# Enable automatic publishing on push
+auto-publish = true
+
+# Cache settings to optimize builds
+[cache]
+# Enable binary cache for built derivations
+enabled = true
+# Cache heavy derivations like kernels
+priority = ["linux", "kernel", "microsoft-surface"]
