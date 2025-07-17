@@ -45,16 +45,25 @@ jobs:
 
       - name: Build NixOS System
         run: |
-          # Enable ms-surface module for Surface devices
+          # Disable ms-surface module for Surface devices to avoid kernel builds in CI
           if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
-            echo "Building Surface device with ms-surface module..."
-            # Check if ms-surface module is commented out for killifish
-            if [[ "${{ matrix.system }}" == "killifish-nixos" ]]; then
-              if grep -q "#.*../../system-modules/ms-surface.nix" nixos-config/hosts/killifish/configuration.nix; then
-                echo "Uncommenting ms-surface module for killifish..."
-                sed -i 's|#.*../../system-modules/ms-surface.nix|    ../../system-modules/ms-surface.nix|' nixos-config/hosts/killifish/configuration.nix
+            echo "Disabling ms-surface module to avoid kernel compilation in CI..."
+            # Comment out ms-surface module for archerfish
+            if [[ "${{ matrix.system }}" == "archerfish-nixos" ]]; then
+              if grep -q "^[[:space:]]*../../system-modules/ms-surface.nix" nixos-config/hosts/archerfish/configuration.nix; then
+                echo "Commenting out ms-surface module for archerfish..."
+                sed -i 's|^[[:space:]]*../../system-modules/ms-surface.nix|    # ../../system-modules/ms-surface.nix|' nixos-config/hosts/archerfish/configuration.nix
               else
-                echo "ms-surface module already enabled for killifish"
+                echo "ms-surface module already disabled for archerfish"
+              fi
+            fi
+            # Comment out ms-surface module for killifish
+            if [[ "${{ matrix.system }}" == "killifish-nixos" ]]; then
+              if grep -q "^[[:space:]]*../../system-modules/ms-surface.nix" nixos-config/hosts/killifish/configuration.nix; then
+                echo "Commenting out ms-surface module for killifish..."
+                sed -i 's|^[[:space:]]*../../system-modules/ms-surface.nix|    # ../../system-modules/ms-surface.nix|' nixos-config/hosts/killifish/configuration.nix
+              else
+                echo "ms-surface module already disabled for killifish"
               fi
             fi
           fi
