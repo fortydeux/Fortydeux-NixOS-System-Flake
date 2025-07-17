@@ -27,6 +27,9 @@
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
     ../../system-modules/ms-surface.nix
   ];
+  # Kernel - Turn off when MS-Surface Kernel is enabled
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # The most common options you'll want to change for a new host machine reside here
   # For most machines, you'll want to comment out ./ms-surface.nix
   # and change your hostname
@@ -45,7 +48,4 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 8;
-
-  # Kernel - Turn off when MS-Surface Kernel is enabled
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
 }

@@ -41,7 +41,10 @@
   };
 
   # Experimental Features
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    accept-flake-config = true;
+    experimental-features = [ "nix-command" "flakes" ];
+  };
   # Set $NIX_PATH to Flake input - suggested for nixd LSP to ensure <nixpkgs> reference works as expected
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
  

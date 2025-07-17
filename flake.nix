@@ -3,6 +3,15 @@
 
 # Flake.nix
 
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.flakehub.com"
+    ];
+    extra-trusted-public-keys = [
+      "cache.flakehub.com-1:t4C2dOh4LXhJAnEJqzWb6rKEJLz+2aQjDl7eD1gPP5E="
+    ];
+  };
+
   inputs = {  
     anyrun.url = "github:anyrun-org/anyrun";
     stylix.url = "https://flakehub.com/f/danth/stylix/0.1";
@@ -15,7 +24,10 @@
   	home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1";
   	# home-manager.url = "github:nix-community/home-manager";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # FlakeHub binary cache for this flake
+    flakehub.url = "https://flakehub.com/f/fortydeux/Fortydeux-NixOS-System-Flake/*";
     #Cosmic
     # nixos-cosmic = {
     #   url = "github:lilyinstarlight/nixos-cosmic";
