@@ -54,15 +54,24 @@ jobs:
             fi
           fi
           
-          # Build the system derivation to populate cache
-          echo "Building system configuration..."
-          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel" || echo "Build failed but continuing..."
+          # Build system components (excluding kernel to avoid space issues)
+          echo "Building system configuration components..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.etc" || echo "etc build failed but continuing..."
           
-          # Also build the kernel specifically for Surface devices
-          if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
-            echo "Building Surface kernel derivation..."
-            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.boot.kernelPackages.kernel" || echo "Kernel build failed but continuing..."
-          fi
+          echo "Building system packages..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.environment.systemPackages" || echo "systemPackages build failed but continuing..."
+          
+          echo "Building systemd units..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.units" || echo "units build failed but continuing..."
+          
+          echo "Building initial ramdisk..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.initialRamdisk" || echo "initrd build failed but continuing..."
+          
+          echo "Building activation script..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.activationScript" || echo "activation build failed but continuing..."
+          
+          echo "Skipping kernel build due to GitHub runner disk space constraints (~14GB)"
+          echo "Kernel builds require ~30GB+ and are the main cause of local build slowness"
 
       - name: Report build status
         if: always()
