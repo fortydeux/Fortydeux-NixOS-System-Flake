@@ -23,13 +23,13 @@ jobs:
       - name: Publish to FlakeHub
         uses: DeterminateSystems/flakehub-push@main
         with:
-          name: fortydeux/Fortydeux-NixOS-System-Flake
+          name: WhatstheUse/Fortydeux-NixOS-System-Flake
           rolling: true
           visibility: public
           include-output-paths: true
 
   build-systems:
-    runs-on: ubuntu-latest-4-cores
+    runs-on: ubuntu-latest
     needs: publish-flake
     strategy:
       matrix:
@@ -45,8 +45,14 @@ jobs:
 
       - name: Build NixOS System
         run: |
-          echo "Building complete NixOS system configuration..."
-          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel"
+          # Skip Surface kernel builds due to runner space constraints
+          if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
+            echo "Building system packages only (skipping kernel for space)..."
+            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.environment.systemPackages"
+          else
+            echo "Building complete system configuration..."
+            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel"
+          fi
 
       - name: Report build status
         if: always()
