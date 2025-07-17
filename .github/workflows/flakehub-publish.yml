@@ -1,4 +1,4 @@
-name: "FlakeHub Build & Publish"
+name: "Build Systems"
 
 on:
   push:
@@ -7,30 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish-flake:
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-
-      - name: Install Nix
-        uses: DeterminateSystems/determinate-nix-action@v3
-
-      - name: Publish to FlakeHub
-        uses: DeterminateSystems/flakehub-push@main
-        with:
-          name: fortydeux/Fortydeux-NixOS-System-Flake
-          rolling: true
-          visibility: public
-          include-output-paths: true
-
   build-systems:
     runs-on: ubuntu-latest
-    needs: publish-flake
     strategy:
       matrix:
         system: [archerfish-nixos, killifish-nixos, pufferfish-nixos, blackfin-nixos, blacktetra-nixos]
