@@ -48,9 +48,14 @@ jobs:
           # Enable ms-surface module for Surface devices
           if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
             echo "Building Surface device with ms-surface module..."
-            # Uncomment ms-surface module for killifish if needed
+            # Check if ms-surface module is commented out for killifish
             if [[ "${{ matrix.system }}" == "killifish-nixos" ]]; then
-              sed -i 's|#.*../../system-modules/ms-surface.nix|../../system-modules/ms-surface.nix|' nixos-config/hosts/killifish/configuration.nix
+              if grep -q "#.*../../system-modules/ms-surface.nix" nixos-config/hosts/killifish/configuration.nix; then
+                echo "Uncommenting ms-surface module for killifish..."
+                sed -i 's|#.*../../system-modules/ms-surface.nix|    ../../system-modules/ms-surface.nix|' nixos-config/hosts/killifish/configuration.nix
+              else
+                echo "ms-surface module already enabled for killifish"
+              fi
             fi
           fi
           
