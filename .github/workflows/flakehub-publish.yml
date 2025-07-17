@@ -23,7 +23,7 @@ jobs:
       - name: Publish to FlakeHub
         uses: DeterminateSystems/flakehub-push@main
         with:
-          name: WhatstheUse/Fortydeux-NixOS-System-Flake
+          name: fortydeux/Fortydeux-NixOS-System-Flake
           rolling: true
           visibility: public
           include-output-paths: true

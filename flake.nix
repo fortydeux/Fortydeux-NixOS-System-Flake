@@ -25,9 +25,6 @@
   	# home-manager.url = "github:nix-community/home-manager";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # FlakeHub binary cache for this flake
-    flakehub.url = "https://flakehub.com/f/WhatstheUse/Fortydeux-NixOS-System-Flake/*";
     #Cosmic
     # nixos-cosmic = {
     #   url = "github:lilyinstarlight/nixos-cosmic";
