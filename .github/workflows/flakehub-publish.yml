@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-systems:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-4-cores
     strategy:
       matrix:
         system: [archerfish-nixos, killifish-nixos, pufferfish-nixos, blackfin-nixos, blacktetra-nixos]
@@ -23,17 +23,11 @@ jobs:
 
       - name: Build NixOS System
         run: |
-          # Skip Surface kernel builds due to runner space constraints
-          if [[ "${{ matrix.system }}" == "archerfish-nixos" || "${{ matrix.system }}" == "killifish-nixos" ]]; then
-            echo "Building system packages only (skipping kernel for space)..."
-            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.environment.systemPackages"
-          else
-            echo "Building complete system configuration..."
-            nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel"
-          fi
+          echo "Building complete NixOS system (including Surface kernels)..."
+          nix build --no-link --print-build-logs ".#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel"
 
       - name: Report build status
         if: always()
         run: |
           echo "Build completed for ${{ matrix.system }}"
-          echo "Complete system build (including kernel) cached in FlakeHub"
+          echo "Complete system build (including Surface kernels) cached"
