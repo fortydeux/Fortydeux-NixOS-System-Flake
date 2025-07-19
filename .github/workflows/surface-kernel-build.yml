@@ -10,7 +10,7 @@ on:
         default: false
         type: boolean
   
-  # Automatic trigger on flake input changes (optional)
+  # Automatic trigger on kernel-related changes
   push:
     branches:
       - main
@@ -32,7 +32,7 @@ jobs:
       - name: Get kernel info
         id: kernel-info
         run: |
-          KERNEL_DRV=$(nix eval --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.drvPath)
+          KERNEL_DRV=$(nix eval --accept-flake-config --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.drvPath)
           KERNEL_HASH=$(basename $KERNEL_DRV .drv)
           echo "drv-path=$KERNEL_DRV" >> $GITHUB_OUTPUT
           echo "hash=$KERNEL_HASH" >> $GITHUB_OUTPUT
@@ -57,10 +57,10 @@ jobs:
           echo "This builds the patched Linux kernel with Surface hardware support"
           
           # Build the kernel - this will use the Determinate Systems cache
-          nix build --print-build-logs .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel
+          nix build --accept-flake-config --print-build-logs .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel
           
           # Get the actual output path
-          KERNEL_OUT=$(nix eval --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
+          KERNEL_OUT=$(nix eval --accept-flake-config --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
           echo "Built kernel available at: $KERNEL_OUT"
           
           # The Determinate Nix action automatically caches to cache.flakehub.com
@@ -68,7 +68,7 @@ jobs:
 
       - name: Verify kernel availability
         run: |
-          KERNEL_OUT=$(nix eval --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
+          KERNEL_OUT=$(nix eval --accept-flake-config --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
           if nix path-info $KERNEL_OUT; then
             echo "✅ Surface kernel successfully built and available"
             echo "📦 Kernel path: $KERNEL_OUT"
