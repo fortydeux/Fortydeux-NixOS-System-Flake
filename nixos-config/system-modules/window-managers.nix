@@ -61,7 +61,7 @@
   # Niri compositor
   programs.niri = {
     enable = true;
-    package = inputs.niri.packages.${pkgs.system}.default;
+    # package = inputs.niri.packages.${pkgs.system}.default;
   };
 
   # XDG Desktop Portal
