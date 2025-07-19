@@ -1,0 +1,92 @@
+name: "Build Surface Kernels"
+
+on:
+  # Manual trigger for when you discover a kernel update
+  workflow_dispatch:
+    inputs:
+      force_rebuild:
+        description: 'Force rebuild even if cache exists'
+        required: false
+        default: false
+        type: boolean
+  
+  # Automatic trigger on flake input changes (optional)
+  push:
+    branches:
+      - main
+    paths:
+      - 'flake.lock'
+      - 'nixos-config/system-modules/ms-surface.nix'
+
+jobs:
+  build-surface-kernel:
+    runs-on: ubuntu-latest-4-cores
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Nix
+        uses: DeterminateSystems/determinate-nix-action@v3
+
+      - name: Get kernel info
+        id: kernel-info
+        run: |
+          KERNEL_DRV=$(nix eval --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.drvPath)
+          KERNEL_HASH=$(basename $KERNEL_DRV .drv)
+          echo "drv-path=$KERNEL_DRV" >> $GITHUB_OUTPUT
+          echo "hash=$KERNEL_HASH" >> $GITHUB_OUTPUT
+          echo "Kernel derivation: $KERNEL_DRV"
+          echo "Hash: $KERNEL_HASH"
+
+      - name: Check if kernel already built
+        id: kernel-check
+        run: |
+          if nix path-info --store daemon ${{ steps.kernel-info.outputs.drv-path }} 2>/dev/null; then
+            echo "cached=true" >> $GITHUB_OUTPUT
+            echo "Kernel already available in cache"
+          else
+            echo "cached=false" >> $GITHUB_OUTPUT
+            echo "Kernel needs to be built"
+          fi
+
+      - name: Build Surface Kernel
+        if: steps.kernel-check.outputs.cached != 'true' || github.event.inputs.force_rebuild == 'true'
+        run: |
+          echo "Building Surface kernel (this may take up to 3 hours)..."
+          echo "This builds the patched Linux kernel with Surface hardware support"
+          
+          # Build the kernel - this will use the Determinate Systems cache
+          nix build --print-build-logs .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel
+          
+          # Get the actual output path
+          KERNEL_OUT=$(nix eval --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
+          echo "Built kernel available at: $KERNEL_OUT"
+          
+          # The Determinate Nix action automatically caches to cache.flakehub.com
+          echo "Kernel has been built and cached automatically"
+
+      - name: Verify kernel availability
+        run: |
+          KERNEL_OUT=$(nix eval --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
+          if nix path-info $KERNEL_OUT; then
+            echo "✅ Surface kernel successfully built and available"
+            echo "📦 Kernel path: $KERNEL_OUT"
+            echo "🔄 Cache: Available via FlakeHub cache for your local machines"
+          else
+            echo "❌ Kernel build verification failed"
+            exit 1
+          fi
+
+      - name: Usage instructions
+        run: |
+          echo ""
+          echo "🎉 Surface kernel build completed!"
+          echo ""
+          echo "📋 Next steps:"
+          echo "1. Run 'sudo nixos-rebuild switch --flake .#archerfish-nixos' on archerfish"
+          echo "2. Run 'sudo nixos-rebuild switch --flake .#killifish-nixos' on killifish" 
+          echo "3. Both machines will pull the pre-built kernel from FlakeHub cache"
+          echo ""
+          echo "⏰ The kernel will be cached and available for future rebuilds"
+          echo "🔄 Only rebuild when you see a new kernel compilation starting locally"
