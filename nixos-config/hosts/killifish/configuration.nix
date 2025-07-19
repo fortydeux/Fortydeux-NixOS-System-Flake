@@ -25,7 +25,7 @@
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
-    ../../system-modules/ms-surface.nix
+    # ../../system-modules/ms-surface.nix
   ];
   # Kernel - Turn off when MS-Surface Kernel is enabled
   # boot.kernelPackages = pkgs.linuxPackages_latest;
