@@ -50,21 +50,28 @@ jobs:
             echo "Kernel needs to be built"
           fi
 
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: fortydeux-surface
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          
       - name: Build Surface Kernel
         if: steps.kernel-check.outputs.cached != 'true' || github.event.inputs.force_rebuild == 'true'
         run: |
           echo "Building Surface kernel (this may take up to 3 hours)..."
           echo "This builds the patched Linux kernel with Surface hardware support"
           
-          # Build the kernel - this will use the Determinate Systems cache
+          # Build the kernel
           nix build --accept-flake-config --print-build-logs .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel
           
           # Get the actual output path
           KERNEL_OUT=$(nix eval --accept-flake-config --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
           echo "Built kernel available at: $KERNEL_OUT"
           
-          # The Determinate Nix action automatically caches to cache.flakehub.com
-          echo "Kernel has been built and cached automatically"
+          # Push to Cachix
+          nix path-info -r .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel | cachix push fortydeux-surface
+          echo "Kernel pushed to Cachix cache: fortydeux-surface"
 
       - name: Verify kernel availability
         run: |
@@ -72,7 +79,7 @@ jobs:
           if nix path-info $KERNEL_OUT; then
             echo "✅ Surface kernel successfully built and available"
             echo "📦 Kernel path: $KERNEL_OUT"
-            echo "🔄 Cache: Available via FlakeHub cache for your local machines"
+            echo "🔄 Cache: Available via Cachix cache 'fortydeux-surface'"
           else
             echo "❌ Kernel build verification failed"
             exit 1
@@ -84,9 +91,10 @@ jobs:
           echo "🎉 Surface kernel build completed!"
           echo ""
           echo "📋 Next steps:"
-          echo "1. Run 'sudo nixos-rebuild switch --flake .#archerfish-nixos' on archerfish"
-          echo "2. Run 'sudo nixos-rebuild switch --flake .#killifish-nixos' on killifish" 
-          echo "3. Both machines will pull the pre-built kernel from FlakeHub cache"
+          echo "1. Add Cachix to your flake.nix substituters (see workflow output)"
+          echo "2. Run 'sudo nixos-rebuild switch --flake .#archerfish-nixos' on archerfish"
+          echo "3. Run 'sudo nixos-rebuild switch --flake .#killifish-nixos' on killifish" 
+          echo "4. Both machines will pull the pre-built kernel from Cachix cache"
           echo ""
           echo "⏰ The kernel will be cached and available for future rebuilds"
           echo "🔄 Only rebuild when you see a new kernel compilation starting locally"

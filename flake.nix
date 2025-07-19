@@ -5,10 +5,10 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://cache.flakehub.com"
+      "https://fortydeux-surface.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "cache.flakehub.com-1:t4C2dOh4LXhJAnEJqzWb6rKEJLz+2aQjDl7eD1gPP5E="
+      "fortydeux-surface.cachix.org-1:FFouI4YY62YGdnQbABdRu+jGfhMDnO+zNWGocIFd3rs="
     ];
   };
 

@@ -31,6 +31,7 @@
     # anytype #P2P note-taking tool
     appflowy #An open-source alternative to Notion
     barrier #Open-source KVM software
+    cachix #Command-line client for Nix binary cache hosting https://cachix.org
     code-cursor #AI-powered code editor built on vscode    
     # cheese # Cheesy camera app
     # decent-sampler #An audio sample player
