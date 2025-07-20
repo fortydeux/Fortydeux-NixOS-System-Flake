@@ -79,47 +79,58 @@
       
       hyprland = {
         default = [ "hyprland" "gtk" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       
       sway = lib.mkForce {
         default = [ "wlr" "gtk" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       
       river = {
         default = [ "wlr" "gtk" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       
       wayfire = {
         default = [ "wlr" "gtk" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       
       niri = {
         default = [ "gnome" "gtk" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      
+      plasma = {
+        default = [ "kde" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
+        "org.freedesktop.impl.portal.Secret" = [ "kde" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "kde" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "kde" ];
       };
     };
     
     # Portal packages
+    wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
     ];
+    xdgOpenUsePortal = true;
   };
 
   # Environment Variables - Optimized for all compositors
@@ -162,6 +173,7 @@
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
     xdg-desktop-portal-gnome
+    kdePackages.xdg-desktop-portal-kde
     gnome-keyring
     
     # Icon and theme support - System-wide installation for all apps

@@ -160,6 +160,16 @@
     wireplumber.enable = true; 
     # If you want to use JACK applications, uncomment this
     # jack.enable = true;
+    
+    # Enable screen capture support for OBS/portal integration
+    extraConfig.pipewire."10-screen-capture" = {
+      "context.modules" = [
+        {
+          name = "libpipewire-module-portal";
+          args = { };
+        }
+      ];
+    };
   };
    
   # Enable touchpad support (enabled default in most desktopManager).

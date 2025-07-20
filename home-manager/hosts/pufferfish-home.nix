@@ -4,6 +4,7 @@
 
   imports = [
     ../home-modules/home-commonConfig.nix
+    ../home-modules/screen-recording.nix
     ../home-modules/sh-env.nix	
     ../home-modules/dotfiles.nix
     ../home-modules/theming.nix 
