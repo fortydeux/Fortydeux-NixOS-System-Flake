@@ -20,7 +20,8 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # package = pkgs.hyprland;
   };
 
   # Sway compositor
@@ -125,7 +126,7 @@
     # Portal packages
     wlr.enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
+      # xdg-desktop-portal-hyprland
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
@@ -169,7 +170,7 @@
     
     # Portal and integration packages
     xdg-desktop-portal
-    xdg-desktop-portal-hyprland
+    # xdg-desktop-portal-hyprland
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
     xdg-desktop-portal-gnome

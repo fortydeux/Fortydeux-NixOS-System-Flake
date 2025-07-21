@@ -509,19 +509,17 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1753023617,
-        "narHash": "sha256-zmCZjfxXx4+MdFIsruCVJONh15Ay6Bv2c4pzFL4yTxQ=",
-        "ref": "refs/heads/main",
-        "rev": "d4de69381e64e6b13002f719905707459dc6befb",
-        "revCount": 6300,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/hyprwm/Hyprland"
+        "lastModified": 1753033360,
+        "narHash": "sha256-OwTaEBF/ZXl5RyVPmsCoomunVJdDzpOSFwfvwtzdNxY=",
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "rev": "462729d8655a3a37ba19fe254d8ecb6677963563",
+        "type": "github"
       },
       "original": {
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/hyprwm/Hyprland"
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "type": "github"
       }
     },
     "hyprland-plugins": {
@@ -673,6 +671,26 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprlang",
+        "type": "github"
+      }
+    },
+    "hyprscroller": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752733032,
+        "narHash": "sha256-XqUm5nnTmZUF17eqEACzQCAWXF7ezLKHqIwJR/td34Y=",
+        "owner": "cpiber",
+        "repo": "hyprscroller",
+        "rev": "d3e447a22cfaae77ab1cf3931d23cfdb7c010a9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cpiber",
+        "repo": "hyprscroller",
         "type": "github"
       }
     },
@@ -926,12 +944,12 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1752687322,
-        "narHash": "sha256-RKwfXA4OZROjBTQAl9WOZQFm7L8Bo93FQwSJpAiSRvo=",
-        "rev": "6e987485eb2c77e5dcc5af4e3c70843711ef9251",
-        "revCount": 831064,
+        "lastModified": 1752950548,
+        "narHash": "sha256-NS6BLD0lxOrnCiEOcvQCDVPXafX1/ek1dfJHX1nUIzc=",
+        "rev": "c87b95e25065c028d31a94f06a62927d18763fdf",
+        "revCount": 832220,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.831064%2Brev-6e987485eb2c77e5dcc5af4e3c70843711ef9251/01981ea0-7dde-72e3-b5a6-aeb8e23b53b1/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.832220%2Brev-c87b95e25065c028d31a94f06a62927d18763fdf/019828eb-3d8e-78ea-90c9-36ea34c3d9be/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -1075,6 +1093,7 @@
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
+        "hyprscroller": "hyprscroller",
         "musnix": "musnix",
         "niri": "niri",
         "nixos-hardware": "nixos-hardware",

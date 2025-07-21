@@ -44,6 +44,7 @@
     gh #Github CLI tool 
     ghostty #Fast, native, feature-rich terminal emulator pushing modern features
     # helix #Post modern modal text editor
+    impala #TUI for managing Wifi
     jellyfin-tui #TUI for Jellyfin music
     joplin-desktop #An open source note taking and to-do application with synchronisation capabilities
     joshuto #Ranger-like TUI file manager written in Rust

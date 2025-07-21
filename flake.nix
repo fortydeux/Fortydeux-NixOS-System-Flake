@@ -31,10 +31,13 @@
     #   # inputs.nixpkgs.follows = "nixpkgs";
     # };    
     #Hyprland+Plugins
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=a46576afc32d7fbad6c358cc72ead7f4489d8ea8";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprscroller = {
+      url = "github:cpiber/hyprscroller";
       inputs.hyprland.follows = "hyprland";
     };
     hyprgrass = {
