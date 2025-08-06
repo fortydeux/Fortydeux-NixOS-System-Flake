@@ -257,8 +257,13 @@ spawn-at-startup "bash" "-c" "foot --server"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "niriswitcher"
-spawn-at-startup "pcloud"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "labwc"
+spawn-at-startup "pcloud"
+
+environment {
+    DISPLAY ":0"
+}
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
