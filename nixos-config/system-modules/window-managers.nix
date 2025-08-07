@@ -111,6 +111,13 @@
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       
+      miracle-wm = {
+        default = [ "wlr" "gtk" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.OpenURI" = [ "kde" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      
       niri = {
         default = [ "gnome" "gtk" ];
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];

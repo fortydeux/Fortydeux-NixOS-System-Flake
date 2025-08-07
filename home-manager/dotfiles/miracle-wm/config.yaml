@@ -110,14 +110,14 @@ custom_actions:
 # Startup applications - using Waybar like your other configs
 startup_apps:
   - command: waybar
-    restart_on_death: true
+    restart_on_death: false
   - command: mako
-    restart_on_death: true
+    restart_on_death: false
   - command: nm-applet --indicator
     restart_on_death: false
   - command: blueman-applet
     restart_on_death: false
   - command: wlsunset -l 40.6 -L -75.4 -t 2300 -T 6500
-    restart_on_death: true
+    restart_on_death: false
   - command: pcloud
     restart_on_death: false
