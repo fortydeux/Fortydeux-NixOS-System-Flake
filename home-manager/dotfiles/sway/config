@@ -33,10 +33,18 @@ output * bg ~/.config/wallpapers/zetong_san_francisco.jpg fill
 #
 # Example configuration:
 #
+# Generic fallbacks
 output HDMI-A-1 resolution 1920x1080 position 1920,0
 output eDP-1 resolution 3440x2160 position 0,0 scale 2
+
+# Specific display configurations by make/model/serial
+output "LG Electronics LG ULTRAWIDE 308NTTQD5209" resolution 3440x1440@160Hz position 0,0
+output "Ancor Communications Inc ASUS VS228 E8LMQS044730" resolution 1920x1080 position 3440,0
+
+# Generic DP-1 fallback for other machines
 output DP-1 resolution 1920x1080 position 1620,0
 workspace 1 output eDP-1
+workspace 1 output "LG Electronics LG ULTRAWIDE 308NTTQD5209"
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -84,6 +92,10 @@ exec swayidle -w \
   }
 
   input type:mouse {
+      natural_scroll enabled
+  }
+
+  input type:pointer {
       natural_scroll enabled
   }
 #

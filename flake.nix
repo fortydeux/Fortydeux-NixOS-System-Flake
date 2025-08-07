@@ -3,15 +3,6 @@
 
 # Flake.nix
 
-  nixConfig = {
-    extra-substituters = [
-      "https://fortydeux-surface.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "fortydeux-surface.cachix.org-1:FFouI4YY62YGdnQbABdRu+jGfhMDnO+zNWGocIFd3rs="
-    ];
-  };
-
   inputs = {  
     anyrun.url = "github:anyrun-org/anyrun";
     stylix.url = "https://flakehub.com/f/danth/stylix/0.1";
@@ -21,7 +12,8 @@
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2505"; # 25.05 from Flakehub
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
   	# nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable from NixOS
-  	home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1";
+    # home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1";
+  	home-manager.url = "github:nix-community/home-manager";
   	# home-manager.url = "github:nix-community/home-manager";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

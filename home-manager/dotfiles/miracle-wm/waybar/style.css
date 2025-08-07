@@ -1,0 +1,100 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0px;
+}
+
+window#waybar {
+    background: rgba(21, 18, 27, 0);
+    color: #ffffff;
+}
+
+window#waybar.empty #window {
+    background: none;
+    border: none;
+}
+
+tooltip {
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #505050;
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+#custom-launcher,
+#custom-power,
+#idle_inhibitor,
+#cpu,
+#memory,
+#temperature,
+#custom-weather,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#tray,
+#backlight {
+    background: #1a1a1a;
+    padding: 1px 10px;
+    margin: 2px;
+    border: 1px solid #505050;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+#backlight {
+    color: #ffffff;
+}
+
+#battery {
+    color: #7fc8ff;
+}
+
+#clock {
+    color: #ffffff;
+}
+
+#custom-launcher {
+    color: #7fc8ff;
+    font-size: 22px;
+    padding: 0px 16px 0px 8px;
+}
+
+#custom-power {
+    color: #7fc8ff;
+    font-size: 18px;
+    padding-right: 14px;
+}
+
+#idle_inhibitor {
+    color: #7fc8ff;
+}
+
+#network {
+    color: #7fc8ff;
+}
+
+#pulseaudio {
+    color: #7fc8ff;
+}
+
+#cpu {
+    color: #ffffff;
+}
+
+#memory {
+    color: #ffffff;
+}
+
+#temperature {
+    color: #ffffff;
+}
+
+#custom-weather {
+    color: #ffffff;
+}

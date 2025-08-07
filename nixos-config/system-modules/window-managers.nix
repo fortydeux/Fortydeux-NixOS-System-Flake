@@ -24,6 +24,11 @@
     # package = pkgs.hyprland;
   };
 
+  # Miracle-WM
+  programs.wayland.miracle-wm = {
+    enable = true;
+  };
+
   # Sway compositor
   programs.sway = {
     enable = true;

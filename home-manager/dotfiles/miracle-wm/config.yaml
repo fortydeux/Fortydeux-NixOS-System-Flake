@@ -1,0 +1,123 @@
+
+# Miracle-WM Configuration
+
+# Input device configuration - consistent with your other WM setups
+input:
+  touchpad:
+    natural_scroll: true
+    accel_speed: 0.3
+    click_method: clickfinger
+    tap_enabled: true
+    dwt_enabled: true  # disable while typing
+    middle_emulation: true
+  
+  mouse:
+    natural_scroll: true
+    accel_speed: 0.4
+
+  pointer:
+    natural_scroll: true
+    accel_speed: 0.4
+  
+  keyboard:
+    numlock_on_startup: true
+    repeat_rate: 50
+    repeat_delay: 300
+
+# Window borders
+border:
+  size: 2
+  color: 0x505050ff
+  focus_color: 0x7fc8ffff
+
+# Drag and Drop
+drag_and_drop:
+  enabled: true
+  modifiers:
+    - primary
+    - shift
+
+# Move
+move_modifier:
+  - primary
+
+# Default action overrides
+default_action_overrides:
+  - name: toggle_stacking
+  - action: "down"
+  - modifiers:
+      - primary
+      - shift
+  - key: KEY_S
+
+# Core custom actions for consistent experience across WMs
+custom_actions:
+  # Launcher keybindings - consistent across your configs
+  - command: anyrun
+    action: down
+    modifiers:
+      - alt
+    key: KEY_SPACE
+  
+  - command: fuzzel
+    action: down
+    modifiers:
+      - ctrl
+    key: KEY_SPACE
+
+  # Terminal
+  - command: kitty
+    action: down
+    modifiers:
+      - primary
+    key: KEY_S
+
+
+  # Volume controls - consistent across your configs
+  - command: wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    action: down
+    modifiers: []
+    key: KEY_VOLUMEUP
+
+  - command: wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    action: down
+    modifiers: []
+    key: KEY_VOLUMEDOWN
+
+  - command: wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    action: down
+    modifiers: []
+    key: KEY_MUTE
+
+  # Brightness controls
+  - command: brightnessctl set 5%+
+    action: down
+    modifiers: []
+    key: KEY_BRIGHTNESSUP
+
+  - command: brightnessctl set 5%-
+    action: down
+    modifiers: []
+    key: KEY_BRIGHTNESSDOWN
+
+  # Toggle Waybar
+  - command: pkill waybar || waybar
+    action: down
+    modifiers:
+      - primary
+    key: KEY_B
+
+# Startup applications - using Waybar like your other configs
+startup_apps:
+  - command: waybar
+    restart_on_death: true
+  - command: mako
+    restart_on_death: true
+  - command: nm-applet --indicator
+    restart_on_death: false
+  - command: blueman-applet
+    restart_on_death: false
+  - command: wlsunset -l 40.6 -L -75.4 -t 2300 -T 6500
+    restart_on_death: true
+  - command: pcloud
+    restart_on_death: false

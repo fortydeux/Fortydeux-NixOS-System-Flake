@@ -173,8 +173,9 @@
     	recursive = true;
     };
     
-    ".config/miracle-wm.yaml" = {
-    	source = ../dotfiles/miracle-wm/miracle-wm.yaml;
+    ".config/miracle-wm" = {
+    	source = ../dotfiles/miracle-wm;
+    	recursive = true;
     }; 
 
     ".config/wayfire.ini" = {

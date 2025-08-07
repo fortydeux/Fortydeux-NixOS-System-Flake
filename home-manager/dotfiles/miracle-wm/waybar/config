@@ -1,0 +1,123 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 4,
+    "margin-top": 4,
+    "margin-right": 4,
+    "margin-left": 4,
+    "margin-bottom": 0,
+
+    // Module order
+    "modules-left": ["custom/launcher", "clock", "custom/weather"],
+    "modules-center": [],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "network", "cpu", "memory", "temperature", "battery", "tray", "custom/power"],
+
+    // Module configurations
+
+    "custom/launcher": {
+        "format": "",
+        "on-click": "anyrun",
+        "on-click-right": "fuzzel",
+        "tooltip-text": "Left: Anyrun | Right: Fuzzel"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "on-click-right": "pkill wlogout",
+        "tooltip-text": "Power menu"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{:%R   %m/%d  }",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "gnome-calendar"
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar --location 'Philadelphia,PA'",
+        "return-type": "json"
+    },
+
+    "cpu": {
+        "format": "{usage}%  ",
+        "tooltip": false,
+        "on-click": "kitty -e htop"
+    },
+
+    "memory": {
+        "format": "{}%  ",
+        "on-click": "kitty -e htop"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["🌡", "", "🌡"],
+        "on-click": "kitty -e htop"
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 🗲",
+        "format-plugged": "{capacity}% 🔌",
+        "format-alt": "{time} {icon}",
+        "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "network": {
+        "format-wifi": "{signalStrength}%  ",
+        "format-ethernet": "Connected  ",
+        "tooltip-format": "{essid} {ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "{icon} {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        },
+        "on-click": "pwvucontrol"
+    }
+}

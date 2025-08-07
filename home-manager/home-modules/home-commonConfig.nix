@@ -63,6 +63,8 @@
     # moc # Terminal music player
     # musescore #Music notation and composition software
     nix-melt # A ranger-like flake.lock viewer
+    nix-search-cli # CLI for searching packages on search.nixos.org
+    nix-search-tv # Fuzzy search for Nix packages
     # obs-studio #Screen recorder       
     patchance # JACK Patchbay GUI
     pdfgrep # Commandline utility to search text in PDF files

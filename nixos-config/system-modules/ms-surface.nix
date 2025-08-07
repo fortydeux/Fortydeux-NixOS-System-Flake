@@ -9,6 +9,18 @@
     inputs.home-manager.nixosModules.home-manager 
   ];
 
+  # Surface-specific cachix substituter
+  nix.settings = {
+    substituters = [
+      "https://cache.nixos.org"
+      "https://fortydeux-surface.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "fortydeux-surface.cachix.org-1:FFouI4YY62YGdnQbABdRu+jGfhMDnO+zNWGocIFd3rs="
+    ];
+  };
+
   # Surface Laptop Support
   environment.systemPackages = [
     pkgs.libwacom-surface

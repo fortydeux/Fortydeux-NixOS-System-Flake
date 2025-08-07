@@ -120,7 +120,6 @@
       inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin
       # pkgs.hyprlandPlugins.hyprscroller
-      # (pkgs.callPackage ./plugins/hyprland/hyprscroller.nix {})
       inputs.hyprscroller.packages.${pkgs.system}.default
     ];
     settings = {
