@@ -1,0 +1,22 @@
+# Display/Output configuration
+outputs:
+  - name: eDP-1
+    enabled: true
+    scale: 2.0
+    orientation: normal
+    position:
+      x: 0
+      y: 0
+    size:
+      width: 3240
+      height: 2160
+  # - name: HDMI-A-1
+  #   scale: 1.0
+  #   position:
+  #     x: 3440
+  #     y: 0
+  # - name: HDMI-A-2
+  #   scale: 1.0
+  #   position:
+  #     x: 3440
+  #     y: 0

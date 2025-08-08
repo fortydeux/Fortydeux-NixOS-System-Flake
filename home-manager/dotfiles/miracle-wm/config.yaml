@@ -24,11 +24,6 @@ input:
     repeat_rate: 50
     repeat_delay: 300
 
-# Display/Output configuration
-outputs:
-  - name: eDP-1
-    scale: 2.0
-
 # Window borders
 border:
   size: 2

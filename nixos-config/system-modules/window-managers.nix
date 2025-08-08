@@ -25,9 +25,9 @@
   };
 
   # Miracle-WM
-  programs.wayland.miracle-wm = {
-    enable = true;
-  };
+  # programs.wayland.miracle-wm = {
+  #   enable = true;
+  # };
 
   # Sway compositor
   programs.sway = {
