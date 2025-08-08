@@ -12,7 +12,7 @@
         comment = "Hyprland compositor managed by UWSM";
         binPath = "/run/current-system/sw/bin/Hyprland";
       };
-      # Note: Sway, Niri, and Miracle-WM have issues with UWSM, keeping them as direct launches
+      # Note: Sway and Niri seem to have issues with UWSM, keeping them as direct launches
     };
   };
 
@@ -27,17 +27,6 @@
   # Miracle-WM
   programs.wayland.miracle-wm = {
     enable = true;
-  };
-  
-  # Session cleanup and Xwayland management
-  systemd.user.services.session-cleanup = {
-    description = "Clean up compositor-specific processes between sessions";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'pkill -f \"hyprpaper|xwayland-satellite\" || true'";
-      RemainAfterExit = false;
-    };
-    wantedBy = [ "graphical-session-pre.target" ];
   };
 
   # Sway compositor
