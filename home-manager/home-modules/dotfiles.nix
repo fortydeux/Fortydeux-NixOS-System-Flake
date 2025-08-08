@@ -40,9 +40,10 @@
   		                block = "sound";
   		             }
   		             {
-  		             	block = "backlight";
-  		             }
-                     {
+  		             block = "backlight";
+  		              missing_format = "";
+		               }
+                   {
   		                block = "net";
   		             }
   		             {
