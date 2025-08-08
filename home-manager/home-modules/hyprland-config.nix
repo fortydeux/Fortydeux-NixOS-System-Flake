@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -13,8 +14,10 @@
     [
       ./waybar-config.nix
     ];
+  # Disable hyprpaper service to prevent cross-session contamination
+  # Use exec-once in Hyprland config instead for proper session isolation
   services.hyprpaper = {
-    enable = true;
+    enable = lib.mkForce false;
   };
   home.packages = with pkgs; [
     # inputs.hyprland-qtutils.packages.${pkgs.system}.default

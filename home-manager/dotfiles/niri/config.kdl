@@ -257,7 +257,7 @@ spawn-at-startup "bash" "-c" "foot --server"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "niriswitcher"
-spawn-at-startup "xwayland-satellite"
+// spawn-at-startup "xwayland-satellite"  // Disabled - causes dual Xwayland instances
 spawn-at-startup "labwc"
 spawn-at-startup "pcloud"
 
