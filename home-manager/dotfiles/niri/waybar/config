@@ -1,1 +1,202 @@
-/nix/store/77zaqhkwghibx90y740v5z3mbh8ycpyp-home-manager-files/.config/hypr/waybar/config
+[
+  {
+    "backlight": {
+      "format": "{percent}% {icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "battery": {
+      "format": "{capacity}% {icon}",
+      "format-alt": "{time} {icon}",
+      "format-charging": "{capacity}% 🗲",
+      "format-full": "",
+      "format-icons": [
+        " ",
+        " ",
+        " ",
+        " ",
+        " "
+      ],
+      "format-plugged": "{capacity}% 🔌",
+      "states": {
+        "critical": 15,
+        "warning": 30
+      }
+    },
+    "battery#bat2": {
+      "bat": "BAT2",
+      "format": "{capacity}% {icon}",
+      "format-alt": "{time} {icon}",
+      "format-charging": "{capacity}% 🗲",
+      "format-full": "",
+      "format-icons": [
+        " ",
+        " ",
+        " ",
+        " ",
+        " "
+      ],
+      "format-plugged": "{capacity}% 🔌",
+      "states": {
+        "critical": 15,
+        "warning": 30
+      }
+    },
+    "clock": {
+      "format": "{:%R   %m/%d  }",
+      "on-click": "exec gnome-calendar",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+      "format": "{usage}%  ",
+      "on-click": "exec com.github.stsdc.monitor",
+      "tooltip": false
+    },
+    "custom/launcher": {
+      "format": "",
+      "on-click": "pgrep wofi > /dev/null && pkill wofi || wofi -S drun -GIm -w 3 -W 100% -H 96%",
+      "on-click-right": "pkill wofi"
+    },
+    "custom/media": {
+      "format": "{} {icon} ",
+      "format-icons": {
+        "default": "",
+        "spotify": ""
+      },
+      "on-click": "spotify && playerctl play-pause",
+      "on-scroll-down": "playerctl previous",
+      "on-scroll-up": "playerctl next",
+      "return-type": "json"
+    },
+    "custom/power": {
+      "format": "⏻",
+      "on-click": "exec wlogout",
+      "on-click-right": "pkill wlogout"
+    },
+    "height": 35,
+    "hyprland/workspaces": {
+      "all-outputs": true,
+      "disable-scroll": false,
+      "on-click": "activate",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "persistent-workspaces": {
+        "1": [],
+        "2": []
+      }
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+      }
+    },
+    "keyboard-state": {
+      "capslock": true,
+      "format": " {name} {icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": ""
+      },
+      "numlock": true
+    },
+    "layer": "top",
+    "margin-bottom": 0,
+    "margin-left": 4,
+    "margin-right": 4,
+    "margin-top": 4,
+    "memory": {
+      "format": "{}%  ",
+      "on-click": "exec com.github.stsdc.monitor"
+    },
+    "modules-left": [
+      "custom/launcher",
+      "clock",
+      "custom/weather",
+      "niri/workspaces",
+      "niri/window"
+    ],
+    "modules-right": [
+      "idle_inhibitor",
+      "pulseaudio",
+      "backlight",
+      "network",
+      "cpu",
+      "memory",
+      "temperature",
+      "battery",
+      "battery#bat2",
+      "tray",
+      "custom/power"
+    ],
+    "network": {
+      "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      "format-disconnected": "Disconnected ⚠",
+      "format-ethernet": "Connected  ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-wifi": "{signalStrength}%  ",
+      "on-click-right": "exec nm-connection-editor",
+      "tooltip-format": "{essid} {ifname} via {gwaddr} "
+    },
+    "position": "top",
+    "pulseaudio": {
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-bluetooth-muted": "{icon} {format_source}",
+      "format-icons": {
+        "car": "",
+        "default": [
+          " ",
+          " ",
+          " "
+        ],
+        "hands-free": "",
+        "headphone": "",
+        "headset": "",
+        "phone": "",
+        "portable": ""
+      },
+      "format-muted": "{format_source}",
+      "format-source": "",
+      "format-source-muted": "",
+      "on-click": "pwvucontrol"
+    },
+    "pulseaudio#microphone": {
+      "format": "{format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": " Muted",
+      "on-click": "pamixer --default-source -t",
+      "on-scroll-down": "pamixer --default-source -d 5",
+      "on-scroll-up": "pamixer --default-source -i 5",
+      "scroll-step": 5
+    },
+    "spacing": 4,
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": [
+        "🌡",
+        "",
+        "🌡"
+      ],
+      "on-click": "exec com.github.stsdc.monitor"
+    },
+    "tray": {
+      "icon-size": 20,
+      "spacing": 10
+    },
+    "wlr/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+    }
+  }
+]

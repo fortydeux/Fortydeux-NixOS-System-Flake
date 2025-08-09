@@ -251,6 +251,7 @@
     
     # Niri specific
     niriswitcher
+    xwayland-satellite
     
     # River specific
     i3bar-river

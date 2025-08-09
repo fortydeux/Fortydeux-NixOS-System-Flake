@@ -254,12 +254,11 @@ layout {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "bash" "-c" "foot --server"
-spawn-at-startup "waybar"
+spawn-at-startup "bash" "-c" "waybar -c $HOME/.config/niri/waybar/config_vert -s $HOME/.config/niri/waybar/style_vert.css"
 spawn-at-startup "mako"
 spawn-at-startup "niriswitcher"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "labwc"
-spawn-at-startup "pcloud"
+spawn-at-startup "sleep 5 && pcloud"
 
 environment {
     DISPLAY ":0"
@@ -636,8 +635,9 @@ binds {
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
-    Mod+B { spawn "bash" "-c" "pgrep waybar && pkill waybar || waybar"; }
-   
+    Mod+B { spawn "bash" "-c" "pgrep waybar && pkill waybar || waybar -c $HOME/.config/niri/waybar/config_vert -s $HOME/.config/niri/waybar/style_vert.css"; }
+    Mod+Shift+B { spawn "bash" "-c" "pgrep waybar && pkill waybar || waybar -c $HOME/.config/niri/waybar/config -s $HOME/.config/niri/waybar/style.css"; }
+  
     Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
     Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
     Alt+Grave repeat=false { spawn "niriswitcherctl" "show" "--workspace"; }

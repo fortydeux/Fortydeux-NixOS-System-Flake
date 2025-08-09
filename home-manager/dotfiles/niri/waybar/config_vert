@@ -1,22 +1,28 @@
 {
   "layer": "top",
   "reload_style_on_change": true,
-  "position": "right",
-  "output": ["DP-1"],
+  "position": "left",
+  // "output": ["eDP-1"],
   "margin-top": 5,
   "height": 35,
   "spacing": 8,
-  "modules-center": ["group/time", "group/volume", "group/net", "group/group-power", "custom/updates" ],
+  "modules-center": ["custom/launcher", "niri/workspaces", "group/time", "group/volume", "group/net", "group/group-battery", "group/group-power", "custom/updates" ],
   "modules-left": [],
   "modules-right": [],
   
+  "custom/launcher":{
+    // "format": "",
+    "format": "",
+    "on-click": "pgrep wofi > /dev/null && pkill wofi || wofi -S drun -GIm -w 3 -W 100% -H 100%",
+    "on-click-right": "pkill wofi"
+  },
+
   "group/net": {
       "orientation": "vertical",
       "modules":
       [
           "network"
-      ]
-    			
+      ]			
   },
 
   "group/volume": {
@@ -29,8 +35,7 @@
     "modules": [
     	"pulseaudio#1",
         "pulseaudio#2"
-    ]
-    			
+    ] 			
   },
 
   "group/time": {
@@ -39,8 +44,15 @@
 		"clock#1",
         "clock#2",
         "clock#3"
+    ]    			
+  },
+
+  "group/group-battery": {
+    "orientation": "vertical",
+    "modules": [
+      "battery",
+      "battery#bat2"
     ]
-    			
   },
 
   "network": {
@@ -89,6 +101,44 @@
     "format": "{:%M}",
     "tooltip": false
   },	
+  
+  "battery": {
+      "format": "{capacity}% \n {icon}",
+      "format-alt": "{time} \n {icon}",
+      "format-charging": "{capacity}% \n 🗲",
+      "format-full": "",
+      "format-icons": [
+        " ",
+        " ",
+        " ",
+        " ",
+        " "
+      ],
+      "format-plugged": "{capacity}% \n 🔌",
+      "states": {
+        "critical": 15,
+        "warning": 30
+      }
+    },
+    "battery#bat2": {
+      "bat": "BAT2",
+      "format": "{capacity}% \n {icon}",
+      "format-alt": "{time} \n {icon}",
+      "format-charging": "{capacity}% \n 🗲",
+      "format-full": "",
+      "format-icons": [
+        " ",
+        " ",
+        " ",
+        " ",
+        " "
+      ],
+      "format-plugged": "{capacity}% \n 🔌",
+      "states": {
+        "critical": 15,
+        "warning": 30
+      }
+    },
 
   "group/group-power": {
      "orientation": "inherit",

@@ -5,7 +5,7 @@
     font-size: 12pt;
     font-weight: bold;
     min-height: 0;
-    color: #b3b3b3;
+    color: @theme_fg_color;
 }
 
 window#waybar {
@@ -19,13 +19,12 @@ window#waybar {
     /*background-color: rgba(0, 0, 0, 0.0);
     border: 3px solid rgba(0, 0, 0, 0.0);
     margin: 0px 0px 0px 15px; */
-    
 }
 
 .modules-center {
-    background-color: rgba(49, 46, 48, 0.7);
-    border: 3px solid rgba(35, 35, 35, 0.85);
-    margin: 0px 15px 10px 0px;
+    background-color: @theme_bg_color;
+    border: 3px solid @borders;
+    margin: 10px 2px 10px 2px;
 }
 
 .modules-right {
@@ -37,70 +36,58 @@ window#waybar {
      margin: 0px 15px 10px 0px; */
 }
 
-#clock.1 {
-    margin: 15px 10px 5px 5px;
+#custom-launcher,
+#niri-workspaces,
+#clock,
+#group-time,
+#pulseaudio,
+#network,
+#battery,
+#group-group-battery,
+#custom-updates,
+#custom-exit,
+#custom-lock,
+#custom-reboot,
+#custom-power,
+#group-group-power {
+    margin: 10px 10px 10px 10px;
     border-radius: 0px;
-    color: rgba(210, 129, 61, 1);/*#d2813d;*/
+    color: @theme_fg_color;
 }
 
-#clock.2 {
-	margin: 0px 10px 2.5px 10px;
-    border-radius: 0px;
-    color: rgba(210, 129, 61, 1);
+#custom-launcher {
+    font-size: 15pt;
+    margin: 10px 8px 10px 8px;
 }
 
-#clock.3 {
-	margin: 0px 10px 5px 10px;
-    border-radius: 0px;
-    color: rgba(210, 129, 61, 1);
+#group-group-power {
+    margin-bottom: 20px;
 }
 
-#pulseaudio {
-    margin: 0px 0px 5px 0px;
-    border-radius: 0px;
-    color: rgba(210, 129, 61, 1);
+#workspaces button {
+    padding: 5px;
+    color: @theme_fg_color;
+    margin-right: 5px;
 }
 
-#network {
-    margin: 0px 10px 5px 10px;
-    border-radius: 0px;
-    color: rgba(210, 129, 61, 1);
+#workspaces button.active {
+    color: @theme_fg_color;
 }
 
-#custom-updates {
-    margin: 0px 10px 5px 10px;
-    border-radius: 0px;
-    color: rgba(210, 129, 61, 1);
+#workspaces button.focused {
+    color: @theme_fg_color;
+    background: @theme_selected_bg_color;
+    border-radius: 10px;
 }
 
-#custom-exit {
-    margin: 0px 10px 5px 10px;
-    border-radius: 0px;
-    font-size: 12pt;
-    font-weight: bold;
-    color: rgba(210, 129, 61, 1);
+#workspaces button.urgent {
+    color: @theme_bg_color;
+    background: @warning_color;
+    border-radius: 10px;
 }
 
-#custom-lock {
-    margin: 0px 10px 5px 10px;
-    border-radius: 0px;
-    font-size: 12pt;
-    font-weight: bold;
-    color: rgba(210, 129, 61, 1);
-}
-
-#custom-reboot {
-    margin: 0px 10px 15px 10px;
-    border-radius: 0px;
-    font-size: 12pt;
-    font-weight: bold;
-    color: rgba(210, 129, 61, 1);
-}
-
-#custom-power {
-    margin: 0px 10px 15px 10px;
-    border-radius: 0px;
-    font-size: 12pt;
-    font-weight: bold;
-    color: rgba(210, 129, 61, 1);
+#workspaces button:hover {
+    color: @accent_color;
+    background: @theme_bg_color;
+    border-radius: 10px;
 }
