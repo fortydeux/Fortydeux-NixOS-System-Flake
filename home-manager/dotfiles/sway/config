@@ -55,7 +55,8 @@ workspace 1 output "LG Electronics LG ULTRAWIDE 308NTTQD5209"
 exec swayidle -w \
          timeout 3000 'swaylock -f -c 000000' \
          timeout 6000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'swaylock -f -c 000000' \
+         --inhibit
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
