@@ -58,7 +58,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="90%"
+    focus-follows-mouse max-scroll-amount="80%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -259,7 +259,7 @@ spawn-at-startup "mako"
 spawn-at-startup "niriswitcher"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "bash" "-c" "sleep 3 && pcloud"
-spawn-at-startup "bash" "-c" "swayidle -w timeout 3000 'swaylock -f -c 000000' timeout 6000 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f -c 000000' --inhibit"
+spawn-at-startup "bash" "-c" "swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f -c 000000' --inhibit"
 
 environment {
     DISPLAY ":0"
@@ -845,8 +845,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Space       { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
