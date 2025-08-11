@@ -168,7 +168,7 @@ layout {
     always-center-single-column
     empty-workspace-above-first
     default-column-display "tabbed"
-    background-color "#003300"
+    background-color "#000000ff"
 
     preset-column-widths {
         proportion 0.33333

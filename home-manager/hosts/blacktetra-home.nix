@@ -7,6 +7,7 @@
     ../home-modules/screen-recording.nix
     ../home-modules/sh-env.nix	
     ../home-modules/dotfiles.nix
+    ../home-modules/niri-config.nix
     ../home-modules/theming.nix 
     # ../home-modules/emacs-support.nix 
     # ../home-modules/ags.nix

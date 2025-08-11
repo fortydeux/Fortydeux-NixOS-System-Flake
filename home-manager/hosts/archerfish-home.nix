@@ -12,6 +12,7 @@
     # ../home-modules/ags.nix
     ../home-modules/hyprland-config.nix
     ../home-modules/highdpi-hyprland.nix
+    ../home-modules/niri-config.nix
     # ../home-modules/misc-utils.nix
   ];
 

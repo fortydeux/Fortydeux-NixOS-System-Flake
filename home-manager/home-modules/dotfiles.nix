@@ -119,8 +119,15 @@
     	recursive = true;
     }; 
 
-    ".config/niri" = {
-    	source = ../dotfiles/niri;
+    # Niri config now managed by niri-config.nix module
+    # ".config/niri" = {
+    # 	source = ../dotfiles/niri;
+    # 	recursive = true;
+    # };
+    
+    # Still write waybar config files for niri
+    ".config/niri/waybar" = {
+    	source = ../dotfiles/niri/waybar;
     	recursive = true;
     };
 
