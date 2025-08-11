@@ -25,6 +25,9 @@
                 // layout "us,ru"
                 // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
             }
+            
+            repeat-delay 600
+            repeat-rate 50
         }
 
         // Next sections include libinput settings.
@@ -425,9 +428,11 @@
     //     // block-out-from "screencast"
     // }
 
-    // Set open-maximized to true for all windows.
+    // Set default column width to 90% of screen and open new windows as tabs.
     window-rule {
-        open-maximized true
+        // open-maximized true
+        default-column-width { proportion 0.9; }
+        default-column-display "tabbed"
     }
 
     window-rule {
