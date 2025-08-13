@@ -210,6 +210,25 @@
     };
   };
 
+  services = {
+    walker = {
+      enable = true;
+      settings =  {
+          app_launch_prefix = "";
+          as_window = false;
+          close_when_open = false;
+          disable_click_to_close = false;
+          force_keyboard_focus = false;
+          hotreload_theme = false;
+          locale = "";
+          monitor = "";
+          terminal_title_flag = "";
+          theme = "default";
+          timeout = 0;
+        };
+    };
+  };
+
   home.sessionVariables = {
     # NNN_OPENER = "/home/fortydeux/scripts/file-ops/linkhandler.sh";
     # NNN_FCOLORS = "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER";
