@@ -271,7 +271,7 @@
     spawn-at-startup "niriswitcher"
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "bash" "-c" "sleep 3 && pcloud"
-    spawn-at-startup "bash" "-c" "swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f -c 000000' --inhibit"
+    spawn-at-startup "bash" "-c" "swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f -c 000000' "
 
     environment {
         DISPLAY ":0"
