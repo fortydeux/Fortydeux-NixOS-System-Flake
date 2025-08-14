@@ -300,7 +300,7 @@
       #custom-power {
         color: @accent_color;
         font-size: 18px;
-        padding-right: 14px;
+        padding-right: 10px;
       }
 
       #idle_inhibitor {
