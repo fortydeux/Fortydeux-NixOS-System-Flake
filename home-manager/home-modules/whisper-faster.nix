@@ -52,6 +52,7 @@ class WhisperDaemon:
         self.audio_buffer = []
         self.sample_rate = 16000
         self.min_audio_length = 0.5  # Minimum 0.5s before transcription
+        self.start_time = time.time()  # Track daemon uptime
         
         # Logging setup with rotation
         self.log_path = "/tmp/faster-whisper-daemon.log"
@@ -184,9 +185,8 @@ class WhisperDaemon:
                     os.unlink(tmp_file.name)
                 except:
                     pass
-                finally:
-                    # Clear buffer to prevent memory leaks
-                    self.audio_buffer = []
+                # Clear buffer to prevent memory leaks
+                self.audio_buffer = []
                     
     async def handle_client(self, reader, writer):
         """Handle client connections via Unix socket."""
@@ -202,7 +202,19 @@ class WhisperDaemon:
                 result = self.stop_recording_and_transcribe()
                 response = result if result else "no_result"
             elif command == "status":
-                response = "recording" if self.recording else "idle"
+                uptime = time.time() - self.start_time
+                status = "recording" if self.recording else "idle"
+                response = f"{status} (uptime: {uptime/3600:.1f}h)"
+                
+                # Auto-shutdown after 24 hours
+                if uptime > 24 * 3600:
+                    self.log("Auto-shutdown after 24h uptime")
+                    response = "shutting_down_old"
+                    writer.write(response.encode())
+                    await writer.drain()
+                    writer.close()
+                    await writer.wait_closed()
+                    os._exit(0)
             elif command == "shutdown":
                 self.log("Shutdown requested")
                 response = "ok"
@@ -210,7 +222,7 @@ class WhisperDaemon:
                 await writer.drain()
                 writer.close()
                 await writer.wait_closed()
-                sys.exit(0)
+                os._exit(0)
             else:
                 response = "unknown_command"
                 
