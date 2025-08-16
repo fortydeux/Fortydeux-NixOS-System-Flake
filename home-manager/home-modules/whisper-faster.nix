@@ -53,12 +53,30 @@ class WhisperDaemon:
         self.sample_rate = 16000
         self.min_audio_length = 0.5  # Minimum 0.5s before transcription
         
-        # Logging setup
-        self.log_file = open("/tmp/faster-whisper-daemon.log", "a")
+        # Logging setup with rotation
+        self.log_path = "/tmp/faster-whisper-daemon.log"
+        self._rotate_log_if_needed()
+        self.log_file = open(self.log_path, "a")
         
     def log(self, message):
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{timestamp}] {message}", file=self.log_file, flush=True)
+        
+    def _rotate_log_if_needed(self):
+        """Rotate log file if it gets too large (>1MB)."""
+        try:
+            if os.path.exists(self.log_path) and os.path.getsize(self.log_path) > 1024 * 1024:
+                backup_path = f"{self.log_path}.old"
+                if os.path.exists(backup_path):
+                    os.unlink(backup_path)
+                os.rename(self.log_path, backup_path)
+        except Exception:
+            pass  # Don't fail if rotation fails
+            
+    def debug(self, message):
+        # Only log debug messages if WHISPER_DEBUG is set
+        if os.environ.get("WHISPER_DEBUG"):
+            self.log(f"DEBUG: {message}")
         
     async def load_model(self):
         """Load the Whisper model once at startup."""
@@ -74,16 +92,16 @@ class WhisperDaemon:
     def start_recording(self):
         """Start audio recording in background thread."""
         if self.recording:
-            self.log("Already recording, ignoring start command")
+            self.debug("Already recording, ignoring start command")
             return
             
-        self.log("Starting audio recording")
+        self.log("Starting recording")
         self.recording = True
         self.audio_buffer = []
         
         def record_callback(indata, frames, time, status):
             if status:
-                self.log(f"Audio callback status: {status}")
+                self.debug(f"Audio callback status: {status}")
             if self.recording:
                 self.audio_buffer.append(indata.copy())
                 
@@ -97,7 +115,7 @@ class WhisperDaemon:
                 device=None  # Use default input device
             )
             self.stream.start()
-            self.log("Audio stream started")
+            self.debug("Audio stream started")
         except Exception as e:
             self.log(f"Failed to start recording: {e}")
             self.recording = False
@@ -105,10 +123,10 @@ class WhisperDaemon:
     def stop_recording_and_transcribe(self):
         """Stop recording and transcribe the audio buffer."""
         if not self.recording:
-            self.log("Not recording, ignoring stop command")
+            self.debug("Not recording, ignoring stop command")
             return ""
             
-        self.log("Stopping recording and transcribing")
+        self.log("Transcribing")
         self.recording = False
         
         try:
@@ -118,18 +136,24 @@ class WhisperDaemon:
             self.log(f"Error stopping stream: {e}")
             
         if not self.audio_buffer:
-            self.log("No audio data recorded")
+            self.debug("No audio data recorded")
             return ""
             
         # Concatenate audio buffer
         audio_data = np.concatenate(self.audio_buffer, axis=0)
         duration = len(audio_data) / self.sample_rate
-        self.log(f"Recorded {len(audio_data)} samples ({duration:.2f}s)")
+        self.debug(f"Recorded {len(audio_data)} samples ({duration:.2f}s)")
         
         # Skip transcription if too short
         if duration < self.min_audio_length:
-            self.log(f"Audio too short ({duration:.2f}s), skipping transcription")
+            self.debug(f"Audio too short ({duration:.2f}s), skipping")
             return ""
+            
+        # Memory safety: limit max recording length to 60 seconds
+        max_samples = 60 * self.sample_rate
+        if len(audio_data) > max_samples:
+            self.log(f"Recording too long ({duration:.1f}s), truncating to 60s")
+            audio_data = audio_data[-max_samples:]
         
         # Save to temporary file for Whisper (it expects file input)
         with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_file:
@@ -137,7 +161,7 @@ class WhisperDaemon:
             
             try:
                 # Transcribe
-                self.log("Starting transcription")
+                self.debug("Starting transcription")
                 segments, info = self.model.transcribe(
                     tmp_file.name,
                     language=self.language,
@@ -148,18 +172,21 @@ class WhisperDaemon:
                 )
                 
                 result = " ".join(s.text.strip() for s in segments).strip()
-                self.log(f"Transcription result: '{result}'")
+                self.log(f"Result: '{result}'")
                 return result
                 
             except Exception as e:
                 self.log(f"Transcription failed: {e}")
                 return ""
             finally:
-                # Clean up temp file
+                # Clean up temp file and audio buffer
                 try:
                     os.unlink(tmp_file.name)
                 except:
                     pass
+                finally:
+                    # Clear buffer to prevent memory leaks
+                    self.audio_buffer = []
                     
     async def handle_client(self, reader, writer):
         """Handle client connections via Unix socket."""
@@ -188,34 +215,31 @@ class WhisperDaemon:
                 response = "unknown_command"
                 
             self.log(f"Sending response: {response[:50]}...")
-            writer.write(response.encode() + b'\n')
+            writer.write(response.encode())
             await writer.drain()
-            await asyncio.sleep(0.1)  # Give time for data to send
+            writer.close()
+            await writer.wait_closed()
             
         except Exception as e:
             self.log(f"Error handling client: {e}")
-        finally:
-            try:
-                await asyncio.sleep(0.1)
-                writer.close()
-                await writer.wait_closed()
-            except Exception as e:
-                self.log(f"Error closing connection: {e}")
             
     async def run_server(self):
         """Run the Unix socket server."""
-        # Remove existing socket
+        # Clean up any existing socket
         try:
             os.unlink(self.socket_path)
         except FileNotFoundError:
             pass
+            
+        # Ensure socket directory exists
+        os.makedirs(os.path.dirname(self.socket_path), exist_ok=True)
             
         server = await asyncio.start_unix_server(
             self.handle_client,
             path=self.socket_path
         )
         
-        self.log(f"Daemon listening on {self.socket_path}")
+        self.log(f"Listening on {self.socket_path}")
         
         async with server:
             await server.serve_forever()
@@ -247,55 +271,24 @@ if __name__ == "__main__":
 DAEMON_PY
   '';
 
-  fw-transcribe = pkgs.writeShellScriptBin "fw-transcribe" ''
-    set -euo pipefail
-    IN="$1"
-    MODEL="${config.services.dictation-faster.model}"
-    LANG="${config.services.dictation-faster.language}"
-    DEV="${config.services.dictation-faster.device}"
-    
-    echo "[DEBUG] fw-transcribe: input=$IN, model=$MODEL, lang=$LANG, device=$DEV" >&2
-    [ -f "$IN" ] && echo "[DEBUG] Audio file exists, size=$(wc -c < "$IN") bytes" >&2 || echo "[DEBUG] Audio file missing!" >&2
-    
-    ${pyEnv}/bin/python - << 'PY' "$IN" "$MODEL" "$LANG" "$DEV"
-import sys
-import os
-from faster_whisper import WhisperModel
 
-audio_path, model_size, lang, device = sys.argv[1:5]
-print(f"[DEBUG] Python: audio_path={audio_path}, model_size={model_size}, lang={lang}, device={device}", file=sys.stderr)
-print(f"[DEBUG] Audio file exists: {os.path.exists(audio_path)}, size: {os.path.getsize(audio_path) if os.path.exists(audio_path) else 'N/A'} bytes", file=sys.stderr)
-
-try:
-    model = WhisperModel(model_size, device=device, compute_type="int8" if device=="cpu" else "float16")
-    print("[DEBUG] Model loaded successfully", file=sys.stderr)
-    
-    segments, info = model.transcribe(
-        audio_path, language=lang, vad_filter=True,
-        vad_parameters={"min_silence_duration_ms": 200}, beam_size=5
-    )
-    print(f"[DEBUG] Transcription started, detected language: {info.language}", file=sys.stderr)
-    
-    result = " ".join(s.text.strip() for s in segments).strip()
-    print(f"[DEBUG] Transcription result: '{result}'", file=sys.stderr)
-    print(result)
-except Exception as e:
-    print(f"[ERROR] Transcription failed: {e}", file=sys.stderr)
-    sys.exit(1)
-PY
-  '';
   # New daemon-based scripts
   dictate-fw-ptt-start = pkgs.writeShellScriptBin "dictate-fw-ptt-start" ''
     SOCKET="/tmp/faster-whisper-daemon.sock"
-    LOGFILE="/tmp/faster-whisper-daemon.log"
     
-    # Check if daemon is running
-    if [ ! -S "$SOCKET" ]; then
+    # Check if daemon is running and responsive
+    if [ ! -S "$SOCKET" ] || ! echo "status" | ${pkgs.socat}/bin/socat -T 2 - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1; then
       echo "Starting faster-whisper daemon..." >&2
+      # Clean up any stale processes
+      pkill -f faster-whisper-daemon || true
+      rm -f "$SOCKET"
+      
       ${faster-whisper-daemon}/bin/faster-whisper-daemon &
-      # Wait for socket to appear
+      # Wait for socket to appear and be responsive
       for i in 1 2 3 4 5 6 7 8 9 10; do
-        [ -S "$SOCKET" ] && break
+        if [ -S "$SOCKET" ] && echo "status" | ${pkgs.socat}/bin/socat -T 2 - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1; then
+          break
+        fi
         sleep 0.5
       done
       if [ ! -S "$SOCKET" ]; then
@@ -305,19 +298,19 @@ PY
     fi
     
     # Send start command
-    echo "start" | ${pkgs.socat}/bin/socat - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1
+    echo "start" | ${pkgs.socat}/bin/socat -T 5 - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1
   '';
 
   dictate-fw-ptt-stop = pkgs.writeShellScriptBin "dictate-fw-ptt-stop" ''
     SOCKET="/tmp/faster-whisper-daemon.sock"
     
-    # Check if daemon is running
-    if [ ! -S "$SOCKET" ]; then
-      echo "Faster-whisper daemon not running" >&2
+    # Check if daemon is running and responsive
+    if [ ! -S "$SOCKET" ] || ! echo "status" | ${pkgs.socat}/bin/socat -T 2 - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1; then
+      echo "Faster-whisper daemon not responsive" >&2
       exit 1
     fi
     
-    # Send stop command and get transcription result (with longer timeout)
+    # Send stop command and get transcription result (with timeout)
     TEXT="$(echo "stop" | ${pkgs.socat}/bin/socat -T 30 -t 30 - UNIX-CONNECT:"$SOCKET" | head -1)"
     
     # Type the result if not empty
@@ -379,9 +372,6 @@ in
       faster-whisper-daemon-stop
       dictate-fw-ptt-start
       dictate-fw-ptt-stop
-      # Legacy tools (keep for fallback)
-      ffmpeg
-      fw-transcribe
     ];
   };
 }
