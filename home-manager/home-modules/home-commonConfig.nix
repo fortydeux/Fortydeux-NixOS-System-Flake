@@ -4,6 +4,8 @@
   imports = [
     ./wm-homeConfig.nix
     ./mime-config.nix
+    ./whisper-faster.nix
+    ./whisper-cpp.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -227,8 +229,20 @@
           timeout = 0;
         };
     };
-  };
+    dictation-faster = {
+        enable = true;
+        model = "small.en";   # try small.en or medium for dictation-grade
+        language = "en";
+        device = "cpu";       # set "cuda" if you have NVIDIA + CUDA set up
+    };
 
+    dictation-whispercpp = {
+        enable = true;
+        modelPath = "${pkgs.openai-whisper-cpp}/share/whisper/models/ggml-small.en.bin";
+        language = "en";
+    };
+  };
+  
   home.sessionVariables = {
     # NNN_OPENER = "/home/fortydeux/scripts/file-ops/linkhandler.sh";
     # NNN_FCOLORS = "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER";

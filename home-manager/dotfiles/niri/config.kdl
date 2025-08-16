@@ -634,6 +634,8 @@ binds {
     // Mod+Return { spawn "alacritty"; }
     // Mod+T { spawn "foot"; }
     // Mod+R { spawn "wofi"; }
+    Mod+"\" { spawn "bash" "-c" "$HOME/.local/bin/dictate-fw-ptt-start" }
+    Mod+Shift+"\" { spawn "bash" "-c" "$HOME/.local/bin/dictate-fw-ptt-stop" }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

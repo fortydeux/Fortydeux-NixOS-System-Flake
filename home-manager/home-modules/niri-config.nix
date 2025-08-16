@@ -643,9 +643,12 @@
         Ctrl+Space { spawn "fuzzel"; }
         Alt+Space { spawn "anyrun"; }
         Mod+Y { spawn "bash" "-c" "pgrep footclient && pkill footclient || footclient" ; }
-        Mod+Return { spawn "walker"; }
+        // Mod+Return { spawn "walker"; }
         // Mod+T { spawn "foot"; }
         // Mod+R { spawn "wofi"; }
+
+        Mod+Return { spawn "bash" "-c" "dictate-fw-ptt-start"; }
+        Mod+Shift+Return { spawn "bash" "-c" "dictate-fw-ptt-stop"; }
 
         // You can also use a shell. Do this if you need pipes, multiple commands, etc.
         // Note: the entire command goes as a single argument in the end.
