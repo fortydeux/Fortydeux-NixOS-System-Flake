@@ -231,7 +231,7 @@
     };
     dictation-faster = {
         enable = true;
-        model = "small.en";   # try small.en or medium for dictation-grade
+        model = "tiny";       # faster for real-time transcription
         language = "en";
         device = "cpu";       # set "cuda" if you have NVIDIA + CUDA set up
     };
